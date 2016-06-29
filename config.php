@@ -5,13 +5,14 @@
 <?php
 //    echo "Apache Works!";
     $host = 'localhost';
-    $dbname = 'wifidata';
+    $dbname = 'data';
     $username = 'root';
     $password = '';
 
 try {
     // connect to database
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // set return characters to utf8
     $conn->exec("set names utf8");
     echo "Connected to $dbname at $host successfully.";
