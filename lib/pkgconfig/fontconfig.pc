@@ -1,0 +1,18 @@
+prefix=/home/ellen/anaconda3/envs/research
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+sysconfdir=${prefix}/etc
+localstatedir=${prefix}/var
+PACKAGE=fontconfig
+confdir=${sysconfdir}/fonts
+cachedir=${localstatedir}/cache/${PACKAGE}
+
+Name: Fontconfig
+Description: Font configuration and customization library
+Version: 2.11.1
+Requires:  freetype2
+Requires.private:  libxml-2.0
+Libs: -L${libdir} -lfontconfig
+Libs.private:  -L/home/ellen/anaconda3/envs/research/lib -lfreetype    -L/home/ellen/anaconda3/envs/research/lib -lxml2  
+Cflags: -I${includedir}  -I/home/ellen/anaconda3/envs/research/include/freetype2    -I/home/ellen/anaconda3/envs/research/include/libxml2  

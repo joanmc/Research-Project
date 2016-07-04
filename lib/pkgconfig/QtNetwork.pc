@@ -1,0 +1,19 @@
+prefix=/home/ellen/anaconda3/envs/research/lib/qt4
+exec_prefix=${prefix}
+libdir=/home/ellen/anaconda3/envs/research/lib
+includedir=/home/ellen/anaconda3/envs/research/include/qt4/QtNetwork
+qt_config=lex yacc warn_on uic resources qt warn_on release incremental link_prl gdb_dwarf_index shared def_files_disabled exceptions no_mocdepend release stl qt_no_framework release largefile stl precompile_header mmx 3dnow sse sse2 sse3 ssse3 dylib create_prl link_prl depend_includepath QTDIR_build qt_install_headers qt warn_on depend_includepath qmake_cache target_qt hide_symbols create_pc create_libtool explicitlib moc thread dll shared
+moc_location=/home/ellen/anaconda3/envs/research/bin/moc
+uic_location=/home/ellen/anaconda3/envs/research/bin/uic
+rcc_location=/home/ellen/anaconda3/envs/research/bin/rcc
+lupdate_location=/home/ellen/anaconda3/envs/research/bin/lupdate
+lrelease_location=/home/ellen/anaconda3/envs/research/bin/lrelease
+
+Name: Qtnetwork
+Description: Qtnetwork Library
+Version: 4.8.7
+Libs: -L${libdir} -lQtNetwork 
+Libs.private: -L/home/ellen/anaconda3/envs/research/lib -L/home/ellen/anaconda3/envs/research/lib  -lQtCore -L/home/ellen/anaconda3/envs/research/lib -L/home/ellen/anaconda3/envs/research/lib -lpthread -lz  
+Cflags: -DQT_SHARED -I/home/ellen/anaconda3/envs/research/include/qt4 -I${includedir}
+Requires: QtCore
+

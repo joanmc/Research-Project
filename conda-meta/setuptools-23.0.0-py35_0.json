@@ -1,0 +1,33 @@
+{
+  "arch": "x86_64",
+  "build": "py35_0",
+  "build_number": 0,
+  "channel": "https://repo.continuum.io/pkgs/free/linux-64",
+  "date": "2016-06-10",
+  "depends": [
+    "python 3.5*"
+  ],
+  "files": [
+    "bin/easy_install",
+    "bin/easy_install-3.5",
+    "lib/python3.5/site-packages/setuptools-23.0.0-py3.5.egg",
+    "lib/python3.5/site-packages/setuptools.pth"
+  ],
+  "fn": "setuptools-23.0.0-py35_0.tar.bz2",
+  "license": "PSF or ZPL",
+  "license_family": "PSF",
+  "link": {
+    "source": "/home/ellen/anaconda3/pkgs/setuptools-23.0.0-py35_0",
+    "type": "hard-link"
+  },
+  "md5": "ca42e49f80eebe206989cec09aace9fa",
+  "name": "setuptools",
+  "platform": "linux",
+  "priority": 1,
+  "requires": [],
+  "schannel": "defaults",
+  "size": 470793,
+  "subdir": "linux-64",
+  "url": "https://repo.continuum.io/pkgs/free/linux-64/setuptools-23.0.0-py35_0.tar.bz2",
+  "version": "23.0.0"
+}

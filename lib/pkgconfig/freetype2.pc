@@ -1,0 +1,14 @@
+prefix=/home/ellen/anaconda3/envs/research
+exec_prefix=/home/ellen/anaconda3/envs/research
+libdir=/home/ellen/anaconda3/envs/research/lib
+includedir=/home/ellen/anaconda3/envs/research/include/freetype2
+
+Name: FreeType 2
+URL: http://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 17.4.11
+Requires:
+Requires.private: 
+Libs: -L${libdir} -lfreetype
+Libs.private: 
+Cflags: -I${includedir}

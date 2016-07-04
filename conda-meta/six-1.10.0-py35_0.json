@@ -1,0 +1,31 @@
+{
+  "arch": "x86_64",
+  "build": "py35_0",
+  "build_number": 0,
+  "channel": "https://repo.continuum.io/pkgs/free/linux-64",
+  "date": "2015-10-08",
+  "depends": [
+    "python 3.5*"
+  ],
+  "files": [
+    "lib/python3.5/site-packages/__pycache__/six.cpython-35.pyc",
+    "lib/python3.5/site-packages/six-1.10.0-py3.5.egg-info",
+    "lib/python3.5/site-packages/six.py"
+  ],
+  "fn": "six-1.10.0-py35_0.tar.bz2",
+  "license": "MIT",
+  "link": {
+    "source": "/home/ellen/anaconda3/pkgs/six-1.10.0-py35_0",
+    "type": "hard-link"
+  },
+  "md5": "3643bc1758a32c6db6b93757dcbff728",
+  "name": "six",
+  "platform": "linux",
+  "priority": 1,
+  "requires": [],
+  "schannel": "defaults",
+  "size": 17245,
+  "subdir": "linux-64",
+  "url": "https://repo.continuum.io/pkgs/free/linux-64/six-1.10.0-py35_0.tar.bz2",
+  "version": "1.10.0"
+}
