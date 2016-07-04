@@ -126,7 +126,7 @@
                 echo"</table>";
                 
                 } else {
-                    echo "submit not registered";
+                    echo "submit not registered.";
                 }?>
             </div>
         </div>
