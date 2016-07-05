@@ -5,7 +5,7 @@ html{
 
 }
 
-body{
+#container{
 	min-height: 700px;
 	background: url('../logo.png');
 	background-repeat: no-repeat;

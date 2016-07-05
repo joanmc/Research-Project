@@ -11,6 +11,7 @@
 	</head>
 	
 	<body>
+		<div id="container">
 		<header>
 			<h2>Ocu-Pants</h2>
 		</header>
@@ -116,7 +117,7 @@
 		});
 </script>
 
-	
+	</div>
 	</body>
 
 
