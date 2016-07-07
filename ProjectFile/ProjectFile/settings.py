@@ -81,7 +81,13 @@ DATABASES = {
 	'USER': 'root',
 	'PASSWORD': ''
     }
-}
+#    'legacy' : {
+#	'ENGINE': 'django.db.backends.mysql',
+#        'NAME': '',
+#	'USER': 'root',
+#	'PASSWORD': ''	
+#	}
+} 
 
 
 # Password validation
