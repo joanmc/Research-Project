@@ -1,0 +1,202 @@
+html{
+/*	background-color: #d9d9d9;*/
+	background-color: #3c948b;
+
+
+}
+
+#container{
+	min-height: 700px;
+	background: url('../logo.png');
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	background-size: contain;
+}
+
+select{
+	width: 100px;
+	height: 50px;
+	font-size: 20px;
+/*	font-family: century-gothic;*/
+	margin-left: 5%;
+}
+
+select option{
+	margin: 10px;
+}
+
+ul{
+	width: 90%;
+	margin: 0 auto;
+	
+}
+
+a{
+	cursor: default;
+	color: inherit;
+	text-decoration: none;
+}
+
+button{
+	padding: 10px;
+/*	margin: 15px;*/
+	border-radius: 10px 10px 10px 10px;
+	width: 100px;
+}
+
+/*
+a:hover{
+		color: inherit;
+
+}
+*/
+
+ul li{
+	display: inline-block;
+	width: 20%;
+	margin: 10px;;
+	font-size: 20px;
+	padding: 10px;
+}
+
+#login{
+	width: 90%;
+	margin: 0 auto;
+/*	border: 3px solid yellow;*/
+}
+
+#logo{
+/*	width: 90%;*/
+/*	border: 3px solid blue;*/
+		text-align:center;
+
+}
+
+img{
+/*	width: 30%;*/
+	width: 400px;
+	height: 10%;
+/*	margin: 0 auto;*/
+/*	border: 3px solid black;*/
+}
+
+#loginForm{
+/*	margin: 0 auto;*/
+	text-align:center;
+	margin-top: 30px;
+}
+
+input[type=text]{
+	padding: 15px;
+	margin: 7px;
+	border-radius: 10px 10px 10px 10px;
+}
+
+input[type=submit]{
+	padding: 10px;
+/*	margin: 15px;*/
+	border-radius: 10px 10px 10px 10px;
+	width:100px;
+}
+
+#submitButton{
+		text-align:center;
+
+}
+
+h2{
+	text-align: center;
+	font-size: 50px;
+	font-family: 'Chicle', cursive;
+/*	font-stretch: expanded;*/
+}
+
+header{
+/*	text-align: center;*/
+}
+
+header h2{
+	font-size: 50px;
+	font-family: 'Chicle', cursive;
+	text-align: left;
+	margin-left: 15px;
+}
+
+#roomForm select{
+	text-align: left;
+	border-radius: 10px 10px 10px 10px;
+	width: 200px;
+	background-color: #bfbfbf;
+
+}
+
+#choice{
+	width:100%;
+	text-align: center;
+}
+
+#choice li{
+	border-radius: 10px 10px 10px 10px;
+	width: 200px;
+	background-color: #bfbfbf;
+}
+
+
+#tables{
+	width: 90%;
+	margin: 0 auto;
+}
+
+#extra{
+	width: 90%;
+	margin: 0 auto;
+}
+
+table{
+	width: 100%;
+	font-family: 'Chicle', cursive;
+	border-collapse: collapse;
+/*	background-color: #bfbfbf;*/
+	background-color:rgba(191,191,191,0.9);
+	border-radius: 10px 10px 10px 10px;
+
+}
+
+.times{
+	background-color: darkorange;
+}
+
+table tr{
+	text-align: center;
+}
+
+table th{
+/*	border: 2px solid black;*/
+/*		padding: 4px;*/
+	font-size: 30px;
+}
+
+
+td{
+	color: black;
+/*	padding: 3px;*/
+	font-size: 20px;
+}
+
+#timetableTable tr{
+
+}
+
+#binaryTable{
+	display:none;
+
+}
+
+#percentTable{
+	display:none;
+
+}
+
+#off{
+	display:none;
+}
