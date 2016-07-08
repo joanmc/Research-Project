@@ -1,3 +1,4 @@
+
 """
 Django settings for ProjectFile project.
 
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'occupants.apps.OccupantsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,11 +79,17 @@ WSGI_APPLICATION = 'ProjectFile.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_setup',
+        'NAME':'django_setup',
 	'USER': 'root',
 	'PASSWORD': ''
-    }
-}
+    },
+   'occupants' : {
+	'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'room',
+	'USER': 'root',
+	'PASSWORD': ''	
+	}
+} 
 
 
 # Password validation
