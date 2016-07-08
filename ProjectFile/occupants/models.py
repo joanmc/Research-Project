@@ -15,10 +15,10 @@ class Groundtruth(models.Model):
     room = models.ForeignKey('Rooms', models.DO_NOTHING, db_column='Room')  # Field name made lowercase.
     binaryestimate = models.IntegerField(db_column='BinaryEstimate', blank=True, null=True)  # Field name made lowercase.
     percentageestimate = models.FloatField(db_column='PercentageEstimate', blank=True, null=True)  # Field name made lowercase.
+    groundtruthid = models.AutoField(db_column='GroundTruthId', primary_key=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'GroundTruth'
-        unique_together = (('datetime', 'room'),)
 
 
 class Modules(models.Model):
@@ -43,10 +43,10 @@ class Timemodule(models.Model):
     datetime = models.DateTimeField(db_column='DateTime')  # Field name made lowercase.
     room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room')  # Field name made lowercase.
     module = models.ForeignKey(Modules, models.DO_NOTHING, db_column='Module')  # Field name made lowercase.
+    timemoduleid = models.AutoField(db_column='TimeModuleId', primary_key=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'TimeModule'
-        unique_together = (('datetime', 'room'),)
 
 
 class Wifilogdata(models.Model):
@@ -54,7 +54,7 @@ class Wifilogdata(models.Model):
     room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room')  # Field name made lowercase.
     associated = models.IntegerField(db_column='Associated', blank=True, null=True)  # Field name made lowercase.
     authenticated = models.IntegerField(db_column='Authenticated', blank=True, null=True)  # Field name made lowercase.
+    wifilogdataid = models.AutoField(db_column='WiFiLogDataId', primary_key=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'WiFiLogData'
-        unique_together = (('datetime', 'room'),)

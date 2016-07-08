@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Groundtruth, Modules, Rooms, Timemodule, Wifilogdata
+from .models import Rooms, Modules, Timemodule, Wifilogdata, Groundtruth
 
 
 admin.site.register(Groundtruth)
