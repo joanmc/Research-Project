@@ -83,9 +83,9 @@ DATABASES = {
 	'USER': 'root',
 	'PASSWORD': ''
     },
-   'occupants' : {
+   'occupantsdb' : {
 	'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'room',
+        'NAME': 'DatabaseMain',
 	'USER': 'root',
 	'PASSWORD': ''	
 	}

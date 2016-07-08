@@ -21,5 +21,5 @@ class OccupantsRouter(object):
     def allow_syncdb(self, db, model):
         if db == 'occupants' or model._meta.app_label == "occupants":
             return False 
-        else:
-            return Tru
+        else: 
+            return True

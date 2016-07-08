@@ -3,12 +3,12 @@ class OccupantsRouter(object):
     def db_for_read(self, model, **hints):
 
         if model._meta.app_label == 'occupants':
-            return 'occupants'
+            return 'occupantsdb'
         return 'default'
 
     def db_for_write(self, model, **hints):
         if model._meta.app_label == 'chinook':
-            return 'occupants'
+            return 'occupantsdb'
         return 'default'
     
     def allow_relation(self, obj1, obj2, **hints):
@@ -19,7 +19,7 @@ class OccupantsRouter(object):
         return False
     
     def allow_syncdb(self, db, model):
-        if db == 'occupants' or model._meta.app_label == "occupants":
+        if db == 'occupantsdb' or model._meta.app_label == "occupants":
             return False 
         else: 
             return True

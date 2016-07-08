@@ -10,6 +10,25 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class Groundtruth(models.Model):
+    datetime = models.DateTimeField(db_column='DateTime')  # Field name made lowercase.
+    room = models.ForeignKey('Rooms', models.DO_NOTHING, db_column='Room')  # Field name made lowercase.
+    binaryestimate = models.IntegerField(db_column='BinaryEstimate', blank=True, null=True)  # Field name made lowercase.
+    percentageestimate = models.FloatField(db_column='PercentageEstimate', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'GroundTruth'
+        unique_together = (('datetime', 'room'),)
+
+
+class Modules(models.Model):
+    modulename = models.CharField(db_column='ModuleName', primary_key=True, max_length=30)  # Field name made lowercase.
+    numreg = models.IntegerField(db_column='NumReg', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'Modules'
+
+
 class Rooms(models.Model):
     room = models.CharField(db_column='Room', primary_key=True, max_length=10)  # Field name made lowercase.
     building = models.CharField(db_column='Building', max_length=30, blank=True, null=True)  # Field name made lowercase.
@@ -18,3 +37,24 @@ class Rooms(models.Model):
 
     class Meta:
         db_table = 'Rooms'
+
+
+class Timemodule(models.Model):
+    datetime = models.DateTimeField(db_column='DateTime')  # Field name made lowercase.
+    room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room')  # Field name made lowercase.
+    module = models.ForeignKey(Modules, models.DO_NOTHING, db_column='Module')  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'TimeModule'
+        unique_together = (('datetime', 'room'),)
+
+
+class Wifilogdata(models.Model):
+    datetime = models.DateTimeField(db_column='DateTime')  # Field name made lowercase.
+    room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room')  # Field name made lowercase.
+    associated = models.IntegerField(db_column='Associated', blank=True, null=True)  # Field name made lowercase.
+    authenticated = models.IntegerField(db_column='Authenticated', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'WiFiLogData'
+        unique_together = (('datetime', 'room'),)
