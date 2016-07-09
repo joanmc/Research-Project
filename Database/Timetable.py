@@ -5,24 +5,6 @@ from dateutil.parser import parse
 from datetime import datetime
 from datetime import timedelta
 
-# This is just to find where each thing was.. date, time, module etc...
-# DATE - EVERY SECOND COLUMN ROW 0
-# i CONTROLS COLUMN NUMBER
-print(df.iloc[0][3] + ' November 2015')
-d = parse(df.iloc[0][3] + ' November 2015').strftime('%Y-%m-%d')
-print(d, type(d))
-
-# TIME - COLUMN 0 FROM ROW 1
-# j CONTROLS ROW NUMBER
-t = df.iloc[2][0].split(' - ')
-time = datetime.strptime(t[0], "%H:%M").strftime('%H:%M:%S')
-print(datetime.strptime(t[0], "%H:%M").strftime('%H:%M:%S'))
-print(type(pd.to_datetime(d + ' ' + time)))
-
-# Module - Every 2nd column from column 1 from row 1 to end
-# df.iloc[row][column]
-df.iloc[1][3]
-
 class timetable():
     def __init__(self, name):
         # connect to the database
@@ -31,17 +13,12 @@ class timetable():
         
     def createTableTimeModule(self, tname):
         # create table with modules and the time
-        sql = "CREATE TABLE IF NOT EXISTS " + tname + " (DateTime datetime, Room VARCHAR(10), Module VARCHAR(30) NOT NULL, PRIMARY KEY (DateTime, Room))"
+        sql = "CREATE TABLE IF NOT EXISTS " + tname + " (DateTime datetime, Room VARCHAR(10), Module VARCHAR(30) NOT NULL, PRIMARY KEY (DateTime, Room), FOREIGN KEY (Room) REFERENCES Rooms(Room), FOREIGN KEY (Module) REFERENCES Modules(ModuleName))"
         self.cursor.execute(sql)
         
     def createTableModule(self, tname):
         # Create Modules table
         sql = "CREATE TABLE IF NOT EXISTS " + tname + " (ModuleName VARCHAR(30), NumReg INT, PRIMARY KEY(ModuleName))"
-        self.cursor.execute(sql)
-        
-    def createTableTimetable(self, tname):
-        # Create Timetable table
-        sql = "CREATE TABLE IF NOT EXISTS " + tname + " (Time VARCHAR(20), Monday_Module VARCHAR(80), Monday_NumReg INT, Tuesday_Module VARCHAR(40),Tuesday_NumReg INT, Wednesday_Module VARCHAR(40), Wednesday_NumReg INT, Thursday_Module VARCHAR(40), Thursday_NumReg INT, Friday_Module VARCHAR(40), Friday_NumReg INT)"
         self.cursor.execute(sql)
         
     def fixLecPrac(self, df):
@@ -93,37 +70,12 @@ class timetable():
                                     % (df.iloc[j][i], df.iloc[j][i+1] if df.iloc[j][i+1] else 0))
                 self.con.commit()
         return
-    
-    
-    def timetableTable(self, tname, df):     
-        for i in range(1, len(df)): # i is row, other column
-            self.cursor.execute("INSERT INTO " + tname + "(Time, Monday_Module, Monday_NumReg, Tuesday_Module, Tuesday_NumReg, Wednesday_Module, Wednesday_NumReg, Thursday_Module, Thursday_NumReg, Friday_Module, Friday_NumReg) VALUES('%s', '%s', %d, '%s', %d,'%s', %d, '%s', %d, '%s', %d)" % 
-            (df.iloc[i][0], # Time
-             df.iloc[i][1], # Monday
-             df.iloc[i][2] if df.iloc[i][2] else 0, # Number registered
-             df.iloc[i][3], # Tuesday...
-             df.iloc[i][4] if df.iloc[i][4] else 0,
-             df.iloc[i][5],
-             df.iloc[i][6] if df.iloc[i][6] else 0,
-             df.iloc[i][7],
-             df.iloc[i][8] if df.iloc[i][8] else 0, 
-             df.iloc[i][9], 
-             df.iloc[i][10] if df.iloc[i][10] else 0))
-            self.con.commit()           
-        return
+
 
 # Connect to database
-name = 'MainDatabase'
-
+name = 'DatabaseMain'
 # Create timetable object
 data = timetable(name)
-# Create table with modules and time they're on
-tnameT = 'TimeModule'
-data.createTableTimeModule(tnameT)
-# Create Modules table
-tnameM = 'Modules'
-data.createTableModule(tnameM)
-
 
 # Create empty dictionary to hold room title and capacity
 rooms = {}
@@ -131,119 +83,101 @@ rooms = {}
 ###### B002 #####
 # Read timetable info for B-002
 room = 'B-002'
-df = pd.read_excel('B0.02 B0.03 B0.04 Timetable.xlsx', sheetname='B0.02')
-df = df.iloc[:10,:11]
+df_b002 = pd.read_excel('B0.02 B0.03 B0.04 Timetable.xlsx', sheetname='B0.02')
+df_b002 = df_b002.iloc[:10,:11]
 # Replace all null values with 'None'
-df = df.astype(object).where(pd.notnull(df), None)
+df_b002 = df_b002.astype(object).where(pd.notnull(df_b002), None)
 # Fix - Rename lectures and practicals
-df = data.fixLecPrac(df)
-
-##### B002 - TIME & MODULE #####
-# Add timetable data for week 1
-data.addTimeModuleWk1(tnameT, df, room)
-# Add timetable data for week 2 - timetable is the same, only difference is the dates
-data.addTimeModuleWk2(tnameT, df, room)
-
+df_b002 = data.fixLecPrac(df_b002)
 # read the capacity of the room 'Room capacity: 90'
 # split the cell containing the capacity
-cap = df.columns[2].split()
+cap = df_b002.columns[2].split()
 # Add room and its capacity to dictionary
 rooms[room] = cap[2]
-
-##### B002 - MODULE #####
-# Add Modules and Number registered for each module a Modules table
-data.addModule(tnameM, df, room)
-
-##### B002 - Timetable #####
-# Create Timetable table for B002 and add data
-tnameTT = 'B002'
-data.createTableTimetable(tnameTT)
-data.timetableTable(tnameTT, df)
 
 ###### B003 #####
 # Read timetable info for B-003
 room = 'B-003'
-df = pd.read_excel('B0.02 B0.03 B0.04 Timetable.xlsx', sheetname='B0.03')
-df = df.iloc[:10,:11]
+df_b003 = pd.read_excel('B0.02 B0.03 B0.04 Timetable.xlsx', sheetname='B0.03')
+df_b003 = df_b003.iloc[:10,:11]
 # Replace all null values with 'None'
-df = df.astype(object).where(pd.notnull(df), None)
+df_b003 = df_b003.astype(object).where(pd.notnull(df), None)
 # Fix (rename practicals)
-df = data.fixLecPrac(df)
-
-##### B003 - TIME & MODULE #####
-data.addTimeModuleWk1(tnameT, df, room)
-# Add timetable data for week 2 - timetable is the same, only difference is the dates
-data.addTimeModuleWk2(tnameT, df, room)
-
+df_b003 = data.fixLecPrac(df_b003)
 # read the capacity of the room e.g.'Room capacity: 90'
 # split the cell containing the capacity
-cap = df.columns[2].split()
+cap = df_b003.columns[2].split()
 # Add room and its capacity to dictionary 'rooms'
 rooms[room] = cap[2]
-
-##### B003 - MODULE #####
-# Add Modules and Number registered for each module a Modules table
-data.addModule(tnameM, df, room)
-
-##### B003 - Timetable #####
-# Create Timetable table for B003 and add data
-tnameTT = 'B003'
-data.createTableTimetable(tnameTT)
-data.timetableTable(tnameTT, df)
 
 ###### B004 #####
 # Read timetable info for B-004
 room = 'B-004'
-df = pd.read_excel('B0.02 B0.03 B0.04 Timetable.xlsx', sheetname='B0.04')
-df = df.iloc[:10,12:23]
+df_b004 = pd.read_excel('B0.02 B0.03 B0.04 Timetable.xlsx', sheetname='B0.04')
+df_b004 = df_b004.iloc[:10,12:23]
 # Replace all null values with 'None'
-df = df.astype(object).where(pd.notnull(df), None)
+df_b004 = df.astype(object).where(pd.notnull(df_b004), None)
 # Fix (rename practicals)
-df = data.fixLecPrac(df)
-
-##### B004 - TIME & MODULE #####
-# Add timetable data for week 1
-data.addTimeModuleWk1(tnameT, df, room)
-# Add timetable data for week 2 - timetable is the same, only difference is the dates
-data.addTimeModuleWk2(tnameT, df, room)
-
+df_b004 = data.fixLecPrac(df_b004)
 # read the capacity of the room 'Room capacity: 90'
 # split the cell containing the capacity
-cap = df.columns[2].split()
+cap = df_b004.columns[2].split()
 # Add room and its capacity to dictionary
 rooms[room] = cap[2]
 
-##### B004 - MODULE #####
-# Add Modules and Number registered for each module to Modules table
-data.addModule(tnameM, df, room)
-
-##### B004 - Timetable #####
-# Create Timetable table for B004 and add data WK2
-tnameTT = 'B004_WK2'
-data.createTableTimetable(tnameTT)
-data.timetableTable(tnameTT, df)
-
-# Create Timetable table for B002 and add data WK1
-tnameTT = 'B004_WK1'
-df = pd.read_excel('B0.02 B0.03 B0.04 Timetable.xlsx', sheetname='B0.04')
-df = df.iloc[:10,:11]
-df = df.astype(object).where(pd.notnull(df), None)
-# Fix (Rename Practicals)
-df = data.fixLecPrac(df)
-data.createTableTimetable(tnameTT)
-data.timetableTable(tnameTT, df)
-
 # ROOM TABLE
 # Connect to Database
-name = "MainDatabase"
+name = "DatabaseMain"
 con = db.connect(host="localhost", user="root", passwd='', db=name)
 cursor = con.cursor()
 
 # Create table
-sql = """CREATE TABLE IF NOT EXISTS Rooms (Room VARCHAR(10), Capacity FLOAT, PRIMARY KEY(Room))"""
+sql = """CREATE TABLE IF NOT EXISTS Rooms (Room VARCHAR(10), Building VARCHAR(30), Campus VARCHAR(30), Capacity INT, PRIMARY KEY(Room))"""
 cursor.execute(sql)
+
+campus = 'Belfield'
+building = 'Computer Science'
 
 # Insert rooms and capacity containined in 'rooms' dictionary into table 
 for key, value in rooms.items():
-    cursor.execute("INSERT INTO Rooms (Room, Capacity) VALUES ('%s', %f)" % (key, float(value)))
+    cursor.execute("INSERT INTO Rooms (Room, Building, Campus, Capacity) VALUES ('%s', '%s', '%s', %d)" % (key, building, campus, int(float(value))))
     con.commit()
+
+# MODULES TABLE
+tnameM = 'Modules'
+data.createTableModule(tnameM)
+
+##### B002 - MODULE #####
+# Add Modules and Number registered for each module a Modules table
+data.addModule(tnameM, df_b002, room)
+
+#### B003 - MODULE #####
+# Add Modules and Number registered for each module a Modules table
+data.addModule(tnameM, df_b003, room)
+
+#### B004 - MODULE #####
+# Add Modules and Number registered for each module to Modules table
+data.addModule(tnameM, df_b004, room)
+
+# TIMEMODULE TABLE
+tnameT = 'TimeModule'
+data.createTableTimeModule(tnameT)
+
+##### B002 - TIME & MODULE #####
+# Add timetable data for week 1
+data.addTimeModuleWk1(tnameT, df_b002, room)
+# Add timetable data for week 2 - timetable is the same, only difference is the dates
+data.addTimeModuleWk2(tnameT, df_b002, room)
+
+##### B003 - TIME & MODULE #####
+# Add timetable data for week 1
+data.addTimeModuleWk1(tnameT, df_b003, room)
+# Add timetable data for week 2 - timetable is the same, only difference is the dates
+data.addTimeModuleWk2(tnameT, df_b003, room)
+
+##### B004 - TIME & MODULE #####
+# Add timetable data for week 1
+data.addTimeModuleWk1(tnameT, df_b004, room)
+# Add timetable data for week 2 - timetable is the same, only difference is the dates
+data.addTimeModuleWk2(tnameT, df_b004, room)
+

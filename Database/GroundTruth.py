@@ -59,43 +59,26 @@ class groundTruth():
         # Connect to database
         self.con = db.connect(host="localhost", user="root", passwd='', db=name)
         self.cursor = self.con.cursor()
-        
+    
     def createTable(self, tname):
         # Create ground truth table - same for binary table and percentage table
-        sql = "CREATE TABLE IF NOT EXISTS " + tname + " (DateTime datetime, Room VARCHAR(10), GroundTruth FLOAT, PRIMARY KEY (DateTime, Room))"
+        sql = "CREATE TABLE IF NOT EXISTS " + tname + " (DateTime datetime, Room VARCHAR(10), BinaryEstimate INT, PercentageEstimate FLOAT, PRIMARY KEY (DateTime, Room), FOREIGN KEY (Room) REFERENCES Rooms(Room))"
         self.cursor.execute(sql)
         return
-    
-    # Add file is the same for Binary and Percentage tables EXCEPT the date is contained in a different row
-    def addFileB(self, tname, df, room, index): 
-        # Each table contains data for all rooms for one day so date stays the same for each datarame that is added
-        date = parse(df.iloc[1][0]).strftime('%Y-%m-%d')
-        for i in range(6, len(df)):
-            # split the time cell (9:00-10:00), only the time the class starts at goes into the database (09:00)
-            t = df.iloc[i][0].split('-')
-            self.cursor.execute("INSERT INTO " + tname + " (Datetime, Room, GroundTruth) VALUES('%s', '%s', %f)"  % (pd.to_datetime(date + ' ' + datetime.strptime(t[0], "%H.%M").strftime('%H:%M:%S')), room, df.iloc[i][index]))
-            self.con.commit()           
-        return
-    
-    def addFileP(self, tname, df, room, index): 
-        date = parse(df.iloc[2][0]).strftime('%Y-%m-%d')
-        for i in range(6, len(df)):
-            t = df.iloc[i][0].split('-')
-            self.cursor.execute("INSERT INTO " + tname + " (Datetime, Room, GroundTruth) VALUES('%s', '%s', %f)"  % (pd.to_datetime(date + ' ' + datetime.strptime(t[0], "%H.%M").strftime('%H:%M:%S')), room, df.iloc[i][index]))
+
+    def addFile(self, tname, dfB, dfP, room, index): 
+        date = parse(dfP.iloc[2][0]).strftime('%Y-%m-%d')
+        for i in range(6, len(dfP)):
+            t = dfP.iloc[i][0].split('-')
+            self.cursor.execute("INSERT INTO " + tname + " (Datetime, Room, BinaryEstimate, PercentageEstimate) VALUES('%s', '%s', %d, %f)"  % (pd.to_datetime(date + ' ' + datetime.strptime(t[0], "%H.%M").strftime('%H:%M:%S')), room, dfB.iloc[i][index], dfP.iloc[i][index]))
             self.con.commit()           
         return
 
 # Connect to database
-name = 'MainDatabase'
+name = 'DatabaseMain'
 myData = groundTruth(name)
-
-# Table for binary ground truth info
-tnameB = 'GroundTruth_Binary'
-myData.createTable(tnameB)
-
-# Table for percentage ground truth info
-tnameP = 'GroundTruth_Percentage'
-myData.createTable(tnameP)
+tname = 'GroundTruth'
+myData.createTable(tname)
 
 # Room: B004 Column: 2
 # Room: B003 Column: 5
@@ -103,30 +86,15 @@ myData.createTable(tnameP)
 
 # add binary ground truth info for B004
 room = 'B-004'
-for i in range(0,len(df_list),2):
-    myData.addFileB(tnameB, df_list[i], room, 2)
-
-# add percentage ground truth info for B004
-room = 'B-004'
-for i in range(1,len(df_list),2):
-    myData.addFileP(tnameP, df_list[i], room, 2)
+for i in range(0,len(df_list)-1,2):
+    myData.addFile(tname, df_list[i], df_list[i+1], room, 2)
     
 # add binary ground truth info for B003    
 room = 'B-003'
-for i in range(0,len(df_list),2):
-    myData.addFileB(tnameB, df_list[i], room, 5)
-
-# add percentage ground truth info for B003
-room = 'B-003'
-for i in range(1,len(df_list),2):
-    myData.addFileP(tnameP, df_list[i], room, 5)
+for i in range(0,len(df_list)-1,2):
+    myData.addFile(tname, df_list[i], df_list[i+1], room, 5)
 
 # add binary ground truth info for B002
 room = 'B-002'
-for i in range(0,len(df_list),2):
-    myData.addFileB(tnameB, df_list[i], room, 4)
-
-# add percentage ground truth info for B002
-room = 'B-002'
-for i in range(1,len(df_list),2):
-    myData.addFileP(tnameP, df_list[i], room, 4)
+for i in range(0,len(df_list)-1,2):
+    myData.addFile(tname, df_list[i], df_list[i+1], room, 4)
