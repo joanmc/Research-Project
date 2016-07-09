@@ -14,7 +14,7 @@ class data():
         
     def createTable(self, tname):
         # Create a table
-        sql = "CREATE TABLE " + tname + " (Campus VARCHAR(30), Building VARCHAR(40), Room VARCHAR(20), DateTime datetime, Associated int, Authenticated int)"
+        sql = "CREATE TABLE " + tname + " (DateTime datetime, Room VARCHAR(20), Associated int, Authenticated int, PRIMARY KEY(DateTime, Room), FOREIGN KEY (Room) REFERENCES Rooms(Room))"
         self.cursor.execute(sql)
         
     def openFile(self, tname, fname):
@@ -38,17 +38,18 @@ class data():
             df['Key'][i] = df['Key'][i].split(' > ')
         return df
         
+
     def addFile(self, tname, df):
         # put data from dataframe into table in database
         for i in range(0, len(df)):
-            self.cursor.execute("INSERT INTO " + tname + "(Campus, Building, Room, DateTime, Associated, Authenticated) VALUES('%s', '%s', '%s', '%s', %d, %d)" 
-                                % (df['Key'][i][0], df['Key'][i][1], df['Key'][i][2], df['Event Time'][i], df['Associated Client Count'][i], 
+            self.cursor.execute("INSERT INTO " + tname + "(Room, DateTime, Associated, Authenticated) VALUES('%s', '%s', %d, %d)" 
+                                % (df['Key'][i][2], df['Event Time'][i], df['Associated Client Count'][i], 
                                  df['Authenticated Client Count'][i]))
             self.con.commit()           
         return
 
 
-name = 'Data_Tuesday'
+name = 'DatabaseMain'
 myData = data(name)
 tname = 'WiFiLogData'
 myData.createTable(tname)
