@@ -7,6 +7,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="#">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Chicle' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	
@@ -110,6 +111,12 @@
 				xmlhttp.send();
 				
 			});
+			
+//			$("#tables").on('click', '.tables',function() {
+//				$('html, body').animate({
+//					scrollTop: $("#choice").offset().top
+//				}, 2000);
+//			});
 			
 //			$('#tables').on('mouseenter','td', function(){
 //				$(this).css('color', 'red');
