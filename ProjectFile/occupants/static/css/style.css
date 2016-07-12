@@ -166,18 +166,22 @@ table{
 	background-color: darkorange;
 }
 
+table {
+    width: 100%;
+}
+
 table tr{
 	text-align: center;
 }
 
 table th{
-/*	border: 2px solid black;*/
-/*		padding: 4px;*/
+    width: 200px;
 	font-size: 30px;
 }
 
 
-td{
+table td{
+    width: 200px;
 	color: black;
 /*	padding: 3px;*/
 	font-size: 20px;

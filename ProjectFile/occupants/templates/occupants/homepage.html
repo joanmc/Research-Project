@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 
+{% load staticfiles %}
+
 <html>
 	<head>
-		<title>Scratch</title>
+		<title>Ocu-Pants</title>
 		
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="#">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<link href='https://fonts.googleapis.com/css?family=Chicle' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	</head>
 	
 	<body>
@@ -16,15 +16,84 @@
 			<h2>Ocu-Pants</h2>
 		</header>
         
-		<div>            
-            <table>
-                <tr><td></td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td></tr>
-                {% for x in timeMod1 %}
-
-                <tr><td>{{ x.datetime }}</td><td>{{ x.module.modulename }}</td></tr>
-                  
-                {% endfor %}
-            </table>
-        </div>
+        <h2>B-004</h2><br>
+            
+            
+        <table>
+            <tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr>        
+            
+            <tr><th>9:00am</th>
+            {% for x in timeMod1 %}
+                {% if x.datetime.hour == 9  %}
+                    <td>{{ x.module.modulename }}</td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+            
+            <tr><th>10:00am</th>
+            {% for x in timeMod1 %}
+                {% if x.datetime.hour == 10  %}
+                    <td>{{ x.module.modulename }}</td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+            
+            <tr><th>11:00am</th>
+            {% for x in timeMod1 %}
+                {% if x.datetime.hour == 11  %}
+                    <td>{{ x.module.modulename }}</td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+            
+            <tr><th>12:00pm</th>
+            {% for x in timeMod1 %}
+                {% if x.datetime.hour == 12  %}
+                    <td>{{ x.module.modulename }}</td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+            
+            <tr><th>1:00pm</th>
+            {% for x in timeMod1 %}
+                {% if x.datetime.hour == 13  %}
+                    <td>{{ x.module.modulename }}</td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+            
+            <tr><th>2:00pm</th>
+            {% for x in timeMod1 %}
+                {% if x.datetime.hour == 14  %}
+                    <td>{{ x.module.modulename }}</td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+            
+            <tr><th>3:00pm</th>
+            {% for x in timeMod1 %}
+                {% if x.datetime.hour == 15  %}
+                    <td>{{ x.module.modulename }}</td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+            
+            <tr><th>4:00pm</th>
+            {% for x in timeMod1 %}
+                {% if x.datetime.hour == 16  %}
+                    <td>{{ x.module.modulename }}</td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+            
+            <tr><th>5:00pm</th>
+            {% for x in timeMod1 %}
+                {% if x.datetime.hour == 17  %}
+                    <td>{{ x.module.modulename }}</td>
+                {% endif %}
+            {% endfor %}
+            </tr>
+            
+        </table>
 	</body>
-</html>
+</html>                
