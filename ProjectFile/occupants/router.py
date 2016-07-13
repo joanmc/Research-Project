@@ -7,7 +7,7 @@ class OccupantsRouter(object):
         return 'default'
 
     def db_for_write(self, model, **hints):
-        if model._meta.app_label == 'chinook':
+        if model._meta.app_label == 'occupants':
             return 'occupantsdb'
         return 'default'
     
