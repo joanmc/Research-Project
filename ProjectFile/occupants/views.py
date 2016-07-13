@@ -14,6 +14,6 @@ def homepage(request):
 
 	timeMod1 = Timemodule.objects.filter(room='B-004', datetime__range=(start_time, end_time))
 	
-	var_time = 9	
+	var_time = [9,10,11,12,13,14,15,16,17]	
 
-	return render(request, 'occupants/homepage.html', {'timeMod1': timeMod1})
+	return render(request, 'occupants/homepage.html', {'timeMod1': timeMod1, 'var_time': var_time})

@@ -1,8 +1,5 @@
 html{
-/*	background-color: #d9d9d9;*/
 	background-color: #3c948b;
-
-
 }
 
 #container{
@@ -47,7 +44,6 @@ button{
 /*
 a:hover{
 		color: inherit;
-
 }
 */
 
@@ -73,15 +69,11 @@ ul li{
 }
 
 img{
-/*	width: 30%;*/
 	width: 400px;
 	height: 10%;
-/*	margin: 0 auto;*/
-/*	border: 3px solid black;*/
 }
 
 #loginForm{
-/*	margin: 0 auto;*/
 	text-align:center;
 	margin-top: 30px;
 }
@@ -94,21 +86,18 @@ input[type=text]{
 
 input[type=submit]{
 	padding: 10px;
-/*	margin: 15px;*/
 	border-radius: 10px 10px 10px 10px;
 	width:100px;
 }
 
 #submitButton{
 		text-align:center;
-
 }
 
 h2{
 	text-align: center;
 	font-size: 50px;
 	font-family: 'Chicle', cursive;
-/*	font-stretch: expanded;*/
 }
 
 header{
@@ -127,7 +116,6 @@ header h2{
 	border-radius: 10px 10px 10px 10px;
 	width: 200px;
 	background-color: #bfbfbf;
-
 }
 
 #choice{
@@ -142,53 +130,35 @@ header h2{
 }
 
 
-#tables{
-	width: 90%;
-	margin: 0 auto;
+.centered {
+    align-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-#extra{
-	width: 90%;
-	margin: 0 auto;
-}
 
 table{
 	width: 100%;
 	font-family: 'Chicle', cursive;
 	border-collapse: collapse;
-/*	background-color: #bfbfbf;*/
-	background-color:rgba(191,191,191,0.9);
+	background-color:whitesmoke;
 	border-radius: 10px 10px 10px 10px;
-
 }
 
-.times{
-	background-color: darkorange;
-}
-
-table {
-    width: 100%;
-}
 
 table tr{
 	text-align: center;
+    height: 50px;
 }
 
 table th{
-    width: 200px;
-	font-size: 30px;
+
 }
 
 
 table td{
-    width: 200px;
+    width: 16.5%;
 	color: black;
-/*	padding: 3px;*/
-	font-size: 20px;
-}
-
-#timetableTable tr{
-
 }
 
 #binaryTable{
