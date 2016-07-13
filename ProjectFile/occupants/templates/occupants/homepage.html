@@ -5,31 +5,41 @@
 <html>
 	<head>
 		<title>Ocu-Pants</title>
-		
-		<meta charset="utf-8">
 
+		<meta charset="utf-8">
 		<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	</head>
 	
 	<body>
-        <h2>B-004</h2>   
-            
+       <form action="" method="POST">{% csrf_token %}
+            <select name="roomForm" onchange="this.form.submit()">
+                <option value="" selected></option>
+                {% for room in roomList %}
+                <option value="{{ room.room }}">{{ room.room }}</option>
+            {% endfor %}
+            </select>
+        </form>
+        
         <div class="centered">
+            <h3>{{ b00X }}</h3>
+        </div>
+        
+        <div class="centered" id="B-00Z" style="Display: block">
             <table>
                 <tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr> 
 
                 {% for y in var_time %}
 
                     <tr><th>{{ y }}:00</th>
-                    {% for x in timeMod1 %}
+                        
+                    {% for x in b00Y %}
                         {% if x.datetime.hour == y  %}
                             <td>{{ x.module.modulename }}</td>
                         {% endif %}
                     {% endfor %}
                     </tr>
                 {% endfor %}
-
             </table>
         </div>
-    </body>
+    </body>    
 </html>                
