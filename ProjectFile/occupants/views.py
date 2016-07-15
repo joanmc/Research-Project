@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Modules
 from .models import Rooms
 from .models import Timemodule
+from .models import Wifilogdata
 from django.db.models import Q
 from datetime import timedelta, date
 import datetime
@@ -42,11 +43,11 @@ def homepage(request):
 
 
 
-def graphInfo(request):
+def GraphInfo(request):
 
-	graphRoom = request.POST.get('graphRoom', False)
-	graphDateTime = request.POST.get('graphDateTime', False)
-	info = WiFiLogData.objects.filter(room = graphRoom.room, datetime__range=(graphDateTime, graphDateTime + timedelta(hours=1)))
+	selectedCell = request.POST.get('selectedCell', False)
+	selectedTimeAndRoom = Timemodule.objects.filter(timemoduleid = selectedCell)
+	info = Wifilogdata.objects.filter(room = selectedTimeAndRoom.room, datetime__range=(selectedTimeAndRoom.datetime, selectedTimeAndRoom.datetime + timedelta(hours=1)))
 
 	return render(request, 'occupants/homepage.html', {'info': info})
 

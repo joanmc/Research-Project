@@ -5,15 +5,8 @@
 <html>
 	<head>
 		<title>Ocu-Pants</title>
-        
-        <script type="text/javascript" src=" {{ STATIC_URL }} Libraries/jquery.js"></script>
-        <script type="text/javascript" src=" {{ STATIC_URL }} Libraries/jquery.jqplot/jquery.min.js"></script>
-        <script type="text/javascript" src=" {{ STATIC_URL }} Libraries/jquery.jqplot/jquery.jqplot.js"></script>
-        <script type="text/javascript" src=" {{ STATIC_URL }} Libraries/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.js"></script>
-        <script type="text/javascript" src=" {{ STATIC_URL }} Libraries/jquery.jqplot"></script>
-        <script type="text/javascript" src=" {{ STATIC_URL }} Libraries/jquery.jqplot/plugins/jqplot.canvasTextRenderer.js"></script>
-        <script type="text/javascript" src=" {{ STATIC_URL }} Libraries/jquery.jqplot/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
 		<meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<link rel="stylesheet" href="{% static 'css/style.css' %}"> <!--load style.css from static folder-->
 	</head>
 	
@@ -51,44 +44,35 @@
         </div>
         
         <div class="centered" id="graphDiv">
-            
+            <button>Test</button>
             
         </div>
     </body>
     
     <script>
         
-        function CellClick(x) {
-            document.getElementById(x).style.backgroundColor = 'green'; 
-        }
-    </script>
-    <script>
-      
-       
-        function GraphGenerator() {
-            
-            document.getElementById('graphDiv').style.display = 'inline-block';
-            document.getElementById('graphDiv').innerHTML = "";
-            
-            var graphTemp = [[3, 11], [6, 12], [9, 10], [12, 9] [15, 12] [18, 14] [21, 11] [24, 13]];
-            
-            $(document).ready(function(){
-                var lineGraph = $.jqplot ('graphDiv', [graphTemp], {
-                    seriesDefaults: {
-                        rendererOptions: {
-                            smooth: true
-                        }
-                    },
-                    axes: {
-                        xaxis: {min: 0, max: 24, numberTicks:9
-                        }, 
-                        yaxis: {    
-                        }
-                    }
-                });
-                $('#graph').html(lineGraph)
-            }
-
+        $(document).ready(function() {
+            $("button").click(function(){
+                $.ajax({
+                    url: "{% static 'css/demo_test.txt' %}",
+                    success: function(data) {
+                    alert("it worked!!");
+                }})
+            });
+        });
         
+        
+        
+        
+        
+        
+        function CellClick(x) {
+            
+            document.getElementById(x).style.backgroundColor = 'green';
+            
+            
+            
+        }
+                              
     </script>
 </html>                
