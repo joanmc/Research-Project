@@ -1,0 +1,10 @@
+from django import forms
+from .models import Rooms
+
+
+class newRoom(forms.ModelForm):
+	
+	class Meta:
+		model = Rooms
+		fields = ('room', 'building', 'campus', 'capacity',)
+

@@ -37,7 +37,7 @@ a{
 button{
 	padding: 10px;
 /*	margin: 15px;*/
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 5px 5px 5px 5px;
 	width: 100px;
 }
 
@@ -81,12 +81,12 @@ img{
 input[type=text]{
 	padding: 15px;
 	margin: 7px;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 5px 5px 5px 5px;
 }
 
 input[type=submit]{
 	padding: 10px;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 5px 5px 5px 5px;
 	width:100px;
 }
 
@@ -113,9 +113,8 @@ header h2{
 
 #roomForm select{
 	text-align: left;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 5px 5px 5px 5px;
 	width: 200px;
-	background-color: #bfbfbf;
 }
 
 #choice{
@@ -142,7 +141,7 @@ table{
 	font-family: 'Chicle', cursive;
 	border-collapse: collapse;
 	background-color:whitesmoke;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 5px 5px 5px 5px;
 }
 
 
@@ -160,6 +159,14 @@ table td{
     width: 16.5%;
 	color: black;
 }
+
+
+table td:hover {
+    background-color: darkgrey;    
+}
+
+
+
 
 #binaryTable{
 	display:none;
