@@ -7,6 +7,7 @@ from .models import Wifilogdata
 from django.db.models import Q
 from datetime import timedelta, date
 import datetime
+from django.http import HttpResponse
 
 
 
@@ -53,3 +54,10 @@ def GraphInfo(request):
 
 
 
+def test(request):
+
+    if request.is_ajax():
+    	return HttpResponse('worked!')
+
+    else:
+    	raise Http404

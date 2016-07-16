@@ -42,9 +42,12 @@
                 {% endfor %}
             </table>
         </div>
-        
+        <div class="centered" id="testDiv">test</div>
         <div class="centered" id="graphDiv">
-            <button>Test</button>
+            
+            <button>Test</button><br>
+            {% csrf_token %}
+            <p id="test">test</p><br>
             
         </div>
     </body>
@@ -54,16 +57,14 @@
         $(document).ready(function() {
             $("button").click(function(){
                 $.ajax({
-                    url: "{% static 'css/demo_test.txt' %}",
-                    success: function(data) {
-                    alert("it worked!!");
+                    method: "POST",
+                    data: {csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                    url: "/test",
+                    success: function(result) {
+                    $("#testDiv").html(result);
                 }})
             });
         });
-        
-        
-        
-        
         
         
         function CellClick(x) {

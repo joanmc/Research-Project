@@ -53,3 +53,10 @@ def GraphInfo(request):
 
 
 
+def test(request):
+
+    if request.is_ajax():
+    	return HttpResponse('worked!')
+
+    else:
+    	raise Http404
