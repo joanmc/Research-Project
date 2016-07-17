@@ -75,7 +75,11 @@ def test(request):
         print("THE DATETIME + 1 HOUR", dateTime.datetime + timedelta(hours=1))
         print("THE MODULE", dateTime.module.modulename)
         print("THE ROOM", dateTime.room.room)
-        return HttpResponse(json.dumps(authList), content_type="application/json")
+        
+        if len(authList) > 0:
+            return HttpResponse(json.dumps(authList), content_type="application/json")
+        else:
+            return HttpResponse("error")
 
     else:
     	raise Http404

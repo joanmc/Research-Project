@@ -62,13 +62,18 @@
                 url: "/test",
                 success: function(result) {
                     var graphData = result;
-                    document.getElementById('testDiv').innerHTML = graphData;
-
-                    document.getElementById('graphDiv').innerHTML = "";
                     
-                    $(document).ready(function(){
-                        var plot1 = $.jqplot ('graphDiv', [graphData]);
-                    });
+                    if (graphData == 'error') {
+                        document.getElementById('testDiv').innerHTML = 'no data available';
+                        document.getElementById('graphDiv').innerHTML = "";
+                    } else {
+                        document.getElementById('testDiv').innerHTML = graphData;
+                        document.getElementById('graphDiv').innerHTML = "";
+                        
+                        $(document).ready(function(){
+                            var plot1 = $.jqplot ('graphDiv', [graphData]);
+                        });
+                    }
                 }
             });
         };           
