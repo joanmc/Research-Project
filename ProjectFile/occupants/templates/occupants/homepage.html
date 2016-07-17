@@ -6,8 +6,11 @@
 	<head>
 		<title>Ocu-Pants</title>
 		<meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.js"></script>
 		<link rel="stylesheet" href="{% static 'css/style.css' %}"> <!--load style.css from static folder-->
+        <link rel="stylesheet" type="text/css" href="{% static 'Libraries/jqplot/jquery.jqplot.css' %}" />
 	</head>
 	
 	<body>
@@ -22,7 +25,6 @@
         
         <div class="centered"> <!--Display each field of the returned room object-->
             <h3>{{ roomObj.0.campus }}  {{ roomObj.0.building }}  {{ roomObj.0.room }}  {{ roomObj.0.capacity }}</h3><br>
-            <h3>{{ timeList }}</h3>
         </div>
         
         <div class="centered" id="tableDiv" style="Display: block">
@@ -43,37 +45,32 @@
             </table>
         </div>
         <div class="centered" id="testDiv">test</div>
-        <div class="centered" id="graphDiv">
+        <div class="centered" id="graphDiv" style="height:300px; width:400px;">
             
-            <button>Test</button><br>
-            {% csrf_token %}
-            <p id="test">test</p><br>
+            
+            
             
         </div>
     </body>
     
     <script>
-        
-        $(document).ready(function() {
-            $("button").click(function(){
-                $.ajax({
-                    method: "POST",
-                    data: {csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
-                    url: "/test",
-                    success: function(result) {
-                    $("#testDiv").html(result);
-                }})
-            });
-        });
-        
-        
         function CellClick(x) {
-            
-            document.getElementById(x).style.backgroundColor = 'green';
-            
-            
-            
-        }
-                              
-    </script>
+            var timeModuleId = x;
+            $.ajax({
+                method: "POST",
+                data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/test",
+                success: function(result) {
+                    var graphData = result;
+                    document.getElementById('testDiv').innerHTML = graphData;
+
+                    document.getElementById('graphDiv').innerHTML = "";
+                    
+                    $(document).ready(function(){
+                        var plot1 = $.jqplot ('graphDiv', [graphData]);
+                    });
+                }
+            });
+        };           
+    </script>    
 </html>                
