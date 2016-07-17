@@ -9,6 +9,9 @@
         <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+        <script src="http://www.jqplot.com/deploy/dist/plugins/jqplot.canvasTextRenderer.js"></script>
+        
 		<link rel="stylesheet" href="{% static 'css/style.css' %}"> <!--load style.css from static folder-->
         <link rel="stylesheet" type="text/css" href="{% static 'Libraries/jqplot/jquery.jqplot.css' %}" />
 	</head>
@@ -70,8 +73,72 @@
                         document.getElementById('testDiv').innerHTML = graphData;
                         document.getElementById('graphDiv').innerHTML = "";
                         
+                        // create graph with various options
                         $(document).ready(function(){
-                            var plot1 = $.jqplot ('graphDiv', [graphData]);
+                            
+                            var avgDevices = [];
+                            var sum = 0;
+                            for (var i=0; i<graphData.length; i+=1) {
+                                sum = sum + graphData[i];
+                            }
+                            var average = sum / graphData.length;
+                            for (var i=0; i<graphData.length; i+=1) {
+                                avgDevices.push(average);
+                            }
+                            
+                            
+                            var adjAvgDevices = [];
+                            var sum = 0;
+                            for (var i=2; i<graphData.length-2; i+=1) {
+                                sum = sum + graphData[i];
+                            }
+                            var average = sum / (graphData.length -4);
+                            for (var i=0; i<graphData.length; i+=1) {
+                                adjAvgDevices.push(average);
+                            }
+                            
+                            
+                            
+                            
+                            var plot1 = $.jqplot ('graphDiv', [graphData, avgDevices, adjAvgDevices], 
+                                                  {title: 'Devices', 
+                                                   axesDefaults: {
+                                                       labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                                                   }, 
+                                                   seriesDefaults:{
+                                                       rendererOptions:{
+                                                           smooth: true
+                                                       }
+                                                   },
+                                                   series:[
+                                                       {
+                                                        color: 'blue',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:1}
+                                                       },
+                                                       {
+                                                        color: 'green',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}
+                                                       },
+                                                       {
+                                                        color: 'red',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}   
+                                                       }
+                                                   ],
+                                                   axes: { 
+                                                       xaxis: {
+                                                           label: 'time', 
+                                                           pad: 0
+                                                       }, 
+                                                       yaxis:{
+                                                           label: 'devices',
+                                                           pad: 0,
+                                                           //min: 0,
+                                                           //max: 250
+                                                       }
+                                                   }});
                         });
                     }
                 }
