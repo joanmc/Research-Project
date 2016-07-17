@@ -1,2 +1,6 @@
 # ignore migrations folder
-/ProjectFile/occupants/migrations/
+occupants/migrations/
+
+
+
+.gitignore

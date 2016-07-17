@@ -12,18 +12,25 @@
         <script src="https://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
         <script src="http://www.jqplot.com/deploy/dist/plugins/jqplot.canvasTextRenderer.js"></script>
         
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" href="{% static 'css/style.css' %}"> <!--load style.css from static folder-->
         <link rel="stylesheet" type="text/css" href="{% static 'Libraries/jqplot/jquery.jqplot.css' %}" />
 	</head>
 	
 	<body>
        <form action="" method="POST">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
-            <select name="roomForm" onchange="this.form.submit()"> <!--submit on change-->
+            <select name="roomForm"> <!--submit on change-->
                 <option value="" selected></option>
                 {% for room in roomList %} <!--automatically generate the form options from roomList-->
                 <option value="{{ room.room }}">{{ room.room }}</option>
             {% endfor %}
             </select>
+            <input id="datepicker"/>
+           <input type="submit" value="Submit" onclick="this.form.submit()">
+            
         </form>
         
         <div class="centered"> <!--Display each field of the returned room object-->
@@ -48,6 +55,7 @@
             </table>
         </div>
         <div class="centered" id="testDiv">test</div>
+        <div class="centered" id="testDiv2">test2</div>
         <div class="centered" id="graphDiv" style="height:300px; width:400px;">
             
             
@@ -144,5 +152,12 @@
                 }
             });
         };           
-    </script>    
-</html>                
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            $("#datepicker").datepicker();
+        });
+  </script>
+    
+</html>
