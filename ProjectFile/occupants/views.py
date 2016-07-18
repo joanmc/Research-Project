@@ -96,7 +96,7 @@ def test(request):
 
 
 
-def test2(request):
+def detailRequest(request):
 
     if request.is_ajax():
     	return HttpResponse('worked!')

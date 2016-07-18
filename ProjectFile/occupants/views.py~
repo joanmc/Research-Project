@@ -27,8 +27,8 @@ def homepage(request):
         b00X = request.POST.get('roomForm', False)
         startTime = request.POST.get('dateForm', False)
         print("XXX", startTime)	
-        startDay = int(startTime[:2])
-        startMonth = int(startTime[3:5])
+        startMonth = int(startTime[:2])
+        startDay = int(startTime[3:5])
         print(startMonth)
         startYear = int(startTime[6:])
 	
@@ -96,7 +96,7 @@ def test(request):
 
 
 
-def test2(request):
+def detailRequest(request):
 
     if request.is_ajax():
     	return HttpResponse('worked!')
