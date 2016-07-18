@@ -1,6 +1,6 @@
 # ignore migrations folder
 occupants/migrations/
-
+ProjectFile/__pycache__
 
 
 .gitignore

@@ -9,8 +9,8 @@
         <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
-        <script src="http://www.jqplot.com/deploy/dist/plugins/jqplot.canvasTextRenderer.js"></script>
+        <script src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasTextRenderer.min.js"></script>
         
 <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   -->
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -58,8 +58,11 @@
                 {% endfor %}
             </table>
         </div>
-        <div class="centered" id="testDiv">test</div>
+        <button onclick="TestScript()">test</button>
+        <div class="centered" id="testDiv">test1</div>
         <div class="centered" id="testDiv2">{{ startTime }}</div>
+        <div class="centered" id="testDiv6">test6</div>
+        <div class="centered" id="testDiv7">test7</div>
         <div class="centered" id="graphDiv" style="height:300px; width:400px;">
             
             
@@ -74,7 +77,7 @@
             $.ajax({
                 method: "POST",
                 data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
-                url: "/test",
+                url: "/graphGen",
                 success: function(result) {
                     var graphData = result;
                     
@@ -156,6 +159,22 @@
                 }
             });
         };           
+    </script>
+    
+    <script>
+        function TestScript() {
+            var testPost = 23;
+            $.ajax({
+                method: "POST",
+                data: {'testPost': testPost, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/test",
+                success: function(result) {
+                    var testData = result;
+                    document.getElementById('testDiv6').innerHTML = testData;
+                    document.getElementById('testDiv7').innerHTML = testData["timeSlots"][0]["dateTime"];
+                }
+            })
+        }
     </script>
     
     <script>
