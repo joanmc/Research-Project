@@ -28,8 +28,12 @@
                 <option value="{{ room.room }}">{{ room.room }}</option>
             {% endfor %}
             </select>
-            <input id="datepicker"/>
-           <input type="submit" value="Submit" onclick="this.form.submit()">
+<!--            <select name="dateForm">   
+                <option value="2015, 11, 2">02-11-2015</option>
+                <option value="2015, 11, 9">09-11-2015</option>
+            </select>-->
+            <input id="datepicker" name="dateForm"/>
+            <input type="submit" value="Submit" onclick="this.form.submit()">
             
         </form>
         
@@ -55,7 +59,7 @@
             </table>
         </div>
         <div class="centered" id="testDiv">test</div>
-        <div class="centered" id="testDiv2">test2</div>
+        <div class="centered" id="testDiv2">{{ startTime }}</div>
         <div class="centered" id="graphDiv" style="height:300px; width:400px;">
             
             

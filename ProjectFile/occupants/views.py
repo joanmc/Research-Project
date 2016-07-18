@@ -25,7 +25,16 @@ def homepage(request):
     if request.method == 'POST':
 
         b00X = request.POST.get('roomForm', False)
-        start_time = datetime.date(2015, 11, 2)
+        startTime = request.POST.get('dateForm', False)
+        print("XXX", startTime)	
+        startMonth = int(startTime[:2])
+        startDay = int(startTime[3:5])
+        print(startMonth)
+        startYear = int(startTime[6:])
+	
+##        start_time = datetime.date(startTime)
+##        print(start_time)
+        start_time = datetime.date(startYear, startMonth, startDay)
 
         roomObj = Rooms.objects.filter(room = b00X)
         roomSchedule = Timemodule.objects.filter(room = b00X, datetime__range=(start_time, start_time + timedelta(days=5)))
@@ -39,7 +48,7 @@ def homepage(request):
         roomList = Rooms.objects.all()
         moduleList = Modules.objects.all()
 
-        return render(request, 'occupants/homepage.html', {'roomSchedule': roomSchedule, 'roomObj': roomObj, 'roomList': roomList, 'timeList': timeList, 'moduleList': moduleList})
+        return render(request, 'occupants/homepage.html', {'roomSchedule': roomSchedule, 'roomObj': roomObj, 'roomList': roomList, 'timeList': timeList, 'moduleList': moduleList, 'startTime': startTime})
 	
     else:
         roomList = Rooms.objects.all()
