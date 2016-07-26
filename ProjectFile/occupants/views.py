@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.utils import timezone
-from .models import Modules
-from .models import Rooms
-from .models import Timemodule
-from .models import Wifilogdata
+from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata
+#from .models import Rooms
+#from .models import Timemodule
+#from .models import Wifilogdata
 from django.db.models import Q
 from datetime import timedelta, date
 import datetime
@@ -71,6 +71,7 @@ def graphGen(request):
 
         associatedList =  []
 
+
         for x in wifiData:
 ##            print(x.room.capacity)
 ##            print(x.datetime)
@@ -93,19 +94,19 @@ def graphGen(request):
 
 
 
-
+'''
 def test(request):
 
     if request.is_ajax():
 
         selectedRoom = 'B-004'
 	
-        start_time = datetime.date(2015, 11, 2)
+        startTime = datetime.date(2015, 11, 2)
 
         roomObj = Rooms.objects.filter(room = selectedRoom)
-        roomSchedule = Timemodule.objects.filter(room = selectedRoom, datetime__range=(start_time, start_time + timedelta(days=5)))
+        roomSchedule = Timemodule.objects.filter(room = selectedRoom, datetime__range=(startTime, startTime + timedelta(days=5)))
 
-        timeList = Timemodule.objects.filter(room = selectedRoom, datetime__day= start_time.day)
+        timeList = Timemodule.objects.filter(room = selectedRoom, datetime__day= startTime.day)
         cleanTime = []
         for dt in timeList:
             cleanTime.append(dt.datetime.time)
@@ -113,7 +114,9 @@ def test(request):
 
         roomList = Rooms.objects.all()
         moduleList = Modules.objects.all()
-        
+
+
+
         jsonFile = {"timeSlots":[]}
         
         for dt in roomSchedule:
@@ -127,3 +130,37 @@ def test(request):
 
     else:
     	raise Http404
+'''
+
+
+def test(request):
+    if request.is_ajax():
+
+        timeModuleId = request.POST['timeModuleId']
+        print('POST', timeModuleId)
+        timeModule = Timemodule.objects.get(timemoduleid = timeModuleId)
+        startTime = timeModule.datetime
+        selectedRoom = timeModule.room.room
+
+        wifiData = Wifilogdata.objects.filter(room=selectedRoom,
+                                              datetime__range=(startTime, startTime + timedelta(hours=1)))
+        print('WIFI DATA', wifiData)
+        groundTruthObj = Groundtruth.objects.get(room=selectedRoom, datetime=startTime)
+        groundTruth = groundTruthObj.percentageestimate
+        print('GROUND TRUTH', groundTruth)
+        registered = timeModule.module.numreg
+        print('REGISTERED', registered)
+        capacity = timeModule.room.capacity
+        print('CAPACITY', capacity)
+
+        jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity}
+
+        for ts in wifiData:
+            associated = ts.associated
+#            jsonFile["timeSlice"].append({'associated': "ffff"})
+            jsonFile["timeSlice"].append({'associated': associated})
+
+        return HttpResponse(json.dumps(jsonFile), content_type="application/json")
+
+    else:
+        raise Http404

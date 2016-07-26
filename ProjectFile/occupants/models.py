@@ -15,7 +15,7 @@ class Groundtruth(models.Model):
     room = models.ForeignKey('Rooms', models.DO_NOTHING, db_column='Room')  # Field name made lowercase.
     binaryestimate = models.IntegerField(db_column='BinaryEstimate', blank=True, null=True)  # Field name made lowercase.
     percentageestimate = models.FloatField(db_column='PercentageEstimate', blank=True, null=True)  # Field name made lowercase.
-    groundtruthid = models.AutoField(db_column='GroundTruthId', primary_key=True)  # Field name made lowercase.
+    groundtruthid = models.AutoField(db_column='GoundTruthId', primary_key=True)  # Field name made lowercase.
 
     class Meta:
         db_table = 'GroundTruth'

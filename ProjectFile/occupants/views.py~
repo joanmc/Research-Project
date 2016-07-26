@@ -115,20 +115,14 @@ def test(request):
         moduleList = Modules.objects.all()
         
         jsonFile = {"timeSlots":[]}
-##        jsonFile["timeSlots"].append({'b':'2'})
-##        jsonFile["timeSlots"].append({'a':'1','b':'2','c':'3'})
         
         for dt in roomSchedule:
             
             modName = dt.module.modulename
             modId = dt.timemoduleid
-            print(dt.datetime)
             dateTime = json.dumps(dt.datetime.isoformat())
-            print(dateTime)
             jsonFile["timeSlots"].append({'modName':modName,'modId':modId, 'dateTime':dateTime})
 
-
-##        print(jsonFile)
         return HttpResponse(json.dumps(jsonFile), content_type="application/json")
 
     else:

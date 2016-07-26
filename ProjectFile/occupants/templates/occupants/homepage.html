@@ -11,6 +11,7 @@
         <script src="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.js"></script>
         <script src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasTextRenderer.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasOverlay.min.js"></script>
         
 <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   -->
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -51,24 +52,30 @@
                         
                     {% for timeSlot in roomSchedule %} <!--build columns by cycling through the object and displaying the module with the correct time-->
                         {% if timeSlot.datetime.hour == y.hour  %}
-                            <td id="{{ timeSlot.timemoduleid }}" onclick="CellClick({{ timeSlot.timemoduleid }})">{{ timeSlot.module.modulename }}</td> <!--Display the cell-->
+                            <td id="{{ timeSlot.timemoduleid }}" onmouseover="CellClick({{ timeSlot.timemoduleid }}), TestScript({{ timeSlot.timemoduleid }})">{{ timeSlot.module.modulename }}</td> <!--Display the cell-->
                         {% endif %}
                     {% endfor %}
                     </tr>
                 {% endfor %}
             </table>
         </div>
-        <button onclick="TestScript()">test</button>
-        <div class="centered" id="testDiv">test1</div>
-        <div class="centered" id="testDiv2">{{ startTime }}</div>
-        <div class="centered" id="testDiv6">test6</div>
-        <div class="centered" id="testDiv7">test7</div>
-        <div class="centered" id="graphDiv" style="height:300px; width:400px;">
-            
-            
-            
-            
+
+        <div class="centered"> 
+            <div id="graphDiv" style="float:left; height:500px; width:50%;"></div> 
+            <div id="graphDiv2" style="float:left; height:500px; width:50%;"></div>
         </div>
+        
+        
+        <div class="centered" id="testDiv0">test0</div>
+        <div class="centered" id="testDivX">testX</div>
+        <div class="centered" id="testDiv1">test1</div>
+        <div class="centered" id="testDiv2">test2</div>
+        <div class="centered" id="testDiv3">test3</div>
+        <div class="centered" id="testDiv4">test4</div>
+        <div class="centered" id="testDiv5">test5</div>
+        <div class="centered" id="testList">testList</div>
+        
+        
     </body>
     
     <script>
@@ -82,10 +89,10 @@
                     var graphData = result;
                     
                     if (graphData == 'error') {
-                        document.getElementById('testDiv').innerHTML = 'no data available';
+                        document.getElementById('testDiv0').innerHTML = 'no data available';
                         document.getElementById('graphDiv').innerHTML = "";
                     } else {
-                        document.getElementById('testDiv').innerHTML = graphData;
+                        document.getElementById('testDiv0').innerHTML = graphData;
                         document.getElementById('graphDiv').innerHTML = "";
                         
                         // create graph with various options
@@ -161,17 +168,145 @@
         };           
     </script>
     
+        
     <script>
-        function TestScript() {
-            var testPost = 23;
+        function TestScript(y) {
+            var timeModuleId = y;
             $.ajax({
                 method: "POST",
-                data: {'testPost': testPost, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
                 url: "/test",
                 success: function(result) {
                     var testData = result;
-                    document.getElementById('testDiv6').innerHTML = testData;
-                    document.getElementById('testDiv7').innerHTML = testData["timeSlots"][0]["dateTime"];
+                    document.getElementById('testDiv1').innerHTML = testData;
+                    document.getElementById('testDiv2').innerHTML = testData["registered"];
+                    document.getElementById('testDiv3').innerHTML = testData["capacity"];
+                    document.getElementById('testDiv4').innerHTML = testData["groundTruth"];
+                    document.getElementById('testDiv5').innerHTML = testData["timeSlice"][0]["associated"];
+                    
+                    
+                    
+                    
+                    if (testData == 'error') {
+                        document.getElementById('testDivX').innerHTML = 'no data available';
+                        document.getElementById('graphDiv2').innerHTML = "";
+                    } else {
+                        document.getElementById('testDivX').innerHTML = testData["timeSlice"][6]["associated"];
+                        document.getElementById('graphDiv2').innerHTML = "";
+                        
+                        // create graph with various options
+                        $(document).ready(function(){
+                            
+                            occNumb = []
+                            regStu = []
+                            roomCap = []
+                            gndTruth = []
+                            gndTruthTop = []
+                            gndTruthBottom = []
+                            
+                            for (var i=0; i<testData["timeSlice"].length; i+=1) {
+                                
+                                occNumb.push(Math.round(testData["timeSlice"][i]["associated"]/1.27));
+                                regStu.push(testData["capacity"]);
+                                roomCap.push(testData["registered"]);
+                                //gndTruth.push(Math.round(testData["capacity"] * testData["groundTruth"]));
+                                
+                                if (testData["groundTruth"] > 0) {
+                                    gndTruthTop.push(Math.round(testData["capacity"] * (testData["groundTruth"] + 0.125)));
+                                    gndTruthBottom.push(Math.round(testData["capacity"] * (testData["groundTruth"] - 0.125)));
+                                } else {
+                                    gndTruthTop.push(0);
+                                    gndTruthBottom.push(0);
+                                }
+                            }
+                            
+                            
+                            
+                            
+                            
+                            
+                            document.getElementById('testList').innerHTML = occNumb;
+                            
+                            var plot1 = $.jqplot ('graphDiv2', [occNumb, regStu, roomCap, gndTruthTop, gndTruthBottom], 
+                                                  {title: 'Occupants', 
+                                                   axesDefaults: {
+                                                       labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                                                   },
+                                                   fillBetween:{
+                                                       series1: 3,
+                                                       series2: 4,
+                                                       color: "rgba(227, 167, 111, 0.7)",
+                                                       baseSeries: 0,
+                                                   },
+                                                   seriesDefaults:{
+                                                       rendererOptions:{
+                                                           smooth: true
+                                                       }
+                                                   },
+                                                   series:[
+                                                       {
+                                                        color: 'blue',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:1}
+                                                       },
+                                                       {
+                                                        color: 'green',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}
+                                                       },
+                                                       {
+                                                        color: 'red',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}   
+                                                       },
+                                                       {
+                                                        color: 'yellow',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}   
+                                                       },
+                                                       {
+                                                        color: 'yellow',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}   
+                                                       }
+                                                   ],
+                                                   axes: { 
+                                                       xaxis: {
+                                                           label: 'time', 
+                                                           pad: 0
+                                                       }, 
+                                                       yaxis:{
+                                                           label: 'devices',
+                                                           pad: 0,
+                                                           min: 0,
+                                                           max: Math.round((testData["capacity"] * 1.1))
+                                                       }
+                                                   },
+                                                   canvasOverlay: {
+                                                        show: true,
+                                                        objects: [{
+                                                            horizontalLine: {
+                                                                name: 'Capacity',
+                                                                y: testData["capacity"],
+                                                                lineWidth: 3,
+                                                                color: 'green',
+                                                                shadow: true,
+                                                            }},
+                                                            {horizontalLine: {
+                                                                name: 'Registered',
+                                                                y: testData["registered"],
+                                                                lineWidth: 3,
+                                                                color: 'red',
+                                                                shadow: true,
+                                                                }
+                                                            }]
+                                                    }
+                                                });
+                        });
+                    }
+                    
+                       
+                    
                 }
             })
         }
