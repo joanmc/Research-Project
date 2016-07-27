@@ -43,20 +43,7 @@
         </div>
         
         <div class="centered" id="tableDiv" style="Display: block">
-            <table> <!--Display the table headings-->
-                <tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr> 
-
-                {% for y in timeList %} <!--build rows by identifing each timeslot 9am - 5pm in turn-->
-
-                    <tr><th>{{ y }}</th>
-                        
-                    {% for timeSlot in roomSchedule %} <!--build columns by cycling through the object and displaying the module with the correct time-->
-                        {% if timeSlot.datetime.hour == y.hour  %}
-                            <td id="{{ timeSlot.timemoduleid }}" onmouseover="CellClick({{ timeSlot.timemoduleid }}), TestScript({{ timeSlot.timemoduleid }})">{{ timeSlot.module.modulename }}</td> <!--Display the cell-->
-                        {% endif %}
-                    {% endfor %}
-                    </tr>
-                {% endfor %}
+            <table id="calTable">
             </table>
         </div>
 
@@ -65,7 +52,7 @@
             <div id="graphDiv2" style="float:left; height:500px; width:50%;"></div>
         </div>
         
-        
+        <button type="button" onclick="GenCalendar(3)">Click Me!</button>
         <div class="centered" id="testDiv0">test0</div>
         <div class="centered" id="testDivX">testX</div>
         <div class="centered" id="testDiv1">test1</div>
@@ -74,12 +61,15 @@
         <div class="centered" id="testDiv4">test4</div>
         <div class="centered" id="testDiv5">test5</div>
         <div class="centered" id="testList">testList</div>
+        <button onclick="testTable()">Try it</button>
         
         
     </body>
     
     <script>
+        
         function CellClick(x) {
+            
             var timeModuleId = x;
             $.ajax({
                 method: "POST",
@@ -160,17 +150,120 @@
                                                            //min: 0,
                                                            //max: 250
                                                        }
-                                                   }});
+                                            }
+                                });
                         });
                     }
                 }
             });
-        };           
+        };
+        
     </script>
     
-        
+    
     <script>
+        
+        function testNewTable() {
+            
+            var table = document.createElement("calTable");
+            
+        }
+        
+        function testTable() {
+
+            var table = document.getElementById("tableDiv");
+            var newTable = document.createElement("calTable");
+            var timeList = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+            var dayList = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+            
+            
+            
+            var row = table.insertRow(0);
+            var cell0 = row.insertCell(0);
+            cell0.innerHTML = "";
+            
+            for (z=0; z<dayList.length; z+=1) {
+                var cell = row.insertCell(z+1);
+                cell.innerHTML = dayList[z];
+            }
+            
+            for (x=0; x<timeList.length; x+=1) {
+                var row = table.insertRow(x+1);
+                var cell0 = row.insertCell(0);
+                cell0.innerHTML = timeList[x];
+                
+                var testNumb = 0;
+                
+                for (y=0; y<dayList.length; y+=1){
+                    var cell = row.insertCell(y+1);
+                    cell.innerHTML = testNumb;
+                    testNumb+=1;
+                }
+//                var cell1 = row.insertCell(calList(x-1));
+                
+//                var cell2 = row.insertCell(1);
+//                cell1.innerHTML = "NEW CELL1";
+//                cell2.innerHTML = "NEW CELL2";
+            }
+        }
+        
+        
+        
+        
+        
+        function GenCalendar(x) {
+            // function to generate the claendar
+            
+            var test = x;
+            var roomForm2 = 'B-004';
+            var dateForm2 = '11/09/2015';
+            
+            $.ajax({
+                method: "POST",
+                data: {'roomForm2': roomForm2, 'dateForm2': dateForm2, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/calendarGen",
+                
+                success: function(result) {
+                    
+                    var calData = result;
+                    
+                    document.getElementById('testDiv1').innerHTML = calData;
+                    document.getElementById('testDiv2').innerHTML = calData["room"];
+                    document.getElementById('testDiv3').innerHTML = calData["time"];
+                    document.getElementById('testDiv4').innerHTML = calData["timeSlots"];
+                    document.getElementById('testDiv5').innerHTML = calData["timeSlots"][3];
+                    
+                    
+                    if (calData == 'error') {
+                        document.getElementById('testDivX').innerHTML = 'no data available';
+                        document.getElementById('graphDiv2').innerHTML = "";
+                    } else {
+                        document.getElementById('testDivX').innerHTML = calData["room"]["roomName"];
+                        document.getElementById('graphDiv2').innerHTML = "";
+                    }
+                    
+                    for (var s=0; s<calData["times"].length; s+=1) {
+                        var time = calData["times"][s];
+                        
+                        for (var i=0; i<calData["timeSlots"].length; i+=1) {
+                        
+                            calData["timeSlots"][i]["moduleName"];
+                            calData["timeSlots"][i]["timeModuleId"];
+                            
+                        }
+                    }
+                }   
+            })
+        }    
+            
+    </script>
+    
+    
+    <script>
+        
         function TestScript(y) {
+            // function to generate the graph
+            
             var timeModuleId = y;
             $.ajax({
                 method: "POST",
@@ -178,11 +271,11 @@
                 url: "/test",
                 success: function(result) {
                     var testData = result;
-                    document.getElementById('testDiv1').innerHTML = testData;
-                    document.getElementById('testDiv2').innerHTML = testData["registered"];
-                    document.getElementById('testDiv3').innerHTML = testData["capacity"];
-                    document.getElementById('testDiv4').innerHTML = testData["groundTruth"];
-                    document.getElementById('testDiv5').innerHTML = testData["timeSlice"][0]["associated"];
+//                    document.getElementById('testDiv1').innerHTML = testData;
+//                    document.getElementById('testDiv2').innerHTML = testData["registered"];
+//                    document.getElementById('testDiv3').innerHTML = testData["capacity"];
+//                    document.getElementById('testDiv4').innerHTML = testData["groundTruth"];
+//                    document.getElementById('testDiv5').innerHTML = testData["timeSlice"][0]["associated"];
                     
                     
                     
@@ -220,7 +313,6 @@
                                 }
                             }
                             
-                            
                             var adjAverage = 0;
                             var sum = 0;
                             for (var i=2; i<testData["timeSlice"].length-2; i+=1) {
@@ -228,10 +320,7 @@
                             }
                             adjAverage = sum / (testData["timeSlice"].length -4);
                             
-                            
-                            
-                            
-                            document.getElementById('testList').innerHTML = occNumb;
+//                            document.getElementById('testList').innerHTML = occNumb;
                             
                             var plot1 = $.jqplot ('graphDiv2', [occNumb, regStu, roomCap, gndTruthTop, gndTruthBottom], 
                                                   {title: 'Occupants', 
@@ -294,21 +383,21 @@
                                                             {horizontalLine: {
                                                                 name: 'Capacity',
                                                                 y: testData["capacity"],
-                                                                lineWidth: 3,
+                                                                lineWidth: 0.1,
                                                                 color: 'green',
                                                                 shadow: true,
                                                             }},
                                                             {horizontalLine: {
                                                                 name: 'Registered',
                                                                 y: testData["registered"],
-                                                                lineWidth: 3,
+                                                                lineWidth: 0.1,
                                                                 color: 'red',
                                                                 shadow: true,
                                                             }},
                                                             {dashedHorizontalLine: {
                                                                 name: 'AdjustedAvg',
                                                                 y: adjAverage,
-                                                                lineWidth: 3,
+                                                                lineWidth: 0.1,
                                                                 color: 'black',
                                                                 shadow: true,
                                                             }}]
