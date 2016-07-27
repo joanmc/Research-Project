@@ -80,7 +80,7 @@ def calendarGen(request):
             calendarInfo["times"].append({"time": dt.datetime.time()})
 
         for ts in roomSchedule:
-            calendarInfo["timeSlots"].append({"datetime": ts.datetime, "moduleName": ts.module.modulename,
+            calendarInfo["timeSlots"].append({"date": ts.datetime.date(), "time": ts.datetime.time(), "moduleName": ts.module.modulename,
                                               "timeModuleId": ts.timemoduleid})
 
         return HttpResponse(json.dumps(calendarInfo, cls=DjangoJSONEncoder), content_type="application/json")

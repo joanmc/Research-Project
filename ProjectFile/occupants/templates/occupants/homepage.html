@@ -61,7 +61,6 @@
         <div class="centered" id="testDiv4">test4</div>
         <div class="centered" id="testDiv5">test5</div>
         <div class="centered" id="testList">testList</div>
-        <button onclick="testTable()">Try it</button>
         
         
     </body>
@@ -163,54 +162,6 @@
     
     <script>
         
-        function testNewTable() {
-            
-            var table = document.createElement("calTable");
-            
-        }
-        
-        function testTable() {
-
-            var table = document.getElementById("tableDiv");
-            var newTable = document.createElement("calTable");
-            var timeList = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
-            var dayList = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-            
-            
-            
-            var row = table.insertRow(0);
-            var cell0 = row.insertCell(0);
-            cell0.innerHTML = "";
-            
-            for (z=0; z<dayList.length; z+=1) {
-                var cell = row.insertCell(z+1);
-                cell.innerHTML = dayList[z];
-            }
-            
-            for (x=0; x<timeList.length; x+=1) {
-                var row = table.insertRow(x+1);
-                var cell0 = row.insertCell(0);
-                cell0.innerHTML = timeList[x];
-                
-                var testNumb = 0;
-                
-                for (y=0; y<dayList.length; y+=1){
-                    var cell = row.insertCell(y+1);
-                    cell.innerHTML = testNumb;
-                    testNumb+=1;
-                }
-//                var cell1 = row.insertCell(calList(x-1));
-                
-//                var cell2 = row.insertCell(1);
-//                cell1.innerHTML = "NEW CELL1";
-//                cell2.innerHTML = "NEW CELL2";
-            }
-        }
-        
-        
-        
-        
-        
         function GenCalendar(x) {
             // function to generate the claendar
             
@@ -228,10 +179,10 @@
                     var calData = result;
                     
                     document.getElementById('testDiv1').innerHTML = calData;
-                    document.getElementById('testDiv2').innerHTML = calData["room"];
-                    document.getElementById('testDiv3').innerHTML = calData["time"];
-                    document.getElementById('testDiv4').innerHTML = calData["timeSlots"];
-                    document.getElementById('testDiv5').innerHTML = calData["timeSlots"][3];
+//                    document.getElementById('testDiv2').innerHTML = 'ROOM: ' + calData["room"];
+                    document.getElementById('testDiv3').innerHTML = 'TIME: ' + calData["timeSlots"][3]["time"];
+                    document.getElementById('testDiv4').innerHTML = 'TIMESLOTS: ' + calData["timeSlots"];
+                    document.getElementById('testDiv5').innerHTML = 'DATE: ' + calData["timeSlots"][3]["date"];
                     
                     
                     if (calData == 'error') {
@@ -240,16 +191,67 @@
                     } else {
                         document.getElementById('testDivX').innerHTML = calData["room"]["roomName"];
                         document.getElementById('graphDiv2').innerHTML = "";
-                    }
                     
-                    for (var s=0; s<calData["times"].length; s+=1) {
-                        var time = calData["times"][s];
+                    
                         
-                        for (var i=0; i<calData["timeSlots"].length; i+=1) {
-                        
-                            calData["timeSlots"][i]["moduleName"];
-                            calData["timeSlots"][i]["timeModuleId"];
+                        var table = document.getElementById("calTable");
+                        var timeList = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+                        var dayList = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+
+
+                        var row = table.insertRow(0);
+                        var cell0 = row.insertCell(0);
+                        cell0.innerHTML = "";
+
+                        for (z=0; z<dayList.length; z+=1) {
+                            var cell = row.insertCell(z+1);
+                            cell.innerHTML = dayList[z];
+                        }
+
+                        for (x=0; x<calData["times"].length; x+=1) {
                             
+                            var row = table.insertRow(x+1);
+                            var cell0 = row.insertCell(0);
+                            cell0.innerHTML = calData["times"][x]["time"];
+
+                            var counter = 0;
+                            for (y=0; y<calData["timeSlots"].length; y+=1){
+                                
+                                if (calData["timeSlots"][y]["time"] == calData["times"][x]["time"]) {
+                                    
+                                    var cell = row.insertCell(counter+1);
+                                    cell.innerHTML = calData["timeSlots"][y]["moduleName"];
+                                    
+                                    var attId = document.createAttribute("id");
+                                    attId.value = calData["timeSlots"][y]["timeModuleId"]; 
+                                    
+                                    var attClick = document.createAttribute("onmouseover");
+                                    attClick.value = "TestScript(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
+                                    
+                                    cell.setAttributeNode(attId);
+                                    cell.setAttributeNode(attClick);
+                                    counter+=1;
+                                }
+                            }
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        for (var s=0; s<calData["times"].length; s+=1) {
+                            var time = calData["times"][s];
+
+                            for (var i=0; i<calData["timeSlots"].length; i+=1) {
+
+                                calData["timeSlots"][i]["moduleName"];
+                                calData["timeSlots"][i]["timeModuleId"];
+
+                            }
                         }
                     }
                 }   
