@@ -197,12 +197,12 @@
                         // create graph with various options
                         $(document).ready(function(){
                             
-                            occNumb = []
-                            regStu = []
-                            roomCap = []
-                            gndTruth = []
-                            gndTruthTop = []
-                            gndTruthBottom = []
+                            var occNumb = []
+                            var regStu = []
+                            var roomCap = []
+                            // var gndTruth = []
+                            var gndTruthTop = []
+                            var gndTruthBottom = []
                             
                             for (var i=0; i<testData["timeSlice"].length; i+=1) {
                                 
@@ -221,6 +221,12 @@
                             }
                             
                             
+                            var adjAverage = 0;
+                            var sum = 0;
+                            for (var i=2; i<testData["timeSlice"].length-2; i+=1) {
+                                sum = sum + (testData["timeSlice"][i]["associated"]/1.27);
+                            }
+                            adjAverage = sum / (testData["timeSlice"].length -4);
                             
                             
                             
@@ -284,8 +290,8 @@
                                                    },
                                                    canvasOverlay: {
                                                         show: true,
-                                                        objects: [{
-                                                            horizontalLine: {
+                                                        objects: [
+                                                            {horizontalLine: {
                                                                 name: 'Capacity',
                                                                 y: testData["capacity"],
                                                                 lineWidth: 3,
@@ -298,15 +304,18 @@
                                                                 lineWidth: 3,
                                                                 color: 'red',
                                                                 shadow: true,
-                                                                }
-                                                            }]
+                                                            }},
+                                                            {dashedHorizontalLine: {
+                                                                name: 'AdjustedAvg',
+                                                                y: adjAverage,
+                                                                lineWidth: 3,
+                                                                color: 'black',
+                                                                shadow: true,
+                                                            }}]
                                                     }
                                                 });
                         });
-                    }
-                    
-                       
-                    
+                    }   
                 }
             })
         }
