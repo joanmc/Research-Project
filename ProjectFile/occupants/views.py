@@ -8,7 +8,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 import json
 from django.views.generic import View
-
+from django.core.serializers.json import DjangoJSONEncoder ## allow datetime format to serialize to json
 
 
 
@@ -19,32 +19,32 @@ def login(request):
 
 def homepage(request):
 
-    if request.method == 'POST':
-
-        selectedRoom = request.POST.get('roomForm', False)
-        startTime = request.POST.get('dateForm', False)
-
-        startMonth = int(startTime[:2])
-        startDay = int(startTime[3:5])
-        startYear = int(startTime[6:])
-	
-        start_time = datetime.date(startYear, startMonth, startDay)
-
-        roomObj = Rooms.objects.filter(room = selectedRoom)
-        roomSchedule = Timemodule.objects.filter(room = selectedRoom, datetime__range=(start_time, start_time + timedelta(days=5)))
-
-        timeList = Timemodule.objects.filter(room = selectedRoom, datetime__day= start_time.day)
-        cleanTime = []
-        for dt in timeList:
-            cleanTime.append(dt.datetime.time)
-        timeList = cleanTime
-
-        roomList = Rooms.objects.all()
-        moduleList = Modules.objects.all()
-
-        return render(request, 'occupants/homepage.html', {'roomSchedule': roomSchedule, 'roomObj': roomObj, 'roomList': roomList, 'timeList': timeList, 'moduleList': moduleList, 'startTime': startTime})
-	
-    else:
+    # if request.method == 'POST':
+    #
+    #     selectedRoom = request.POST.get('roomForm', False)
+    #     startTime = request.POST.get('dateForm', False)
+    #
+    #     startMonth = int(startTime[:2])
+    #     startDay = int(startTime[3:5])
+    #     startYear = int(startTime[6:])
+    #
+    #     start_time = datetime.date(startYear, startMonth, startDay)
+    #
+    #     roomObj = Rooms.objects.filter(room = selectedRoom)
+    #     roomSchedule = Timemodule.objects.filter(room = selectedRoom, datetime__range=(start_time, start_time + timedelta(days=5)))
+    #
+    #     timeList = Timemodule.objects.filter(room = selectedRoom, datetime__day= start_time.day)
+    #     cleanTime = []
+    #     for dt in timeList:
+    #         cleanTime.append(dt.datetime.time)
+    #     timeList = cleanTime
+    #
+    #     roomList = Rooms.objects.all()
+    #     moduleList = Modules.objects.all()
+    #
+    #     return render(request, 'occupants/homepage.html', {'roomSchedule': roomSchedule, 'roomObj': roomObj, 'roomList': roomList, 'timeList': timeList, 'moduleList': moduleList, 'startTime': startTime})
+    #
+    # else:
         roomList = Rooms.objects.all()
         return render(request, 'occupants/homepage.html', {'roomList': roomList})
 
@@ -61,29 +61,31 @@ def calendarGen(request):
         startDay = int(startTime[3:5])
         startYear = int(startTime[6:])
         start_time = datetime.date(startYear, startMonth, startDay)
-        roomObj = Rooms.objects.filter(room=selectedRoom)
+        roomObj = Rooms.objects.get(room=selectedRoom)
+##        print('roomObj', roomObj.room)
+
         roomSchedule = Timemodule.objects.filter(room=selectedRoom,
                                                  datetime__range=(start_time, start_time + timedelta(days=5)))
         timeList = Timemodule.objects.filter(room=selectedRoom, datetime__day=start_time.day)
+        calendarInfo = {"room": {"roomName": roomObj.room, "capacity": roomObj.capacity, "campus": roomObj.campus,
+                                 "building": roomObj.building}, "times": [], "timeSlots": []}
 
-        calendarInfo = {"room": {"roomName": roomObj.room, "capacity": roomObj.capacity, "Campus": roomObj.campus,
-                                 "Building": roomObj.building}, "times": [], "timeSlots": []}
         for dt in timeList:
-            calendarInfo["times"].append({"time": dt.datetime.time})
+##            print('datetime', dt.datetime.time())
+            calendarInfo["times"].append({"time": dt.datetime.time()})
 
         for ts in roomSchedule:
-            calendarInfo["timeSlots"].append({"datetime": ts.datetime, "moduleName": ts.module.modulename,
+            calendarInfo["timeSlots"].append({"date": ts.datetime.date(), "time": ts.datetime.time(), "moduleName": ts.module.modulename,
                                               "timeModuleId": ts.timemoduleid})
 
-        return HttpResponse(json.dumps(calendarInfo), content_type="application/json")
-
+        return HttpResponse(json.dumps(calendarInfo, cls=DjangoJSONEncoder), content_type="application/json")
     else:
         raise Http404
 
 
 
 
-def graphGen(request):
+def WiFiData(request):
 
     if request.is_ajax():
 
@@ -122,7 +124,9 @@ def graphGen(request):
 
 
 
-def test(request):
+def GenGraph(request):
+
+
     if request.is_ajax():
 
         timeModuleId = request.POST['timeModuleId']
@@ -146,7 +150,6 @@ def test(request):
 
         for ts in wifiData:
             associated = ts.associated
-#            jsonFile["timeSlice"].append({'associated': "ffff"})
             jsonFile["timeSlice"].append({'associated': associated})
 
         return HttpResponse(json.dumps(jsonFile), content_type="application/json")

@@ -6,6 +6,7 @@ urlpatterns = [
 
     url(r'^$',views.login, name='login'),
     url(r'^homepage/$', views.homepage, name='homepage'),
-    url(r'^graphGen$', views.graphGen, name='graphGen'),
-    url(r'^test$', views.test, name='test'),
+    url(r'^calendarGen$', views.calendarGen, name='calendarGen'),
+    url(r'^GenGraph$', views.GenGraph, name='GenGraph'),
+    url(r'^WiFiData$', views.WiFiData, name='WiFiData'),
 ]
