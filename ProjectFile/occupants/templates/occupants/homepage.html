@@ -82,23 +82,28 @@
                     } else {
                         document.getElementById('title').innerHTML = calData["room"]["roomName"] + ", " + calData["room"]["building"] + ", " + calData["room"]["campus"] + ", Capacity: " + calData["room"]["capacity"];
                         
+                        // clear div document.getElementById('tableDiv').innerhtml = "";
+                        
+                        //createElement table opening tag <table id="calTable">
+                        
+                        
                         var table = document.getElementById("calTable");
                         var row = table.insertRow(0);
-                        var cell = row.insertCell(0);
+                        var cell = row.insertCell(0); // make these <th> instead of standard table cells
                         cell.innerHTML = "";
                         var f=1;
                         
                         for (z=0; z<calData["timeSlots"].length; z+=9) {
                             
-                            cell = row.insertCell(f);
-                            cell.innerHTML = calData["timeSlots"][z]["date"];
+                            cell = row.insertCell(f);                           // make these <th> instead of standard table cells
+                            cell.innerHTML = calData["timeSlots"][z]["date"]; 
                             f+=1;
                         }
 
                         for (x=0; x<calData["times"].length; x+=1) {
                             
                             var row = table.insertRow(x+1);
-                            var cell0 = row.insertCell(0);
+                            var cell0 = row.insertCell(0);              // make these <th> instead of standard table cells
                             cell0.innerHTML = calData["times"][x]["time"];
 
                             var counter = 0;
@@ -129,6 +134,8 @@
                                 calData["timeSlots"][i]["timeModuleId"];
                             }
                         }
+                        
+                        // create table closing tag
                     }
                 }   
             })

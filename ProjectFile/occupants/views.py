@@ -52,6 +52,8 @@ def homepage(request):
 
 
 def calendarGen(request):
+    '''function to query data for graph generation'''
+
     if request.method == 'POST':
 
         selectedRoom = request.POST.get('roomForm', False)
@@ -86,6 +88,7 @@ def calendarGen(request):
 
 
 def WiFiData(request):
+    '''old graph function no longer used'''
 
     if request.is_ajax():
 
