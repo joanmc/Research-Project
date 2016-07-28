@@ -19,32 +19,32 @@ def login(request):
 
 def homepage(request):
 
-    if request.method == 'POST':
-
-        selectedRoom = request.POST.get('roomForm', False)
-        startTime = request.POST.get('dateForm', False)
-
-        startMonth = int(startTime[:2])
-        startDay = int(startTime[3:5])
-        startYear = int(startTime[6:])
-	
-        start_time = datetime.date(startYear, startMonth, startDay)
-
-        roomObj = Rooms.objects.filter(room = selectedRoom)
-        roomSchedule = Timemodule.objects.filter(room = selectedRoom, datetime__range=(start_time, start_time + timedelta(days=5)))
-
-        timeList = Timemodule.objects.filter(room = selectedRoom, datetime__day= start_time.day)
-        cleanTime = []
-        for dt in timeList:
-            cleanTime.append(dt.datetime.time)
-        timeList = cleanTime
-
-        roomList = Rooms.objects.all()
-        moduleList = Modules.objects.all()
-
-        return render(request, 'occupants/homepage.html', {'roomSchedule': roomSchedule, 'roomObj': roomObj, 'roomList': roomList, 'timeList': timeList, 'moduleList': moduleList, 'startTime': startTime})
-	
-    else:
+    # if request.method == 'POST':
+    #
+    #     selectedRoom = request.POST.get('roomForm', False)
+    #     startTime = request.POST.get('dateForm', False)
+    #
+    #     startMonth = int(startTime[:2])
+    #     startDay = int(startTime[3:5])
+    #     startYear = int(startTime[6:])
+    #
+    #     start_time = datetime.date(startYear, startMonth, startDay)
+    #
+    #     roomObj = Rooms.objects.filter(room = selectedRoom)
+    #     roomSchedule = Timemodule.objects.filter(room = selectedRoom, datetime__range=(start_time, start_time + timedelta(days=5)))
+    #
+    #     timeList = Timemodule.objects.filter(room = selectedRoom, datetime__day= start_time.day)
+    #     cleanTime = []
+    #     for dt in timeList:
+    #         cleanTime.append(dt.datetime.time)
+    #     timeList = cleanTime
+    #
+    #     roomList = Rooms.objects.all()
+    #     moduleList = Modules.objects.all()
+    #
+    #     return render(request, 'occupants/homepage.html', {'roomSchedule': roomSchedule, 'roomObj': roomObj, 'roomList': roomList, 'timeList': timeList, 'moduleList': moduleList, 'startTime': startTime})
+    #
+    # else:
         roomList = Rooms.objects.all()
         return render(request, 'occupants/homepage.html', {'roomList': roomList})
 
@@ -54,8 +54,8 @@ def homepage(request):
 def calendarGen(request):
     if request.method == 'POST':
 
-        selectedRoom = request.POST.get('roomForm2', False)
-        startTime = request.POST.get('dateForm2', False)
+        selectedRoom = request.POST.get('roomForm', False)
+        startTime = request.POST.get('dateForm', False)
 
         startMonth = int(startTime[:2])
         startDay = int(startTime[3:5])
@@ -67,13 +67,8 @@ def calendarGen(request):
         roomSchedule = Timemodule.objects.filter(room=selectedRoom,
                                                  datetime__range=(start_time, start_time + timedelta(days=5)))
         timeList = Timemodule.objects.filter(room=selectedRoom, datetime__day=start_time.day)
-
-        calendarInfo = {"room": {"roomName": roomObj.room, "capacity": roomObj.capacity, "Campus": roomObj.campus,
-                                 "Building": roomObj.building}, "times": [], "timeSlots": []}
-
-##        print('calendarInfo', calendarInfo)
-
-
+        calendarInfo = {"room": {"roomName": roomObj.room, "capacity": roomObj.capacity, "campus": roomObj.campus,
+                                 "building": roomObj.building}, "times": [], "timeSlots": []}
 
         for dt in timeList:
 ##            print('datetime', dt.datetime.time())
@@ -90,7 +85,7 @@ def calendarGen(request):
 
 
 
-def graphGen(request):
+def WiFiData(request):
 
     if request.is_ajax():
 
@@ -129,7 +124,9 @@ def graphGen(request):
 
 
 
-def test(request):
+def GenGraph(request):
+
+
     if request.is_ajax():
 
         timeModuleId = request.POST['timeModuleId']

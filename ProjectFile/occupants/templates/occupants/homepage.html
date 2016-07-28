@@ -22,37 +22,30 @@
 	</head>
 	
 	<body>
-       <form action="" method="POST">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
-            <select name="roomForm"> <!--submit on change-->
-                <option value="" selected></option>
-                {% for room in roomList %} <!--automatically generate the form options from roomList-->
-                <option value="{{ room.room }}">{{ room.room }}</option>
-            {% endfor %}
-            </select>
-<!--            <select name="dateForm">   
-                <option value="2015, 11, 2">02-11-2015</option>
-                <option value="2015, 11, 9">09-11-2015</option>
-            </select>-->
-            <input id="datepicker" name="dateForm"/>
-            <input type="submit" value="Submit" onclick="this.form.submit()">
-            
-        </form>
-        
-        <div class="centered"> <!--Display each field of the returned room object-->
-            <h3>{{ roomObj.0.campus }}  {{ roomObj.0.building }}  {{ roomObj.0.room }}  {{ roomObj.0.capacity }}</h3><br>
-        </div>
-        
-        <div class="centered" id="tableDiv" style="Display: block">
-            <table id="calTable">
-            </table>
-        </div>
+        <div class="centered" style="max-width: 1200px">
+           <form action="" method="POST">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
+                <select id="roomPicker" name="roomForm"> <!--submit on change-->
+                    <option value="" selected></option>
+                    {% for room in roomList %} <!--automatically generate the form options from roomList-->
+                    <option value="{{ room.room }}">{{ room.room }}</option>
+                {% endfor %}
+                </select>
+                <input id="datePicker" name="dateForm"/>
+               <button type="button" onclick="GenCalendar()">Submit</button> 
+            </form>
 
-        <div class="centered"> 
-            <div id="graphDiv" style="float:left; height:500px; width:50%;"></div> 
-            <div id="graphDiv2" style="float:left; height:500px; width:50%;"></div>
-        </div>
+            <h3 id="title"></h3><br>
+       
+            <div class="centered" id="tableDiv" style="Display: block">
+                <table id="calTable">
+                </table>
+            </div>
+
+            <div class="centered"> 
+                <div id="graphDiv" style="float:left; width:50%;"></div> 
+            </div>
         
-        <button type="button" onclick="GenCalendar(3)">Click Me!</button>
+<!--        <button type="button" onclick="GenCalendar(3)">Click Me!</button>
         <div class="centered" id="testDiv0">test0</div>
         <div class="centered" id="testDivX">testX</div>
         <div class="centered" id="testDiv1">test1</div>
@@ -60,153 +53,46 @@
         <div class="centered" id="testDiv3">test3</div>
         <div class="centered" id="testDiv4">test4</div>
         <div class="centered" id="testDiv5">test5</div>
-        <div class="centered" id="testList">testList</div>
+        <div class="centered" id="testList">testList</div>-->
         
-        
+        </div>
     </body>
     
+
     <script>
         
-        function CellClick(x) {
-            
-            var timeModuleId = x;
-            $.ajax({
-                method: "POST",
-                data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
-                url: "/graphGen",
-                success: function(result) {
-                    var graphData = result;
-                    
-                    if (graphData == 'error') {
-                        document.getElementById('testDiv0').innerHTML = 'no data available';
-                        document.getElementById('graphDiv').innerHTML = "";
-                    } else {
-                        document.getElementById('testDiv0').innerHTML = graphData;
-                        document.getElementById('graphDiv').innerHTML = "";
-                        
-                        // create graph with various options
-                        $(document).ready(function(){
-                            
-                            var avgDevices = [];
-                            var sum = 0;
-                            for (var i=0; i<graphData.length; i+=1) {
-                                sum = sum + graphData[i];
-                            }
-                            var average = sum / graphData.length;
-                            for (var i=0; i<graphData.length; i+=1) {
-                                avgDevices.push(average);
-                            }
-                            
-                            
-                            var adjAvgDevices = [];
-                            var sum = 0;
-                            for (var i=2; i<graphData.length-2; i+=1) {
-                                sum = sum + graphData[i];
-                            }
-                            var average = sum / (graphData.length -4);
-                            for (var i=0; i<graphData.length; i+=1) {
-                                adjAvgDevices.push(average);
-                            }
-                            
-                            
-                            
-                            
-                            var plot1 = $.jqplot ('graphDiv', [graphData, avgDevices, adjAvgDevices], 
-                                                  {title: 'Devices', 
-                                                   axesDefaults: {
-                                                       labelRenderer: $.jqplot.CanvasAxisLabelRenderer
-                                                   }, 
-                                                   seriesDefaults:{
-                                                       rendererOptions:{
-                                                           smooth: true
-                                                       }
-                                                   },
-                                                   series:[
-                                                       {
-                                                        color: 'blue',
-                                                        lineWidth:1,
-                                                        markerOptions: { style:"circle", size:1}
-                                                       },
-                                                       {
-                                                        color: 'green',
-                                                        lineWidth:1,
-                                                        markerOptions: { style:"circle", size:0.1}
-                                                       },
-                                                       {
-                                                        color: 'red',
-                                                        lineWidth:1,
-                                                        markerOptions: { style:"circle", size:0.1}   
-                                                       }
-                                                   ],
-                                                   axes: { 
-                                                       xaxis: {
-                                                           label: 'time', 
-                                                           pad: 0
-                                                       }, 
-                                                       yaxis:{
-                                                           label: 'devices',
-                                                           pad: 0,
-                                                           //min: 0,
-                                                           //max: 250
-                                                       }
-                                            }
-                                });
-                        });
-                    }
-                }
-            });
-        };
-        
-    </script>
-    
-    
-    <script>
-        
-        function GenCalendar(x) {
+        function GenCalendar() {
             // function to generate the claendar
             
-            var test = x;
-            var roomForm2 = 'B-004';
-            var dateForm2 = '11/09/2015';
-            
+            var roomForm = document.getElementById("roomPicker").value;
+            var dateForm = document.getElementById("datePicker").value;
+
             $.ajax({
                 method: "POST",
-                data: {'roomForm2': roomForm2, 'dateForm2': dateForm2, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
                 url: "/calendarGen",
                 
                 success: function(result) {
                     
                     var calData = result;
                     
-                    document.getElementById('testDiv1').innerHTML = calData;
-//                    document.getElementById('testDiv2').innerHTML = 'ROOM: ' + calData["room"];
-                    document.getElementById('testDiv3').innerHTML = 'TIME: ' + calData["timeSlots"][3]["time"];
-                    document.getElementById('testDiv4').innerHTML = 'TIMESLOTS: ' + calData["timeSlots"];
-                    document.getElementById('testDiv5').innerHTML = 'DATE: ' + calData["timeSlots"][3]["date"];
-                    
-                    
                     if (calData == 'error') {
-                        document.getElementById('testDivX').innerHTML = 'no data available';
-                        document.getElementById('graphDiv2').innerHTML = "";
+                        document.getElementById('tableDiv').innerHTML = "";
+                        document.getElementById('tableDiv').innerHTML = 'no data available';
                     } else {
-                        document.getElementById('testDivX').innerHTML = calData["room"]["roomName"];
-                        document.getElementById('graphDiv2').innerHTML = "";
-                    
-                    
+                        document.getElementById('title').innerHTML = calData["room"]["roomName"] + ", " + calData["room"]["building"] + ", " + calData["room"]["campus"] + ", Capacity: " + calData["room"]["capacity"];
                         
                         var table = document.getElementById("calTable");
-                        var timeList = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
-                        var dayList = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-
-
-
                         var row = table.insertRow(0);
-                        var cell0 = row.insertCell(0);
-                        cell0.innerHTML = "";
-
-                        for (z=0; z<dayList.length; z+=1) {
-                            var cell = row.insertCell(z+1);
-                            cell.innerHTML = dayList[z];
+                        var cell = row.insertCell(0);
+                        cell.innerHTML = "";
+                        var f=1;
+                        
+                        for (z=0; z<calData["timeSlots"].length; z+=9) {
+                            
+                            cell = row.insertCell(f);
+                            cell.innerHTML = calData["timeSlots"][z]["date"];
+                            f+=1;
                         }
 
                         for (x=0; x<calData["times"].length; x+=1) {
@@ -227,7 +113,7 @@
                                     attId.value = calData["timeSlots"][y]["timeModuleId"]; 
                                     
                                     var attClick = document.createAttribute("onmouseover");
-                                    attClick.value = "TestScript(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
+                                    attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
                                     
                                     cell.setAttributeNode(attId);
                                     cell.setAttributeNode(attClick);
@@ -235,42 +121,31 @@
                                 }
                             }
                         }
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                         for (var s=0; s<calData["times"].length; s+=1) {
                             var time = calData["times"][s];
 
                             for (var i=0; i<calData["timeSlots"].length; i+=1) {
-
                                 calData["timeSlots"][i]["moduleName"];
                                 calData["timeSlots"][i]["timeModuleId"];
-
                             }
                         }
                     }
                 }   
             })
-        }    
-            
+        }          
     </script>
     
     
     <script>
         
-        function TestScript(y) {
+        function GenGraph(y) {
             // function to generate the graph
             
             var timeModuleId = y;
             $.ajax({
                 method: "POST",
                 data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
-                url: "/test",
+                url: "/GenGraph",
                 success: function(result) {
                     var testData = result;
 //                    document.getElementById('testDiv1').innerHTML = testData;
@@ -278,16 +153,11 @@
 //                    document.getElementById('testDiv3').innerHTML = testData["capacity"];
 //                    document.getElementById('testDiv4').innerHTML = testData["groundTruth"];
 //                    document.getElementById('testDiv5').innerHTML = testData["timeSlice"][0]["associated"];
-                    
-                    
-                    
-                    
+
                     if (testData == 'error') {
-                        document.getElementById('testDivX').innerHTML = 'no data available';
-                        document.getElementById('graphDiv2').innerHTML = "";
+                        document.getElementById('graphDiv').innerHTML = "";
                     } else {
-                        document.getElementById('testDivX').innerHTML = testData["timeSlice"][6]["associated"];
-                        document.getElementById('graphDiv2').innerHTML = "";
+                        document.getElementById('graphDiv').innerHTML = "";
                         
                         // create graph with various options
                         $(document).ready(function(){
@@ -295,7 +165,6 @@
                             var occNumb = []
                             var regStu = []
                             var roomCap = []
-                            // var gndTruth = []
                             var gndTruthTop = []
                             var gndTruthBottom = []
                             
@@ -304,7 +173,6 @@
                                 occNumb.push(Math.round(testData["timeSlice"][i]["associated"]/1.27));
                                 regStu.push(testData["capacity"]);
                                 roomCap.push(testData["registered"]);
-                                //gndTruth.push(Math.round(testData["capacity"] * testData["groundTruth"]));
                                 
                                 if (testData["groundTruth"] > 0) {
                                     gndTruthTop.push(Math.round(testData["capacity"] * (testData["groundTruth"] + 0.125)));
@@ -321,10 +189,7 @@
                                 sum = sum + (testData["timeSlice"][i]["associated"]/1.27);
                             }
                             adjAverage = sum / (testData["timeSlice"].length -4);
-                            
-//                            document.getElementById('testList').innerHTML = occNumb;
-                            
-                            var plot1 = $.jqplot ('graphDiv2', [occNumb, regStu, roomCap, gndTruthTop, gndTruthBottom], 
+                            var plot1 = $.jqplot ('graphDiv', [occNumb, regStu, roomCap, gndTruthTop, gndTruthBottom], 
                                                   {title: 'Occupants', 
                                                    axesDefaults: {
                                                        labelRenderer: $.jqplot.CanvasAxisLabelRenderer
