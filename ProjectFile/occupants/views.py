@@ -173,17 +173,23 @@ def RoomDayGraph(request):
         selectedDate = request.POST['selectedDate']
         print('POST', selectedDate)
 
-        selectedYear = int(startTime[:4])
-        startMonth = int(startTime[5:7])
-        startDay = int(startTime[8:])
+        selectedYear = int(selectedDate[:4])
+        selectedMonth = int(selectedDate[5:7])
+        selectedDay = int(selectedDate[8:])
 
         print('DATE', selectedDay, selectedMonth, selectedYear)
 
-        timeModule = Timemodule.objects.filter(room=selectedRoom, datetime=selectedDate)
-        print('timeModuleList', timeModule)
+        selectedDateTime = date(selectedYear, selectedMonth, selectedDay)
 
-        selectedRoom = timeModule.room.room
-        selectedRoomCapacity = timeModule.room.capacity
+        print('DATEOBJ', selectedDateTime, '+', (selectedDateTime + timedelta(days=1)))
+
+        timeModuleList = Timemodule.objects.filter(room=selectedRoom, datetime__range=(selectedDateTime, selectedDateTime + timedelta(days=1)))
+        print('timeModuleList', timeModuleList)
+
+        roomObj = Rooms.objects.get(room=selectedRoom)
+
+
+
         selectedDate = timeModule.datetime.date
         print('selectedDate: ', selectedDate)
 
@@ -193,16 +199,16 @@ def RoomDayGraph(request):
 ##        prediction, groundtruth, capacity, registered, module
 
 
-##        jsonFile = {"timeSlice": [], "room": selectedRoom, "capacity": selectedRoomCapacity}
+        jsonFile = {"timeSlice": [], "capacity": roomObj.capacity}
 
-##        for ts in timeSlotList:
-##            time = ts.associated
-##            module =
-##            registered =
+        for ts in timeModuleList:
+            time = ts.datetime
+            module = ts.module.modulename
+            registered = ts.module.numreg
 ##            prediction =
-##            jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered, 'prediction': prediction, 'groundtruth': groundtruth})
+            jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered, 'prediction': prediction, 'groundtruth': groundtruth})
 
-##        return HttpResponse(json.dumps(jsonFile), content_type="application/json")
+        return HttpResponse(json.dumps(jsonFile), content_type="application/json")
 
     else:
         raise Http404
