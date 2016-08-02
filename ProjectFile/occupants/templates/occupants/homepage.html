@@ -52,10 +52,10 @@
                 <div id="graphDiv" style="float:left; width:50%;"></div> 
             </div>
         
-<!--        <button type="button" onclick="GenCalendar(3)">Click Me!</button>
-        <div class="centered" id="testDiv0">test0</div>
-        <div class="centered" id="testDivX">testX</div>
+<!--        <button type="button" onclick="GenCalendar(3)">Click Me!</button>-->
+        <div class="centered" id="testDiv">test</div>
         <div class="centered" id="testDiv1">test1</div>
+<!--         
         <div class="centered" id="testDiv2">test2</div>
         <div class="centered" id="testDiv3">test3</div>
         <div class="centered" id="testDiv4">test4</div>
@@ -199,15 +199,21 @@
                         var cell = row.insertCell(0); // make these <th> instead of standard table cells
                         cell.innerHTML = "";
                         var counter=1;
+                        document.getElementById('testDiv1').innerHTML = calData["timeSlots"].length;
                         
                         for (z=0; z<calData["timeSlots"].length; z+=9) {
                             
-                            cell = row.insertCell(counter);                           // make these <th> instead of standard table cells
-                            cell.innerHTML = calData["timeSlots"][z]["date"];
+                            cellDate = row.insertCell(counter);                         // make these <th> instead of standard table cells
+                            var dateVar = calData["timeSlots"][z]["date"];
+                            cellDate.innerHTML = dateVar;
                             
-                            var attClick = document.createAttribute("onclick"); // insert function call on click
-                            attClick.value = "RoomDayGraph(" + counter + ")";
-                            cell.setAttributeNode(attClick);
+/*                            var roomDayGraph = document.createAttribute("onclick"); // insert function call on click
+                            roomDayGraph.value = "RoomDayGraph('" + dateVar + "')";
+                            cellDate.setAttributeNode(roomDayGraph);*/
+                            
+                            var attDateId = document.createAttribute("id"); // create id field
+                            attDateId.value = "'" + dateVar + "'";
+                            cellDate.setAttributeNode(attDateId);
                             counter+=1;
                         }
 
@@ -217,9 +223,9 @@
                             var cell0 = row.insertCell(0);              // make these <th> instead of standard table cells
                             cell0.innerHTML = calData["times"][x]["time"];
 
-                            var attClick = document.createAttribute("onclick"); // insert function call on click
+/*                            var attClick = document.createAttribute("onclick"); // insert function call on click
                             attClick.value = "RoomHourGraph(" + x + ")";
-                            cell.setAttributeNode(attClick);
+                            cell.setAttributeNode(attClick);*/
                             
                             var counter = 0;
                             for (y=0; y<calData["timeSlots"].length; y+=1){
@@ -232,11 +238,11 @@
                                     var attId = document.createAttribute("id"); // create id field
                                     attId.value = calData["timeSlots"][y]["timeModuleId"]; 
                                     
-                                    var attHover = document.createAttribute("onmouseover"); // insert function call on hover
-                                    attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
+/*                                    var attHover = document.createAttribute("onmouseover"); // insert function call on hover
+                                    attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; */
                                     
                                     var attClick = document.createAttribute("onclick"); // insert function call on click
-                                    attClick.value = "modGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")";
+                                    attClick.value = "ModuleGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")";
                                     
                                     cell.setAttributeNode(attId);
                                     cell.setAttributeNode(attHover);
@@ -262,19 +268,24 @@
     </script>
     
     <script>
-        function roomDay(x) {
+        function RoomDayGraph(x) {
+//            document.getElementById('testDiv').innerHTML = x;
+            $('#idname').onclick(function(){
+                $('diffcell')
+            })
+            
+            $document.ready(fnction)
+        }
+    </script>
+    
+    <script>
+        function RoomHourGraph(x) {
             
         }
     </script>
     
     <script>
-        function roomHour(x) {
-            
-        }
-    </script>
-    
-    <script>
-        function modGraph(x) {
+        function ModuleGraph(x) {
             
         }
     </script>

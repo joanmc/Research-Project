@@ -159,3 +159,40 @@ def GenGraph(request):
 
     else:
         raise Http404
+
+
+
+
+def RoomDayGraph(request):
+
+
+    if request.is_ajax():
+
+        timeModuleId = request.POST['timeModuleId']
+        print('POST', timeModuleId)
+        timeModule = Timemodule.objects.get(timemoduleid = timeModuleId)
+
+        selectedRoom = timeModule.room.room
+        selectedRoomCapacity = timeModule.room.capacity
+        selectedDate = timeModule.datetime.date
+        print('selectedDate: ', selectedDate)
+
+##        timeSlotList = TimeModule.objects.filter(room=selectedRoom, datetime.date = selectedDate)
+
+
+##        prediction, groundtruth, capacity, registered, module
+
+
+##        jsonFile = {"timeSlice": [], "room": selectedRoom, "capacity": selectedRoomCapacity}
+
+##        for ts in timeSlotList:
+##            time = ts.associated
+##            module =
+##            registered =
+##            prediction =
+##            jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered, 'prediction': prediction, 'groundtruth': groundtruth})
+
+##        return HttpResponse(json.dumps(jsonFile), content_type="application/json")
+
+    else:
+        raise Http404
