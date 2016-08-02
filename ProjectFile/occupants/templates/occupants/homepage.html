@@ -55,9 +55,9 @@
 <!--        <button type="button" onclick="GenCalendar(3)">Click Me!</button>-->
         <div class="centered" id="testDiv">test</div>
         <div class="centered" id="testDiv1">test1</div>
-<!--         
+         
         <div class="centered" id="testDiv2">test2</div>
-        <div class="centered" id="testDiv3">test3</div>
+<!--        <div class="centered" id="testDiv3">test3</div>
         <div class="centered" id="testDiv4">test4</div>
         <div class="centered" id="testDiv5">test5</div>
         <div class="centered" id="testList">testList</div>-->
@@ -207,13 +207,10 @@
                             var dateVar = calData["timeSlots"][z]["date"];
                             cellDate.innerHTML = dateVar;
                             
-/*                            var roomDayGraph = document.createAttribute("onclick"); // insert function call on click
+                            var roomDayGraph = document.createAttribute("onclick"); // insert function call on click
                             roomDayGraph.value = "RoomDayGraph('" + dateVar + "')";
-                            cellDate.setAttributeNode(roomDayGraph);*/
+                            cellDate.setAttributeNode(roomDayGraph);
                             
-                            var attDateId = document.createAttribute("id"); // create id field
-                            attDateId.value = "'" + dateVar + "'";
-                            cellDate.setAttributeNode(attDateId);
                             counter+=1;
                         }
 
@@ -269,12 +266,32 @@
     
     <script>
         function RoomDayGraph(x) {
-//            document.getElementById('testDiv').innerHTML = x;
-            $('#idname').onclick(function(){
-                $('diffcell')
-            })
+/*            document.getElementById('testDiv').innerHTML = x;
+            document.getElementById('testDiv2').innerHTML = document.getElementById("roomPicker").value;*/
             
-            $document.ready(fnction)
+            selectedDate = x;
+            selectedRoom = document.getElementById("roomPicker").value;
+
+            $.ajax({
+                method: "POST",
+                data: {'selectedRoom': selectedRoom, 'selectedDate': selectedDate, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/RoomDayGraph",
+                
+                success: function(result) {
+                    
+                    var roomDayData = result;
+                    
+                    if (calData == 'error') {
+                        document.getElementById('graphDiv').innerHTML = "";
+                        document.getElementById('graphDiv').innerHTML = 'no data available';
+                    } else {
+                        document.getElementById('graphDiv').innerHTML = "";
+           
+                        
+                        
+                    }
+                }
+            })
         }
     </script>
     
