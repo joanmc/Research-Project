@@ -15,6 +15,9 @@
         
 <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   -->
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
+        
         
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" href="{% static 'css/style.css' %}"> <!--load style.css from static folder-->
@@ -40,7 +43,11 @@
                 <table id="calTable">
                 </table>
             </div>
-
+            
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+                
             <div class="centered"> 
                 <div id="graphDiv" style="float:left; width:50%;"></div> 
             </div>
@@ -58,6 +65,106 @@
         </div>
     </body>
     
+    
+    <script>
+        function GenGraph(y) {
+            // function to generate the graph with chart.js
+            
+            var timeModuleId = y;
+                $.ajax({ // make ajax request to views file
+                    method: "POST",
+                    data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                    url: "/GenGraph",
+                    
+                    success: function(result) {
+                        var testData = result; // set result to variable
+
+                        if (testData == 'error') {
+                            document.getElementById('graphDiv').innerHTML = "";
+                        } else {
+                            document.getElementById('graphDiv').innerHTML = "";
+                            $(document).ready(function(){
+                            
+                            var occNumb = []
+                            var regStu = []
+                            var roomCap = testData["capacity"]; // set room capacity
+                            var gndTruthUpper = []
+                            var gndTruthLower = []
+                            
+                            for (var i=0; i<testData["timeSlice"].length; i+=1) {
+                                
+                                occNumb.push(Math.round(testData["timeSlice"][i]["associated"]/1.27)); // set occupancy estimate list
+                                regStu.push(testData["registered"]); // set registered students
+                                //roomCap.push(testData["registered"]); // set room capacity
+                                
+                                if (testData["groundTruth"] > 0) {// set ground truth uper and lower range
+                                    gndTruthUpper.push(Math.round(testData["capacity"] * (testData["groundTruth"] + 0.125)));
+                                    gndTruthLower.push(Math.round(testData["capacity"] * (testData["groundTruth"] - 0.125)));
+                                } else {
+                                    gndTruthUpper.push(0);
+                                    gndTruthLower.push(0);
+                                }
+                            }  
+                            var adjAverage = 0;
+                            var sum = 0;
+                            for (var i=2; i<testData["timeSlice"].length-2; i+=1) {// set adjusted average
+                                sum = sum + (testData["timeSlice"][i]["associated"]/1.27);
+                            }
+                            adjAverage = sum / (testData["timeSlice"].length -4);
+ 
+                            var data = {
+                                labels: ["05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"],
+                                datasets: [{
+                                    label: 'Estimate',
+                                    borderColor: 'blue',
+                                    data: occNumb
+                                },{
+                                    label: 'Registered',
+                                    fill: false,
+                                    pointRadius: 0,
+                                    borderColor: 'green',
+                                    data: regStu   
+                                },{
+                                    label: 'GT Upper',
+                                    fill: false,
+                                    pointRadius: 0,
+                                    borderDash: [10, 10],
+                                    borderColor: 'black',
+                                    data: gndTruthUpper   
+                                },{
+                                    label: 'GT Lower',
+                                    fill: false,
+                                    pointRadius: 0,
+                                    borderDash: [10, 10],
+                                    borderColor: 'black',
+                                    data: gndTruthLower  
+                                }]
+                            };
+     
+                            var options = {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            min: 0,
+                                            max: roomCap
+                                        }
+                                    }]
+                                }
+                            };
+                                
+                                
+                            var ctx = document.getElementById("myChart").getContext("2d");
+                            var myChart = new Chart(ctx, {
+                                type: 'line',
+                                data: data,
+                                options: options
+                            });     
+                        });    
+                    }
+                }
+            }) 
+        };
+    </script>
 
     <script>
         
@@ -91,13 +198,17 @@
                         var row = table.insertRow(0);
                         var cell = row.insertCell(0); // make these <th> instead of standard table cells
                         cell.innerHTML = "";
-                        var f=1;
+                        var counter=1;
                         
                         for (z=0; z<calData["timeSlots"].length; z+=9) {
                             
-                            cell = row.insertCell(f);                           // make these <th> instead of standard table cells
-                            cell.innerHTML = calData["timeSlots"][z]["date"]; 
-                            f+=1;
+                            cell = row.insertCell(counter);                           // make these <th> instead of standard table cells
+                            cell.innerHTML = calData["timeSlots"][z]["date"];
+                            
+                            var attClick = document.createAttribute("onclick"); // insert function call on click
+                            attClick.value = "RoomDayGraph(" + counter + ")";
+                            cell.setAttributeNode(attClick);
+                            counter+=1;
                         }
 
                         for (x=0; x<calData["times"].length; x+=1) {
@@ -106,6 +217,10 @@
                             var cell0 = row.insertCell(0);              // make these <th> instead of standard table cells
                             cell0.innerHTML = calData["times"][x]["time"];
 
+                            var attClick = document.createAttribute("onclick"); // insert function call on click
+                            attClick.value = "RoomHourGraph(" + x + ")";
+                            cell.setAttributeNode(attClick);
+                            
                             var counter = 0;
                             for (y=0; y<calData["timeSlots"].length; y+=1){
                                 
@@ -114,13 +229,17 @@
                                     var cell = row.insertCell(counter+1);
                                     cell.innerHTML = calData["timeSlots"][y]["moduleName"];
                                     
-                                    var attId = document.createAttribute("id");
+                                    var attId = document.createAttribute("id"); // create id field
                                     attId.value = calData["timeSlots"][y]["timeModuleId"]; 
                                     
-                                    var attClick = document.createAttribute("onmouseover");
+                                    var attHover = document.createAttribute("onmouseover"); // insert function call on hover
                                     attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
                                     
+                                    var attClick = document.createAttribute("onclick"); // insert function call on click
+                                    attClick.value = "modGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")";
+                                    
                                     cell.setAttributeNode(attId);
+                                    cell.setAttributeNode(attHover);
                                     cell.setAttributeNode(attClick);
                                     counter+=1;
                                 }
@@ -142,10 +261,26 @@
         }          
     </script>
     
+    <script>
+        function roomDay(x) {
+            
+        }
+    </script>
     
     <script>
-        
-        function GenGraph(y) {
+        function roomHour(x) {
+            
+        }
+    </script>
+    
+    <script>
+        function modGraph(x) {
+            
+        }
+    </script>
+    
+    <script>
+/*        function GenGraphX(y) {
             // function to generate the graph
             
             var timeModuleId = y;
@@ -155,11 +290,6 @@
                 url: "/GenGraph",
                 success: function(result) {
                     var testData = result;
-//                    document.getElementById('testDiv1').innerHTML = testData;
-//                    document.getElementById('testDiv2').innerHTML = testData["registered"];
-//                    document.getElementById('testDiv3').innerHTML = testData["capacity"];
-//                    document.getElementById('testDiv4').innerHTML = testData["groundTruth"];
-//                    document.getElementById('testDiv5').innerHTML = testData["timeSlice"][0]["associated"];
 
                     if (testData == 'error') {
                         document.getElementById('graphDiv').innerHTML = "";
@@ -281,7 +411,7 @@
                     }   
                 }
             })
-        }
+        }*/
     </script>
     
     <script>
