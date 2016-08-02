@@ -67,7 +67,15 @@ class BinaryPredictions(models.Model):
     class Meta:
         db_table = 'BinaryPredictions'
 
-class EsimatePredictions(models.Model):
+class PercentagePredictions(models.Model):
+    id = models.AutoField(db_column='id', primary_key = True)
+    datetime = models.DateTimeField(db_column='DateTime', blank=True, null=True)  
+    room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room', blank=True, null=True)
+    predictions = models.IntegerField(db_column='Predictions', blank=True, null=True)
+    class Meta:
+        db_table = 'PercentagePredictions'
+
+class EstimatePredictions(models.Model):
     id = models.AutoField(db_column='id', primary_key = True)
     datetime = models.DateTimeField(db_column='DateTime', blank=True, null=True)
     room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room', blank=True, null=True) 

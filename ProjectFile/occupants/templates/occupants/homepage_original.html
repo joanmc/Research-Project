@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} <!--Load the static folder will be referenced later-->
+
+<html>
+	<head>
+		<title>Ocu-Pants</title>
+		<meta charset="utf-8">
+        <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.js"></script>
+        <script src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasTextRenderer.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasOverlay.min.js"></script>
+        
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}"> <!--load style.css from static folder-->
+        <link rel="stylesheet" type="text/css" href="{% static 'Libraries/jqplot/jquery.jqplot.css' %}" />
+	</head>
+	
+	<body>
+        <div class="centered" style="max-width: 1200px">
+           <form action="" method="POST">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
+                <select id="roomPicker" name="roomForm"> <!--submit on change-->
+                    <option value="" selected></option>
+                    {% for room in roomList %} <!--automatically generate the form options from roomList-->
+                    <option value="{{ room.room }}">{{ room.room }}</option>
+                {% endfor %}
+                </select>
+                <input id="datePicker" name="dateForm"/>
+               <button type="button" onclick="GenCalendar()">Submit</button> 
+            </form>
+
+            <h3 id="title"></h3><br>
+       
+            <div class="centered" id="tableDiv" style="Display: block">
+                <table id="calTable">
+                </table>
+            </div>
+            
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+                
+            <div class="centered"> 
+                <div id="graphDiv" style="float:left; width:50%;"></div> 
+            </div>
+        
+<!--        <button type="button" onclick="GenCalendar(3)">Click Me!</button>-->
+        <div class="centered" id="testDiv">test</div>
+        <div class="centered" id="testDiv1">test1</div>
+         
+        <div class="centered" id="testDiv2">test2</div>
+<!--        <div class="centered" id="testDiv3">test3</div>
+        <div class="centered" id="testDiv4">test4</div>
+        <div class="centered" id="testDiv5">test5</div>
+        <div class="centered" id="testList">testList</div>-->
+        
+        </div>
+    </body>
+    
+    
+    <script>
+        function GenGraph(y) {
+            // function to generate the graph with chart.js
+            
+            var timeModuleId = y;
+                $.ajax({ // make ajax request to views file
+                    method: "POST",
+                    data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                    url: "/GenGraph",
+                    
+                    success: function(result) {
+                        var testData = result; // set result to variable
+                        if (testData == 'error') {
+                            document.getElementById('graphDiv').innerHTML = "";
+                        } else {
+                            document.getElementById('graphDiv').innerHTML = "";
+                            $(document).ready(function(){
+                            
+                            var occNumb = []
+                            var regStu = []
+                            var roomCap = testData["capacity"]; // set room capacity
+                            var gndTruthUpper = []
+                            var gndTruthLower = []
+                            
+                            for (var i=0; i<testData["timeSlice"].length; i+=1) {
+                                
+                                occNumb.push(Math.round(testData["timeSlice"][i]["associated"]/1.27)); // set occupancy estimate list
+                                regStu.push(testData["registered"]); // set registered students
+                                //roomCap.push(testData["registered"]); // set room capacity
+                                
+                                if (testData["groundTruth"] > 0) {// set ground truth uper and lower range
+                                    gndTruthUpper.push(Math.round(testData["capacity"] * (testData["groundTruth"] + 0.125)));
+                                    gndTruthLower.push(Math.round(testData["capacity"] * (testData["groundTruth"] - 0.125)));
+                                } else {
+                                    gndTruthUpper.push(0);
+                                    gndTruthLower.push(0);
+                                }
+                            }  
+                            var adjAverage = 0;
+                            var sum = 0;
+                            for (var i=2; i<testData["timeSlice"].length-2; i+=1) {// set adjusted average
+                                sum = sum + (testData["timeSlice"][i]["associated"]/1.27);
+                            }
+                            adjAverage = sum / (testData["timeSlice"].length -4);
+ 
+                            var data = {
+                                labels: ["05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"],
+                                datasets: [{
+                                    label: 'Estimate',
+                                    borderColor: 'blue',
+                                    data: occNumb
+                                },{
+                                    label: 'Registered',
+                                    fill: false,
+                                    pointRadius: 0,
+                                    borderColor: 'green',
+                                    data: regStu   
+                                },{
+                                    label: 'GT Upper',
+                                    fill: false,
+                                    pointRadius: 0,
+                                    borderDash: [10, 10],
+                                    borderColor: 'black',
+                                    data: gndTruthUpper   
+                                },{
+                                    label: 'GT Lower',
+                                    fill: false,
+                                    pointRadius: 0,
+                                    borderDash: [10, 10],
+                                    borderColor: 'black',
+                                    data: gndTruthLower  
+                                }]
+                            };
+     
+                            var options = {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            min: 0,
+                                            max: roomCap
+                                        }
+                                    }]
+                                }
+                            };
+                                
+                                
+                            var ctx = document.getElementById("myChart").getContext("2d");
+                            var myChart = new Chart(ctx, {
+                                type: 'line',
+                                data: data,
+                                options: options
+                            });     
+                        });    
+                    }
+                }
+            }) 
+        };
+    </script>
+
+    <script>
+        
+        function GenCalendar() {
+            // function to generate the claendar
+            
+            var roomForm = document.getElementById("roomPicker").value;
+            var dateForm = document.getElementById("datePicker").value;
+            $.ajax({
+                method: "POST",
+                data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/calendarGen",
+                
+                success: function(result) {
+                    
+                    var calData = result;
+                    
+                    if (calData == 'error') {
+                        document.getElementById('tableDiv').innerHTML = "";
+                        document.getElementById('tableDiv').innerHTML = 'no data available';
+                    } else {
+                        document.getElementById('title').innerHTML = calData["room"]["roomName"] + ", " + calData["room"]["building"] + ", " + calData["room"]["campus"] + ", Capacity: " + calData["room"]["capacity"];
+                        
+                        // clear div document.getElementById('tableDiv').innerhtml = "";
+                        
+                        //createElement table opening tag <table id="calTable">
+                        
+                        
+                        var table = document.getElementById("calTable");
+                        var row = table.insertRow(0);
+                        var cell = row.insertCell(0); // make these <th> instead of standard table cells
+                        cell.innerHTML = "";
+                        var counter=1;
+                        document.getElementById('testDiv1').innerHTML = calData["timeSlots"].length;
+                        
+                        for (z=0; z<calData["timeSlots"].length; z+=9) {
+                            
+                            cellDate = row.insertCell(counter);                         // make these <th> instead of standard table cells
+                            var dateVar = calData["timeSlots"][z]["date"];
+                            cellDate.innerHTML = dateVar;
+                            
+                            var roomDayGraph = document.createAttribute("onclick"); // insert function call on click
+                            roomDayGraph.value = "RoomDayGraph('" + dateVar + "')";
+                            cellDate.setAttributeNode(roomDayGraph);
+                            
+                            counter+=1;
+                        }
+                        for (x=0; x<calData["times"].length; x+=1) {
+                            
+                            var row = table.insertRow(x+1);
+                            var cell0 = row.insertCell(0);              // make these <th> instead of standard table cells
+                            cell0.innerHTML = calData["times"][x]["time"];
+/*                            var attClick = document.createAttribute("onclick"); // insert function call on click
+                            attClick.value = "RoomHourGraph(" + x + ")";
+                            cell.setAttributeNode(attClick);*/
+                            
+                            var counter = 0;
+                            for (y=0; y<calData["timeSlots"].length; y+=1){
+                                
+                                if (calData["timeSlots"][y]["time"] == calData["times"][x]["time"]) {
+                                    
+                                    var cell = row.insertCell(counter+1);
+                                    cell.innerHTML = calData["timeSlots"][y]["moduleName"];
+                                    
+                                    var attId = document.createAttribute("id"); // create id field
+                                    attId.value = calData["timeSlots"][y]["timeModuleId"]; 
+                                    
+/*                                    var attHover = document.createAttribute("onmouseover"); // insert function call on hover
+                                    attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; */
+                                    
+                                    var attClick = document.createAttribute("onclick"); // insert function call on click
+                                    attClick.value = "ModuleGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")";
+                                    
+                                    cell.setAttributeNode(attId);
+                                    cell.setAttributeNode(attHover);
+                                    cell.setAttributeNode(attClick);
+                                    counter+=1;
+                                }
+                            }
+                        }
+                        for (var s=0; s<calData["times"].length; s+=1) {
+                            var time = calData["times"][s];
+                            for (var i=0; i<calData["timeSlots"].length; i+=1) {
+                                calData["timeSlots"][i]["moduleName"];
+                                calData["timeSlots"][i]["timeModuleId"];
+                            }
+                        }
+                        
+                        // create table closing tag
+                    }
+                }   
+            })
+        }          
+    </script>
+    
+    <script>
+        function RoomDayGraph(x) {
+/*            document.getElementById('testDiv').innerHTML = x;
+            document.getElementById('testDiv2').innerHTML = document.getElementById("roomPicker").value;*/
+            
+            selectedDate = x;
+            selectedRoom = document.getElementById("roomPicker").value;
+            $.ajax({
+                method: "POST",
+                data: {'selectedRoom': selectedRoom, 'selectedDate': selectedDate, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/RoomDayGraph",
+                
+                success: function(result) {
+                    
+                    var roomDayData = result;
+                    
+                    if (calData == 'error') {
+                        document.getElementById('graphDiv').innerHTML = "";
+                        document.getElementById('graphDiv').innerHTML = 'no data available';
+                    } else {
+                        document.getElementById('graphDiv').innerHTML = "";
+           
+                        
+                        
+                    }
+                }
+            })
+        }
+    </script>
+    
+    <script>
+        function RoomHourGraph(x) {
+            
+        }
+    </script>
+    
+    <script>
+        function ModuleGraph(x) {
+            
+        }
+    </script>
+    
+    <script>
+/*        function GenGraphX(y) {
+            // function to generate the graph
+            
+            var timeModuleId = y;
+            $.ajax({
+                method: "POST",
+                data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/GenGraph",
+                success: function(result) {
+                    var testData = result;
+                    if (testData == 'error') {
+                        document.getElementById('graphDiv').innerHTML = "";
+                    } else {
+                        document.getElementById('graphDiv').innerHTML = "";
+                        
+                        // create graph with various options
+                        $(document).ready(function(){
+                            
+                            var occNumb = []
+                            var regStu = []
+                            var roomCap = []
+                            var gndTruthTop = []
+                            var gndTruthBottom = []
+                            
+                            for (var i=0; i<testData["timeSlice"].length; i+=1) {
+                                
+                                occNumb.push(Math.round(testData["timeSlice"][i]["associated"]/1.27));
+                                regStu.push(testData["capacity"]);
+                                roomCap.push(testData["registered"]);
+                                
+                                if (testData["groundTruth"] > 0) {
+                                    gndTruthTop.push(Math.round(testData["capacity"] * (testData["groundTruth"] + 0.125)));
+                                    gndTruthBottom.push(Math.round(testData["capacity"] * (testData["groundTruth"] - 0.125)));
+                                } else {
+                                    gndTruthTop.push(0);
+                                    gndTruthBottom.push(0);
+                                }
+                            }
+                            
+                            var adjAverage = 0;
+                            var sum = 0;
+                            for (var i=2; i<testData["timeSlice"].length-2; i+=1) {
+                                sum = sum + (testData["timeSlice"][i]["associated"]/1.27);
+                            }
+                            adjAverage = sum / (testData["timeSlice"].length -4);
+                            var plot1 = $.jqplot ('graphDiv', [occNumb, regStu, roomCap, gndTruthTop, gndTruthBottom], 
+                                                  {title: 'Occupants', 
+                                                   axesDefaults: {
+                                                       labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                                                   },
+                                                   fillBetween:{
+                                                       series1: 3,
+                                                       series2: 4,
+                                                       color: "rgba(227, 167, 111, 0.7)",
+                                                       baseSeries: 0,
+                                                   },
+                                                   seriesDefaults:{
+                                                       rendererOptions:{
+                                                           smooth: true
+                                                       }
+                                                   },
+                                                   series:[
+                                                       {
+                                                        color: 'blue',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:1}
+                                                       },
+                                                       {
+                                                        color: 'green',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}
+                                                       },
+                                                       {
+                                                        color: 'red',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}   
+                                                       },
+                                                       {
+                                                        color: 'yellow',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}   
+                                                       },
+                                                       {
+                                                        color: 'yellow',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}   
+                                                       }
+                                                   ],
+                                                   axes: { 
+                                                       xaxis: {
+                                                           label: 'time', 
+                                                           pad: 0
+                                                       }, 
+                                                       yaxis:{
+                                                           label: 'devices',
+                                                           pad: 0,
+                                                           min: 0,
+                                                           max: Math.round((testData["capacity"] * 1.1))
+                                                       }
+                                                   },
+                                                   canvasOverlay: {
+                                                        show: true,
+                                                        objects: [
+                                                            {horizontalLine: {
+                                                                name: 'Capacity',
+                                                                y: testData["capacity"],
+                                                                lineWidth: 0.1,
+                                                                color: 'green',
+                                                                shadow: true,
+                                                            }},
+                                                            {horizontalLine: {
+                                                                name: 'Registered',
+                                                                y: testData["registered"],
+                                                                lineWidth: 0.1,
+                                                                color: 'red',
+                                                                shadow: true,
+                                                            }},
+                                                            {dashedHorizontalLine: {
+                                                                name: 'AdjustedAvg',
+                                                                y: adjAverage,
+                                                                lineWidth: 0.1,
+                                                                color: 'black',
+                                                                shadow: true,
+                                                            }}]
+                                                    }
+                                                });
+                        });
+                    }   
+                }
+            })
+        }*/
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            $("#datepicker").datepicker();
+        });
+  </script>
+    
+</html>
