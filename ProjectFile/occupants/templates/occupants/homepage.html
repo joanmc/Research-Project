@@ -35,10 +35,10 @@
     <div class="centered" id="testDiv1">test1</div>
 
     <div class="centered" id="testDiv2">test2</div>
-<!--        <div class="centered" id="testDiv3">test3</div>
+    <div class="centered" id="testDiv3">test3</div>
     <div class="centered" id="testDiv4">test4</div>
     <div class="centered" id="testDiv5">test5</div>
-    <div class="centered" id="testList">testList</div>-->
+    <div class="centered" id="testList">testList</div>
 
     </div>
 
@@ -260,13 +260,13 @@
 
                 var roomDayData = result;
 
-                if (calData == 'error') {
+                if (roomDayData == 'error') {
                     document.getElementById('graphDiv').innerHTML = "";
                     document.getElementById('graphDiv').innerHTML = 'no data available';
                 } else {
                     document.getElementById('graphDiv').innerHTML = "";
 
-
+                    document.getElementById('testDiv3').innerHTML = roomDayData["capacity"];
 
                 }
             }

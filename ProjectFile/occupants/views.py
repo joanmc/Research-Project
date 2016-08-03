@@ -148,12 +148,9 @@ def RoomDayGraph(request):
         groundTruthList = Groundtruth.objects.filter(room=selectedRoom, datetime__range=(selectedDateTime, selectedDateTime + timedelta(days=1)))
         print('groundTruthList', len(groundTruthList))
 
-
         roomObj = Rooms.objects.get(room=selectedRoom)
 
         jsonFile = {"timeSlice": [], "capacity": roomObj.capacity}
-
-        print('DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', timeModuleList[3].datetime.time())
 
         for i in range(0, len(timeModuleList)-1):
             time = timeModuleList[i].datetime.time()
@@ -164,7 +161,6 @@ def RoomDayGraph(request):
 
             jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered, 'prediction': prediction, 'groundTruth': groundTruth})
 
-        return HttpResponse(json.dumps(jsonFile), content_type="application/json")
-
+        return HttpResponse(json.dumps(jsonFile, cls=DjangoJSONEncoder), content_type = "application/json")
     else:
         raise Http404
