@@ -19,32 +19,6 @@ def login(request):
 
 def homepage(request):
 
-    # if request.method == 'POST':
-    #
-    #     selectedRoom = request.POST.get('roomForm', False)
-    #     startTime = request.POST.get('dateForm', False)
-    #
-    #     startMonth = int(startTime[:2])
-    #     startDay = int(startTime[3:5])
-    #     startYear = int(startTime[6:])
-    #
-    #     start_time = datetime.date(startYear, startMonth, startDay)
-    #
-    #     roomObj = Rooms.objects.filter(room = selectedRoom)
-    #     roomSchedule = Timemodule.objects.filter(room = selectedRoom, datetime__range=(start_time, start_time + timedelta(days=5)))
-    #
-    #     timeList = Timemodule.objects.filter(room = selectedRoom, datetime__day= start_time.day)
-    #     cleanTime = []
-    #     for dt in timeList:
-    #         cleanTime.append(dt.datetime.time)
-    #     timeList = cleanTime
-    #
-    #     roomList = Rooms.objects.all()
-    #     moduleList = Modules.objects.all()
-    #
-    #     return render(request, 'occupants/homepage.html', {'roomSchedule': roomSchedule, 'roomObj': roomObj, 'roomList': roomList, 'timeList': timeList, 'moduleList': moduleList, 'startTime': startTime})
-    #
-    # else:
         roomList = Rooms.objects.all()
         return render(request, 'occupants/homepage.html', {'roomList': roomList})
 
@@ -58,14 +32,12 @@ def calendarGen(request):
 
         selectedRoom = request.POST.get('roomForm', False)
         startTime = request.POST.get('dateForm', False)
-
         startMonth = int(startTime[:2])
         startDay = int(startTime[3:5])
         startYear = int(startTime[6:])
         start_time = datetime.date(startYear, startMonth, startDay)
         roomObj = Rooms.objects.get(room=selectedRoom)
 ##        print('roomObj', roomObj.room)
-
         roomSchedule = Timemodule.objects.filter(room=selectedRoom,
                                                  datetime__range=(start_time, start_time + timedelta(days=5)))
         timeList = Timemodule.objects.filter(room=selectedRoom, datetime__day=start_time.day)
@@ -77,8 +49,8 @@ def calendarGen(request):
             calendarInfo["times"].append({"time": dt.datetime.time()})
 
         for ts in roomSchedule:
-            calendarInfo["timeSlots"].append({"date": ts.datetime.date(), "time": ts.datetime.time(), "moduleName": ts.module.modulename,
-                                              "timeModuleId": ts.timemoduleid})
+            calendarInfo["timeSlots"].append({"date": ts.datetime.date(), "time": ts.datetime.time(),
+                                              "moduleName": ts.module.modulename, "timeModuleId": ts.timemoduleid})
 
         return HttpResponse(json.dumps(calendarInfo, cls=DjangoJSONEncoder), content_type="application/json")
     else:
@@ -102,6 +74,7 @@ def GenGraph(request):
                                               datetime__range=(startTime, startTime + timedelta(hours=1)))
         print('WIFI DATA', wifiData)
         groundTruthObj = Groundtruth.objects.get(room=selectedRoom, datetime=startTime)
+        ## need error handling here for when no ground truth exists
         groundTruth = groundTruthObj.percentageestimate
         print('GROUND TRUTH', groundTruth)
         registered = timeModule.module.numreg
@@ -132,22 +105,23 @@ def RoomDayGraph(request):
 ##        print('POST', selectedRoom)
         selectedDate = request.POST['selectedDate']
 ##        print('POST', selectedDate)
-
         selectedYear = int(selectedDate[:4])
         selectedMonth = int(selectedDate[5:7])
         selectedDay = int(selectedDate[8:])
 ##        print('DATE', selectedDay, selectedMonth, selectedYear)
         selectedDateTime = date(selectedYear, selectedMonth, selectedDay)
-
-##        print('DATEOBJ', selectedDateTime, '+', (selectedDateTime + timedelta(days=1)))
-
-        timeModuleList = Timemodule.objects.filter(room=selectedRoom, datetime__range=(selectedDateTime, selectedDateTime + timedelta(days=1)))
+        timeModuleList = Timemodule.objects.filter(room=selectedRoom,
+                                                   datetime__range=(selectedDateTime,
+                                                                    selectedDateTime + timedelta(days=1)))
         print('timeModuleList', len(timeModuleList))
-        predictionList = PercentagePredictions.objects.filter(room=selectedRoom, datetime__range=(selectedDateTime, selectedDateTime + timedelta(days=1)))
+        predictionList = PercentagePredictions.objects.filter(room=selectedRoom,
+                                                              datetime__range=(selectedDateTime,
+                                                                               selectedDateTime + timedelta(days=1)))
         print('predictionList', len(predictionList))
-        groundTruthList = Groundtruth.objects.filter(room=selectedRoom, datetime__range=(selectedDateTime, selectedDateTime + timedelta(days=1)))
+        groundTruthList = Groundtruth.objects.filter(room=selectedRoom,
+                                                     datetime__range=(selectedDateTime,
+                                                                      selectedDateTime + timedelta(days=1)))
         print('groundTruthList', len(groundTruthList))
-
         roomObj = Rooms.objects.get(room=selectedRoom)
 
         jsonFile = {"timeSlice": [], "capacity": roomObj.capacity}
@@ -159,7 +133,8 @@ def RoomDayGraph(request):
             prediction = predictionList[i].predictions
             groundTruth = groundTruthList[i].percentageestimate
 
-            jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered, 'prediction': prediction, 'groundTruth': groundTruth})
+            jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered,
+                                          'prediction': prediction, 'groundTruth': groundTruth})
 
         return HttpResponse(json.dumps(jsonFile, cls=DjangoJSONEncoder), content_type = "application/json")
     else:

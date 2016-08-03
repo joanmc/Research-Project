@@ -168,12 +168,10 @@
                     document.getElementById('tableDiv').innerHTML = "";
                     document.getElementById('tableDiv').innerHTML = 'no data available';
                 } else {
-                    document.getElementById('title').innerhtml = "";
-                    document.getElementById('title').innerHTML = calData["room"]["roomName"] + ", " + calData["room"]["building"] + ", " + calData["room"]["campus"] + ", Capacity: " + calData["room"]["capacity"];
+                    document.getElementById('title').innerhtml = ""; // clear old title
+                    document.getElementById('title').innerHTML = calData["room"]["roomName"] + ", " + calData["room"]["building"] + ", " + calData["room"]["campus"] + ", Capacity: " + calData["room"]["capacity"]; // create new title
 
-                    document.getElementById('tableDiv').innerhtml = "";
-                    $("#calTable").remove();
-                    //createElement table opening tag <table id="calTable">
+                    $("#calTable").remove(); // clear old table from div
                     var tableDiv = document.getElementById('tableDiv');
                     var x = document.createElement("TABLE");
                     x.setAttribute("id", "calTable");
@@ -188,7 +186,7 @@
 
                     for (z=0; z<calData["timeSlots"].length; z+=9) {
 
-                        cellDate = row.insertCell(counter);                         // make these <th> instead of standard table cells
+                        cellDate = row.insertCell(counter); // make these <th> instead of standard table cells
                         var dateVar = calData["timeSlots"][z]["date"];
                         cellDate.innerHTML = dateVar;
 
@@ -219,14 +217,14 @@
                                 attId.value = calData["timeSlots"][y]["timeModuleId"]; 
 
                                 var attHover = document.createAttribute("onmouseover"); // insert function call on hover
-                                attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
+                                attHover.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
 
-                                var attClick = document.createAttribute("onclick"); // insert function call on click
-                                attClick.value = "ModuleGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")";
+/*                                var attClick = document.createAttribute("onclick"); // insert function call on click
+                                attClick.value = "ModuleGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")";*/
 
                                 cellTyp.setAttributeNode(attId);
                                 cellTyp.setAttributeNode(attHover);
-                                cellTyp.setAttributeNode(attClick);
+                               /*cellTyp.setAttributeNode(attClick);*/
                                 counter+=1;
                             }
                         }
@@ -238,8 +236,6 @@
                             calData["timeSlots"][i]["timeModuleId"];
                         }
                     }
-
-                    // create table closing tag
                 }
             }   
         })
@@ -264,14 +260,12 @@
                     //document.getElementById('graphDiv').innerHTML = "";
                     //document.getElementById('graphDiv').innerHTML = 'no data available';
                 } else {
-                    //document.getElementById('graphDiv').innerHTML = "";
 
                     // tests
-                    document.getElementById('testDiv3').innerHTML = roomDayData["capacity"];
+/*                    document.getElementById('testDiv3').innerHTML = roomDayData["capacity"];
                     document.getElementById('testDiv4').innerHTML = roomDayData["capacity"];
-/*                    document.getElementById('testDiv5').innerHTML = roomDayData["capacity"];
+                    document.getElementById('testDiv5').innerHTML = roomDayData["capacity"];
                     document.getElementById('testDiv6').innerHTML = roomDayData["capacity"];*/
-                    
                     
                     $(document).ready(function(){
                                                 
@@ -335,12 +329,6 @@
                             options: options
                         });     
                     }); 
-                    
-                    
-                    
-                    
-                    
-
                 }
             }
         })
