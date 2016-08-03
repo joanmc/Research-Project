@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.utils import timezone
-from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata
+from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, PercentagePredictions
 from django.db.models import Q
 from datetime import timedelta, date
 import datetime
@@ -87,48 +87,8 @@ def calendarGen(request):
 
 
 
-def WiFiData(request):
-    '''old graph function no longer used'''
-
-    if request.is_ajax():
-
-        timeModuleId = request.POST['timeModuleId']
-##        print("request: ", request)
-##        print("data sent: ", timeModuleId)
-        dateTime = Timemodule.objects.get(timemoduleid = timeModuleId)
-        startTime = dateTime.datetime
-        selectedRoom = dateTime.room.room
-        
-        wifiData = Wifilogdata.objects.filter(room = selectedRoom, datetime__range=(startTime, startTime + timedelta(hours=1)))
-
-        associatedList =  []
-
-        for x in wifiData:
-##            print(x.room.capacity)
-##            print(x.datetime)
-##            print(x.associated)
-            associatedList.append(x.associated)
- 
-##        print("No of entries", len(associatedList))
-##        print("THE DATETIME", dateTime.datetime)
-##        print("THE DATETIME + 1 HOUR", dateTime.datetime + timedelta(hours=1))
-##        print("THE MODULE", dateTime.module.modulename)
-##        print("THE ROOM", dateTime.room.room)
-        
-        if len(associatedList) > 0:
-            return HttpResponse(json.dumps(associatedList), content_type="application/json")
-        else:
-            return HttpResponse("error")
-
-    else:
-    	raise Http404
-
-
-
-
-
 def GenGraph(request):
-
+    ''' function to query database for hourly graph data '''
 
     if request.is_ajax():
 
@@ -164,49 +124,45 @@ def GenGraph(request):
 
 
 def RoomDayGraph(request):
-
+    ''' function to query database for daily room graph data '''
 
     if request.is_ajax():
 
         selectedRoom = request.POST['selectedRoom']
-        print('POST', selectedRoom)
+##        print('POST', selectedRoom)
         selectedDate = request.POST['selectedDate']
-        print('POST', selectedDate)
+##        print('POST', selectedDate)
 
         selectedYear = int(selectedDate[:4])
         selectedMonth = int(selectedDate[5:7])
         selectedDay = int(selectedDate[8:])
-
-        print('DATE', selectedDay, selectedMonth, selectedYear)
-
+##        print('DATE', selectedDay, selectedMonth, selectedYear)
         selectedDateTime = date(selectedYear, selectedMonth, selectedDay)
 
-        print('DATEOBJ', selectedDateTime, '+', (selectedDateTime + timedelta(days=1)))
+##        print('DATEOBJ', selectedDateTime, '+', (selectedDateTime + timedelta(days=1)))
 
         timeModuleList = Timemodule.objects.filter(room=selectedRoom, datetime__range=(selectedDateTime, selectedDateTime + timedelta(days=1)))
-        print('timeModuleList', timeModuleList)
+        print('timeModuleList', len(timeModuleList))
+        predictionList = PercentagePredictions.objects.filter(room=selectedRoom, datetime__range=(selectedDateTime, selectedDateTime + timedelta(days=1)))
+        print('predictionList', len(predictionList))
+        groundTruthList = Groundtruth.objects.filter(room=selectedRoom, datetime__range=(selectedDateTime, selectedDateTime + timedelta(days=1)))
+        print('groundTruthList', len(groundTruthList))
+
 
         roomObj = Rooms.objects.get(room=selectedRoom)
 
-
-
-        selectedDate = timeModule.datetime.date
-        print('selectedDate: ', selectedDate)
-
-##        timeSlotList = TimeModule.objects.filter(room=selectedRoom, datetime.date = selectedDate)
-
-
-##        prediction, groundtruth, capacity, registered, module
-
-
         jsonFile = {"timeSlice": [], "capacity": roomObj.capacity}
 
-        for ts in timeModuleList:
-            time = ts.datetime
-            module = ts.module.modulename
-            registered = ts.module.numreg
-##            prediction =
-            jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered, 'prediction': prediction, 'groundtruth': groundtruth})
+        print('DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', timeModuleList[3].datetime.time())
+
+        for i in range(0, len(timeModuleList)-1):
+            time = timeModuleList[i].datetime.time()
+            module = timeModuleList[i].module.modulename
+            registered = timeModuleList[i].module.numreg
+            prediction = predictionList[i].predictions
+            groundTruth = groundTruthList[i].percentageestimate
+
+            jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered, 'prediction': prediction, 'groundTruth': groundTruth})
 
         return HttpResponse(json.dumps(jsonFile), content_type="application/json")
 

@@ -62,6 +62,7 @@
                         $(document).ready(function(){
 
                         var occNumb = []
+                        var deviceNumb = []
                         var regStu = []
                         var roomCap = testData["capacity"]; // set room capacity
                         var gndTruthUpper = []
@@ -70,6 +71,7 @@
                         for (var i=0; i<testData["timeSlice"].length; i+=1) {
 
                             occNumb.push(Math.round(testData["timeSlice"][i]["associated"]/1.27)); // set occupancy estimate list
+                            deviceNumb.push(Math.round(testData["timeSlice"][i]["associated"]));
                             regStu.push(testData["registered"]); // set registered students
                             //roomCap.push(testData["registered"]); // set room capacity
 
@@ -84,16 +86,22 @@
                         var adjAverage = 0;
                         var sum = 0;
                         for (var i=2; i<testData["timeSlice"].length-2; i+=1) {// set adjusted average
-                            sum = sum + (testData["timeSlice"][i]["associated"]/1.27);
+                            sum = sum + (testData["timeSlice"][i]["associated"]);
                         }
                         adjAverage = sum / (testData["timeSlice"].length -4);
 
                         var data = {
                             labels: ["05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"],
                             datasets: [{
-                                label: 'Estimate',
+                                fill: false,
+                                label: 'Strawman est.',
                                 borderColor: 'blue',
                                 data: occNumb
+                            },{
+                                label: 'Devices',
+                                fill: false,
+                                borderColor: 'yellow',
+                                data: deviceNumb  
                             },{
                                 label: 'Registered',
                                 fill: false,
@@ -191,32 +199,32 @@
                     for (x=0; x<calData["times"].length; x+=1) {
 
                         var row = table.insertRow(x+1);
-                        var cell0 = row.insertCell(0);              // make these <th> instead of standard table cells
-                        cell0.innerHTML = calData["times"][x]["time"];
-/*                            var attClick = document.createAttribute("onclick"); // insert function call on click
+                        var cellTime = row.insertCell(0);              // make these <th> instead of standard table cells
+                        cellTime.innerHTML = calData["times"][x]["time"];
+                        var attClick = document.createAttribute("onclick"); // insert function call on click
                         attClick.value = "RoomHourGraph(" + x + ")";
-                        cell.setAttributeNode(attClick);*/
+                        cellTime.setAttributeNode(attClick);
 
                         var counter = 0;
                         for (y=0; y<calData["timeSlots"].length; y+=1){
 
                             if (calData["timeSlots"][y]["time"] == calData["times"][x]["time"]) {
 
-                                var cell = row.insertCell(counter+1);
-                                cell.innerHTML = calData["timeSlots"][y]["moduleName"];
+                                var cellTyp = row.insertCell(counter+1);
+                                cellTyp.innerHTML = calData["timeSlots"][y]["moduleName"];
 
                                 var attId = document.createAttribute("id"); // create id field
                                 attId.value = calData["timeSlots"][y]["timeModuleId"]; 
 
-/*                                    var attHover = document.createAttribute("onmouseover"); // insert function call on hover
-                                attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; */
+                                var attHover = document.createAttribute("onmouseover"); // insert function call on hover
+                                attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
 
                                 var attClick = document.createAttribute("onclick"); // insert function call on click
                                 attClick.value = "ModuleGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")";
 
-                                cell.setAttributeNode(attId);
-                                cell.setAttributeNode(attHover);
-                                cell.setAttributeNode(attClick);
+                                cellTyp.setAttributeNode(attId);
+                                cellTyp.setAttributeNode(attHover);
+                                cellTyp.setAttributeNode(attClick);
                                 counter+=1;
                             }
                         }
