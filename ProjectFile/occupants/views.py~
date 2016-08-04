@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
+from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django.utils import timezone
-from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata
+from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, PercentagePredictions
 from django.db.models import Q
 from datetime import timedelta, date
 import datetime
@@ -11,6 +11,8 @@ from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.serializers.json import DjangoJSONEncoder ## allow datetime format to serialize to json
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
+from .forms import userForm #Import user registration form
 
 
 def login(request):
@@ -20,32 +22,6 @@ def login(request):
 
 def homepage(request):
 
-    # if request.method == 'POST':
-    #
-    #     selectedRoom = request.POST.get('roomForm', False)
-    #     startTime = request.POST.get('dateForm', False)
-    #
-    #     startMonth = int(startTime[:2])
-    #     startDay = int(startTime[3:5])
-    #     startYear = int(startTime[6:])
-    #
-    #     start_time = datetime.date(startYear, startMonth, startDay)
-    #
-    #     roomObj = Rooms.objects.filter(room = selectedRoom)
-    #     roomSchedule = Timemodule.objects.filter(room = selectedRoom, datetime__range=(start_time, start_time + timedelta(days=5)))
-    #
-    #     timeList = Timemodule.objects.filter(room = selectedRoom, datetime__day= start_time.day)
-    #     cleanTime = []
-    #     for dt in timeList:
-    #         cleanTime.append(dt.datetime.time)
-    #     timeList = cleanTime
-    #
-    #     roomList = Rooms.objects.all()
-    #     moduleList = Modules.objects.all()
-    #
-    #     return render(request, 'occupants/homepage.html', {'roomSchedule': roomSchedule, 'roomObj': roomObj, 'roomList': roomList, 'timeList': timeList, 'moduleList': moduleList, 'startTime': startTime})
-    #
-    # else:
         roomList = Rooms.objects.all()
         return render(request, 'occupants/homepage.html', {'roomList': roomList})
 
@@ -59,14 +35,12 @@ def calendarGen(request):
 
         selectedRoom = request.POST.get('roomForm', False)
         startTime = request.POST.get('dateForm', False)
-
         startMonth = int(startTime[:2])
         startDay = int(startTime[3:5])
         startYear = int(startTime[6:])
         start_time = datetime.date(startYear, startMonth, startDay)
         roomObj = Rooms.objects.get(room=selectedRoom)
 ##        print('roomObj', roomObj.room)
-
         roomSchedule = Timemodule.objects.filter(room=selectedRoom,
                                                  datetime__range=(start_time, start_time + timedelta(days=5)))
         timeList = Timemodule.objects.filter(room=selectedRoom, datetime__day=start_time.day)
@@ -78,8 +52,8 @@ def calendarGen(request):
             calendarInfo["times"].append({"time": dt.datetime.time()})
 
         for ts in roomSchedule:
-            calendarInfo["timeSlots"].append({"date": ts.datetime.date(), "time": ts.datetime.time(), "moduleName": ts.module.modulename,
-                                              "timeModuleId": ts.timemoduleid})
+            calendarInfo["timeSlots"].append({"date": ts.datetime.date(), "time": ts.datetime.time(),
+                                              "moduleName": ts.module.modulename, "timeModuleId": ts.timemoduleid})
 
         return HttpResponse(json.dumps(calendarInfo, cls=DjangoJSONEncoder), content_type="application/json")
     else:
@@ -88,48 +62,8 @@ def calendarGen(request):
 
 
 
-def WiFiData(request):
-    '''old graph function no longer used'''
-
-    if request.is_ajax():
-
-        timeModuleId = request.POST['timeModuleId']
-##        print("request: ", request)
-##        print("data sent: ", timeModuleId)
-        dateTime = Timemodule.objects.get(timemoduleid = timeModuleId)
-        startTime = dateTime.datetime
-        selectedRoom = dateTime.room.room
-        
-        wifiData = Wifilogdata.objects.filter(room = selectedRoom, datetime__range=(startTime, startTime + timedelta(hours=1)))
-
-        associatedList =  []
-
-        for x in wifiData:
-##            print(x.room.capacity)
-##            print(x.datetime)
-##            print(x.associated)
-            associatedList.append(x.associated)
- 
-##        print("No of entries", len(associatedList))
-##        print("THE DATETIME", dateTime.datetime)
-##        print("THE DATETIME + 1 HOUR", dateTime.datetime + timedelta(hours=1))
-##        print("THE MODULE", dateTime.module.modulename)
-##        print("THE ROOM", dateTime.room.room)
-        
-        if len(associatedList) > 0:
-            return HttpResponse(json.dumps(associatedList), content_type="application/json")
-        else:
-            return HttpResponse("error")
-
-    else:
-    	raise Http404
-
-
-
-
-
 def GenGraph(request):
-
+    ''' function to query database for hourly graph data '''
 
     if request.is_ajax():
 
@@ -143,6 +77,7 @@ def GenGraph(request):
                                               datetime__range=(startTime, startTime + timedelta(hours=1)))
         print('WIFI DATA', wifiData)
         groundTruthObj = Groundtruth.objects.get(room=selectedRoom, datetime=startTime)
+        ## need error handling here for when no ground truth exists
         groundTruth = groundTruthObj.percentageestimate
         print('GROUND TRUTH', groundTruth)
         registered = timeModule.module.numreg
@@ -165,52 +100,46 @@ def GenGraph(request):
 
 
 def RoomDayGraph(request):
-
+    ''' function to query database for daily room graph data '''
 
     if request.is_ajax():
 
         selectedRoom = request.POST['selectedRoom']
-        print('POST', selectedRoom)
+##        print('POST', selectedRoom)
         selectedDate = request.POST['selectedDate']
-        print('POST', selectedDate)
-
+##        print('POST', selectedDate)
         selectedYear = int(selectedDate[:4])
         selectedMonth = int(selectedDate[5:7])
         selectedDay = int(selectedDate[8:])
-
-        print('DATE', selectedDay, selectedMonth, selectedYear)
-
+##        print('DATE', selectedDay, selectedMonth, selectedYear)
         selectedDateTime = date(selectedYear, selectedMonth, selectedDay)
-
-        print('DATEOBJ', selectedDateTime, '+', (selectedDateTime + timedelta(days=1)))
-
-        timeModuleList = Timemodule.objects.filter(room=selectedRoom, datetime__range=(selectedDateTime, selectedDateTime + timedelta(days=1)))
-        print('timeModuleList', timeModuleList)
-
+        timeModuleList = Timemodule.objects.filter(room=selectedRoom,
+                                                   datetime__range=(selectedDateTime,
+                                                                    selectedDateTime + timedelta(days=1)))
+        print('timeModuleList', len(timeModuleList))
+        predictionList = PercentagePredictions.objects.filter(room=selectedRoom,
+                                                              datetime__range=(selectedDateTime,
+                                                                               selectedDateTime + timedelta(days=1)))
+        print('predictionList', len(predictionList))
+        groundTruthList = Groundtruth.objects.filter(room=selectedRoom,
+                                                     datetime__range=(selectedDateTime,
+                                                                      selectedDateTime + timedelta(days=1)))
+        print('groundTruthList', len(groundTruthList))
         roomObj = Rooms.objects.get(room=selectedRoom)
-
-
-
-        selectedDate = timeModule.datetime.date
-        print('selectedDate: ', selectedDate)
-
-##        timeSlotList = TimeModule.objects.filter(room=selectedRoom, datetime.date = selectedDate)
-
-
-##        prediction, groundtruth, capacity, registered, module
-
 
         jsonFile = {"timeSlice": [], "capacity": roomObj.capacity}
 
-        for ts in timeModuleList:
-            time = ts.datetime
-            module = ts.module.modulename
-            registered = ts.module.numreg
-##            prediction =
-            jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered, 'prediction': prediction, 'groundtruth': groundtruth})
+        for i in range(0, len(timeModuleList)-1):
+            time = timeModuleList[i].datetime.time()
+            module = timeModuleList[i].module.modulename
+            registered = timeModuleList[i].module.numreg
+            prediction = predictionList[i].predictions
+            groundTruth = groundTruthList[i].percentageestimate
 
-        return HttpResponse(json.dumps(jsonFile), content_type="application/json")
+            jsonFile["timeSlice"].append({'time': time, 'module': module, 'registered': registered,
+                                          'prediction': prediction, 'groundTruth': groundTruth})
 
+        return HttpResponse(json.dumps(jsonFile, cls=DjangoJSONEncoder), content_type = "application/json")
     else:
         raise Http404
 
@@ -267,3 +196,39 @@ class DeleteGroundTruth(DeleteView):
     model = Groundtruth
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
     success_url = reverse_lazy('homepage')
+
+
+class userFormView(View):
+    form_class = userForm #blueprint for form
+    template_name = 'occupants/registration_form.html' #name of template to redirect to
+
+    def get(self, request): #If user request is GET (display empty form) call this function
+        form = self.form_class(None) #Specify what form we use
+        return render(request, self.template_name, { 'form' : form })
+
+    def post(self, request): #If user request is POST (submitting form) call this function
+        form = self.form_class(request.POST)
+
+
+        if form.is_valid():
+
+            user = form.save(commit=False) #Doesn't save user yet. Customsing form below
+
+            # standardise form inputs so they are clean and generic for our DB
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            #Changing users password
+            user.set_password(password)
+            user.save()
+
+            #returns user objects if credentials are correct
+            user = authenticate(username = username, password= password)
+
+            if user is not None: 
+
+                if user.is_active: #Checks if user hasnt been banned
+                    auth_login(request, user)
+                    return redirect('homepage')
+
+        return render(request, self.template_name, { 'form' : form })

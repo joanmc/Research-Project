@@ -25,6 +25,9 @@ def homepage(request):
         roomList = Rooms.objects.all()
         return render(request, 'occupants/homepage.html', {'roomList': roomList})
 
+def forms(request):
+    return render(request, 'occupants/forms.html')
+
 
 
 
