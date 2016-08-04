@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django.utils import timezone
-from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, PercentagePredictions
+from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, PercentagePredictions, EstimatePredictions
 from django.db.models import Q
 from datetime import timedelta, date
 import datetime
@@ -68,24 +68,36 @@ def GenGraph(request):
     if request.is_ajax():
 
         timeModuleId = request.POST['timeModuleId']
-        print('POST', timeModuleId)
+        ##print('POST', timeModuleId) ## test ajax POST data has been recieved
+
+        ## use POST data to query database and parse reutrn into required format
         timeModule = Timemodule.objects.get(timemoduleid = timeModuleId)
         startTime = timeModule.datetime
         selectedRoom = timeModule.room.room
 
         wifiData = Wifilogdata.objects.filter(room=selectedRoom,
                                               datetime__range=(startTime, startTime + timedelta(hours=1)))
-        print('WIFI DATA', wifiData)
+        ##print('WIFI DATA', len(wifiData)) ## test number of returns from query
+        predictions = EstimatePredictions.objects.get(room=selectedRoom, datetime=startTime)
+        ## need error handling here for when no ground truth exists
+        ##print('PREDICTION', len(prediction)) ## test number of returns from query
+
         groundTruthObj = Groundtruth.objects.get(room=selectedRoom, datetime=startTime)
         ## need error handling here for when no ground truth exists
-        groundTruth = groundTruthObj.percentageestimate
-        print('GROUND TRUTH', groundTruth)
-        registered = timeModule.module.numreg
-        print('REGISTERED', registered)
-        capacity = timeModule.room.capacity
-        print('CAPACITY', capacity)
 
-        jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity}
+        groundTruth = groundTruthObj.percentageestimate
+        registered = timeModule.module.numreg
+        capacity = timeModule.room.capacity
+        prediction = predictions.predictions
+
+        ## test for variables
+        ##print('GROUND TRUTH', groundTruth)
+        ##print('REGISTERED', registered)
+        ##print('CAPACITY', capacity)
+        print('PREDICTION', prediction)
+
+        jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity,
+                    "prectiction": prediction}
 
         for ts in wifiData:
             associated = ts.associated
