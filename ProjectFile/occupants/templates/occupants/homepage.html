@@ -216,17 +216,16 @@
                                 var attId = document.createAttribute("id"); // create id field
                                 attId.value = calData["timeSlots"][y]["timeModuleId"]; 
 
-                                var attHover = document.createAttribute("onmouseover"); // insert function call on hover
-                                attHover.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
+                                var attClick = document.createAttribute("onclick); // insert function call on hover
+                                attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
 
 /*                                var attClick = document.createAttribute("onclick"); // insert function call on click
                                 attClick.value = "ModuleGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")";*/
 
                                 cellTyp.setAttributeNode(attId);
-                                cellTyp.setAttributeNode(attHover);
+                                cellTyp.setAttributeNode(attClick);
                                /*cellTyp.setAttributeNode(attClick);*/
                                 counter+=1;
-                            }
                         }
                     }
                     for (var s=0; s<calData["times"].length; s+=1) {
