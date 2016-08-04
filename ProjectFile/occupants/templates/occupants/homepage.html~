@@ -1,4 +1,4 @@
-{% extends 'occupants/base.html' %}
+{% include 'occupants/base.html' %}
 {% load staticfiles %}
 {% block title %}Homepage{% endblock %}
 

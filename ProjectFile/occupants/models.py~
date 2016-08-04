@@ -46,7 +46,7 @@ class Rooms(models.Model):
         db_table = 'Rooms'
 
     def __str__(self):
-        return self.room
+	return self.room
 
 
 class Timemodule(models.Model):

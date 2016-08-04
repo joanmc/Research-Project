@@ -1,0 +1,8 @@
+{% include 'occupants/base.html' %}
+{% for field in form %}
+    <div>
+	<span>{{ field.errors }}</span>
+    </div>
+    <label>{{ field.label_tag}}</label>
+    <div> {{field}} </div>
+{% endfor%}
