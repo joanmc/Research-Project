@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
+from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django.utils import timezone
 from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata
 from django.db.models import Q
@@ -9,13 +9,13 @@ from django.template import RequestContext
 import json
 from django.views.generic import View
 from django.core.serializers.json import DjangoJSONEncoder ## allow datetime format to serialize to json
+from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
+from .forms import userForm #Import user registration form
 
 
 
 def login(request):
     return render(request, 'occupants/login.html', {})
-
-
 
 def homepage(request):
 
@@ -212,3 +212,39 @@ def RoomDayGraph(request):
 
     else:
         raise Http404
+
+
+class userFormView(View):
+    form_class = userForm #blueprint for form
+    template_name = 'occupants/registration_form.html' #name of template to redirect to
+
+    def get(self, request): #If user request is GET (display empty form) call this function
+        form = self.form_class(None) #Specify what form we use
+        return render(request, self.template_name, { 'form' : form })
+
+    def post(self, request): #If user request is POST (submitting form) call this function
+        form = self.form_class(request.POST)
+
+
+        if form.is_valid():
+
+            user = form.save(commit=False) #Doesn't save user yet. Customsing form below
+
+            # standardise form inputs so they are clean and generic for our DB
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            #Changing users password
+            user.set_password(password)
+            user.save()
+
+            #returns user objects if credentials are correct
+            user = authenticate(username = username, password= password)
+
+            if user is not None: 
+
+                if user.is_active: #Checks if user hasnt been banned
+                    auth_login(request, user)
+                    return redirect('homepage')
+
+        return render(request, self.template_name, { 'form' : form })

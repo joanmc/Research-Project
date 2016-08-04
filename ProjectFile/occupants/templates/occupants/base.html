@@ -55,12 +55,12 @@
             <div class="collapse navbar-collapse" id="mainNavBar">
                 <!--Page Options-->
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
                     <li><a href="#">Estimates</a></li>
                 </ul>
                 <!--Other Options-->
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+                  <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
                   <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
                 </ul>
             </div>

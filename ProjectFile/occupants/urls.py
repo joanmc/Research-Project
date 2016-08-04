@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^GenGraph$', views.GenGraph, name='GenGraph'),
     url(r'^WiFiData$', views.WiFiData, name='WiFiData'),
     url(r'^RoomDayGraph$', views.RoomDayGraph, name='RoomDayGraph'),
+    url(r'^register/$', views.userFormView.as_view(), name='register'),
 ]

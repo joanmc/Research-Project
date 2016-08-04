@@ -1,5 +1,7 @@
 from django import forms
 from .models import Rooms, Modules
+from django.contrib.auth.models import User
+
 
 
 class addRoom(forms.ModelForm):
@@ -16,3 +18,10 @@ class addModule(forms.ModelForm):
 		fields = ('modulename', 'numreg',)
 
 
+class userForm(forms.ModelForm):
+	password = forms.CharField(widget=forms.PasswordInput)
+
+
+	class Meta:
+		model = User
+		fields = ['username', 'email' ,'password']
