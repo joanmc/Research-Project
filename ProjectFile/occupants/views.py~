@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, render_to_response, redirect
+from django.shortcuts import render, get_object_or_404, render_to_response
 from django.utils import timezone
 from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata
 from django.db.models import Q
@@ -8,14 +8,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 import json
 from django.views.generic import View
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.serializers.json import DjangoJSONEncoder ## allow datetime format to serialize to json
-from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
-from .forms import userForm #Import user registration form
-
+from django.core.urlresolvers import reverse_lazy
 
 
 def login(request):
     return render(request, 'occupants/login.html', {})
+
+
 
 def homepage(request):
 
@@ -214,37 +215,55 @@ def RoomDayGraph(request):
         raise Http404
 
 
-class userFormView(View):
-    form_class = userForm #blueprint for form
-    template_name = 'occupants/registration_form.html' #name of template to redirect to
+class AddModule(CreateView):
+    model = Modules
+    fields = ['modulename', 'numreg']
 
-    def get(self, request): #If user request is GET (display empty form) call this function
-        form = self.form_class(None) #Specify what form we use
-        return render(request, self.template_name, { 'form' : form })
+class AddRoom(CreateView):
+    model = Rooms
+    fields = ['room', 'building', 'campus', 'capacity']
 
-    def post(self, request): #If user request is POST (submitting form) call this function
-        form = self.form_class(request.POST)
+class AddTimeModule(CreateView):
+    model = Timemodule
+    fields = ['datetime', 'room', 'module', 'timemoduleid']
+
+class AddGroundTruth(CreateView):
+    model = Groundtruth
+    fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
+
+class UpdateModule(UpdateView):
+    model = Modules
+    fields = ['modulename', 'numreg']
+
+class UpdateRoom(UpdateView):
+    model = Rooms
+    fields = ['room', 'building', 'campus', 'capacity']
+
+class UpdateTimeModule(UpdateView):
+    model = Timemodule
+    fields = ['datetime', 'room', 'module', 'timemoduleid']
+
+class UpdateGroundTruth(UpdateView):
+    model = Groundtruth
+    fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
 
 
-        if form.is_valid():
+class DeleteModule(DeleteView):
+    model = Modules
+    fields = ['modulename', 'numreg']
+    success_url = reverse_lazy('homepage')
 
-            user = form.save(commit=False) #Doesn't save user yet. Customsing form below
+class DeleteRoom(DeleteView):
+    model = Rooms
+    fields = ['room', 'building', 'campus', 'capacity']
+    success_url = reverse_lazy('homepage')
 
-            # standardise form inputs so they are clean and generic for our DB
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+class DeleteTimeModule(DeleteView):
+    model = Timemodule
+    fields = ['datetime', 'room', 'module', 'timemoduleid']
+    success_url = reverse_lazy('homepage')
 
-            #Changing users password
-            user.set_password(password)
-            user.save()
-
-            #returns user objects if credentials are correct
-            user = authenticate(username = username, password= password)
-
-            if user is not None: 
-
-                if user.is_active: #Checks if user hasnt been banned
-                    auth_login(request, user)
-                    return redirect('homepage')
-
-        return render(request, self.template_name, { 'form' : form })
+class DeleteGroundTruth(DeleteView):
+    model = Groundtruth
+    fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
+    success_url = reverse_lazy('homepage')
