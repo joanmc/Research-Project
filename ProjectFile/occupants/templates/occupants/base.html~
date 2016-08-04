@@ -55,7 +55,7 @@
                 <!--Page Options-->
                 <ul class="nav navbar-nav navbar-left">
                     <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
-                    <li class="active"><a href="{% url 'forms' %}">Timetabling</a></li>
+                    <li><a href="#">Timetabling</a></li>
                 </ul>
                 <!--Other Options-->
                 <ul class="nav navbar-nav navbar-right">
