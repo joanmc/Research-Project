@@ -195,7 +195,8 @@
                         cellDate.setAttributeNode(roomDayGraph);
 
                         counter+=1;
-                    }
+                    };
+
                     for (x=0; x<calData["times"].length; x+=1) {
 
                         var row = table.insertRow(x+1);
@@ -216,18 +217,16 @@
                                 var attId = document.createAttribute("id"); // create id field
                                 attId.value = calData["timeSlots"][y]["timeModuleId"]; 
 
-                                var attClick = document.createAttribute("onclick); // insert function call on hover
+                                var attClick = document.createAttribute("onclick"); // insert function call on hover
                                 attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
-
-/*                                var attClick = document.createAttribute("onclick"); // insert function call on click
-                                attClick.value = "ModuleGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")";*/
 
                                 cellTyp.setAttributeNode(attId);
                                 cellTyp.setAttributeNode(attClick);
-                               /*cellTyp.setAttributeNode(attClick);*/
                                 counter+=1;
+                            }
                         }
-                    }
+                    };
+                    
                     for (var s=0; s<calData["times"].length; s+=1) {
                         var time = calData["times"][s];
                         for (var i=0; i<calData["timeSlots"].length; i+=1) {
@@ -236,9 +235,13 @@
                         }
                     }
                 }
-            }   
-        })
-    }          
+            }
+       })
+    }
+                    
+                    
+                    
+       
 </script>
 
 <script>
@@ -259,15 +262,13 @@
                     //document.getElementById('graphDiv').innerHTML = "";
                     //document.getElementById('graphDiv').innerHTML = 'no data available';
                 } else {
-
                     // tests
 /*                    document.getElementById('testDiv3').innerHTML = roomDayData["capacity"];
                     document.getElementById('testDiv4').innerHTML = roomDayData["capacity"];
                     document.getElementById('testDiv5').innerHTML = roomDayData["capacity"];
-                    document.getElementById('testDiv6').innerHTML = roomDayData["capacity"];*/
-                    
+                    document.getElementById('testDiv6').innerHTML = roomDayData["capacity"];*/        
                     $(document).ready(function(){
-                                                
+                          
                         var roomCap = roomDayData["capacity"]; // set room capacity
                         var prediction = []
                         var regStudents = []
@@ -275,8 +276,7 @@
                         var modules = []
                         
                         for (var i=0; i<roomDayData["timeSlice"].length; i+=1) {
-
-                            prediction.push(Math.round(roomDayData["capacity"] * (roomDayData["timeSlice"][i]["prediction"]/100))); // set occupancy estimate list
+                            prediction.push(Math.round(roomDayData["capacity"] * (roomDayData["timeSlice"][i]["prediction"]))); // set occupancy estimate list
                             regStudents.push(Math.round(roomDayData["timeSlice"][i]["registered"]));
                             gndTruth.push(Math.round(roomDayData["capacity"] * (roomDayData["timeSlice"][i]["groundTruth"])));
                             modules.push(Math.round(roomDayData["timeSlice"][i]["module"]));
@@ -297,11 +297,6 @@
                                 label: 'Prediction',
                                 borderColor: 'blue',
                                 data: prediction
-/*                            },{
-                                label: 'Registered',
-                                fill: false,
-                                borderColor: 'green',
-                                data: regStudents*/
                             },{
                                 label: 'Ground Truth',
                                 fill: false,
