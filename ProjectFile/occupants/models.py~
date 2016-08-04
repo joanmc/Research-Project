@@ -46,7 +46,7 @@ class Rooms(models.Model):
         db_table = 'Rooms'
 
     def __str__(self):
-	return self.room
+        return self.room
 
 
 class Timemodule(models.Model):
@@ -90,6 +90,7 @@ class EstimatePredictions(models.Model):
     datetime = models.DateTimeField(db_column='DateTime', blank=True, null=True)
     room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room', blank=True, null=True) 
     predictions = models.IntegerField(db_column='Predictions', blank=True, null=True)
+    level = models.Integerfield(db_column='Level', blank=True, null= True)
     class Meta:
         db_table = 'EstimatePredictions'
 
