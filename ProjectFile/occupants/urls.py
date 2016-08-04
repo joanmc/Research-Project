@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^calendarGen$', views.calendarGen, name='calendarGen'),
     url(r'^GenGraph$', views.GenGraph, name='GenGraph'),
     url(r'^RoomDayGraph$', views.RoomDayGraph, name='RoomDayGraph'),
+    url(r'^register/$', views.userFormView.as_view(), name='register'),
 
     # Django Tutorial for Beginnners 30 Model Forms, thenewboston
     # Add records
