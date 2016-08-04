@@ -83,13 +83,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'django_setup',
 	'USER': 'root',
-	'PASSWORD': 'friday'
+	'PASSWORD': ''
     },
    'occupantsdb' : {
 	'ENGINE': 'django.db.backends.mysql',
         'NAME': 'DatabaseMain',
 	'USER': 'root',
-	'PASSWORD': 'friday'	
+	'PASSWORD': ''	
 	}
 } 
 
