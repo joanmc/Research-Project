@@ -90,6 +90,7 @@ class EstimatePredictions(models.Model):
     datetime = models.DateTimeField(db_column='DateTime', blank=True, null=True)
     room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room', blank=True, null=True) 
     predictions = models.IntegerField(db_column='Predictions', blank=True, null=True)
+    level = models.IntegerField(db_column='Level', blank=True, null= True)
     class Meta:
         db_table = 'EstimatePredictions'
 
