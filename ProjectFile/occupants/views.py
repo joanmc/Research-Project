@@ -235,6 +235,7 @@ class userFormView(View):
 
             #Changing users password
             user.set_password(password)
+            user.is_active = False #Change default. User is not active until admin grants permission
             user.save()
 
             #returns user objects if credentials are correct
