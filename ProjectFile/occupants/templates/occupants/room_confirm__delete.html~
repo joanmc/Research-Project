@@ -1,8 +1,0 @@
-<form class = "Room Form", action = "", method = "post", enctype="multipart/form-data"> 
-    {% csrf_token %}
-    {% include 'occupants/formTemplate.html' %}
-     <div>
-        <button type="submit" value = "Confirm"> Submit </button>
-     </div>
-
-</form>
