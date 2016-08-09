@@ -1,29 +1,37 @@
 {% include 'occupants/base.html' %}
-<h1>Rooms</h1>
-<ul>
-    {% for room in rooms %}
-    <li><a href="/Room/{{ room }}/"> {{ room }} </a></li>
-    {% endfor %}
-</ul>
 
-<h1>Modules</h1>
-<ul>
-    {% for module in modules %}
-    <li><a href="/occupants/{{ module }}/"> {{ module }} </a></li>
+<div class = "container">
+<h1>Rooms</h1>
+<ul class = "list-group">
+    {% for room in rooms %}
+    <li class = "list-group-item"> {{ room }}
+        <a href="/Room/{{ room }}/" ><span class ="glyphicon glyphicon-edit"></span></a>
+        <a href="/Room/delete/{{ room }}/" ><span class ="glyphicon glyphicon-trash"></span></a>
+    </li>
     {% endfor %}
 </ul>
+</div>
+
+<div class = "container">
+<h1>Modules</h1>
+<ul class = "list-group">
+    {% for module in modules %}
+    <li class = "list-group-item"> {{ module }}
+        <a href="/Module/{{ module }}/"><span class ="glyphicon glyphicon-edit"></span></a>
+        <a href="/Module/delete/{{ module }}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
 
 <h1>TImetable</h1>
-<ul>
     {% for timemodule in timemodule %}
-    <li><a href="/occupants/{{ timemodule.timemoduleid}}/"> {{ timemodule.datetime }} {{timemodule.room}} </a></li>
+    <a href="/occupants/{{ timemodule.timemoduleid}}/"> {{ timemodule.datetime }} {{timemodule.room}} </a>
     {% endfor %}
-</ul>
     
 <h1>Ground Truth</h1>
-<ul>
-    {% for groundtruth in groundtruth %}
-    <li><a href="/occupants/{{ groundtruth.groundtruthid}}/"> {{ groundtruth.datetime }} {{ groundtruth.room }} </a></li>
+{% for groundtruth in groundtruth %}
+    <a href="/occupants/{{ groundtruth.groundtruthid}}/"> {{ groundtruth.datetime }} {{ groundtruth.room }} </a>
     {% endfor %}
-</ul>
+
 

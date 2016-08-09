@@ -55,8 +55,8 @@
                 <!--Page Options-->
                 <ul class="nav navbar-nav navbar-left">
                     <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
-                    <li class="active"><a href="{% url'SelectInfo' %}">Timetabling</a></li>
-                </ul>
+                    <li class="active"><a href="{% url 'SelectInfo' %}">Timetabling</a></li>
+                </ul> 
                 <!--Other Options-->
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
@@ -71,8 +71,8 @@
       <div class="row content">
 
         <div class="col-sm-2 sidenav">
-          <p><a href="#">Link</a></p>
-          <p><a href="#">Link</a></p>
+          <!-- <p><a href="#">Link</a></p>
+          <p><a href="#">Link</a></p> -->
         </div>
 
         <div class="col-sm-8 text-left">
@@ -92,9 +92,9 @@
 
     </div>
 
-    <footer class="container-fluid text-center">
+   <!-- <footer class="container-fluid text-center">
       <p>Team Occupants</p>
-    </footer>
+    </footer> -->
 
     </body>
 </html>
