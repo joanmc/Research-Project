@@ -61,16 +61,18 @@
                         //document.getElementById('graphDiv').innerHTML = "";
                         $(document).ready(function(){
 
-                        var occNumb = []
+                        var prediction = []
                         var deviceNumb = []
                         var regStu = []
                         var roomCap = testData["capacity"]; // set room capacity
                         var gndTruthUpper = []
                         var gndTruthLower = []
-
+                        
+                        document.getElementById('testDiv2').innerHTML = testData["prediction"];
+                        
                         for (var i=0; i<testData["timeSlice"].length; i+=1) {
 
-                            occNumb.push(Math.round(testData["timeSlice"][i]["associated"]/1.27)); // set occupancy estimate list
+                            prediction.push(testData["prediction"]); // set occupancy estimate list
                             deviceNumb.push(Math.round(testData["timeSlice"][i]["associated"]));
                             regStu.push(testData["registered"]); // set registered students
 
@@ -93,9 +95,11 @@
                             labels: ["05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"],
                             datasets: [{
                                 fill: false,
-                                label: 'Strawman est.',
-                                borderColor: 'blue',
-                                data: occNumb
+                                borderWidth: 85,
+                                pointRadius: 0,
+                                /*label: 'Prediction',*/
+                                borderColor: 'rgba(102, 167, 192, 0.3)',
+                                data: prediction
                             },{
                                 label: 'Devices',
                                 fill: false,
