@@ -55,8 +55,8 @@
                 <!--Page Options-->
                 <ul class="nav navbar-nav navbar-left">
                     <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
-                    <li class="active"><a href="{% url 'SelectInfo' %}">Timetabling</a></li>
-                </ul> 
+                    <li class="active"><a href="{% url'SelectInfo' %}">Timetabling</a></li>
+                </ul>
                 <!--Other Options-->
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>

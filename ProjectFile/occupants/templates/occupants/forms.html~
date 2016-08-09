@@ -1,4 +1,4 @@
-{% include 'occupants/base.html' %}
+
 <h1>Rooms</h1>
 <ul>
     {% for room in rooms %}
@@ -26,4 +26,4 @@
     <li><a href="/occupants/{{ groundtruth.groundtruthid}}/"> {{ groundtruth.datetime }} {{ groundtruth.room }} </a></li>
     {% endfor %}
 </ul>
-
+{% include 'occupants/base.html' %}

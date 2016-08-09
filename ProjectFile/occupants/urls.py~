@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^GenGraph$', views.GenGraph, name='GenGraph'),
     url(r'^RoomDayGraph$', views.RoomDayGraph, name='RoomDayGraph'),
     url(r'^register/$', views.userFormView.as_view(), name='register'),
-    url(r'^forms/$', views.SelectInfo, name='SelectInfo'),
+   # url(r'^forms/$', views.SelectInfo, name='SelectInfo'),
 
     # Django Tutorial for Beginnners 30 Model Forms, thenewboston
     # Add records
