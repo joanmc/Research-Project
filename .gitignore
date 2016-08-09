@@ -1,0 +1,9 @@
+# ignore migrations folder
+occupants/migrations/
+ProjectFile/__pycache__
+occupants/__pycache__
+*.pyc
+ProjectFile/__pycache__/
+occupants/__pycache__/
+ProjectFile/__pycache__/*
+occupants/__pycache__/*
