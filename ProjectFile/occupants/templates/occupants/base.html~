@@ -80,14 +80,14 @@
             {% endblock %}
         </div>
 
-        <div class="col-sm-2 sidenav">
+        <!-- <div class="col-sm-2 sidenav">
           <div class="well">
             <p>Side Bar - Right</p>
           </div>
           <div class="well">
             <p>Side Bar - Right</p>
           </div>
-        </div>
+        </div> ->
       </div>
 
     </div>

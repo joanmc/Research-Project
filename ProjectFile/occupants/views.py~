@@ -159,19 +159,19 @@ def RoomDayGraph(request):
     else:
         raise Http404
 
-#def SelectInfo(request):
-#    rooms = Rooms.objects.all()
-#    modules = Modules.objects.all()
-#    timemodule = Timemodule.objects.all()
-#    groundtruth = Groundtruth.objects.all()
-#    template = loader.get_template('occupants/forms.html')
-#    context = {
-#        'rooms': rooms,
-#        'modules': modules,
-#        'timemodule':timemodule,
-#        'groundtruth':groundtruth,
-#    }
-#    return HttpResponse(template.render(context, request))
+def Rooms(request):
+    rooms = Rooms.objects.all()
+    modules = Modules.objects.all()
+    timemodule = Timemodule.objects.all()
+    groundtruth = Groundtruth.objects.all()
+    template = loader.get_template('occupants/forms.html')
+    context = {
+        'rooms': rooms,
+        'modules': modules,
+        'timemodule':timemodule,
+        'groundtruth':groundtruth,
+    }
+    return HttpResponse(template.render(context, request))
 
 
 class AddModule(CreateView):
