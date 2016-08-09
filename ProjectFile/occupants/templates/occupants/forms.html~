@@ -1,50 +1,67 @@
+
+
 {% include 'occupants/base.html' %}
-
+<!-- http://www.w3schools.com/bootstrap/bootstrap_tabs_pills.asp -->
 <div class = "container">
-<h1>Rooms <a href="/Room/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
-
-<ul class = "list-group">
-    {% for room in rooms %}
-    <li class = "list-group-item"> {{ room }}
-        <a href="/Room/{{ room }}/" ><span class ="glyphicon glyphicon-edit"></span></a>
-        <a href="/Room/delete/{{ room }}/" ><span class ="glyphicon glyphicon-trash"></span></a>
-    </li>
-    {% endfor %}
-</ul>
+        <ul class="nav nav-tabs">
+            <li class="active" ><a href="#rooms" data-toggle = "tab">Rooms</a></li>
+            <li ><a href="#modules" data-toggle = "tab">Modules</a></li>
+	    <li ><a href="#timemodule" data-toggle = "tab">Module Timetable</a></li>
+            <li ><a href="#groundtruth" data-toggle = "tab">Ground truth</a></li>
+        </ul> 
 </div>
+<div class= "tab-content clearfix">          
+	<div class = "tab-pane active" id = "rooms">
+		<div class = "container">
+			<h1><a href="/Room/add/" ><span class ="glyphicon glyphicon-plus"></span></a></h1>
+			<ul class = "list-group">
+			    {% for room in rooms %}
+			    <li class = "list-group-item"> {{ room }}
+				<a href="/Room/{{ room }}/" ><span class ="glyphicon glyphicon-edit"></span></a>
+				<a href="/Room/delete/{{ room }}/" ><span class ="glyphicon glyphicon-trash"></span></a>
+			    </li>
+			    {% endfor %}
+			</ul>
+		</div>
+	</div>
 
-<div class = "container">
-<h1>Modules <a href="/Module/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
-<ul class = "list-group">
-    {% for module in modules %}
-    <li class = "list-group-item"> {{ module }}
-        <a href="/Module/{{ module }}/"><span class ="glyphicon glyphicon-edit"></span></a>
-        <a href="/Module/delete/{{ module }}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
-    </li>
-    {% endfor %}
-</ul>
-</div>
+	<div class = "tab-pane" id = "modules">
+		<div class = "container">
+			<h1><a href="/Module/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
+			<ul class = "list-group">
+			    {% for module in modules %}
+			    <li class = "list-group-item"> {{ module }}
+				<a href="/Module/{{ module }}/"><span class ="glyphicon glyphicon-edit"></span></a>
+				<a href="/Module/delete/{{ module }}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
+			    </li>
+			    {% endfor %}
+			</ul>
+		</div>
+	</div>
 
-<div class = "container">
-<h1>Modules <a href="/Timemodule/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
-<ul class = "list-group">
-    {% for timemodule in timemodule %}
-    <li class = "list-group-item"> {{ timemodule.datetime }} {{ timemodule.room }}
-        <a href="/TimeModule/{{ timemodule.timemoduleid}}/"><span class ="glyphicon glyphicon-edit"></span></a>
-        <a href="/TimeModule/delete/{{ timemodule.timemoduleid}}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
-    </li>
-    {% endfor %}
-</ul>   
-</div>
+	<div class = "tab-pane" id = "timemodule">
+		<div class = "container">
+			<h1><a href="/Timemodule/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
+			<ul class = "list-group">
+			    {% for timemodule in timemodule %}
+			    <li class = "list-group-item"> {{ timemodule.datetime }} {{ timemodule.room }}
+				<a href="/TimeModule/{{ timemodule.timemoduleid}}/"><span class ="glyphicon glyphicon-edit"></span></a>
+				<a href="/TimeModule/delete/{{ timemodule.timemoduleid}}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
+			    </li>
+			    {% endfor %}
+			</ul> 
+		</div>  
+	</div>
 
-<div class = "container">
-<h1>Groundtruth <a href="/Groundtruth/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
-<ul class = "list-group">
-{% for groundtruth in groundtruth %}
-   <li class = "list-group-item"> {{ groundtruth.datetime }} {{ groundtruth.room }}
-        <a href="/Groundtruth/{{ groundtruth.groundtruthid}}/"><span class ="glyphicon glyphicon-edit"></span></a>
-        <a href="/Groundtruth/delete/{{ groundtruth.groundtruthid}}}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
-    </li>
-    {% endfor %}
-</ul>   
-</div>
+	<div  class = "tab-pane" id = "groundtruth">
+		<h1><a href="/Groundtruth/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
+		<ul class = "list-group">
+		{% for groundtruth in groundtruth %}
+		   <li class = "list-group-item"> {{ groundtruth.datetime }} {{ groundtruth.room }}
+			<a href="/GroundTruth/{{ groundtruth.groundtruthid}}/"><span class ="glyphicon glyphicon-edit"></span></a>
+			<a href="/GroundTruth/delete/{{ groundtruth.groundtruthid}}}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
+		    </li>
+		    {% endfor %}
+		</ul>   
+	</div>
+

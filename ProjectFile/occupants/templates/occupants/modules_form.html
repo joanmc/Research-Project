@@ -1,6 +1,7 @@
+{%extends 'occupants/base.html' %}
 <form class = "Module Form", action = "", method = "post", enctype="multipart/form-data"> 
     {% csrf_token %}
-    {% include 'occupants/formTemplate.html' %}
+    {% include 'occupants/form_template.html' %}
      <div>
         <button type="submit"> Submit </button>
      </div>

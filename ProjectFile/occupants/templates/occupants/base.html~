@@ -53,7 +53,7 @@
             <!-- Menu Items -->
             <div class="collapse navbar-collapse" id="mainNavBar">
                 <!--Page Options-->
-                <ul class="nav navbar-nav navbar-left">
+                <ul class="nav navbar-tabs navbar-left">
                     <li class="active"><a href="{% url 'homepage' %}">Home</a></li>
                     <li class="active"><a href="{% url 'SelectInfo' %}">Timetabling</a></li>
                 </ul> 
@@ -87,7 +87,7 @@
           <div class="well">
             <p>Side Bar - Right</p>
           </div>
-        </div> ->
+        </div> -->
       </div>
 
     </div>

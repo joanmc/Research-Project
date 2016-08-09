@@ -1,4 +1,4 @@
-
+{%extends 'occupants/base.html' %}
 <form class = "Room Form", action = "", method = "post", enctype="multipart/form-data"> 
     {% csrf_token %}
     {% include 'occupants/form_template.html' %}
