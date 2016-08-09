@@ -1,4 +1,4 @@
-{%extends 'occupants/base.html' %}
+{% extends 'occupants/base.html' %}
 {% block title %}Register{% endblock %}
 
 {% block body %}

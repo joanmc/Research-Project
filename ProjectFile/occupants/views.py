@@ -179,55 +179,62 @@ def SelectInfo(request):
 class AddModule(CreateView):
     model = Modules
     fields = ['modulename', 'numreg']
+    success_url = reverse_lazy('SelectInfo')
 
 class AddRoom(CreateView):
     model = Rooms
     fields = ['room', 'building', 'campus', 'capacity']
+    success_url = reverse_lazy('SelectInfo')
 
 class AddTimeModule(CreateView):
     model = Timemodule
     fields = ['datetime', 'room', 'module', 'timemoduleid']
+    success_url = reverse_lazy('SelectInfo')
 
 class AddGroundTruth(CreateView):
     model = Groundtruth
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
+    success_url = reverse_lazy('SelectInfo')
 
 class UpdateModule(UpdateView):
     model = Modules
     fields = ['modulename', 'numreg']
+    success_url = reverse_lazy('SelectInfo')
 
 class UpdateRoom(UpdateView):
     model = Rooms
     fields = ['room', 'building', 'campus', 'capacity']
+    success_url = reverse_lazy('SelectInfo')
 
 class UpdateTimeModule(UpdateView):
     model = Timemodule
     fields = ['datetime', 'room', 'module', 'timemoduleid']
+    success_url = reverse_lazy('SelectInfo')
 
 class UpdateGroundTruth(UpdateView):
     model = Groundtruth
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
-
+    success_url = reverse_lazy('SelectInfo')
 
 class DeleteModule(DeleteView):
     model = Modules
     fields = ['modulename', 'numreg']
-    success_url = reverse_lazy('homepage')
+    success_url = reverse_lazy('SelectInfo')
 
 class DeleteRoom(DeleteView):
     model = Rooms
     fields = ['room', 'building', 'campus', 'capacity']
-    success_url = reverse_lazy('homepage')
+    success_url = reverse_lazy('SelectInfo')
 
 class DeleteTimeModule(DeleteView):
     model = Timemodule
     fields = ['datetime', 'room', 'module', 'timemoduleid']
-    success_url = reverse_lazy('homepage')
+    success_url = reverse_lazy('SelectInfo')
 
 class DeleteGroundTruth(DeleteView):
     model = Groundtruth
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
-    success_url = reverse_lazy('homepage')
+    success_url = reverse_lazy('SelectInfo')
 
 
 class userFormView(View):

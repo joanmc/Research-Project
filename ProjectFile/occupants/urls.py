@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^GroundTruth/(?P<pk>[0-9]+)/$', views.UpdateGroundTruth.as_view(), name='UpdateGroundTruth'),
     # Delete records
     url(r'^Room/delete/(?P<pk>[a-zA-Z0-9\-]+)/$', views.DeleteRoom.as_view(), name='DeleteRoom'),
-    url(r'^Module/delete/(?P<pk>[a-zA-Z0-9]+)/delete$', views.DeleteModule.as_view(), name='DeleteModule'),
-    url(r'^TimeModule/delete/(?P<pk>[0-9]+)/delete$', views.DeleteTimeModule.as_view(), name='DeleteTimeModule'),
-    url(r'^GroundTruth/delete/(?P<pk>[0-9]+)/delete$', views.DeleteGroundTruth.as_view(), name='DeleteGroundTruth'),
+    url(r'^Module/delete/(?P<pk>[a-zA-Z0-9]+)/$', views.DeleteModule.as_view(), name='DeleteModule'),
+    url(r'^TimeModule/delete/(?P<pk>[0-9]+)/$', views.DeleteTimeModule.as_view(), name='DeleteTimeModule'),
+    url(r'^GroundTruth/delete/(?P<pk>[0-9]+)/$', views.DeleteGroundTruth.as_view(), name='DeleteGroundTruth'),
 ]
