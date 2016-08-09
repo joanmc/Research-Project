@@ -2,6 +2,7 @@
 
 <div class = "container">
 <h1>Rooms</h1>
+<a href="/Room/add/" ><span class ="glyphicon glyphicon-plus"></span></a>
 <ul class = "list-group">
     {% for room in rooms %}
     <li class = "list-group-item"> {{ room }}
@@ -11,6 +12,8 @@
     {% endfor %}
 </ul>
 </div>
+
+<div class = "container">
 <h1>Modules</h1>
 <ul class = "list-group">
     {% for module in modules %}
@@ -20,6 +23,8 @@
     </li>
     {% endfor %}
 </ul>
+</div>
+
 <h1>TImetable</h1>
     {% for timemodule in timemodule %}
     <a href="/occupants/{{ timemodule.timemoduleid}}/"> {{ timemodule.datetime }} {{timemodule.room}} </a>
