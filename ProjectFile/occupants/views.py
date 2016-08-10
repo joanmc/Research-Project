@@ -94,16 +94,17 @@ def GenGraph(request):
         capacity = timeModule.room.capacity
         predictionRange = predictions.predictions
 
-        prediction = (int(predictionRange[:predictionRange.index('-')])) + (((int(predictionRange[predictionRange.index('-')+1:])) - (int(predictionRange[:predictionRange.index('-')])))/2)
+        predictionUpper = int(predictionRange[predictionRange.index('-')+1:])
+        predictionLower = int(predictionRange[:predictionRange.index('-')])
 
         ## test for variables
         ##print('GROUND TRUTH', groundTruth)
         ##print('REGISTERED', registered)
         ##print('CAPACITY', capacity)
-        print('PREDICTION', prediction)
+        print('PREDICTION', predictionUpper, ':', predictionLower)
 
         jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity,
-                    "prediction": prediction}
+                    "predictionLower": predictionLower, "predictionUpper": predictionUpper}
 
         for ts in wifiData:
             associated = ts.associated

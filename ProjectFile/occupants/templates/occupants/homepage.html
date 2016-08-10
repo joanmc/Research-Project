@@ -61,10 +61,11 @@
                         //document.getElementById('graphDiv').innerHTML = "";
                         $(document).ready(function(){
 
-                        var prediction = []
+                        var roomCap = testData["capacity"]; // set room capacity
+                        var predictionUpper = []
+                        var predictionLower = []
                         var deviceNumb = []
                         var regStu = []
-                        var roomCap = testData["capacity"]; // set room capacity
                         var gndTruthUpper = []
                         var gndTruthLower = []
                         
@@ -72,7 +73,8 @@
                         
                         for (var i=0; i<testData["timeSlice"].length; i+=1) {
 
-                            prediction.push(testData["prediction"]); // set occupancy estimate list
+                            predictionUpper.push(testData["predictionUpper"]); // set occupancy estimate list
+                            predictionLower.push(testData["predictionLower"]); // set occupancy estimate list
                             deviceNumb.push(Math.round(testData["timeSlice"][i]["associated"]));
                             regStu.push(testData["registered"]); // set registered students
 
@@ -93,14 +95,38 @@
 
                         var data = {
                             labels: ["05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"],
-                            datasets: [{
+                            datasets: [{    
+                                label: 'GT Upper',
                                 fill: false,
+                                pointRadius: 0,
+                                borderDash: [10, 10],
+                                borderColor: 'rgba(102, 167, 192, 1)',
+                                data: gndTruthUpper   
+                            },{
+                                label: 'GT Lower',
+                                fill: false,
+                                pointRadius: 0,
+                                borderDash: [10, 10],
+                                borderColor: 'rgba(102, 167, 192, 1)',
+                                data: gndTruthLower 
+                            },{
+                                fill: true,
                                 borderWidth: 0,
                                 pointRadius: 0,
-                                label: 'Prediction',
-                                borderColor: 'red',
+                                /*label: 'Prediction',*/
+                                backgroundColor: 'rgba(255, 255, 255, 1)',
+                                borderColor: 'rgba(102, 167, 192, 0.2)',
 /*                                borderColor: 'rgba(102, 167, 192, 0.3)',*/
-                                data: prediction
+                                data: predictionLower
+                            },{
+                                fill: true,
+                                borderWidth: 0,
+                                pointRadius: 0,
+                                backgroundColor: 'rgba(102, 167, 192, 0.2)',
+                                label: 'Prediction',
+                                borderColor: 'rgba(102, 167, 192, 0.2)',
+/*                                borderColor: 'rgba(102, 167, 192, 0.3)',*/
+                                data: predictionUpper
                             },{
                                 label: 'Devices',
                                 fill: false,
@@ -111,31 +137,29 @@
                                 fill: false,
                                 pointRadius: 0,
                                 borderColor: 'green',
-                                data: regStu   
-                            },{
-                                label: 'GT Upper',
-                                fill: false,
-                                pointRadius: 0,
-                                borderDash: [10, 10],
-                                borderColor: 'rgba(102, 167, 192, 1)',
-                                data: gndTruthUpper   
-                            },{
-                                label: 'GT Lower',
-                                fill: false,
-                                backgroundColor: 'rgba(255, 255, 255, 1)',
-                                pointRadius: 0,
-                                borderDash: [10, 10],
-                                borderColor: 'rgba(102, 167, 192, 1)',
-                                data: gndTruthLower  
+                                data: regStu     
                             }]
                         };
 
                         var options = {
                             scales: {
+                                gridLines: {
+                                    display:false
+                                },
                                 yAxes: [{
+                                    gridLines: {
+                                            display:false
+                                        },
                                     ticks: {
                                         min: 0,
                                         max: roomCap
+                                    }
+                                }],
+                                xAxes: [{
+                                    gridLines: {
+                                            display:false
+                                        },
+                                    ticks: {
                                     }
                                 }]
                             }
