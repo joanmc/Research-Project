@@ -38,7 +38,7 @@
     <div class="centered" id="testDiv3">test3</div>
     <div class="centered" id="testDiv4">test4</div>
     <div class="centered" id="testDiv5">test5</div>
-    <div class="centered" id="testList">testList</div>
+    <div class="centered" id="graphDiv">testList</div>
 
     </div>
 
@@ -95,10 +95,11 @@
                             labels: ["05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"],
                             datasets: [{
                                 fill: false,
-                                borderWidth: 85,
+                                borderWidth: 0,
                                 pointRadius: 0,
-                                /*label: 'Prediction',*/
-                                borderColor: 'rgba(102, 167, 192, 0.3)',
+                                label: 'Prediction',
+                                borderColor: 'red',
+/*                                borderColor: 'rgba(102, 167, 192, 0.3)',*/
                                 data: prediction
                             },{
                                 label: 'Devices',
@@ -116,14 +117,15 @@
                                 fill: false,
                                 pointRadius: 0,
                                 borderDash: [10, 10],
-                                borderColor: 'black',
+                                borderColor: 'rgba(102, 167, 192, 1)',
                                 data: gndTruthUpper   
                             },{
                                 label: 'GT Lower',
                                 fill: false,
+                                backgroundColor: 'rgba(255, 255, 255, 1)',
                                 pointRadius: 0,
                                 borderDash: [10, 10],
-                                borderColor: 'black',
+                                borderColor: 'rgba(102, 167, 192, 1)',
                                 data: gndTruthLower  
                             }]
                         };
@@ -151,6 +153,103 @@
         }) 
     };
 </script>
+
+
+
+
+<!--
+        function GenGraph(x) {
+            var timeModuleId = x;
+            $.ajax({
+                method: "POST",
+                data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/GenGraph",
+                success: function(result) {
+                    var graphData = result;
+                    
+                    if (graphData == 'error') {
+                        /*document.getElementById('graphDiv').innerHTML = "";*/
+                    } else {
+                        /*document.getElementById('graphDiv').innerHTML = "";*/
+                        
+                        // create graph with various options
+                        $(document).ready(function(){
+                            
+                            var avgDevices = [];
+                            var sum = 0;
+                            for (var i=0; i<graphData.length; i+=1) {
+                                sum = sum + graphData[i];
+                            }
+                            var average = sum / graphData.length;
+                            for (var i=0; i<graphData.length; i+=1) {
+                                avgDevices.push(average);
+                            }
+                            
+                            
+                            var adjAvgDevices = [];
+                            var sum = 0;
+                            for (var i=2; i<graphData.length-2; i+=1) {
+                                sum = sum + graphData[i];
+                            }
+                            var average = sum / (graphData.length -4);
+                            for (var i=0; i<graphData.length; i+=1) {
+                                adjAvgDevices.push(average);
+                            }
+                            
+                            
+                            
+                            
+                            var plot1 = $.jqplot ('graphDiv', [graphData, avgDevices, adjAvgDevices], 
+                                                  {title: 'Devices', 
+                                                   axesDefaults: {
+                                                       labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                                                   }, 
+                                                   seriesDefaults:{
+                                                       rendererOptions:{
+                                                           smooth: true
+                                                       }
+                                                   },
+                                                   series:[
+                                                       {
+                                                        color: 'blue',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:1}
+                                                       },
+                                                       {
+                                                        color: 'green',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}
+                                                       },
+                                                       {
+                                                        color: 'red',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}   
+                                                       }
+                                                   ],
+                                                   axes: { 
+                                                       xaxis: {
+                                                           label: 'time', 
+                                                           pad: 0
+                                                       }, 
+                                                       yaxis:{
+                                                           label: 'devices',
+                                                           pad: 0,
+                                                           //min: 0,
+                                                           //max: 250
+                                                       }
+                                                   }});
+                        });
+                    }
+                }
+            });
+        };           
+-->
+
+
+
+
+
+
 
 <script>
 
