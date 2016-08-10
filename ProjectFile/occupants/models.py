@@ -65,7 +65,6 @@ class Wifilogdata(models.Model):
     associated = models.IntegerField(db_column='Associated', blank=True, null=True)  # Field name made lowercase.
     authenticated = models.IntegerField(db_column='Authenticated', blank=True, null=True)  # Field name made lowercase.
     wifilogdataid = models.AutoField(db_column='WiFiLogDataId', primary_key=True)  # Field name made lowercase.
-    wififiles = models.FileField()
 
     class Meta:
         db_table = 'WiFiLogData'
