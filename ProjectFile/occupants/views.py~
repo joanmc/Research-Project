@@ -14,6 +14,7 @@ from django.core.serializers.json import DjangoJSONEncoder ## allow datetime for
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
 from .forms import userForm #Import user registration form
+from chartit import DataPool, Chart
 
 
 def login(request):
@@ -25,11 +26,6 @@ def homepage(request):
 
         roomList = Rooms.objects.all()
         return render(request, 'occupants/homepage.html', {'roomList': roomList})
-
-def forms(request):
-    return render(request, 'occupants/forms.html')
-
-
 
 
 def calendarGen(request):
@@ -94,16 +90,17 @@ def GenGraph(request):
         capacity = timeModule.room.capacity
         predictionRange = predictions.predictions
 
-        prediction = (int(predictionRange[:predictionRange.index('-')])) + (((int(predictionRange[predictionRange.index('-')+1:])) - (int(predictionRange[:predictionRange.index('-')])))/2)
+        predictionUpper = int(predictionRange[predictionRange.index('-')+1:])
+        predictionLower = int(predictionRange[:predictionRange.index('-')])
 
         ## test for variables
         ##print('GROUND TRUTH', groundTruth)
         ##print('REGISTERED', registered)
         ##print('CAPACITY', capacity)
-        print('PREDICTION', prediction)
+        print('PREDICTION', predictionUpper, ':', predictionLower)
 
         jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity,
-                    "prediction": prediction}
+                    "predictionLower": predictionLower, "predictionUpper": predictionUpper}
 
         for ts in wifiData:
             associated = ts.associated
@@ -161,6 +158,16 @@ def RoomDayGraph(request):
     else:
         raise Http404
 
+def Stats(request):
+    roomsList = Rooms.objects.all()
+    rooms = []
+    for room in roomsList:
+	rooms.append(room)
+    
+    return render(request, 'occupants/Stats.html', {'rooms': rooms})
+
+
+
 def SelectInfo(request):
     rooms = Rooms.objects.all()
     modules = Modules.objects.all()
@@ -199,7 +206,7 @@ class AddGroundTruth(CreateView):
 class UpdateModule(UpdateView):
     model = Modules
     fields = ['modulename', 'numreg']
-
+    success_url = reverse_lazy('SelectInfo')
 
 class UpdateRoom(UpdateView):
     model = Rooms

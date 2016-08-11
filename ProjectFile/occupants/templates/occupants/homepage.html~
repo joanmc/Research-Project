@@ -1,0 +1,477 @@
+{% extends 'occupants/base.html' %}
+{% load staticfiles %}
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+    <div class="centered" style="max-width: 1200px">
+       <form action="" method="POST">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
+            <select id="roomPicker" name="roomForm"> <!--submit on change-->
+                <option value="" selected></option>
+                {% for room in roomList %} <!--automatically generate the form options from roomList-->
+                <option value="{{ room.room }}">{{ room.room }}</option>
+            {% endfor %}
+            </select>
+            <input id="datePicker" name="dateForm"/>
+           <button type="button" onclick="GenCalendar()">Submit</button> 
+        </form>
+
+        <h3 id="title"></h3><br>
+
+        <div class="table table-inverse" id="tableDiv" style="Display: block">
+<!--            <table id="calTable">
+            </table>-->
+        </div>
+
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+
+<!--        <div class="centered"> 
+            <div id="graphDiv" style="float:left; width:50%;"></div> 
+        </div>-->
+
+<!--        <button type="button" onclick="GenCalendar(3)">Click Me!</button>-->
+    <div class="centered" id="testDiv">test</div>
+    <div class="centered" id="testDiv1">test1</div>
+
+    <div class="centered" id="testDiv2">test2</div>
+    <div class="centered" id="testDiv3">test3</div>
+    <div class="centered" id="testDiv4">test4</div>
+    <div class="centered" id="testDiv5">test5</div>
+    <div class="centered" id="graphDiv">testList</div>
+
+    </div>
+
+
+<script>
+    function GenGraph(y) {
+        // function to generate the graph with chart.js
+
+        var timeModuleId = y;
+            $.ajax({ // make ajax request to views file
+                method: "POST",
+                data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/GenGraph",
+
+                success: function(result) {
+                    var testData = result; // set result to variable
+                    if (testData == 'error') {
+                        //document.getElementById('graphDiv').innerHTML = "";
+                    } else {
+                        //document.getElementById('graphDiv').innerHTML = "";
+                        $(document).ready(function(){
+
+                        var roomCap = testData["capacity"]; // set room capacity
+                        var predictionUpper = []
+                        var predictionLower = []
+                        var deviceNumb = []
+                        var regStu = []
+                        var gndTruthUpper = []
+                        var gndTruthLower = []
+                        
+                        document.getElementById('testDiv2').innerHTML = testData["prediction"];
+                        
+                        for (var i=0; i<testData["timeSlice"].length; i+=1) {
+
+                            predictionUpper.push(testData["predictionUpper"]); // set occupancy estimate list
+                            predictionLower.push(testData["predictionLower"]); // set occupancy estimate list
+                            deviceNumb.push(Math.round(testData["timeSlice"][i]["associated"]));
+                            regStu.push(testData["registered"]); // set registered students
+
+                            if (testData["groundTruth"] > 0) {// set ground truth uper and lower range
+                                gndTruthUpper.push(Math.round(testData["capacity"] * (testData["groundTruth"] + 0.125)));
+                                gndTruthLower.push(Math.round(testData["capacity"] * (testData["groundTruth"] - 0.125)));
+                            } else {
+                                gndTruthUpper.push(0);
+                                gndTruthLower.push(0);
+                            }
+                        }  
+                        var adjAverage = 0;
+                        var sum = 0;
+                        for (var i=2; i<testData["timeSlice"].length-2; i+=1) {// set adjusted average
+                            sum = sum + (testData["timeSlice"][i]["associated"]);
+                        }
+                        adjAverage = sum / (testData["timeSlice"].length -4);
+
+                        var data = {
+                            labels: ["05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"],
+                            datasets: [{    
+                                label: 'GT Upper',
+                                fill: false,
+                                pointRadius: 0,
+                                borderDash: [10, 10],
+                                borderColor: 'rgba(102, 167, 192, 1)',
+                                data: gndTruthUpper   
+                            },{
+                                label: 'GT Lower',
+                                fill: false,
+                                pointRadius: 0,
+                                borderDash: [10, 10],
+                                borderColor: 'rgba(102, 167, 192, 1)',
+                                data: gndTruthLower 
+                            },{
+                                fill: true,
+                                borderWidth: 0,
+                                pointRadius: 0,
+                                /*label: 'Prediction',*/
+                                backgroundColor: 'rgba(255, 255, 255, 1)',
+                                borderColor: 'rgba(102, 167, 192, 0.2)',
+/*                                borderColor: 'rgba(102, 167, 192, 0.3)',*/
+                                data: predictionLower
+                            },{
+                                fill: true,
+                                borderWidth: 0,
+                                pointRadius: 0,
+                                backgroundColor: 'rgba(102, 167, 192, 0.2)',
+                                label: 'Prediction',
+                                borderColor: 'rgba(102, 167, 192, 0.2)',
+/*                                borderColor: 'rgba(102, 167, 192, 0.3)',*/
+                                data: predictionUpper
+                            },{
+                                label: 'Devices',
+                                fill: false,
+                                borderColor: 'yellow',
+                                data: deviceNumb  
+                            },{
+                                label: 'Registered',
+                                fill: false,
+                                pointRadius: 0,
+                                borderColor: 'green',
+                                data: regStu     
+                            }]
+                        };
+
+                        var options = {
+                            scales: {
+                                gridLines: {
+                                    display:false
+                                },
+                                yAxes: [{
+                                    gridLines: {
+                                            display:false
+                                        },
+                                    ticks: {
+                                        min: 0,
+                                        max: roomCap
+                                    }
+                                }],
+                                xAxes: [{
+                                    gridLines: {
+                                            display:false
+                                        },
+                                    ticks: {
+                                    }
+                                }]
+                            }
+                        };
+
+                        var ctx = document.getElementById("myChart").getContext("2d");
+                        var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: data,
+                            options: options
+                        });     
+                    });    
+                }
+            }
+        }) 
+    };
+</script>
+
+
+
+
+<!--
+        function GenGraph(x) {
+            var timeModuleId = x;
+            $.ajax({
+                method: "POST",
+                data: {'timeModuleId': timeModuleId, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+                url: "/GenGraph",
+                success: function(result) {
+                    var graphData = result;
+                    
+                    if (graphData == 'error') {
+                        /*document.getElementById('graphDiv').innerHTML = "";*/
+                    } else {
+                        /*document.getElementById('graphDiv').innerHTML = "";*/
+                        
+                        // create graph with various options
+                        $(document).ready(function(){
+                            
+                            var avgDevices = [];
+                            var sum = 0;
+                            for (var i=0; i<graphData.length; i+=1) {
+                                sum = sum + graphData[i];
+                            }
+                            var average = sum / graphData.length;
+                            for (var i=0; i<graphData.length; i+=1) {
+                                avgDevices.push(average);
+                            }
+                            
+                            
+                            var adjAvgDevices = [];
+                            var sum = 0;
+                            for (var i=2; i<graphData.length-2; i+=1) {
+                                sum = sum + graphData[i];
+                            }
+                            var average = sum / (graphData.length -4);
+                            for (var i=0; i<graphData.length; i+=1) {
+                                adjAvgDevices.push(average);
+                            }
+                            
+                            
+                            
+                            
+                            var plot1 = $.jqplot ('graphDiv', [graphData, avgDevices, adjAvgDevices], 
+                                                  {title: 'Devices', 
+                                                   axesDefaults: {
+                                                       labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+                                                   }, 
+                                                   seriesDefaults:{
+                                                       rendererOptions:{
+                                                           smooth: true
+                                                       }
+                                                   },
+                                                   series:[
+                                                       {
+                                                        color: 'blue',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:1}
+                                                       },
+                                                       {
+                                                        color: 'green',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}
+                                                       },
+                                                       {
+                                                        color: 'red',
+                                                        lineWidth:1,
+                                                        markerOptions: { style:"circle", size:0.1}   
+                                                       }
+                                                   ],
+                                                   axes: { 
+                                                       xaxis: {
+                                                           label: 'time', 
+                                                           pad: 0
+                                                       }, 
+                                                       yaxis:{
+                                                           label: 'devices',
+                                                           pad: 0,
+                                                           //min: 0,
+                                                           //max: 250
+                                                       }
+                                                   }});
+                        });
+                    }
+                }
+            });
+        };           
+-->
+
+
+
+
+
+
+
+<script>
+
+    function GenCalendar() {
+        // function to generate the claendar
+
+        var roomForm = document.getElementById("roomPicker").value;
+        var dateForm = document.getElementById("datePicker").value;
+        $.ajax({
+            method: "POST",
+            data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+            url: "/calendarGen",
+
+            success: function(result) {
+
+                var calData = result;
+
+                if (calData == 'error') {
+                    document.getElementById('tableDiv').innerHTML = "";
+                    document.getElementById('tableDiv').innerHTML = 'no data available';
+                } else {
+                    document.getElementById('title').innerhtml = ""; // clear old title
+                    document.getElementById('title').innerHTML = calData["room"]["roomName"] + ", " + calData["room"]["building"] + ", " + calData["room"]["campus"] + ", Capacity: " + calData["room"]["capacity"]; // create new title
+
+                    $("#calTable").remove(); // clear old table from div
+                    var tableDiv = document.getElementById('tableDiv');
+                    var x = document.createElement("TABLE");
+                    x.setAttribute("id", "calTable");
+                    tableDiv.appendChild(x);
+
+                    var table = document.getElementById("calTable");
+                    var row = table.insertRow(0);
+                    var cell = row.insertCell(0); // make these <th> instead of standard table cells
+                    cell.innerHTML = "";
+                    var counter=1;
+                    document.getElementById('testDiv1').innerHTML = calData["timeSlots"].length;
+
+                    for (z=0; z<calData["timeSlots"].length; z+=9) {
+
+                        cellDate = row.insertCell(counter); // make these <th> instead of standard table cells
+                        var dateVar = calData["timeSlots"][z]["date"];
+                        cellDate.innerHTML = dateVar;
+
+                        var roomDayGraph = document.createAttribute("onclick"); // insert function call on click
+                        roomDayGraph.value = "RoomDayGraph('" + dateVar + "')";
+                        cellDate.setAttributeNode(roomDayGraph);
+
+                        counter+=1;
+                    };
+
+                    for (x=0; x<calData["times"].length; x+=1) {
+
+                        var row = table.insertRow(x+1);
+                        var cellTime = row.insertCell(0);              // make these <th> instead of standard table cells
+                        cellTime.innerHTML = calData["times"][x]["time"];
+                        var attClick = document.createAttribute("onclick"); // insert function call on click
+                        attClick.value = "RoomHourGraph(" + x + ")";
+                        cellTime.setAttributeNode(attClick);
+
+                        var counter = 0;
+                        for (y=0; y<calData["timeSlots"].length; y+=1){
+
+                            if (calData["timeSlots"][y]["time"] == calData["times"][x]["time"]) {
+
+                                var cellTyp = row.insertCell(counter+1);
+                                cellTyp.innerHTML = calData["timeSlots"][y]["moduleName"];
+
+                                var attId = document.createAttribute("id"); // create id field
+                                attId.value = calData["timeSlots"][y]["timeModuleId"]; 
+
+                                var attClick = document.createAttribute("onclick"); // insert function call on hover
+                                attClick.value = "GenGraph(" + calData["timeSlots"][y]["timeModuleId"] + ")"; 
+
+                                cellTyp.setAttributeNode(attId);
+                                cellTyp.setAttributeNode(attClick);
+                                counter+=1;
+                            }
+                        }
+                    };
+                    
+                    for (var s=0; s<calData["times"].length; s+=1) {
+                        var time = calData["times"][s];
+                        for (var i=0; i<calData["timeSlots"].length; i+=1) {
+                            calData["timeSlots"][i]["moduleName"];
+                            calData["timeSlots"][i]["timeModuleId"];
+                        }
+                    }
+                }
+            }
+       })
+    }
+                    
+                    
+                    
+       
+</script>
+
+<script>
+    function RoomDayGraph(x) {
+
+        selectedDate = x;
+        selectedRoom = document.getElementById("roomPicker").value;
+        $.ajax({
+            method: "POST",
+            data: {'selectedRoom': selectedRoom, 'selectedDate': selectedDate, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+            url: "/RoomDayGraph",
+
+            success: function(result) {
+
+                var roomDayData = result;
+
+                if (roomDayData == 'error') {
+                    //document.getElementById('graphDiv').innerHTML = "";
+                    //document.getElementById('graphDiv').innerHTML = 'no data available';
+                } else {
+                    // tests
+/*                    document.getElementById('testDiv3').innerHTML = roomDayData["capacity"];
+                    document.getElementById('testDiv4').innerHTML = roomDayData["capacity"];
+                    document.getElementById('testDiv5').innerHTML = roomDayData["capacity"];
+                    document.getElementById('testDiv6').innerHTML = roomDayData["capacity"];*/        
+                    $(document).ready(function(){
+                          
+                        var roomCap = roomDayData["capacity"]; // set room capacity
+                        var prediction = []
+                        var regStudents = []
+                        var gndTruth = []
+                        var modules = []
+                        
+                        for (var i=0; i<roomDayData["timeSlice"].length; i+=1) {
+                            prediction.push(Math.round(roomDayData["capacity"] * (roomDayData["timeSlice"][i]["prediction"]))); // set occupancy estimate list
+                            regStudents.push(Math.round(roomDayData["timeSlice"][i]["registered"]));
+                            gndTruth.push(Math.round(roomDayData["capacity"] * (roomDayData["timeSlice"][i]["groundTruth"])));
+                            modules.push(Math.round(roomDayData["timeSlice"][i]["module"]));
+                            
+/*                            if (roomDayData["timeSlice"][i]["groundTruth"] > 0) {// set ground truth uper and lower range
+                                gndTruthUpper.push(Math.round(testData["capacity"] * (testData["groundTruth"] + 0.125)));
+                                gndTruthLower.push(Math.round(testData["capacity"] * (testData["groundTruth"] - 0.125)));
+                            } else {
+                                gndTruthUpper.push(0);
+                                gndTruthLower.push(0);
+                            }*/
+                        }  
+
+                        var data = {
+                            labels: modules,
+                            datasets: [{
+                                fill: false,
+                                label: 'Prediction',
+                                borderColor: 'blue',
+                                data: prediction
+                            },{
+                                label: 'Ground Truth',
+                                fill: false,
+                                borderColor: 'yellow',
+                                data: gndTruth  
+                            }]
+                        };
+
+                        var options = {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        min: 0,
+                                        max: roomCap
+                                    }
+                                }]
+                            }
+                        };
+
+                        var ctx = document.getElementById("myChart").getContext("2d");
+                        var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: data,
+                            options: options
+                        });     
+                    }); 
+                }
+            }
+        })
+    }
+</script>
+
+<script>
+    function RoomHourGraph(x) {
+
+    }
+</script>
+
+<script>
+    function ModuleGraph(x) {
+
+    }
+</script>
+
+<script>
+    $(document).ready(function() {
+        $("#datepicker").datepicker();
+    });
+</script>
+
+{% endblock %}
