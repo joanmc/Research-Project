@@ -1,0 +1,70 @@
+{% include  "occupants/base.html" %}
+<!-- http://www.w3schools.com/googleapi/tryit.asp?filename=tryhtml_map_overlays_animate-->
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<script
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCY9N7RNIV9BxiUZXgXtTp4-wLoMUVAgaU">
+</script>
+
+<div class="container-fluid text-center">
+      <div class="row content">
+
+        <div class="col-sm-2 sidenav">
+	  <h1 class  = "h1">Welcome</h1>
+	
+		<p> {{rooms}}</p>
+	
+
+        </div>
+
+        <div class="col-sm-8 text-left">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <div class="col-sm-2 sidenav">
+          <div class="well">
+           <h3 class = "h3">Help us develop our system!</h3>
+          <p><a href="https://docs.google.com/a/ucdconnect.ie/forms/d/e/1FAIpQLSepYj5I2pHiR3xu_iC4PCjKCm18MczupP6mlfvK9TUvT9ePbQ/viewform?c=0&w=1">Take part in our survey </a></p>
+          </div>
+          <div class="well">
+	    <h3 class = "h3">Administration </h3>
+            <p> This site allows lecturers/administrators add rooms information, module information, timetabling information and ground truth data to our model. If you would like to request access to 		these features, please hit 'sign up'.</p>
+          </div>
+        </div> 
+      </div>
+
+<script>
+var myCenter=new google.maps.LatLng(53.308076 ,-6.225042);
+var marker;
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:17,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker=new google.maps.Marker({
+  position:myCenter,
+  animation:google.maps.Animation.BOUNCE
+  });
+
+marker.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+<h2 class = "h2" > Need to know where you are? Check the map below! <h2>
+<div id="googleMap" style="width:100%;;height:500px; "></div>
+</body>
+</html>
+

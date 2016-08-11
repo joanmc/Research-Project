@@ -14,6 +14,7 @@ from django.core.serializers.json import DjangoJSONEncoder ## allow datetime for
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
 from .forms import userForm #Import user registration form
+from chartit import DataPool, Chart
 
 
 def login(request):
@@ -25,11 +26,6 @@ def homepage(request):
 
         roomList = Rooms.objects.all()
         return render(request, 'occupants/homepage.html', {'roomList': roomList})
-
-def forms(request):
-    return render(request, 'occupants/forms.html')
-
-
 
 
 def calendarGen(request):
@@ -161,6 +157,16 @@ def RoomDayGraph(request):
         return HttpResponse(json.dumps(jsonFile, cls=DjangoJSONEncoder), content_type = "application/json")
     else:
         raise Http404
+
+def Stats(request):
+    roomsList = Rooms.objects.all()
+    rooms = []
+    for room in roomsList:
+        rooms.append(room)
+    
+    return render(request, 'occupants/Stats.html', {'rooms': rooms})
+
+
 
 def SelectInfo(request):
     rooms = Rooms.objects.all()
