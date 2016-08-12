@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from . import views
-
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
 
@@ -29,4 +29,16 @@ urlpatterns = [
     url(r'^Module/delete/(?P<pk>[a-zA-Z0-9]+)/$', views.DeleteModule.as_view(), name='DeleteModule'),
     url(r'^TimeModule/delete/(?P<pk>[0-9]+)/$', views.DeleteTimeModule.as_view(), name='DeleteTimeModule'),
     url(r'^GroundTruth/delete/(?P<pk>[0-9]+)/$', views.DeleteGroundTruth.as_view(), name='DeleteGroundTruth'),
+
+    # API 
+    url(r'^RoomList/$', views.RoomList.as_view()),
+    url(r'^ModuleList/$', views.ModuleList.as_view()),
+    url(r'^GroundtruthList/$', views.GroundtruthList.as_view()),
+    url(r'^TimemoduleList/$', views.TimemoduleList.as_view()),
+    url(r'^BinaryPredictionsList/$', views.BinaryPredictionsList.as_view()),
+    url(r'^PercentagePredictionsList/$', views.PercentagePredictionsList.as_view()),
+    url(r'^EstimatePredictionsList/$', views.EstimatePredictionsList.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
+
