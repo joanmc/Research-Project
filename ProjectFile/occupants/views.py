@@ -7,6 +7,7 @@ from datetime import timedelta, date
 import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
+from django.http import Http404
 import json
 from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
