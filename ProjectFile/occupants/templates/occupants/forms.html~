@@ -1,4 +1,4 @@
-{% include 'occupants/base.html' %}
+{% extends 'occupants/base.html' %}
 <!-- http://www.w3schools.com/bootstrap/bootstrap_tabs_pills.asp -->
 <!-- http://codepen.io/wizly/pen/BIKxo/ -->
 <div class = "container">
