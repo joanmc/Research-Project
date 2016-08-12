@@ -17,55 +17,6 @@ from django.contrib.auth import login as auth_login, authenticate #authenticates
 from .forms import userForm #Import user registration form
 from chartit import DataPool, Chart
 
-from django.shortcuts import get_object_or_404
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .serializers import SerializerRooms, SerializerModules, SerializerGroundtruth, SerializerTimemodule, SerializerBinaryPredictions, SerializerPercentagePredictions, SerializerEstimatePredictions
-
-
-class RoomList(APIView):
-    def get(self, request):
-         rooms = Rooms.objects.all()
-         serializer = SerializerRooms(rooms, many = True)
-         return Response(serializer.data)
-
-class ModuleList(APIView):
-    def get(self, request):
-         modules = Modules.objects.all()
-         serializer = SerializerModules(modules, many = True)
-         return Response(serializer.data)
-
-class  GroundtruthList(APIView):
-    def get(self, request):
-         groundtruth =  Groundtruth.objects.all()
-         serializer = SerializerGroundtruth(groundtruth, many = True)
-         return Response(serializer.data)
-
-class TimemoduleList(APIView):
-    def get(self, request):
-         timemodule = Timemodule.objects.all()
-         serializer = SerializerTimemodule(timemodule, many = True)
-         return Response(serializer.data)
-
-class BinaryPredictionsList(APIView):
-    def get(self, request):
-         binarypredictions = BinaryPredictions.objects.all()
-         serializer = SerializerBinaryPredictions( binarypredictions, many = True)
-         return Response(serializer.data)
-
-class  PercentagePredictionsList(APIView):
-    def get(self, request):
-         percentagepredictions=  PercentagePredictions.objects.all()
-         serializer = SerializerPercentagePredictions(percentagepredictions, many = True)
-         return Response(serializer.data)
-
-class EstimatePredictionsList(APIView):
-    def get(self, request):
-         estimatepredictions = EstimatePredictions.objects.all()
-         serializer = SerializerEstimatePredictions(estimatepredictions, many = True)
-         return Response(serializer.data)
-
 
 def login(request):
     return render(request, 'occupants/login.html', {})
@@ -118,16 +69,10 @@ def GenGraph(request):
     if request.is_ajax():
 
         timeModuleId = request.POST['timeModuleId']
-        print('POST', timeModuleId) ## test ajax POST data has been recieved
+        ##print('POST', timeModuleId) ## test ajax POST data has been recieved
 
         ## use POST data to query database and parse reutrn into required format
-        # timeModule = Timemodule.objects.get(timemoduleid = timeModuleId)
-        testReturn = Rooms.objects.all()
-        print(testReturn)
-        #timeModule = Timemodule.objects.get(timemoduleid=timeModuleId)
-        timeModule = Timemodule.objects.get(timemoduleid=326)
-        print('XXXXXXXX')
-        '''
+        timeModule = Timemodule.objects.get(timemoduleid = timeModuleId)
         startTime = timeModule.datetime
         selectedRoom = timeModule.room.room
 
@@ -161,8 +106,7 @@ def GenGraph(request):
         for ts in wifiData:
             associated = ts.associated
             jsonFile["timeSlice"].append({'associated': associated})
-        '''
-        jsonFile = {"test": "working"}
+
         return HttpResponse(json.dumps(jsonFile), content_type="application/json")
 
     else:
