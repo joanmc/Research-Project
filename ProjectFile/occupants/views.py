@@ -14,6 +14,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.serializers.json import DjangoJSONEncoder ## allow datetime format to serialize to json
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
+from django.contrib.auth.decorators import login_required
 from .forms import userForm #Import user registration form
 #from chartit import DataPool, Chart
 
@@ -22,6 +23,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import SerializerRooms, SerializerModules, SerializerGroundtruth, SerializerTimemodule, SerializerBinaryPredictions, SerializerPercentagePredictions, SerializerEstimatePredictions
+
 
 
 class RoomList(APIView):
@@ -69,8 +71,6 @@ class EstimatePredictionsList(APIView):
 
 def login(request):
     return render(request, 'occupants/login.html', {})
-
-
 
 def homepage(request):
 
@@ -224,7 +224,7 @@ def Stats(request):
     return render(request, 'occupants/Stats.html', {'rooms': rooms})
 
 
-
+@login_required(login_url='/login/') 
 def SelectInfo(request):
     rooms = Rooms.objects.all()
     modules = Modules.objects.all()
@@ -238,7 +238,6 @@ def SelectInfo(request):
         'groundtruth':groundtruth,
     }
     return HttpResponse(template.render(context, request))
-
 
 class AddModule(CreateView):
     model = Modules
@@ -254,22 +253,22 @@ class AddTimeModule(CreateView):
     model = Timemodule
     fields = ['datetime', 'room', 'module', 'timemoduleid']
     success_url = reverse_lazy('SelectInfo')
-
+ 
 class AddGroundTruth(CreateView):
     model = Groundtruth
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
     success_url = reverse_lazy('SelectInfo')
-
+ 
 class UpdateModule(UpdateView):
     model = Modules
     fields = ['modulename', 'numreg']
     success_url = reverse_lazy('SelectInfo')
-
+ 
 class UpdateRoom(UpdateView):
     model = Rooms
     fields = ['room', 'building', 'campus', 'capacity']
     success_url = reverse_lazy('SelectInfo')
-
+ 
 class UpdateTimeModule(UpdateView):
     model = Timemodule
     fields = ['datetime', 'room', 'module', 'timemoduleid']
@@ -284,7 +283,7 @@ class DeleteModule(DeleteView):
     model = Modules
     fields = ['modulename', 'numreg']
     success_url = reverse_lazy('SelectInfo')
-
+ 
 class DeleteRoom(DeleteView):
     model = Rooms
     fields = ['room', 'building', 'campus', 'capacity']
@@ -299,7 +298,6 @@ class DeleteGroundTruth(DeleteView):
     model = Groundtruth
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
     success_url = reverse_lazy('SelectInfo')
-
 
 class userFormView(View):
     form_class = userForm #blueprint for form

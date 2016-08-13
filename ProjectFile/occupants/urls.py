@@ -4,7 +4,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
 
-    url(r'^$',views.login, name='login'),
     url(r'^$', views.homepage, name='homepage'),
     url(r'^calendarGen$', views.calendarGen, name='calendarGen'),
     url(r'^GenGraph$', views.GenGraph, name='GenGraph'),
