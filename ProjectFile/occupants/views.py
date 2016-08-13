@@ -17,7 +17,6 @@ from django.contrib.auth import login as auth_login, authenticate #authenticates
 from .forms import userForm #Import user registration form
 #from chartit import DataPool, Chart
 
-from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -118,16 +117,9 @@ def GenGraph(request):
     if request.is_ajax():
 
         timeModuleId = request.POST['timeModuleId']
-        print('POST', timeModuleId) ## test ajax POST data has been recieved
 
         ## use POST data to query database and parse reutrn into required format
-        # timeModule = Timemodule.objects.get(timemoduleid = timeModuleId)
-        testReturn = Rooms.objects.all()
-        print(testReturn)
-        #timeModule = Timemodule.objects.get(timemoduleid=timeModuleId)
-        timeModule = Timemodule.objects.get(timemoduleid=326)
-        print('XXXXXXXX')
-        '''
+        timeModule = Timemodule.objects.get(timemoduleid = timeModuleId)
         startTime = timeModule.datetime
         selectedRoom = timeModule.room.room
 
@@ -145,7 +137,6 @@ def GenGraph(request):
         registered = timeModule.module.numreg
         capacity = timeModule.room.capacity
         predictionRange = predictions.predictions
-
         predictionUpper = int(predictionRange[predictionRange.index('-')+1:])
         predictionLower = int(predictionRange[:predictionRange.index('-')])
 
@@ -161,7 +152,7 @@ def GenGraph(request):
         for ts in wifiData:
             associated = ts.associated
             jsonFile["timeSlice"].append({'associated': associated})
-        '''
+
         jsonFile = {"test": "working"}
         return HttpResponse(json.dumps(jsonFile), content_type="application/json")
 

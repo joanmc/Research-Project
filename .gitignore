@@ -2,6 +2,7 @@
 occupants/migrations/
 ProjectFile/__pycache__
 occupants/__pycache__
+occupants/migrations/*
 *.pyc
 ProjectFile/__pycache__/
 occupants/__pycache__/
