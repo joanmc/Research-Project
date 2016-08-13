@@ -15,7 +15,7 @@ from django.core.serializers.json import DjangoJSONEncoder ## allow datetime for
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
 from .forms import userForm #Import user registration form
-from chartit import DataPool, Chart
+#from chartit import DataPool, Chart
 
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView

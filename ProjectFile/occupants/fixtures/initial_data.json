@@ -1,0 +1,22 @@
+[
+  {
+    "model": "occupants.models.rooms",
+    "pk": 1,
+    "fields": {
+      "room": "B-003",
+      "building": "CS",
+      "campus": "cork",
+      "capacity": "100"
+    }
+  },
+  {
+    "model": "occupants.models.rooms",
+    "pk": 2,
+    "fields": {
+      "room": "B-005",
+      "building": "CS",
+      "campus": "bray",
+      "capacity": "90"
+    }
+  }
+]

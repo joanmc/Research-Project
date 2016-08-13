@@ -61,6 +61,7 @@ ROOT_URLCONF = 'ProjectFile.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        #'DIRS': ['occupants/templates/occupants', 'occupants/templates/registration'],
         'DIRS': ['ProjectFile/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -76,6 +77,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ProjectFile.wsgi.application'
+
+FIXTURE_DIRS = (
+   '/occupants/fixtures/',
+)
 
 DATABASE_ROUTERS = ['occupants.router.OccupantsRouter']
 # Database
