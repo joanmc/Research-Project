@@ -340,7 +340,7 @@ def wifilogs(request):
             for i in range(0, len(df)):
                 # put time into sql format
                 df['Event Time'][i] = df['Event Time'][i].replace('GMT+00:00','')
-                df['Event Time'][i] = datetime.strptime(df['Event Time'][i], '%a %b %d %X %Y')
+                df['Event Time'][i] = datetime.datetime.strptime(df['Event Time'][i], '%a %b %d %X %Y')
                 # Split column Key (contains campus, building and room) into separate parts so they can be added to separate columns of database table
                 df['Key'][i] = df['Key'][i].split(' > ')
             
