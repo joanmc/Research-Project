@@ -7,19 +7,24 @@ from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, Percen
 import datetime
 
 
-
-
-
-
-
-
-
-
-
+# docstring testing method sourced:http://django-testing-docs.readthedocs.io/en/latest/fixtures.html
+#from django.core.management import call_command
+#call_command("loaddata", "' + 'initial_data.json' + '", verbosity=0)
 
 
 
 class OccupantsViewsTestCase(TestCase):
+
+    "Show setup and teardown"
+
+    def setUp(self):
+        self.a = 1
+
+    def tearDown(self):
+        del self.a
+
+    fixtures = ['rooms']
+
     def test_basic_addition(self):
         """Test that the tests are executing"""
         self.assertEqual(1 + 1, 2)

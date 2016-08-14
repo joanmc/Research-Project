@@ -67,6 +67,7 @@
 
                 success: function(result) {
                     var testData = result; // set result to variable
+                    
                     if (testData == 'error') {
                         //document.getElementById('graphDiv').innerHTML = "";
                     } else {
@@ -81,8 +82,10 @@
                         var gndTruthUpper = []
                         var gndTruthLower = []
                         
+                        document.getElementById('testDiv3').innerHTML = testData.length;
                         document.getElementById('testDiv2').innerHTML = testData["prediction"];
                         
+                            
                         for (var i=0; i<testData["timeSlice"].length; i+=1) {
 
                             predictionUpper.push(testData["predictionUpper"]); // set occupancy estimate list
@@ -321,7 +324,7 @@
                     var cell = row.insertCell(0); // make these <th> instead of standard table cells
                     cell.innerHTML = "";
                     var counter=1;
-                    document.getElementById('testDiv1').innerHTML = calData["timeSlots"].length;
+                    /*document.getElementById('testDiv1').innerHTML = calData["timeSlots"].length;*/
 
                     for (z=0; z<calData["timeSlots"].length; z+=9) {
 

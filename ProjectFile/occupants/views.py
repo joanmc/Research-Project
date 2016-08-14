@@ -26,7 +26,7 @@ from .serializers import SerializerRooms, SerializerModules, SerializerGroundtru
 import pandas as pd
 import csv
 from io import TextIOWrapper
-from datetime import datetime
+
 
 
 class RoomList(APIView):
@@ -92,7 +92,7 @@ def calendarGen(request):
         startYear = int(startTime[6:])
         start_time = datetime.date(startYear, startMonth, startDay)
         roomObj = Rooms.objects.get(room=selectedRoom)
-##        print('roomObj', roomObj.room)
+
         roomSchedule = Timemodule.objects.filter(room=selectedRoom,
                                                  datetime__range=(start_time, start_time + timedelta(days=5)))
         timeList = Timemodule.objects.filter(room=selectedRoom, datetime__day=start_time.day)
@@ -100,7 +100,6 @@ def calendarGen(request):
                                  "building": roomObj.building}, "times": [], "timeSlots": []}
 
         for dt in timeList:
-##            print('datetime', dt.datetime.time())
             calendarInfo["times"].append({"time": dt.datetime.time()})
 
         for ts in roomSchedule:
@@ -128,11 +127,8 @@ def GenGraph(request):
 
         wifiData = Wifilogdata.objects.filter(room=selectedRoom,
                                               datetime__range=(startTime, startTime + timedelta(hours=1)))
-        ##print('WIFI DATA', len(wifiData)) ## test number of returns from query
         predictions = EstimatePredictions.objects.get(room=selectedRoom, datetime=startTime)
         ## need error handling here for when no ground truth exists
-        ##print('PREDICTION', len(prediction)) ## test number of returns from query
-
         groundTruthObj = Groundtruth.objects.get(room=selectedRoom, datetime=startTime)
         ## need error handling here for when no ground truth exists
 
@@ -142,12 +138,7 @@ def GenGraph(request):
         predictionRange = predictions.predictions
         predictionUpper = int(predictionRange[predictionRange.index('-')+1:])
         predictionLower = int(predictionRange[:predictionRange.index('-')])
-
-        ## test for variables
-        ##print('GROUND TRUTH', groundTruth)
-        ##print('REGISTERED', registered)
-        ##print('CAPACITY', capacity)
-        print('PREDICTION', predictionUpper, ':', predictionLower)
+        ##print('PREDICTION', predictionLower, ':', predictionUpper)
 
         jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity,
                     "predictionLower": predictionLower, "predictionUpper": predictionUpper}
@@ -156,7 +147,6 @@ def GenGraph(request):
             associated = ts.associated
             jsonFile["timeSlice"].append({'associated': associated})
 
-        jsonFile = {"test": "working"}
         return HttpResponse(json.dumps(jsonFile), content_type="application/json")
 
     else:

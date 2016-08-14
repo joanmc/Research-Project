@@ -79,7 +79,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ProjectFile.wsgi.application'
 
 FIXTURE_DIRS = (
-   '/occupants/fixtures/',
+    'occupants/fixtures/',
+    'ProjectFile/occupants/fixtures/',
 )
 
 DATABASE_ROUTERS = ['occupants.router.OccupantsRouter']
