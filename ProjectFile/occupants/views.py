@@ -12,10 +12,10 @@ import json
 from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.serializers.json import DjangoJSONEncoder ## allow datetime format to serialize to json
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
 from django.contrib.auth.decorators import login_required
-from .forms import userForm #Import user registration form
+from .forms import userForm, UploadForm #Import user registration form
 #from chartit import DataPool, Chart
 
 from rest_framework.views import APIView
@@ -23,6 +23,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import SerializerRooms, SerializerModules, SerializerGroundtruth, SerializerTimemodule, SerializerBinaryPredictions, SerializerPercentagePredictions, SerializerEstimatePredictions
 
+import pandas as pd
+import csv
+from io import TextIOWrapper
+from datetime import datetime
 
 
 class RoomList(APIView):
@@ -72,9 +76,8 @@ def login(request):
     return render(request, 'occupants/login.html', {})
 
 def homepage(request):
-
-        roomList = Rooms.objects.all()
-        return render(request, 'occupants/homepage.html', {'roomList': roomList})
+    roomList = Rooms.objects.all()
+    return render(request, 'occupants/homepage.html', {'roomList': roomList})
 
 
 def calendarGen(request):
@@ -325,3 +328,46 @@ class userFormView(View):
                     return redirect('homepage')
 
         return render(request, self.template_name, { 'form' : form })
+
+
+def wifilogs(request):
+    # Handle file upload
+    if request.method == 'POST':
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            f = TextIOWrapper(request.FILES['docfile'].file, encoding=request.encoding)
+            file = csv.reader(f)
+
+            check = False
+            for line in file:
+                if check == True:
+                    df.loc[len(df)]=line
+                if line[0]=='Key':
+                    columns=line
+                    df = pd.DataFrame(columns=line)
+                    check = True
+
+            for i in range(0, len(df)):
+                # put time into sql format
+                df['Event Time'][i] = df['Event Time'][i].replace('GMT+00:00','')
+                df['Event Time'][i] = datetime.strptime(df['Event Time'][i], '%a %b %d %X %Y')
+                # Split column Key (contains campus, building and room) into separate parts so they can be added to separate columns of database table
+                df['Key'][i] = df['Key'][i].split(' > ')
+            
+            for i in range(0, len(df)):
+                model = Wifilogdata()
+                model.datetime = df['Event Time'][i]
+                RoomName = Rooms.objects.get(room=df['Key'][i][2])
+                model.room = RoomName
+                model.associated = df['Associated Client Count'][i]
+                model.authenticated = df['Authenticated Client Count'][i]
+                model.save()
+
+            # Redirect to the document list after POST
+            return HttpResponseRedirect(reverse('wifilogs'))
+    else:
+        form = UploadForm() # A empty, unbound form
+
+    # Render list page with the documents and the form
+    return render(request, 'occupants/wifilogs.html', {'form' : form })
+

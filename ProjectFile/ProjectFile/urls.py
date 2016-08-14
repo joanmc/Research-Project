@@ -22,16 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('occupants.urls')),
 
-    url(r'^login/$', login),
-    url(r'^logout/$', logout, {'next_page': '/'})
+    url(r'^login/$', login, name='login'),
+    url(r'^logout/$', logout, name='logout')
 
-
-
-#    these methods should work but throw an import error
-#    url(r'^login/$', django.contrib.auth.views.login),
-#    url(r'^logout/$', django.contrib.auth.views.logout, {'next_page': '/'})
-
-#    old methods
-#    url(r'^login/$', 'django.contrib.auth.views.login'),
-#    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'})
 ]

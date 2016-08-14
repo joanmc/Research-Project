@@ -94,5 +94,8 @@ class EstimatePredictions(models.Model):
     class Meta:
         db_table = 'EstimatePredictions'
 
+class Document(models.Model):
+    docfile = models.FileField(upload_to='documents/')
+    id = models.AutoField(db_column='id', primary_key = True)
 
 

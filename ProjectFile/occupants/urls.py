@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^register/$', views.userFormView.as_view(), name='register'),
     url(r'^Rooms/$', views.SelectInfo, name='SelectInfo'),
     url(r'^Stats/$', views.Stats, name= 'Stats'),
+    url(r'^wifilogs/$', views.wifilogs, name='wifilogs'),
 
     # Django Tutorial for Beginnners 30 Model Forms, thenewboston
     # Add records
