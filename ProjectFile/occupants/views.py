@@ -14,7 +14,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.serializers.json import DjangoJSONEncoder ## allow datetime format to serialize to json
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
-from django.contrib.auth.decorators import login_required
 from .forms import userForm, UploadForm #Import user registration form
 #from chartit import DataPool, Chart
 
@@ -140,8 +139,19 @@ def GenGraph(request):
         predictionLower = int(predictionRange[:predictionRange.index('-')])
         ##print('PREDICTION', predictionLower, ':', predictionUpper)
 
+        # JOAN
+        binaryPred = BinaryPredictions.objects.get(room=selectedRoom, datetime=startTime).predictions
+        print (binaryPred)
+        percentagePred = PercentagePredictions.objects.get(room=selectedRoom, datetime=startTime).predictions
+        print (percentagePred)
+        estimatePred = EstimatePredictions.objects.get(room=selectedRoom, datetime=startTime).predictions
+        print (estimatePred)
+
+        # jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity,
+        #             "predictionLower": predictionLower, "predictionUpper": predictionUpper}
         jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity,
-                    "predictionLower": predictionLower, "predictionUpper": predictionUpper}
+                    "predictionLower": predictionLower, "predictionUpper": predictionUpper, "binaryPred": binaryPred,
+                    "percentagePred":percentagePred, "estimatePred":estimatePred}
 
         for ts in wifiData:
             associated = ts.associated
@@ -208,7 +218,6 @@ def Stats(request):
     return render(request, 'occupants/Stats.html', {'rooms': rooms})
 
 
-@login_required(login_url='/login/') 
 def SelectInfo(request):
     rooms = Rooms.objects.all()
     modules = Modules.objects.all()

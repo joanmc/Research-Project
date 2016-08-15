@@ -20,37 +20,43 @@
         <div class="centered" id="tableDiv" style="Display: block">
 <!--            <table id="calTable">
             </table>-->
-        </div>
+        </div>            
 
-        <div>
-            
-            <div class="row clearfix">
+        <div class="wrapper">
+            <div class = "col-md-9 text-center">
                 <canvas id="myChart"></canvas>
-                <div class="span_4 column">
-                    1
-                </div>
-                <div class="span_4 column">
-                    2
-                </div>
-                <div class="span_4 column">
-                    3
+            </div>
+            <div class = "container" id="details" style="visibility: hidden">
+                <div class = "col-md-3 text-center" >
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Occupancy</div>
+                      <div class="panel-body" id="Binary Occupied"><span class="glyphicon glyphicon-ok"> Room is Occupied</span></div>
+                      <div class="panel-body" id="Binary Not Occupied"><span class="glyphicon glyphicon-remove"> Room is not Occupied</span></div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Occupancy Concentration</div>
+                      <div class="panel-body" id="Percentage"></div><span class="glyphicon glyphicon-signal"> Room is <span id="Percentage Pred"></span>% Occupied</span>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">Range of People</div>
+                      <div class="panel-body" id="Range"></div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div>   
 
 <!--        <div class="centered"> 
             <div id="graphDiv" style="float:left; width:50%;"></div> 
         </div>-->
-
 <!--        <button type="button" onclick="GenCalendar(3)">Click Me!</button>-->
-    <div class="centered" id="testDiv">test</div>
+    <!-- <div class="centered" id="testDiv">test</div>
     <div class="centered" id="testDiv1">test1</div>
 
     <div class="centered" id="testDiv2">test2</div>
     <div class="centered" id="testDiv3">test3</div>
     <div class="centered" id="testDiv4">test4</div>
     <div class="centered" id="testDiv5">test5</div>
-    <div class="centered" id="graphDiv">testList</div>
+    <div class="centered" id="graphDiv">testList</div> -->
 
     </div>
 
@@ -82,8 +88,8 @@
                         var gndTruthUpper = []
                         var gndTruthLower = []
                         
-                        document.getElementById('testDiv3').innerHTML = testData.length;
-                        document.getElementById('testDiv2').innerHTML = testData["prediction"];
+                        // document.getElementById('testDiv3').innerHTML = testData.length;
+                        // document.getElementById('testDiv2').innerHTML = testData["prediction"];
                         
                             
                         for (var i=0; i<testData["timeSlice"].length; i+=1) {
@@ -185,7 +191,21 @@
                             type: 'line',
                             data: data,
                             options: options
-                        });     
+                        }); 
+
+                        if (testData['binaryPred'] == 1) {
+                            document.getElementById("Binary Occupied").style.display = "inline";
+                            document.getElementById("Binary Occupied").style.visibility = "visible";
+                            document.getElementById("Binary Not Occupied").style.display = "none";
+                        } else {
+                            document.getElementById("Binary Not Occupied").style.display = "inline";
+                            document.getElementById("Binary Not Occupied").style.visiblility = "visible";
+                            document.getElementById("Binary Occupied").style.display = "none";
+                        }
+
+                        document.getElementById("Percentage Pred").innerHTML = testData['percentagePred'] * 100;
+                        document.getElementById("Range").innerHTML = testData['estimatePred'];    
+                        document.getElementById("details").style.visibility = "visible";    
                     });    
                 }
             }
@@ -463,7 +483,8 @@
                             type: 'line',
                             data: data,
                             options: options
-                        });     
+                        }); 
+                        document.getElementById("details").style.visibility = "hidden";     
                     }); 
                 }
             }
