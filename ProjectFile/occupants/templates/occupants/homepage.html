@@ -26,7 +26,7 @@
             <div class = "col-md-9 text-center">
                 <canvas id="myChart"></canvas>
             </div>
-            <div class = "container" id="details" style="visibility: hidden">
+            <div class = "container" id="details" style="display: none">
                 <div class = "col-md-3 text-center" >
                     <div class="panel panel-default">
                       <div class="panel-heading">Occupancy</div>
@@ -195,17 +195,16 @@
 
                         if (testData['binaryPred'] == 1) {
                             document.getElementById("Binary Occupied").style.display = "inline";
-                            document.getElementById("Binary Occupied").style.visibility = "visible";
                             document.getElementById("Binary Not Occupied").style.display = "none";
                         } else {
                             document.getElementById("Binary Not Occupied").style.display = "inline";
-                            document.getElementById("Binary Not Occupied").style.visiblility = "visible";
                             document.getElementById("Binary Occupied").style.display = "none";
                         }
 
                         document.getElementById("Percentage Pred").innerHTML = testData['percentagePred'] * 100;
-                        document.getElementById("Range").innerHTML = testData['estimatePred'];    
-                        document.getElementById("details").style.visibility = "visible";    
+                        document.getElementById("Range").innerHTML = testData['estimatePred']; 
+
+                        document.getElementById("details").style.display = "inline"; 
                     });    
                 }
             }
@@ -425,7 +424,7 @@
                     //document.getElementById('graphDiv').innerHTML = 'no data available';
                 } else {
                     // tests
-/*                    document.getElementById('testDiv3').innerHTML = roomDayData["capacity"];
+/*                  document.getElementById('testDiv3').innerHTML = roomDayData["capacity"];
                     document.getElementById('testDiv4').innerHTML = roomDayData["capacity"];
                     document.getElementById('testDiv5').innerHTML = roomDayData["capacity"];
                     document.getElementById('testDiv6').innerHTML = roomDayData["capacity"];*/        
@@ -484,7 +483,8 @@
                             data: data,
                             options: options
                         }); 
-                        document.getElementById("details").style.visibility = "hidden";     
+                    
+                        document.getElementById("details").style.display = "none";    
                     }); 
                 }
             }
