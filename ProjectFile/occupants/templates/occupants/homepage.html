@@ -3,31 +3,33 @@
 {% block title %}Results{% endblock %}
 
 {% block body %}
-    <div class="centered" style="max-width: 1200px">
-       <form action="" method="POST">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
-            <select id="roomPicker" name="roomForm"> <!--submit on change-->
-                <option value="" selected></option>
-                {% for room in roomList %} <!--automatically generate the form options from roomList-->
-                <option value="{{ room.room }}">{{ room.room }}</option>
-            {% endfor %}
-            </select>
-            <input id="datePicker" name="dateForm"/>
-           <button type="button" onclick="GenCalendar()">Submit</button> 
-        </form>
+    <div class="container-fluid">
+        <div class="centered" style="max-width: 1200px">
+           <form action="" method="POST">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
+                <select id="roomPicker" name="roomForm"> <!--submit on change-->
+                    <option value="" selected></option>
+                    {% for room in roomList %} <!--automatically generate the form options from roomList-->
+                    <option value="{{ room.room }}">{{ room.room }}</option>
+                    {% endfor %}
+                </select>
+                <input id="datePicker" name="dateForm"/>
+                <button type="button" onclick="GenCalendar()">Submit</button> 
+            </form>
 
-        <h3 id="title"></h3><br>
+            <h3 id="title"></h3><br>
 
-        <div class="centered" id="tableDiv" style="Display: block">
-<!--            <table id="calTable">
-            </table>-->
-        </div>            
+            <div class="centered" id="tableDiv" style="Display: block">
+    <!--            <table id="calTable">
+                </table>-->
+            </div>            
 
-        <div class="wrapper">
-            <div class = "col-md-9 text-center" style="display: inline">
-                <canvas id="myChart"></canvas>
-            </div>
-            <div class = "container" id="details" style="display: none">
-                <div class = "col-md-3 text-center" >
+        <div class="container-fluid">
+            <div class="row" id="graph-container">
+                <!-- <div class = "col-md-9 text-center" style="display: inline"> -->
+                    <canvas id="myChart" style="display: inline"></canvas>
+                <!-- </div> -->
+            
+                <div class = "col-md-3 text-center" id="details" style="display: none">
                     <div class="panel panel-default">
                       <div class="panel-heading">Occupancy</div>
                       <div class="panel-body" id="Binary Occupied"><span class="glyphicon glyphicon-ok"> Room is Occupied</span></div>
@@ -42,22 +44,26 @@
                       <div class="panel-body" id="Range"></div>
                     </div>
                 </div>
+        
             </div>
-        </div>   
+        </div>
+        
+               
 
-<!--        <div class="centered"> 
-            <div id="graphDiv" style="float:left; width:50%;"></div> 
-        </div>-->
-<!--        <button type="button" onclick="GenCalendar(3)">Click Me!</button>-->
-    <!-- <div class="centered" id="testDiv">test</div>
-    <div class="centered" id="testDiv1">test1</div>
+    <!--        <div class="centered"> 
+                <div id="graphDiv" style="float:left; width:50%;"></div> 
+            </div>-->
+    <!--        <button type="button" onclick="GenCalendar(3)">Click Me!</button>-->
+        <!-- <div class="centered" id="testDiv">test</div>
+        <div class="centered" id="testDiv1">test1</div>
 
-    <div class="centered" id="testDiv2">test2</div>
-    <div class="centered" id="testDiv3">test3</div>
-    <div class="centered" id="testDiv4">test4</div>
-    <div class="centered" id="testDiv5">test5</div>
-    <div class="centered" id="graphDiv">testList</div> -->
+        <div class="centered" id="testDiv2">test2</div>
+        <div class="centered" id="testDiv3">test3</div>
+        <div class="centered" id="testDiv4">test4</div>
+        <div class="centered" id="testDiv5">test5</div>
+        <div class="centered" id="graphDiv">testList</div> -->
 
+        </div>
     </div>
 
 
