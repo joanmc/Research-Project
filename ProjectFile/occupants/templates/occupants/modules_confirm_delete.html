@@ -1,4 +1,8 @@
-{% include 'occupants/base.html' %}
+{% extends 'occupants/base.html' %}
+{% load staticfiles %}
+{% block title %}Module Data{% endblock %}
+
+{% block body %}
 <form class = "Module Form", action = "", method = "post", enctype="multipart/form-data"> 
     {% csrf_token %}
      <div>
@@ -8,3 +12,4 @@
      </div>
 
 </form>
+{% endblock %}

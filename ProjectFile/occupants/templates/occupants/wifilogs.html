@@ -1,34 +1,37 @@
-  {% include 'occupants/base.html' %}
+{% extends 'occupants/base.html' %}
+{% load staticfiles %}
+{% block title %}Wifi Logs{% endblock %}
 
-  {% block body %}
-  <div class = "container">
-        <div class="centered" style="max-width: 1200px">
-          <!-- List of uploaded documents -->
-            <!-- {% if documents %}
-                <ul>
-                {% for document in documents %}
-                    <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
-                {% endfor %}
-                </ul>
-            {% else %}
-                <p>No documents.</p>
-            {% endif %} -->
+{% block body %}
+
+<div class = "container">
+    <div class="centered" style="max-width: 1200px">
+      <!-- List of uploaded documents -->
+        <!-- {% if documents %}
+            <ul>
+            {% for document in documents %}
+                <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No documents.</p>
+        {% endif %} -->
+
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{% url 'wifilogs' %}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                {% csrf_token %}
+                <p>{{ form.non_field_errors }}</p>
+                <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+                <p>
+                    {{ form.docfile.errors }}
+                    {{ form.docfile }}
+                </p>
+            </div>
+            <button type="submit" class="btn btn-default" value="Upload">Submit</button>
     
-            <!-- Upload form. Note enctype attribute! -->
-            <form action="{% url 'wifilogs' %}" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    {% csrf_token %}
-                    <p>{{ form.non_field_errors }}</p>
-                    <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-                    <p>
-                        {{ form.docfile.errors }}
-                        {{ form.docfile }}
-                    </p>
-                </div>
-                <button type="submit" class="btn btn-default" value="Upload">Submit</button>
-        
-                <!-- <p><input type="submit" value="Upload" /></p> -->
-            </form>
-        </div>
+            <!-- <p><input type="submit" value="Upload" /></p> -->
+        </form>
     </div>
+</div>
 {% endblock %}

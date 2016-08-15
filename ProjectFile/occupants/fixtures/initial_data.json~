@@ -1,4 +1,0 @@
-CREATE TABLE DB2.newtablename SELECT * FROM DB1.existingtablename;
-
-
-RENAME TABLE `group` TO `member`;

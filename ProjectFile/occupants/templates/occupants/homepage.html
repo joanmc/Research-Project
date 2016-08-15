@@ -1,6 +1,6 @@
 {% extends 'occupants/base.html' %}
 {% load staticfiles %}
-{% block title %}Homepage{% endblock %}
+{% block title %}Results{% endblock %}
 
 {% block body %}
     <div class="centered" style="max-width: 1200px">
@@ -23,7 +23,7 @@
         </div>            
 
         <div class="wrapper">
-            <div class = "col-md-9 text-center">
+            <div class = "col-md-9 text-center" style="display: inline">
                 <canvas id="myChart"></canvas>
             </div>
             <div class = "container" id="details" style="display: none">
@@ -117,34 +117,34 @@
                         var data = {
                             labels: ["05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"],
                             datasets: [{    
-                                label: 'GT Upper',
-                                fill: false,
-                                pointRadius: 0,
-                                borderDash: [10, 10],
-                                borderColor: 'rgba(102, 167, 192, 1)',
-                                data: gndTruthUpper   
-                            },{
-                                label: 'GT Lower',
-                                fill: false,
-                                pointRadius: 0,
-                                borderDash: [10, 10],
-                                borderColor: 'rgba(102, 167, 192, 1)',
-                                data: gndTruthLower 
-                            },{
+                            //     label: 'GT Upper',
+                            //     fill: false,
+                            //     pointRadius: 0,
+                            //     borderDash: [10, 10],
+                            //     borderColor: 'rgba(102, 167, 192, 1)',
+                            //     data: gndTruthUpper   
+                            // },{
+                            //     label: 'GT Lower',
+                            //     fill: false,
+                            //     pointRadius: 0,
+                            //     borderDash: [10, 10],
+                            //     borderColor: 'rgba(102, 167, 192, 1)',
+                            //     data: gndTruthLower 
+                            // },{
                                 fill: true,
                                 borderWidth: 0,
                                 pointRadius: 0,
-                                /*label: 'Prediction',*/
+                                label: '',
                                 backgroundColor: 'rgba(255, 255, 255, 1)',
                                 borderColor: 'rgba(102, 167, 192, 0.2)',
-/*                                borderColor: 'rgba(102, 167, 192, 0.3)',*/
+/*                              borderColor: 'rgba(102, 167, 192, 0.3)',*/
                                 data: predictionLower
                             },{
                                 fill: true,
                                 borderWidth: 0,
                                 pointRadius: 0,
                                 backgroundColor: 'rgba(102, 167, 192, 0.2)',
-                                label: 'Prediction',
+                                label: 'Prediction Range',
                                 borderColor: 'rgba(102, 167, 192, 0.2)',
 /*                                borderColor: 'rgba(102, 167, 192, 0.3)',*/
                                 data: predictionUpper
