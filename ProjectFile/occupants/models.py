@@ -6,9 +6,8 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from __future__ import unicode_literals
-
 from django.db import models
-
+from .validators import validate_file_extension
 
 
 class Groundtruth(models.Model):
@@ -20,9 +19,6 @@ class Groundtruth(models.Model):
 
     class Meta:
         db_table = 'GroundTruth'
-    
-
-
 
 class Modules(models.Model):
     modulename = models.CharField(db_column='ModuleName', primary_key=True, max_length=30)  # Field name made lowercase.
@@ -34,8 +30,6 @@ class Modules(models.Model):
     def __str__(self):
         return self.modulename
 	
-
-
 class Rooms(models.Model):
     room = models.CharField(db_column='Room', primary_key=True, max_length=10)  # Field name made lowercase.
     building = models.CharField(db_column='Building', max_length=30, blank=True, null=True)  # Field name made lowercase.
@@ -47,7 +41,6 @@ class Rooms(models.Model):
 
     def __str__(self):
         return self.room
-
 
 class Timemodule(models.Model):
     datetime = models.DateTimeField(db_column='DateTime')  # Field name made lowercase.
@@ -95,7 +88,7 @@ class EstimatePredictions(models.Model):
         db_table = 'EstimatePredictions'
 
 class Document(models.Model):
-    docfile = models.FileField(upload_to='documents/')
+    docfile = models.FileField(upload_to='documents/', validators=[validate_file_extension])
     id = models.AutoField(db_column='id', primary_key = True)
 
 

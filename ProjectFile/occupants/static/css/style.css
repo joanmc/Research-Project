@@ -194,7 +194,7 @@ footer {
 	margin-top: 50px;
 }
 
-/*#graph-container {
-	margin: 10px;
-}*/
+#graph-container {
+	padding-top: 20px;
+}
 

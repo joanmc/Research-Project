@@ -15,6 +15,7 @@ from django.core.serializers.json import DjangoJSONEncoder ## allow datetime for
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
 from .forms import userForm, UploadForm #Import user registration form
+from django import forms
 #from chartit import DataPool, Chart
 
 from rest_framework.views import APIView
@@ -141,11 +142,8 @@ def GenGraph(request):
 
         # JOAN
         binaryPred = BinaryPredictions.objects.get(room=selectedRoom, datetime=startTime).predictions
-        print (binaryPred)
         percentagePred = PercentagePredictions.objects.get(room=selectedRoom, datetime=startTime).predictions
-        print (percentagePred)
         estimatePred = EstimatePredictions.objects.get(room=selectedRoom, datetime=startTime).predictions
-        print (estimatePred)
 
         # jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity,
         #             "predictionLower": predictionLower, "predictionUpper": predictionUpper}
@@ -292,6 +290,8 @@ class DeleteGroundTruth(DeleteView):
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
     success_url = reverse_lazy('SelectInfo')
 
+from django.contrib import messages
+
 class userFormView(View):
     form_class = userForm #blueprint for form
     template_name = 'occupants/registration_form.html' #name of template to redirect to
@@ -302,12 +302,9 @@ class userFormView(View):
 
     def post(self, request): #If user request is POST (submitting form) call this function
         form = self.form_class(request.POST)
-
-
+        
         if form.is_valid():
-
             user = form.save(commit=False) #Doesn't save user yet. Customsing form below
-
             # standardise form inputs so they are clean and generic for our DB
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -317,15 +314,16 @@ class userFormView(View):
             user.is_active = False #Change default. User is not active until admin grants permission
             user.save()
 
+
             #returns user objects if credentials are correct
             user = authenticate(username = username, password= password)
 
             if user is not None: 
-
                 if user.is_active: #Checks if user hasnt been banned
                     auth_login(request, user)
                     return redirect('homepage')
 
+        messages.info(request, 'Registration successful. You will receive an email confirming registration once your request has been approved.')
         return render(request, self.template_name, { 'form' : form })
 
 
@@ -346,6 +344,10 @@ def wifilogs(request):
                     df = pd.DataFrame(columns=line)
                     check = True
 
+            if check == False:
+                messages.error(request, "Invalid file content. Please upload a  csv containing WiFi Log Data.");
+                return render(request, 'occupants/wifilogs.html', {'form' : form })
+
             for i in range(0, len(df)):
                 # put time into sql format
                 df['Event Time'][i] = df['Event Time'][i].replace('GMT+00:00','')
@@ -363,6 +365,7 @@ def wifilogs(request):
                 model.save()
 
             # Redirect to the document list after POST
+            messages.info(request, "WiFi Log Data successfully imported.");
             return HttpResponseRedirect(reverse('wifilogs'))
     else:
         form = UploadForm() # A empty, unbound form
