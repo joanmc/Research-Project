@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django.utils import timezone
 from django.template import loader
-from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, PercentagePredictions, EstimatePredictions
+from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, BinaryPredictions, PercentagePredictions, EstimatePredictions
 from django.db.models import Q
 from datetime import timedelta, date
 import datetime

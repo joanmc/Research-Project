@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'ProjectFile.wsgi.application'
 
 FIXTURE_DIRS = (
     'occupants/fixtures/',
-    'ProjectFile/occupants/fixtures/',
+    '/occupants/fixtures/',
 )
 
 DATABASE_ROUTERS = ['occupants.router.OccupantsRouter']

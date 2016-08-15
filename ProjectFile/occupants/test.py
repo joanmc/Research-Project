@@ -5,11 +5,8 @@ from django.test import TestCase
 from django.test import Client
 from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, PercentagePredictions, EstimatePredictions
 import datetime
+from django.core.management import call_command
 
-
-# docstring testing method sourced:http://django-testing-docs.readthedocs.io/en/latest/fixtures.html
-#from django.core.management import call_command
-#call_command("loaddata", "' + 'initial_data.json' + '", verbosity=0)
 
 
 
@@ -23,7 +20,9 @@ class OccupantsViewsTestCase(TestCase):
     def tearDown(self):
         del self.a
 
-    fixtures = ['rooms']
+
+#    call_command("loaddata", "initial_data.json", verbosity=0)
+    #fixtures = ['rooms']
 
     def test_basic_addition(self):
         """Test that the tests are executing"""
@@ -36,12 +35,6 @@ class OccupantsViewsTestCase(TestCase):
         self.assertEqual(resp.status_code, 200)
 
 
-    # def test_database(self):
-    #     """Test that the database empty and is responding to queries"""
-    #     testReturn = Rooms.objects.all()
-    #     print('empty database', len(testReturn))
-    #     print(testReturn)
-    #     self.assertTrue(len(testReturn) == 0)
 
 
     def test_add_room(self):
@@ -67,6 +60,20 @@ class OccupantsViewsTestCase(TestCase):
             campus='DUBLIN',
             capacity=120
         )
+
+        respAfter = Rooms.objects.all()
+        print('After', respAfter, ': len', len(respAfter))
+        self.assertTrue(len(respAfter) == 3)
+
+
+
+    def test_load_fixture(self):
+        """Test that the database is loading fixture correctly"""
+        respBefore = Rooms.objects.all()
+        print('Before', respBefore, ': len', len(respBefore))
+
+        fixtures = ['rooms']
+        #call_command("loaddata", "initial_data.json", verbosity=0)
 
         respAfter = Rooms.objects.all()
         print('After', respAfter, ': len', len(respAfter))
