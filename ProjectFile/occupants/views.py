@@ -313,7 +313,7 @@ class userFormView(View):
             user.set_password(password)
             user.is_active = False #Change default. User is not active until admin grants permission
             user.save()
-
+            messages.info(request, 'Registration successful. You will receive an email confirming registration once your request has been approved.')
 
             #returns user objects if credentials are correct
             user = authenticate(username = username, password= password)
@@ -323,7 +323,7 @@ class userFormView(View):
                     auth_login(request, user)
                     return redirect('homepage')
 
-        messages.info(request, 'Registration successful. You will receive an email confirming registration once your request has been approved.')
+        
         return render(request, self.template_name, { 'form' : form })
 
 
