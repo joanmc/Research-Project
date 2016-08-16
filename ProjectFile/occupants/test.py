@@ -21,8 +21,8 @@ class OccupantsViewsTestCase(TestCase):
         del self.a
 
 
-#    call_command("loaddata", "initial_data.json", verbosity=0)
-    #fixtures = ['rooms']
+    call_command("loaddata", "initial_data.json", verbosity=3)
+#    fixtures = ['occupants']
 
     def test_basic_addition(self):
         """Test that the tests are executing"""

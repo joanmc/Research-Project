@@ -129406,18 +129406,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 0,
-    "fields": {
-        "datetime": "2015-11-03T16:00:00",
-        "room": "B-002",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 1,
     "fields": {
-        "datetime": "2015-11-04T16:00:00",
+        "datetime": "2015-11-03T16:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129426,7 +129417,7 @@
     "model": "occupants.binarypredictions",
     "pk": 2,
     "fields": {
-        "datetime": "2015-11-05T16:00:00",
+        "datetime": "2015-11-04T16:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129435,7 +129426,7 @@
     "model": "occupants.binarypredictions",
     "pk": 3,
     "fields": {
-        "datetime": "2015-11-06T16:00:00",
+        "datetime": "2015-11-05T16:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129444,7 +129435,7 @@
     "model": "occupants.binarypredictions",
     "pk": 4,
     "fields": {
-        "datetime": "2015-11-09T16:00:00",
+        "datetime": "2015-11-06T16:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129453,7 +129444,7 @@
     "model": "occupants.binarypredictions",
     "pk": 5,
     "fields": {
-        "datetime": "2015-11-10T16:00:00",
+        "datetime": "2015-11-09T16:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129462,7 +129453,7 @@
     "model": "occupants.binarypredictions",
     "pk": 6,
     "fields": {
-        "datetime": "2015-11-11T16:00:00",
+        "datetime": "2015-11-10T16:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129471,7 +129462,7 @@
     "model": "occupants.binarypredictions",
     "pk": 7,
     "fields": {
-        "datetime": "2015-11-12T16:00:00",
+        "datetime": "2015-11-11T16:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129480,7 +129471,7 @@
     "model": "occupants.binarypredictions",
     "pk": 8,
     "fields": {
-        "datetime": "2015-11-13T16:00:00",
+        "datetime": "2015-11-12T16:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129489,6 +129480,15 @@
     "model": "occupants.binarypredictions",
     "pk": 9,
     "fields": {
+        "datetime": "2015-11-13T16:00:00",
+        "room": "B-002",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 10,
+    "fields": {
         "datetime": "2015-11-03T09:00:00",
         "room": "B-002",
         "predictions": 0
@@ -129496,7 +129496,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 10,
+    "pk": 11,
     "fields": {
         "datetime": "2015-11-04T09:00:00",
         "room": "B-002",
@@ -129505,18 +129505,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 11,
-    "fields": {
-        "datetime": "2015-11-05T09:00:00",
-        "room": "B-002",
-        "predictions": 0
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 12,
     "fields": {
-        "datetime": "2015-11-06T09:00:00",
+        "datetime": "2015-11-05T09:00:00",
         "room": "B-002",
         "predictions": 0
     }
@@ -129525,6 +129516,15 @@
     "model": "occupants.binarypredictions",
     "pk": 13,
     "fields": {
+        "datetime": "2015-11-06T09:00:00",
+        "room": "B-002",
+        "predictions": 0
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 14,
+    "fields": {
         "datetime": "2015-11-09T09:00:00",
         "room": "B-002",
         "predictions": 1
@@ -129532,7 +129532,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 14,
+    "pk": 15,
     "fields": {
         "datetime": "2015-11-10T09:00:00",
         "room": "B-002",
@@ -129541,7 +129541,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 15,
+    "pk": 16,
     "fields": {
         "datetime": "2015-11-11T09:00:00",
         "room": "B-002",
@@ -129550,18 +129550,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 16,
-    "fields": {
-        "datetime": "2015-11-12T09:00:00",
-        "room": "B-002",
-        "predictions": 0
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 17,
     "fields": {
-        "datetime": "2015-11-13T09:00:00",
+        "datetime": "2015-11-12T09:00:00",
         "room": "B-002",
         "predictions": 0
     }
@@ -129570,16 +129561,16 @@
     "model": "occupants.binarypredictions",
     "pk": 18,
     "fields": {
-        "datetime": "2015-11-03T10:00:00",
+        "datetime": "2015-11-13T09:00:00",
         "room": "B-002",
-        "predictions": 1
+        "predictions": 0
     }
 },
 {
     "model": "occupants.binarypredictions",
     "pk": 19,
     "fields": {
-        "datetime": "2015-11-04T10:00:00",
+        "datetime": "2015-11-03T10:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129588,7 +129579,7 @@
     "model": "occupants.binarypredictions",
     "pk": 20,
     "fields": {
-        "datetime": "2015-11-05T10:00:00",
+        "datetime": "2015-11-04T10:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129597,6 +129588,15 @@
     "model": "occupants.binarypredictions",
     "pk": 21,
     "fields": {
+        "datetime": "2015-11-05T10:00:00",
+        "room": "B-002",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 22,
+    "fields": {
         "datetime": "2015-11-06T10:00:00",
         "room": "B-002",
         "predictions": 0
@@ -129604,18 +129604,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 22,
-    "fields": {
-        "datetime": "2015-11-09T10:00:00",
-        "room": "B-002",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 23,
     "fields": {
-        "datetime": "2015-11-10T10:00:00",
+        "datetime": "2015-11-09T10:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129624,7 +129615,7 @@
     "model": "occupants.binarypredictions",
     "pk": 24,
     "fields": {
-        "datetime": "2015-11-11T10:00:00",
+        "datetime": "2015-11-10T10:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129633,7 +129624,7 @@
     "model": "occupants.binarypredictions",
     "pk": 25,
     "fields": {
-        "datetime": "2015-11-12T10:00:00",
+        "datetime": "2015-11-11T10:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129642,6 +129633,15 @@
     "model": "occupants.binarypredictions",
     "pk": 26,
     "fields": {
+        "datetime": "2015-11-12T10:00:00",
+        "room": "B-002",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 27,
+    "fields": {
         "datetime": "2015-11-13T10:00:00",
         "room": "B-002",
         "predictions": 0
@@ -129649,7 +129649,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 27,
+    "pk": 28,
     "fields": {
         "datetime": "2015-11-03T11:00:00",
         "room": "B-002",
@@ -129658,7 +129658,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 28,
+    "pk": 29,
     "fields": {
         "datetime": "2015-11-04T11:00:00",
         "room": "B-002",
@@ -129667,18 +129667,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 29,
-    "fields": {
-        "datetime": "2015-11-05T11:00:00",
-        "room": "B-002",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 30,
     "fields": {
-        "datetime": "2015-11-06T11:00:00",
+        "datetime": "2015-11-05T11:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129687,6 +129678,15 @@
     "model": "occupants.binarypredictions",
     "pk": 31,
     "fields": {
+        "datetime": "2015-11-06T11:00:00",
+        "room": "B-002",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 32,
+    "fields": {
         "datetime": "2015-11-09T11:00:00",
         "room": "B-002",
         "predictions": 0
@@ -129694,18 +129694,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 32,
-    "fields": {
-        "datetime": "2015-11-10T11:00:00",
-        "room": "B-002",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 33,
     "fields": {
-        "datetime": "2015-11-11T11:00:00",
+        "datetime": "2015-11-10T11:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129714,7 +129705,7 @@
     "model": "occupants.binarypredictions",
     "pk": 34,
     "fields": {
-        "datetime": "2015-11-12T11:00:00",
+        "datetime": "2015-11-11T11:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129723,7 +129714,7 @@
     "model": "occupants.binarypredictions",
     "pk": 35,
     "fields": {
-        "datetime": "2015-11-13T11:00:00",
+        "datetime": "2015-11-12T11:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129732,7 +129723,7 @@
     "model": "occupants.binarypredictions",
     "pk": 36,
     "fields": {
-        "datetime": "2015-11-03T12:00:00",
+        "datetime": "2015-11-13T11:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129741,7 +129732,7 @@
     "model": "occupants.binarypredictions",
     "pk": 37,
     "fields": {
-        "datetime": "2015-11-04T12:00:00",
+        "datetime": "2015-11-03T12:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129750,7 +129741,7 @@
     "model": "occupants.binarypredictions",
     "pk": 38,
     "fields": {
-        "datetime": "2015-11-05T12:00:00",
+        "datetime": "2015-11-04T12:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129759,7 +129750,7 @@
     "model": "occupants.binarypredictions",
     "pk": 39,
     "fields": {
-        "datetime": "2015-11-06T12:00:00",
+        "datetime": "2015-11-05T12:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129768,7 +129759,7 @@
     "model": "occupants.binarypredictions",
     "pk": 40,
     "fields": {
-        "datetime": "2015-11-09T12:00:00",
+        "datetime": "2015-11-06T12:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129777,7 +129768,7 @@
     "model": "occupants.binarypredictions",
     "pk": 41,
     "fields": {
-        "datetime": "2015-11-10T12:00:00",
+        "datetime": "2015-11-09T12:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129786,7 +129777,7 @@
     "model": "occupants.binarypredictions",
     "pk": 42,
     "fields": {
-        "datetime": "2015-11-11T12:00:00",
+        "datetime": "2015-11-10T12:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129795,7 +129786,7 @@
     "model": "occupants.binarypredictions",
     "pk": 43,
     "fields": {
-        "datetime": "2015-11-12T12:00:00",
+        "datetime": "2015-11-11T12:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129804,7 +129795,7 @@
     "model": "occupants.binarypredictions",
     "pk": 44,
     "fields": {
-        "datetime": "2015-11-13T12:00:00",
+        "datetime": "2015-11-12T12:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129813,7 +129804,7 @@
     "model": "occupants.binarypredictions",
     "pk": 45,
     "fields": {
-        "datetime": "2015-11-03T13:00:00",
+        "datetime": "2015-11-13T12:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129822,7 +129813,7 @@
     "model": "occupants.binarypredictions",
     "pk": 46,
     "fields": {
-        "datetime": "2015-11-04T13:00:00",
+        "datetime": "2015-11-03T13:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129831,7 +129822,7 @@
     "model": "occupants.binarypredictions",
     "pk": 47,
     "fields": {
-        "datetime": "2015-11-05T13:00:00",
+        "datetime": "2015-11-04T13:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129840,7 +129831,7 @@
     "model": "occupants.binarypredictions",
     "pk": 48,
     "fields": {
-        "datetime": "2015-11-06T13:00:00",
+        "datetime": "2015-11-05T13:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129849,7 +129840,7 @@
     "model": "occupants.binarypredictions",
     "pk": 49,
     "fields": {
-        "datetime": "2015-11-09T13:00:00",
+        "datetime": "2015-11-06T13:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129858,7 +129849,7 @@
     "model": "occupants.binarypredictions",
     "pk": 50,
     "fields": {
-        "datetime": "2015-11-10T13:00:00",
+        "datetime": "2015-11-09T13:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129867,7 +129858,7 @@
     "model": "occupants.binarypredictions",
     "pk": 51,
     "fields": {
-        "datetime": "2015-11-11T13:00:00",
+        "datetime": "2015-11-10T13:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129876,6 +129867,15 @@
     "model": "occupants.binarypredictions",
     "pk": 52,
     "fields": {
+        "datetime": "2015-11-11T13:00:00",
+        "room": "B-002",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 53,
+    "fields": {
         "datetime": "2015-11-12T13:00:00",
         "room": "B-002",
         "predictions": 0
@@ -129883,18 +129883,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 53,
-    "fields": {
-        "datetime": "2015-11-13T13:00:00",
-        "room": "B-002",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 54,
     "fields": {
-        "datetime": "2015-11-03T14:00:00",
+        "datetime": "2015-11-13T13:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129903,7 +129894,7 @@
     "model": "occupants.binarypredictions",
     "pk": 55,
     "fields": {
-        "datetime": "2015-11-04T14:00:00",
+        "datetime": "2015-11-03T14:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129912,7 +129903,7 @@
     "model": "occupants.binarypredictions",
     "pk": 56,
     "fields": {
-        "datetime": "2015-11-05T14:00:00",
+        "datetime": "2015-11-04T14:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129921,7 +129912,7 @@
     "model": "occupants.binarypredictions",
     "pk": 57,
     "fields": {
-        "datetime": "2015-11-06T14:00:00",
+        "datetime": "2015-11-05T14:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129930,7 +129921,7 @@
     "model": "occupants.binarypredictions",
     "pk": 58,
     "fields": {
-        "datetime": "2015-11-09T14:00:00",
+        "datetime": "2015-11-06T14:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129939,7 +129930,7 @@
     "model": "occupants.binarypredictions",
     "pk": 59,
     "fields": {
-        "datetime": "2015-11-10T14:00:00",
+        "datetime": "2015-11-09T14:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129948,7 +129939,7 @@
     "model": "occupants.binarypredictions",
     "pk": 60,
     "fields": {
-        "datetime": "2015-11-11T14:00:00",
+        "datetime": "2015-11-10T14:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129957,7 +129948,7 @@
     "model": "occupants.binarypredictions",
     "pk": 61,
     "fields": {
-        "datetime": "2015-11-12T14:00:00",
+        "datetime": "2015-11-11T14:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129966,7 +129957,7 @@
     "model": "occupants.binarypredictions",
     "pk": 62,
     "fields": {
-        "datetime": "2015-11-13T14:00:00",
+        "datetime": "2015-11-12T14:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129975,7 +129966,7 @@
     "model": "occupants.binarypredictions",
     "pk": 63,
     "fields": {
-        "datetime": "2015-11-03T15:00:00",
+        "datetime": "2015-11-13T14:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -129984,6 +129975,15 @@
     "model": "occupants.binarypredictions",
     "pk": 64,
     "fields": {
+        "datetime": "2015-11-03T15:00:00",
+        "room": "B-002",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 65,
+    "fields": {
         "datetime": "2015-11-04T15:00:00",
         "room": "B-002",
         "predictions": 0
@@ -129991,18 +129991,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 65,
-    "fields": {
-        "datetime": "2015-11-05T15:00:00",
-        "room": "B-002",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 66,
     "fields": {
-        "datetime": "2015-11-06T15:00:00",
+        "datetime": "2015-11-05T15:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -130011,7 +130002,7 @@
     "model": "occupants.binarypredictions",
     "pk": 67,
     "fields": {
-        "datetime": "2015-11-09T15:00:00",
+        "datetime": "2015-11-06T15:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -130020,7 +130011,7 @@
     "model": "occupants.binarypredictions",
     "pk": 68,
     "fields": {
-        "datetime": "2015-11-10T15:00:00",
+        "datetime": "2015-11-09T15:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -130029,7 +130020,7 @@
     "model": "occupants.binarypredictions",
     "pk": 69,
     "fields": {
-        "datetime": "2015-11-11T15:00:00",
+        "datetime": "2015-11-10T15:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -130038,7 +130029,7 @@
     "model": "occupants.binarypredictions",
     "pk": 70,
     "fields": {
-        "datetime": "2015-11-12T15:00:00",
+        "datetime": "2015-11-11T15:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -130047,7 +130038,7 @@
     "model": "occupants.binarypredictions",
     "pk": 71,
     "fields": {
-        "datetime": "2015-11-13T15:00:00",
+        "datetime": "2015-11-12T15:00:00",
         "room": "B-002",
         "predictions": 1
     }
@@ -130056,6 +130047,15 @@
     "model": "occupants.binarypredictions",
     "pk": 72,
     "fields": {
+        "datetime": "2015-11-13T15:00:00",
+        "room": "B-002",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 73,
+    "fields": {
         "datetime": "2015-11-03T13:00:00",
         "room": "B-003",
         "predictions": 0
@@ -130063,18 +130063,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 73,
-    "fields": {
-        "datetime": "2015-11-04T13:00:00",
-        "room": "B-003",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 74,
     "fields": {
-        "datetime": "2015-11-05T13:00:00",
+        "datetime": "2015-11-04T13:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130083,7 +130074,7 @@
     "model": "occupants.binarypredictions",
     "pk": 75,
     "fields": {
-        "datetime": "2015-11-06T13:00:00",
+        "datetime": "2015-11-05T13:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130092,7 +130083,7 @@
     "model": "occupants.binarypredictions",
     "pk": 76,
     "fields": {
-        "datetime": "2015-11-09T13:00:00",
+        "datetime": "2015-11-06T13:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130101,6 +130092,15 @@
     "model": "occupants.binarypredictions",
     "pk": 77,
     "fields": {
+        "datetime": "2015-11-09T13:00:00",
+        "room": "B-003",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 78,
+    "fields": {
         "datetime": "2015-11-10T13:00:00",
         "room": "B-003",
         "predictions": 0
@@ -130108,18 +130108,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 78,
-    "fields": {
-        "datetime": "2015-11-11T13:00:00",
-        "room": "B-003",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 79,
     "fields": {
-        "datetime": "2015-11-12T13:00:00",
+        "datetime": "2015-11-11T13:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130128,7 +130119,7 @@
     "model": "occupants.binarypredictions",
     "pk": 80,
     "fields": {
-        "datetime": "2015-11-13T13:00:00",
+        "datetime": "2015-11-12T13:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130137,7 +130128,7 @@
     "model": "occupants.binarypredictions",
     "pk": 81,
     "fields": {
-        "datetime": "2015-11-03T14:00:00",
+        "datetime": "2015-11-13T13:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130146,7 +130137,7 @@
     "model": "occupants.binarypredictions",
     "pk": 82,
     "fields": {
-        "datetime": "2015-11-04T14:00:00",
+        "datetime": "2015-11-03T14:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130155,7 +130146,7 @@
     "model": "occupants.binarypredictions",
     "pk": 83,
     "fields": {
-        "datetime": "2015-11-05T14:00:00",
+        "datetime": "2015-11-04T14:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130164,7 +130155,7 @@
     "model": "occupants.binarypredictions",
     "pk": 84,
     "fields": {
-        "datetime": "2015-11-06T14:00:00",
+        "datetime": "2015-11-05T14:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130173,7 +130164,7 @@
     "model": "occupants.binarypredictions",
     "pk": 85,
     "fields": {
-        "datetime": "2015-11-09T14:00:00",
+        "datetime": "2015-11-06T14:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130182,7 +130173,7 @@
     "model": "occupants.binarypredictions",
     "pk": 86,
     "fields": {
-        "datetime": "2015-11-10T14:00:00",
+        "datetime": "2015-11-09T14:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130191,7 +130182,7 @@
     "model": "occupants.binarypredictions",
     "pk": 87,
     "fields": {
-        "datetime": "2015-11-11T14:00:00",
+        "datetime": "2015-11-10T14:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130200,7 +130191,7 @@
     "model": "occupants.binarypredictions",
     "pk": 88,
     "fields": {
-        "datetime": "2015-11-12T14:00:00",
+        "datetime": "2015-11-11T14:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130209,7 +130200,7 @@
     "model": "occupants.binarypredictions",
     "pk": 89,
     "fields": {
-        "datetime": "2015-11-13T14:00:00",
+        "datetime": "2015-11-12T14:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130218,7 +130209,7 @@
     "model": "occupants.binarypredictions",
     "pk": 90,
     "fields": {
-        "datetime": "2015-11-03T15:00:00",
+        "datetime": "2015-11-13T14:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130227,7 +130218,7 @@
     "model": "occupants.binarypredictions",
     "pk": 91,
     "fields": {
-        "datetime": "2015-11-04T15:00:00",
+        "datetime": "2015-11-03T15:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130236,6 +130227,15 @@
     "model": "occupants.binarypredictions",
     "pk": 92,
     "fields": {
+        "datetime": "2015-11-04T15:00:00",
+        "room": "B-003",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 93,
+    "fields": {
         "datetime": "2015-11-05T15:00:00",
         "room": "B-003",
         "predictions": 0
@@ -130243,18 +130243,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 93,
-    "fields": {
-        "datetime": "2015-11-06T15:00:00",
-        "room": "B-003",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 94,
     "fields": {
-        "datetime": "2015-11-09T15:00:00",
+        "datetime": "2015-11-06T15:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130263,7 +130254,7 @@
     "model": "occupants.binarypredictions",
     "pk": 95,
     "fields": {
-        "datetime": "2015-11-10T15:00:00",
+        "datetime": "2015-11-09T15:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130272,6 +130263,15 @@
     "model": "occupants.binarypredictions",
     "pk": 96,
     "fields": {
+        "datetime": "2015-11-10T15:00:00",
+        "room": "B-003",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 97,
+    "fields": {
         "datetime": "2015-11-11T15:00:00",
         "room": "B-003",
         "predictions": 0
@@ -130279,18 +130279,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 97,
-    "fields": {
-        "datetime": "2015-11-12T15:00:00",
-        "room": "B-003",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 98,
     "fields": {
-        "datetime": "2015-11-13T15:00:00",
+        "datetime": "2015-11-12T15:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130299,16 +130290,16 @@
     "model": "occupants.binarypredictions",
     "pk": 99,
     "fields": {
-        "datetime": "2015-11-03T16:00:00",
+        "datetime": "2015-11-13T15:00:00",
         "room": "B-003",
-        "predictions": 0
+        "predictions": 1
     }
 },
 {
     "model": "occupants.binarypredictions",
     "pk": 100,
     "fields": {
-        "datetime": "2015-11-04T16:00:00",
+        "datetime": "2015-11-03T16:00:00",
         "room": "B-003",
         "predictions": 0
     }
@@ -130317,7 +130308,7 @@
     "model": "occupants.binarypredictions",
     "pk": 101,
     "fields": {
-        "datetime": "2015-11-05T16:00:00",
+        "datetime": "2015-11-04T16:00:00",
         "room": "B-003",
         "predictions": 0
     }
@@ -130326,16 +130317,16 @@
     "model": "occupants.binarypredictions",
     "pk": 102,
     "fields": {
-        "datetime": "2015-11-06T16:00:00",
+        "datetime": "2015-11-05T16:00:00",
         "room": "B-003",
-        "predictions": 1
+        "predictions": 0
     }
 },
 {
     "model": "occupants.binarypredictions",
     "pk": 103,
     "fields": {
-        "datetime": "2015-11-09T16:00:00",
+        "datetime": "2015-11-06T16:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130344,6 +130335,15 @@
     "model": "occupants.binarypredictions",
     "pk": 104,
     "fields": {
+        "datetime": "2015-11-09T16:00:00",
+        "room": "B-003",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 105,
+    "fields": {
         "datetime": "2015-11-10T16:00:00",
         "room": "B-003",
         "predictions": 0
@@ -130351,18 +130351,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 105,
-    "fields": {
-        "datetime": "2015-11-11T16:00:00",
-        "room": "B-003",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 106,
     "fields": {
-        "datetime": "2015-11-12T16:00:00",
+        "datetime": "2015-11-11T16:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130371,7 +130362,7 @@
     "model": "occupants.binarypredictions",
     "pk": 107,
     "fields": {
-        "datetime": "2015-11-13T16:00:00",
+        "datetime": "2015-11-12T16:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130380,16 +130371,16 @@
     "model": "occupants.binarypredictions",
     "pk": 108,
     "fields": {
-        "datetime": "2015-11-03T09:00:00",
+        "datetime": "2015-11-13T16:00:00",
         "room": "B-003",
-        "predictions": 0
+        "predictions": 1
     }
 },
 {
     "model": "occupants.binarypredictions",
     "pk": 109,
     "fields": {
-        "datetime": "2015-11-04T09:00:00",
+        "datetime": "2015-11-03T09:00:00",
         "room": "B-003",
         "predictions": 0
     }
@@ -130398,16 +130389,16 @@
     "model": "occupants.binarypredictions",
     "pk": 110,
     "fields": {
-        "datetime": "2015-11-05T09:00:00",
+        "datetime": "2015-11-04T09:00:00",
         "room": "B-003",
-        "predictions": 1
+        "predictions": 0
     }
 },
 {
     "model": "occupants.binarypredictions",
     "pk": 111,
     "fields": {
-        "datetime": "2015-11-06T09:00:00",
+        "datetime": "2015-11-05T09:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130416,7 +130407,7 @@
     "model": "occupants.binarypredictions",
     "pk": 112,
     "fields": {
-        "datetime": "2015-11-09T09:00:00",
+        "datetime": "2015-11-06T09:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130425,16 +130416,16 @@
     "model": "occupants.binarypredictions",
     "pk": 113,
     "fields": {
-        "datetime": "2015-11-10T09:00:00",
+        "datetime": "2015-11-09T09:00:00",
         "room": "B-003",
-        "predictions": 0
+        "predictions": 1
     }
 },
 {
     "model": "occupants.binarypredictions",
     "pk": 114,
     "fields": {
-        "datetime": "2015-11-11T09:00:00",
+        "datetime": "2015-11-10T09:00:00",
         "room": "B-003",
         "predictions": 0
     }
@@ -130443,7 +130434,7 @@
     "model": "occupants.binarypredictions",
     "pk": 115,
     "fields": {
-        "datetime": "2015-11-12T09:00:00",
+        "datetime": "2015-11-11T09:00:00",
         "room": "B-003",
         "predictions": 0
     }
@@ -130452,6 +130443,15 @@
     "model": "occupants.binarypredictions",
     "pk": 116,
     "fields": {
+        "datetime": "2015-11-12T09:00:00",
+        "room": "B-003",
+        "predictions": 0
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 117,
+    "fields": {
         "datetime": "2015-11-13T09:00:00",
         "room": "B-003",
         "predictions": 1
@@ -130459,7 +130459,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 117,
+    "pk": 118,
     "fields": {
         "datetime": "2015-11-03T10:00:00",
         "room": "B-003",
@@ -130468,18 +130468,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 118,
-    "fields": {
-        "datetime": "2015-11-04T10:00:00",
-        "room": "B-003",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 119,
     "fields": {
-        "datetime": "2015-11-05T10:00:00",
+        "datetime": "2015-11-04T10:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130488,7 +130479,7 @@
     "model": "occupants.binarypredictions",
     "pk": 120,
     "fields": {
-        "datetime": "2015-11-06T10:00:00",
+        "datetime": "2015-11-05T10:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130497,7 +130488,7 @@
     "model": "occupants.binarypredictions",
     "pk": 121,
     "fields": {
-        "datetime": "2015-11-09T10:00:00",
+        "datetime": "2015-11-06T10:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130506,7 +130497,7 @@
     "model": "occupants.binarypredictions",
     "pk": 122,
     "fields": {
-        "datetime": "2015-11-10T10:00:00",
+        "datetime": "2015-11-09T10:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130515,16 +130506,16 @@
     "model": "occupants.binarypredictions",
     "pk": 123,
     "fields": {
-        "datetime": "2015-11-11T10:00:00",
+        "datetime": "2015-11-10T10:00:00",
         "room": "B-003",
-        "predictions": 0
+        "predictions": 1
     }
 },
 {
     "model": "occupants.binarypredictions",
     "pk": 124,
     "fields": {
-        "datetime": "2015-11-12T10:00:00",
+        "datetime": "2015-11-11T10:00:00",
         "room": "B-003",
         "predictions": 0
     }
@@ -130533,16 +130524,16 @@
     "model": "occupants.binarypredictions",
     "pk": 125,
     "fields": {
-        "datetime": "2015-11-13T10:00:00",
+        "datetime": "2015-11-12T10:00:00",
         "room": "B-003",
-        "predictions": 1
+        "predictions": 0
     }
 },
 {
     "model": "occupants.binarypredictions",
     "pk": 126,
     "fields": {
-        "datetime": "2015-11-03T11:00:00",
+        "datetime": "2015-11-13T10:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130551,7 +130542,7 @@
     "model": "occupants.binarypredictions",
     "pk": 127,
     "fields": {
-        "datetime": "2015-11-04T11:00:00",
+        "datetime": "2015-11-03T11:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130560,7 +130551,7 @@
     "model": "occupants.binarypredictions",
     "pk": 128,
     "fields": {
-        "datetime": "2015-11-05T11:00:00",
+        "datetime": "2015-11-04T11:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130569,7 +130560,7 @@
     "model": "occupants.binarypredictions",
     "pk": 129,
     "fields": {
-        "datetime": "2015-11-06T11:00:00",
+        "datetime": "2015-11-05T11:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130578,7 +130569,7 @@
     "model": "occupants.binarypredictions",
     "pk": 130,
     "fields": {
-        "datetime": "2015-11-09T11:00:00",
+        "datetime": "2015-11-06T11:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130587,7 +130578,7 @@
     "model": "occupants.binarypredictions",
     "pk": 131,
     "fields": {
-        "datetime": "2015-11-10T11:00:00",
+        "datetime": "2015-11-09T11:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130596,7 +130587,7 @@
     "model": "occupants.binarypredictions",
     "pk": 132,
     "fields": {
-        "datetime": "2015-11-11T11:00:00",
+        "datetime": "2015-11-10T11:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130605,6 +130596,15 @@
     "model": "occupants.binarypredictions",
     "pk": 133,
     "fields": {
+        "datetime": "2015-11-11T11:00:00",
+        "room": "B-003",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 134,
+    "fields": {
         "datetime": "2015-11-12T11:00:00",
         "room": "B-003",
         "predictions": 0
@@ -130612,18 +130612,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 134,
-    "fields": {
-        "datetime": "2015-11-13T11:00:00",
-        "room": "B-003",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 135,
     "fields": {
-        "datetime": "2015-11-03T12:00:00",
+        "datetime": "2015-11-13T11:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130632,7 +130623,7 @@
     "model": "occupants.binarypredictions",
     "pk": 136,
     "fields": {
-        "datetime": "2015-11-04T12:00:00",
+        "datetime": "2015-11-03T12:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130641,7 +130632,7 @@
     "model": "occupants.binarypredictions",
     "pk": 137,
     "fields": {
-        "datetime": "2015-11-05T12:00:00",
+        "datetime": "2015-11-04T12:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130650,7 +130641,7 @@
     "model": "occupants.binarypredictions",
     "pk": 138,
     "fields": {
-        "datetime": "2015-11-06T12:00:00",
+        "datetime": "2015-11-05T12:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130659,7 +130650,7 @@
     "model": "occupants.binarypredictions",
     "pk": 139,
     "fields": {
-        "datetime": "2015-11-09T12:00:00",
+        "datetime": "2015-11-06T12:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130668,7 +130659,7 @@
     "model": "occupants.binarypredictions",
     "pk": 140,
     "fields": {
-        "datetime": "2015-11-10T12:00:00",
+        "datetime": "2015-11-09T12:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130677,7 +130668,7 @@
     "model": "occupants.binarypredictions",
     "pk": 141,
     "fields": {
-        "datetime": "2015-11-11T12:00:00",
+        "datetime": "2015-11-10T12:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130686,7 +130677,7 @@
     "model": "occupants.binarypredictions",
     "pk": 142,
     "fields": {
-        "datetime": "2015-11-12T12:00:00",
+        "datetime": "2015-11-11T12:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130695,7 +130686,7 @@
     "model": "occupants.binarypredictions",
     "pk": 143,
     "fields": {
-        "datetime": "2015-11-13T12:00:00",
+        "datetime": "2015-11-12T12:00:00",
         "room": "B-003",
         "predictions": 1
     }
@@ -130704,6 +130695,15 @@
     "model": "occupants.binarypredictions",
     "pk": 144,
     "fields": {
+        "datetime": "2015-11-13T12:00:00",
+        "room": "B-003",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 145,
+    "fields": {
         "datetime": "2015-11-03T10:00:00",
         "room": "B-004",
         "predictions": 1
@@ -130711,7 +130711,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 145,
+    "pk": 146,
     "fields": {
         "datetime": "2015-11-04T10:00:00",
         "room": "B-004",
@@ -130720,7 +130720,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 146,
+    "pk": 147,
     "fields": {
         "datetime": "2015-11-05T10:00:00",
         "room": "B-004",
@@ -130729,7 +130729,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 147,
+    "pk": 148,
     "fields": {
         "datetime": "2015-11-06T10:00:00",
         "room": "B-004",
@@ -130738,7 +130738,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 148,
+    "pk": 149,
     "fields": {
         "datetime": "2015-11-09T10:00:00",
         "room": "B-004",
@@ -130747,7 +130747,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 149,
+    "pk": 150,
     "fields": {
         "datetime": "2015-11-10T10:00:00",
         "room": "B-004",
@@ -130756,7 +130756,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 150,
+    "pk": 151,
     "fields": {
         "datetime": "2015-11-11T10:00:00",
         "room": "B-004",
@@ -130765,7 +130765,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 151,
+    "pk": 152,
     "fields": {
         "datetime": "2015-11-12T10:00:00",
         "room": "B-004",
@@ -130774,7 +130774,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 152,
+    "pk": 153,
     "fields": {
         "datetime": "2015-11-13T10:00:00",
         "room": "B-004",
@@ -130783,7 +130783,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 153,
+    "pk": 154,
     "fields": {
         "datetime": "2015-11-03T11:00:00",
         "room": "B-004",
@@ -130792,7 +130792,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 154,
+    "pk": 155,
     "fields": {
         "datetime": "2015-11-04T11:00:00",
         "room": "B-004",
@@ -130801,7 +130801,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 155,
+    "pk": 156,
     "fields": {
         "datetime": "2015-11-05T11:00:00",
         "room": "B-004",
@@ -130810,7 +130810,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 156,
+    "pk": 157,
     "fields": {
         "datetime": "2015-11-06T11:00:00",
         "room": "B-004",
@@ -130819,7 +130819,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 157,
+    "pk": 158,
     "fields": {
         "datetime": "2015-11-09T11:00:00",
         "room": "B-004",
@@ -130828,7 +130828,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 158,
+    "pk": 159,
     "fields": {
         "datetime": "2015-11-10T11:00:00",
         "room": "B-004",
@@ -130837,7 +130837,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 159,
+    "pk": 160,
     "fields": {
         "datetime": "2015-11-11T11:00:00",
         "room": "B-004",
@@ -130846,7 +130846,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 160,
+    "pk": 161,
     "fields": {
         "datetime": "2015-11-12T11:00:00",
         "room": "B-004",
@@ -130855,7 +130855,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 161,
+    "pk": 162,
     "fields": {
         "datetime": "2015-11-13T11:00:00",
         "room": "B-004",
@@ -130864,7 +130864,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 162,
+    "pk": 163,
     "fields": {
         "datetime": "2015-11-03T12:00:00",
         "room": "B-004",
@@ -130873,7 +130873,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 163,
+    "pk": 164,
     "fields": {
         "datetime": "2015-11-04T12:00:00",
         "room": "B-004",
@@ -130882,7 +130882,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 164,
+    "pk": 165,
     "fields": {
         "datetime": "2015-11-05T12:00:00",
         "room": "B-004",
@@ -130891,7 +130891,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 165,
+    "pk": 166,
     "fields": {
         "datetime": "2015-11-06T12:00:00",
         "room": "B-004",
@@ -130900,7 +130900,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 166,
+    "pk": 167,
     "fields": {
         "datetime": "2015-11-09T12:00:00",
         "room": "B-004",
@@ -130909,7 +130909,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 167,
+    "pk": 168,
     "fields": {
         "datetime": "2015-11-10T12:00:00",
         "room": "B-004",
@@ -130918,7 +130918,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 168,
+    "pk": 169,
     "fields": {
         "datetime": "2015-11-11T12:00:00",
         "room": "B-004",
@@ -130927,7 +130927,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 169,
+    "pk": 170,
     "fields": {
         "datetime": "2015-11-12T12:00:00",
         "room": "B-004",
@@ -130936,7 +130936,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 170,
+    "pk": 171,
     "fields": {
         "datetime": "2015-11-13T12:00:00",
         "room": "B-004",
@@ -130945,7 +130945,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 171,
+    "pk": 172,
     "fields": {
         "datetime": "2015-11-03T13:00:00",
         "room": "B-004",
@@ -130954,7 +130954,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 172,
+    "pk": 173,
     "fields": {
         "datetime": "2015-11-04T13:00:00",
         "room": "B-004",
@@ -130963,7 +130963,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 173,
+    "pk": 174,
     "fields": {
         "datetime": "2015-11-05T13:00:00",
         "room": "B-004",
@@ -130972,7 +130972,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 174,
+    "pk": 175,
     "fields": {
         "datetime": "2015-11-06T13:00:00",
         "room": "B-004",
@@ -130981,7 +130981,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 175,
+    "pk": 176,
     "fields": {
         "datetime": "2015-11-09T13:00:00",
         "room": "B-004",
@@ -130990,7 +130990,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 176,
+    "pk": 177,
     "fields": {
         "datetime": "2015-11-10T13:00:00",
         "room": "B-004",
@@ -130999,7 +130999,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 177,
+    "pk": 178,
     "fields": {
         "datetime": "2015-11-11T13:00:00",
         "room": "B-004",
@@ -131008,7 +131008,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 178,
+    "pk": 179,
     "fields": {
         "datetime": "2015-11-12T13:00:00",
         "room": "B-004",
@@ -131017,7 +131017,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 179,
+    "pk": 180,
     "fields": {
         "datetime": "2015-11-13T13:00:00",
         "room": "B-004",
@@ -131026,7 +131026,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 180,
+    "pk": 181,
     "fields": {
         "datetime": "2015-11-03T14:00:00",
         "room": "B-004",
@@ -131035,7 +131035,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 181,
+    "pk": 182,
     "fields": {
         "datetime": "2015-11-04T14:00:00",
         "room": "B-004",
@@ -131044,7 +131044,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 182,
+    "pk": 183,
     "fields": {
         "datetime": "2015-11-05T14:00:00",
         "room": "B-004",
@@ -131053,7 +131053,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 183,
+    "pk": 184,
     "fields": {
         "datetime": "2015-11-06T14:00:00",
         "room": "B-004",
@@ -131062,7 +131062,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 184,
+    "pk": 185,
     "fields": {
         "datetime": "2015-11-09T14:00:00",
         "room": "B-004",
@@ -131071,7 +131071,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 185,
+    "pk": 186,
     "fields": {
         "datetime": "2015-11-10T14:00:00",
         "room": "B-004",
@@ -131080,7 +131080,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 186,
+    "pk": 187,
     "fields": {
         "datetime": "2015-11-11T14:00:00",
         "room": "B-004",
@@ -131089,7 +131089,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 187,
+    "pk": 188,
     "fields": {
         "datetime": "2015-11-12T14:00:00",
         "room": "B-004",
@@ -131098,7 +131098,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 188,
+    "pk": 189,
     "fields": {
         "datetime": "2015-11-13T14:00:00",
         "room": "B-004",
@@ -131107,7 +131107,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 189,
+    "pk": 190,
     "fields": {
         "datetime": "2015-11-03T15:00:00",
         "room": "B-004",
@@ -131116,7 +131116,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 190,
+    "pk": 191,
     "fields": {
         "datetime": "2015-11-04T15:00:00",
         "room": "B-004",
@@ -131125,7 +131125,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 191,
+    "pk": 192,
     "fields": {
         "datetime": "2015-11-05T15:00:00",
         "room": "B-004",
@@ -131134,7 +131134,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 192,
+    "pk": 193,
     "fields": {
         "datetime": "2015-11-06T15:00:00",
         "room": "B-004",
@@ -131143,7 +131143,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 193,
+    "pk": 194,
     "fields": {
         "datetime": "2015-11-09T15:00:00",
         "room": "B-004",
@@ -131152,7 +131152,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 194,
+    "pk": 195,
     "fields": {
         "datetime": "2015-11-10T15:00:00",
         "room": "B-004",
@@ -131161,7 +131161,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 195,
+    "pk": 196,
     "fields": {
         "datetime": "2015-11-11T15:00:00",
         "room": "B-004",
@@ -131170,7 +131170,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 196,
+    "pk": 197,
     "fields": {
         "datetime": "2015-11-12T15:00:00",
         "room": "B-004",
@@ -131179,7 +131179,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 197,
+    "pk": 198,
     "fields": {
         "datetime": "2015-11-13T15:00:00",
         "room": "B-004",
@@ -131188,7 +131188,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 198,
+    "pk": 199,
     "fields": {
         "datetime": "2015-11-03T16:00:00",
         "room": "B-004",
@@ -131197,7 +131197,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 199,
+    "pk": 200,
     "fields": {
         "datetime": "2015-11-04T16:00:00",
         "room": "B-004",
@@ -131206,7 +131206,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 200,
+    "pk": 201,
     "fields": {
         "datetime": "2015-11-05T16:00:00",
         "room": "B-004",
@@ -131215,7 +131215,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 201,
+    "pk": 202,
     "fields": {
         "datetime": "2015-11-06T16:00:00",
         "room": "B-004",
@@ -131224,7 +131224,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 202,
+    "pk": 203,
     "fields": {
         "datetime": "2015-11-09T16:00:00",
         "room": "B-004",
@@ -131233,7 +131233,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 203,
+    "pk": 204,
     "fields": {
         "datetime": "2015-11-10T16:00:00",
         "room": "B-004",
@@ -131242,7 +131242,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 204,
+    "pk": 205,
     "fields": {
         "datetime": "2015-11-11T16:00:00",
         "room": "B-004",
@@ -131251,7 +131251,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 205,
+    "pk": 206,
     "fields": {
         "datetime": "2015-11-12T16:00:00",
         "room": "B-004",
@@ -131260,7 +131260,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 206,
+    "pk": 207,
     "fields": {
         "datetime": "2015-11-13T16:00:00",
         "room": "B-004",
@@ -131269,7 +131269,7 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 207,
+    "pk": 208,
     "fields": {
         "datetime": "2015-11-03T09:00:00",
         "room": "B-004",
@@ -131278,18 +131278,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 208,
-    "fields": {
-        "datetime": "2015-11-04T09:00:00",
-        "room": "B-004",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 209,
     "fields": {
-        "datetime": "2015-11-05T09:00:00",
+        "datetime": "2015-11-04T09:00:00",
         "room": "B-004",
         "predictions": 1
     }
@@ -131298,6 +131289,15 @@
     "model": "occupants.binarypredictions",
     "pk": 210,
     "fields": {
+        "datetime": "2015-11-05T09:00:00",
+        "room": "B-004",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 211,
+    "fields": {
         "datetime": "2015-11-06T09:00:00",
         "room": "B-004",
         "predictions": 0
@@ -131305,18 +131305,9 @@
 },
 {
     "model": "occupants.binarypredictions",
-    "pk": 211,
-    "fields": {
-        "datetime": "2015-11-09T09:00:00",
-        "room": "B-004",
-        "predictions": 1
-    }
-},
-{
-    "model": "occupants.binarypredictions",
     "pk": 212,
     "fields": {
-        "datetime": "2015-11-10T09:00:00",
+        "datetime": "2015-11-09T09:00:00",
         "room": "B-004",
         "predictions": 1
     }
@@ -131325,7 +131316,7 @@
     "model": "occupants.binarypredictions",
     "pk": 213,
     "fields": {
-        "datetime": "2015-11-11T09:00:00",
+        "datetime": "2015-11-10T09:00:00",
         "room": "B-004",
         "predictions": 1
     }
@@ -131334,7 +131325,7 @@
     "model": "occupants.binarypredictions",
     "pk": 214,
     "fields": {
-        "datetime": "2015-11-12T09:00:00",
+        "datetime": "2015-11-11T09:00:00",
         "room": "B-004",
         "predictions": 1
     }
@@ -131343,6 +131334,15 @@
     "model": "occupants.binarypredictions",
     "pk": 215,
     "fields": {
+        "datetime": "2015-11-12T09:00:00",
+        "room": "B-004",
+        "predictions": 1
+    }
+},
+{
+    "model": "occupants.binarypredictions",
+    "pk": 216,
+    "fields": {
         "datetime": "2015-11-13T09:00:00",
         "room": "B-004",
         "predictions": 0
@@ -131350,18 +131350,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 0,
-    "fields": {
-        "datetime": "2015-11-03T16:00:00",
-        "room": "B-002",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 1,
     "fields": {
-        "datetime": "2015-11-04T16:00:00",
+        "datetime": "2015-11-03T16:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131370,7 +131361,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 2,
     "fields": {
-        "datetime": "2015-11-05T16:00:00",
+        "datetime": "2015-11-04T16:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131379,7 +131370,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 3,
     "fields": {
-        "datetime": "2015-11-06T16:00:00",
+        "datetime": "2015-11-05T16:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131388,7 +131379,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 4,
     "fields": {
-        "datetime": "2015-11-09T16:00:00",
+        "datetime": "2015-11-06T16:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131397,7 +131388,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 5,
     "fields": {
-        "datetime": "2015-11-10T16:00:00",
+        "datetime": "2015-11-09T16:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131406,7 +131397,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 6,
     "fields": {
-        "datetime": "2015-11-11T16:00:00",
+        "datetime": "2015-11-10T16:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131415,7 +131406,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 7,
     "fields": {
-        "datetime": "2015-11-12T16:00:00",
+        "datetime": "2015-11-11T16:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131424,7 +131415,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 8,
     "fields": {
-        "datetime": "2015-11-13T16:00:00",
+        "datetime": "2015-11-12T16:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131433,6 +131424,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 9,
     "fields": {
+        "datetime": "2015-11-13T16:00:00",
+        "room": "B-002",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 10,
+    "fields": {
         "datetime": "2015-11-03T09:00:00",
         "room": "B-002",
         "predictions": 0.0
@@ -131440,7 +131440,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 10,
+    "pk": 11,
     "fields": {
         "datetime": "2015-11-04T09:00:00",
         "room": "B-002",
@@ -131449,18 +131449,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 11,
-    "fields": {
-        "datetime": "2015-11-05T09:00:00",
-        "room": "B-002",
-        "predictions": 0.0
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 12,
     "fields": {
-        "datetime": "2015-11-06T09:00:00",
+        "datetime": "2015-11-05T09:00:00",
         "room": "B-002",
         "predictions": 0.0
     }
@@ -131469,6 +131460,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 13,
     "fields": {
+        "datetime": "2015-11-06T09:00:00",
+        "room": "B-002",
+        "predictions": 0.0
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 14,
+    "fields": {
         "datetime": "2015-11-09T09:00:00",
         "room": "B-002",
         "predictions": 0.25
@@ -131476,7 +131476,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 14,
+    "pk": 15,
     "fields": {
         "datetime": "2015-11-10T09:00:00",
         "room": "B-002",
@@ -131485,7 +131485,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 15,
+    "pk": 16,
     "fields": {
         "datetime": "2015-11-11T09:00:00",
         "room": "B-002",
@@ -131494,18 +131494,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 16,
-    "fields": {
-        "datetime": "2015-11-12T09:00:00",
-        "room": "B-002",
-        "predictions": 0.0
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 17,
     "fields": {
-        "datetime": "2015-11-13T09:00:00",
+        "datetime": "2015-11-12T09:00:00",
         "room": "B-002",
         "predictions": 0.0
     }
@@ -131514,16 +131505,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 18,
     "fields": {
-        "datetime": "2015-11-03T10:00:00",
+        "datetime": "2015-11-13T09:00:00",
         "room": "B-002",
-        "predictions": 0.25
+        "predictions": 0.0
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 19,
     "fields": {
-        "datetime": "2015-11-04T10:00:00",
+        "datetime": "2015-11-03T10:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131532,7 +131523,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 20,
     "fields": {
-        "datetime": "2015-11-05T10:00:00",
+        "datetime": "2015-11-04T10:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131541,6 +131532,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 21,
     "fields": {
+        "datetime": "2015-11-05T10:00:00",
+        "room": "B-002",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 22,
+    "fields": {
         "datetime": "2015-11-06T10:00:00",
         "room": "B-002",
         "predictions": 0.0
@@ -131548,18 +131548,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 22,
-    "fields": {
-        "datetime": "2015-11-09T10:00:00",
-        "room": "B-002",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 23,
     "fields": {
-        "datetime": "2015-11-10T10:00:00",
+        "datetime": "2015-11-09T10:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131568,7 +131559,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 24,
     "fields": {
-        "datetime": "2015-11-11T10:00:00",
+        "datetime": "2015-11-10T10:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131577,7 +131568,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 25,
     "fields": {
-        "datetime": "2015-11-12T10:00:00",
+        "datetime": "2015-11-11T10:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131586,6 +131577,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 26,
     "fields": {
+        "datetime": "2015-11-12T10:00:00",
+        "room": "B-002",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 27,
+    "fields": {
         "datetime": "2015-11-13T10:00:00",
         "room": "B-002",
         "predictions": 0.0
@@ -131593,18 +131593,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 27,
-    "fields": {
-        "datetime": "2015-11-03T11:00:00",
-        "room": "B-002",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 28,
     "fields": {
-        "datetime": "2015-11-04T11:00:00",
+        "datetime": "2015-11-03T11:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131613,7 +131604,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 29,
     "fields": {
-        "datetime": "2015-11-05T11:00:00",
+        "datetime": "2015-11-04T11:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131622,7 +131613,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 30,
     "fields": {
-        "datetime": "2015-11-06T11:00:00",
+        "datetime": "2015-11-05T11:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131631,7 +131622,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 31,
     "fields": {
-        "datetime": "2015-11-09T11:00:00",
+        "datetime": "2015-11-06T11:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131640,7 +131631,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 32,
     "fields": {
-        "datetime": "2015-11-10T11:00:00",
+        "datetime": "2015-11-09T11:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131649,7 +131640,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 33,
     "fields": {
-        "datetime": "2015-11-11T11:00:00",
+        "datetime": "2015-11-10T11:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131658,7 +131649,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 34,
     "fields": {
-        "datetime": "2015-11-12T11:00:00",
+        "datetime": "2015-11-11T11:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131667,16 +131658,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 35,
     "fields": {
-        "datetime": "2015-11-13T11:00:00",
+        "datetime": "2015-11-12T11:00:00",
         "room": "B-002",
-        "predictions": 0.0
+        "predictions": 0.25
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 36,
     "fields": {
-        "datetime": "2015-11-03T12:00:00",
+        "datetime": "2015-11-13T11:00:00",
         "room": "B-002",
         "predictions": 0.0
     }
@@ -131685,16 +131676,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 37,
     "fields": {
-        "datetime": "2015-11-04T12:00:00",
+        "datetime": "2015-11-03T12:00:00",
         "room": "B-002",
-        "predictions": 0.25
+        "predictions": 0.0
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 38,
     "fields": {
-        "datetime": "2015-11-05T12:00:00",
+        "datetime": "2015-11-04T12:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131703,7 +131694,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 39,
     "fields": {
-        "datetime": "2015-11-06T12:00:00",
+        "datetime": "2015-11-05T12:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131712,7 +131703,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 40,
     "fields": {
-        "datetime": "2015-11-09T12:00:00",
+        "datetime": "2015-11-06T12:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131721,7 +131712,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 41,
     "fields": {
-        "datetime": "2015-11-10T12:00:00",
+        "datetime": "2015-11-09T12:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131730,7 +131721,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 42,
     "fields": {
-        "datetime": "2015-11-11T12:00:00",
+        "datetime": "2015-11-10T12:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131739,7 +131730,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 43,
     "fields": {
-        "datetime": "2015-11-12T12:00:00",
+        "datetime": "2015-11-11T12:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131748,7 +131739,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 44,
     "fields": {
-        "datetime": "2015-11-13T12:00:00",
+        "datetime": "2015-11-12T12:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131757,7 +131748,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 45,
     "fields": {
-        "datetime": "2015-11-03T13:00:00",
+        "datetime": "2015-11-13T12:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131766,7 +131757,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 46,
     "fields": {
-        "datetime": "2015-11-04T13:00:00",
+        "datetime": "2015-11-03T13:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131775,7 +131766,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 47,
     "fields": {
-        "datetime": "2015-11-05T13:00:00",
+        "datetime": "2015-11-04T13:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131784,6 +131775,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 48,
     "fields": {
+        "datetime": "2015-11-05T13:00:00",
+        "room": "B-002",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 49,
+    "fields": {
         "datetime": "2015-11-06T13:00:00",
         "room": "B-002",
         "predictions": 0.0
@@ -131791,7 +131791,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 49,
+    "pk": 50,
     "fields": {
         "datetime": "2015-11-09T13:00:00",
         "room": "B-002",
@@ -131800,7 +131800,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 50,
+    "pk": 51,
     "fields": {
         "datetime": "2015-11-10T13:00:00",
         "room": "B-002",
@@ -131809,18 +131809,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 51,
-    "fields": {
-        "datetime": "2015-11-11T13:00:00",
-        "room": "B-002",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 52,
     "fields": {
-        "datetime": "2015-11-12T13:00:00",
+        "datetime": "2015-11-11T13:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131829,6 +131820,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 53,
     "fields": {
+        "datetime": "2015-11-12T13:00:00",
+        "room": "B-002",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 54,
+    "fields": {
         "datetime": "2015-11-13T13:00:00",
         "room": "B-002",
         "predictions": 0.0
@@ -131836,18 +131836,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 54,
-    "fields": {
-        "datetime": "2015-11-03T14:00:00",
-        "room": "B-002",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 55,
     "fields": {
-        "datetime": "2015-11-04T14:00:00",
+        "datetime": "2015-11-03T14:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131856,7 +131847,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 56,
     "fields": {
-        "datetime": "2015-11-05T14:00:00",
+        "datetime": "2015-11-04T14:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131865,7 +131856,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 57,
     "fields": {
-        "datetime": "2015-11-06T14:00:00",
+        "datetime": "2015-11-05T14:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131874,7 +131865,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 58,
     "fields": {
-        "datetime": "2015-11-09T14:00:00",
+        "datetime": "2015-11-06T14:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131883,7 +131874,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 59,
     "fields": {
-        "datetime": "2015-11-10T14:00:00",
+        "datetime": "2015-11-09T14:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131892,7 +131883,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 60,
     "fields": {
-        "datetime": "2015-11-11T14:00:00",
+        "datetime": "2015-11-10T14:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131901,7 +131892,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 61,
     "fields": {
-        "datetime": "2015-11-12T14:00:00",
+        "datetime": "2015-11-11T14:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131910,7 +131901,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 62,
     "fields": {
-        "datetime": "2015-11-13T14:00:00",
+        "datetime": "2015-11-12T14:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131919,7 +131910,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 63,
     "fields": {
-        "datetime": "2015-11-03T15:00:00",
+        "datetime": "2015-11-13T14:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131928,6 +131919,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 64,
     "fields": {
+        "datetime": "2015-11-03T15:00:00",
+        "room": "B-002",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 65,
+    "fields": {
         "datetime": "2015-11-04T15:00:00",
         "room": "B-002",
         "predictions": 0.0
@@ -131935,18 +131935,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 65,
-    "fields": {
-        "datetime": "2015-11-05T15:00:00",
-        "room": "B-002",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 66,
     "fields": {
-        "datetime": "2015-11-06T15:00:00",
+        "datetime": "2015-11-05T15:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131955,7 +131946,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 67,
     "fields": {
-        "datetime": "2015-11-09T15:00:00",
+        "datetime": "2015-11-06T15:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131964,7 +131955,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 68,
     "fields": {
-        "datetime": "2015-11-10T15:00:00",
+        "datetime": "2015-11-09T15:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131973,7 +131964,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 69,
     "fields": {
-        "datetime": "2015-11-11T15:00:00",
+        "datetime": "2015-11-10T15:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131982,7 +131973,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 70,
     "fields": {
-        "datetime": "2015-11-12T15:00:00",
+        "datetime": "2015-11-11T15:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -131991,7 +131982,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 71,
     "fields": {
-        "datetime": "2015-11-13T15:00:00",
+        "datetime": "2015-11-12T15:00:00",
         "room": "B-002",
         "predictions": 0.25
     }
@@ -132000,6 +131991,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 72,
     "fields": {
+        "datetime": "2015-11-13T15:00:00",
+        "room": "B-002",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 73,
+    "fields": {
         "datetime": "2015-11-03T13:00:00",
         "room": "B-003",
         "predictions": 0.0
@@ -132007,7 +132007,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 73,
+    "pk": 74,
     "fields": {
         "datetime": "2015-11-04T13:00:00",
         "room": "B-003",
@@ -132016,18 +132016,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 74,
-    "fields": {
-        "datetime": "2015-11-05T13:00:00",
-        "room": "B-003",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 75,
     "fields": {
-        "datetime": "2015-11-06T13:00:00",
+        "datetime": "2015-11-05T13:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132036,7 +132027,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 76,
     "fields": {
-        "datetime": "2015-11-09T13:00:00",
+        "datetime": "2015-11-06T13:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132045,6 +132036,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 77,
     "fields": {
+        "datetime": "2015-11-09T13:00:00",
+        "room": "B-003",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 78,
+    "fields": {
         "datetime": "2015-11-10T13:00:00",
         "room": "B-003",
         "predictions": 0.0
@@ -132052,7 +132052,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 78,
+    "pk": 79,
     "fields": {
         "datetime": "2015-11-11T13:00:00",
         "room": "B-003",
@@ -132061,18 +132061,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 79,
-    "fields": {
-        "datetime": "2015-11-12T13:00:00",
-        "room": "B-003",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 80,
     "fields": {
-        "datetime": "2015-11-13T13:00:00",
+        "datetime": "2015-11-12T13:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132081,7 +132072,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 81,
     "fields": {
-        "datetime": "2015-11-03T14:00:00",
+        "datetime": "2015-11-13T13:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132090,6 +132081,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 82,
     "fields": {
+        "datetime": "2015-11-03T14:00:00",
+        "room": "B-003",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 83,
+    "fields": {
         "datetime": "2015-11-04T14:00:00",
         "room": "B-003",
         "predictions": 0.0
@@ -132097,7 +132097,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 83,
+    "pk": 84,
     "fields": {
         "datetime": "2015-11-05T14:00:00",
         "room": "B-003",
@@ -132106,7 +132106,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 84,
+    "pk": 85,
     "fields": {
         "datetime": "2015-11-06T14:00:00",
         "room": "B-003",
@@ -132115,18 +132115,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 85,
-    "fields": {
-        "datetime": "2015-11-09T14:00:00",
-        "room": "B-003",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 86,
     "fields": {
-        "datetime": "2015-11-10T14:00:00",
+        "datetime": "2015-11-09T14:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132135,7 +132126,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 87,
     "fields": {
-        "datetime": "2015-11-11T14:00:00",
+        "datetime": "2015-11-10T14:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132144,7 +132135,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 88,
     "fields": {
-        "datetime": "2015-11-12T14:00:00",
+        "datetime": "2015-11-11T14:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132153,6 +132144,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 89,
     "fields": {
+        "datetime": "2015-11-12T14:00:00",
+        "room": "B-003",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 90,
+    "fields": {
         "datetime": "2015-11-13T14:00:00",
         "room": "B-003",
         "predictions": 0.5
@@ -132160,7 +132160,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 90,
+    "pk": 91,
     "fields": {
         "datetime": "2015-11-03T15:00:00",
         "room": "B-003",
@@ -132169,18 +132169,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 91,
-    "fields": {
-        "datetime": "2015-11-04T15:00:00",
-        "room": "B-003",
-        "predictions": 0.0
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 92,
     "fields": {
-        "datetime": "2015-11-05T15:00:00",
+        "datetime": "2015-11-04T15:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132189,6 +132180,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 93,
     "fields": {
+        "datetime": "2015-11-05T15:00:00",
+        "room": "B-003",
+        "predictions": 0.0
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 94,
+    "fields": {
         "datetime": "2015-11-06T15:00:00",
         "room": "B-003",
         "predictions": 0.5
@@ -132196,18 +132196,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 94,
-    "fields": {
-        "datetime": "2015-11-09T15:00:00",
-        "room": "B-003",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 95,
     "fields": {
-        "datetime": "2015-11-10T15:00:00",
+        "datetime": "2015-11-09T15:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132216,6 +132207,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 96,
     "fields": {
+        "datetime": "2015-11-10T15:00:00",
+        "room": "B-003",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 97,
+    "fields": {
         "datetime": "2015-11-11T15:00:00",
         "room": "B-003",
         "predictions": 0.0
@@ -132223,7 +132223,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 97,
+    "pk": 98,
     "fields": {
         "datetime": "2015-11-12T15:00:00",
         "room": "B-003",
@@ -132232,7 +132232,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 98,
+    "pk": 99,
     "fields": {
         "datetime": "2015-11-13T15:00:00",
         "room": "B-003",
@@ -132241,18 +132241,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 99,
-    "fields": {
-        "datetime": "2015-11-03T16:00:00",
-        "room": "B-003",
-        "predictions": 0.0
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 100,
     "fields": {
-        "datetime": "2015-11-04T16:00:00",
+        "datetime": "2015-11-03T16:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132261,7 +132252,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 101,
     "fields": {
-        "datetime": "2015-11-05T16:00:00",
+        "datetime": "2015-11-04T16:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132270,16 +132261,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 102,
     "fields": {
-        "datetime": "2015-11-06T16:00:00",
+        "datetime": "2015-11-05T16:00:00",
         "room": "B-003",
-        "predictions": 0.25
+        "predictions": 0.0
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 103,
     "fields": {
-        "datetime": "2015-11-09T16:00:00",
+        "datetime": "2015-11-06T16:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132288,6 +132279,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 104,
     "fields": {
+        "datetime": "2015-11-09T16:00:00",
+        "room": "B-003",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 105,
+    "fields": {
         "datetime": "2015-11-10T16:00:00",
         "room": "B-003",
         "predictions": 0.0
@@ -132295,18 +132295,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 105,
-    "fields": {
-        "datetime": "2015-11-11T16:00:00",
-        "room": "B-003",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 106,
     "fields": {
-        "datetime": "2015-11-12T16:00:00",
+        "datetime": "2015-11-11T16:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132315,7 +132306,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 107,
     "fields": {
-        "datetime": "2015-11-13T16:00:00",
+        "datetime": "2015-11-12T16:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132324,16 +132315,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 108,
     "fields": {
-        "datetime": "2015-11-03T09:00:00",
+        "datetime": "2015-11-13T16:00:00",
         "room": "B-003",
-        "predictions": 0.0
+        "predictions": 0.25
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 109,
     "fields": {
-        "datetime": "2015-11-04T09:00:00",
+        "datetime": "2015-11-03T09:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132342,7 +132333,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 110,
     "fields": {
-        "datetime": "2015-11-05T09:00:00",
+        "datetime": "2015-11-04T09:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132351,16 +132342,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 111,
     "fields": {
-        "datetime": "2015-11-06T09:00:00",
+        "datetime": "2015-11-05T09:00:00",
         "room": "B-003",
-        "predictions": 0.25
+        "predictions": 0.0
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 112,
     "fields": {
-        "datetime": "2015-11-09T09:00:00",
+        "datetime": "2015-11-06T09:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132369,16 +132360,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 113,
     "fields": {
-        "datetime": "2015-11-10T09:00:00",
+        "datetime": "2015-11-09T09:00:00",
         "room": "B-003",
-        "predictions": 0.0
+        "predictions": 0.25
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 114,
     "fields": {
-        "datetime": "2015-11-11T09:00:00",
+        "datetime": "2015-11-10T09:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132387,7 +132378,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 115,
     "fields": {
-        "datetime": "2015-11-12T09:00:00",
+        "datetime": "2015-11-11T09:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132396,6 +132387,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 116,
     "fields": {
+        "datetime": "2015-11-12T09:00:00",
+        "room": "B-003",
+        "predictions": 0.0
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 117,
+    "fields": {
         "datetime": "2015-11-13T09:00:00",
         "room": "B-003",
         "predictions": 0.25
@@ -132403,18 +132403,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 117,
-    "fields": {
-        "datetime": "2015-11-03T10:00:00",
-        "room": "B-003",
-        "predictions": 0.0
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 118,
     "fields": {
-        "datetime": "2015-11-04T10:00:00",
+        "datetime": "2015-11-03T10:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132423,16 +132414,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 119,
     "fields": {
-        "datetime": "2015-11-05T10:00:00",
+        "datetime": "2015-11-04T10:00:00",
         "room": "B-003",
-        "predictions": 0.25
+        "predictions": 0.0
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 120,
     "fields": {
-        "datetime": "2015-11-06T10:00:00",
+        "datetime": "2015-11-05T10:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132441,7 +132432,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 121,
     "fields": {
-        "datetime": "2015-11-09T10:00:00",
+        "datetime": "2015-11-06T10:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132450,16 +132441,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 122,
     "fields": {
-        "datetime": "2015-11-10T10:00:00",
+        "datetime": "2015-11-09T10:00:00",
         "room": "B-003",
-        "predictions": 0.0
+        "predictions": 0.25
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 123,
     "fields": {
-        "datetime": "2015-11-11T10:00:00",
+        "datetime": "2015-11-10T10:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132468,7 +132459,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 124,
     "fields": {
-        "datetime": "2015-11-12T10:00:00",
+        "datetime": "2015-11-11T10:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132477,6 +132468,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 125,
     "fields": {
+        "datetime": "2015-11-12T10:00:00",
+        "room": "B-003",
+        "predictions": 0.0
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 126,
+    "fields": {
         "datetime": "2015-11-13T10:00:00",
         "room": "B-003",
         "predictions": 0.25
@@ -132484,7 +132484,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 126,
+    "pk": 127,
     "fields": {
         "datetime": "2015-11-03T11:00:00",
         "room": "B-003",
@@ -132493,7 +132493,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 127,
+    "pk": 128,
     "fields": {
         "datetime": "2015-11-04T11:00:00",
         "room": "B-003",
@@ -132502,18 +132502,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 128,
-    "fields": {
-        "datetime": "2015-11-05T11:00:00",
-        "room": "B-003",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 129,
     "fields": {
-        "datetime": "2015-11-06T11:00:00",
+        "datetime": "2015-11-05T11:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132522,7 +132513,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 130,
     "fields": {
-        "datetime": "2015-11-09T11:00:00",
+        "datetime": "2015-11-06T11:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132531,6 +132522,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 131,
     "fields": {
+        "datetime": "2015-11-09T11:00:00",
+        "room": "B-003",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 132,
+    "fields": {
         "datetime": "2015-11-10T11:00:00",
         "room": "B-003",
         "predictions": 0.75
@@ -132538,18 +132538,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 132,
-    "fields": {
-        "datetime": "2015-11-11T11:00:00",
-        "room": "B-003",
-        "predictions": 0.0
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 133,
     "fields": {
-        "datetime": "2015-11-12T11:00:00",
+        "datetime": "2015-11-11T11:00:00",
         "room": "B-003",
         "predictions": 0.0
     }
@@ -132558,16 +132549,16 @@
     "model": "occupants.percentagepredictions",
     "pk": 134,
     "fields": {
-        "datetime": "2015-11-13T11:00:00",
+        "datetime": "2015-11-12T11:00:00",
         "room": "B-003",
-        "predictions": 0.25
+        "predictions": 0.0
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 135,
     "fields": {
-        "datetime": "2015-11-03T12:00:00",
+        "datetime": "2015-11-13T11:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132576,6 +132567,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 136,
     "fields": {
+        "datetime": "2015-11-03T12:00:00",
+        "room": "B-003",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 137,
+    "fields": {
         "datetime": "2015-11-04T12:00:00",
         "room": "B-003",
         "predictions": 0.75
@@ -132583,18 +132583,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 137,
-    "fields": {
-        "datetime": "2015-11-05T12:00:00",
-        "room": "B-003",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 138,
     "fields": {
-        "datetime": "2015-11-06T12:00:00",
+        "datetime": "2015-11-05T12:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132603,7 +132594,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 139,
     "fields": {
-        "datetime": "2015-11-09T12:00:00",
+        "datetime": "2015-11-06T12:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132612,7 +132603,7 @@
     "model": "occupants.percentagepredictions",
     "pk": 140,
     "fields": {
-        "datetime": "2015-11-10T12:00:00",
+        "datetime": "2015-11-09T12:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132621,6 +132612,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 141,
     "fields": {
+        "datetime": "2015-11-10T12:00:00",
+        "room": "B-003",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 142,
+    "fields": {
         "datetime": "2015-11-11T12:00:00",
         "room": "B-003",
         "predictions": 0.75
@@ -132628,18 +132628,9 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 142,
-    "fields": {
-        "datetime": "2015-11-12T12:00:00",
-        "room": "B-003",
-        "predictions": 0.25
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
     "pk": 143,
     "fields": {
-        "datetime": "2015-11-13T12:00:00",
+        "datetime": "2015-11-12T12:00:00",
         "room": "B-003",
         "predictions": 0.25
     }
@@ -132648,6 +132639,15 @@
     "model": "occupants.percentagepredictions",
     "pk": 144,
     "fields": {
+        "datetime": "2015-11-13T12:00:00",
+        "room": "B-003",
+        "predictions": 0.25
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 145,
+    "fields": {
         "datetime": "2015-11-03T10:00:00",
         "room": "B-004",
         "predictions": 0.25
@@ -132655,7 +132655,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 145,
+    "pk": 146,
     "fields": {
         "datetime": "2015-11-04T10:00:00",
         "room": "B-004",
@@ -132664,7 +132664,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 146,
+    "pk": 147,
     "fields": {
         "datetime": "2015-11-05T10:00:00",
         "room": "B-004",
@@ -132673,7 +132673,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 147,
+    "pk": 148,
     "fields": {
         "datetime": "2015-11-06T10:00:00",
         "room": "B-004",
@@ -132682,7 +132682,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 148,
+    "pk": 149,
     "fields": {
         "datetime": "2015-11-09T10:00:00",
         "room": "B-004",
@@ -132691,7 +132691,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 149,
+    "pk": 150,
     "fields": {
         "datetime": "2015-11-10T10:00:00",
         "room": "B-004",
@@ -132700,7 +132700,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 150,
+    "pk": 151,
     "fields": {
         "datetime": "2015-11-11T10:00:00",
         "room": "B-004",
@@ -132709,7 +132709,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 151,
+    "pk": 152,
     "fields": {
         "datetime": "2015-11-12T10:00:00",
         "room": "B-004",
@@ -132718,7 +132718,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 152,
+    "pk": 153,
     "fields": {
         "datetime": "2015-11-13T10:00:00",
         "room": "B-004",
@@ -132727,7 +132727,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 153,
+    "pk": 154,
     "fields": {
         "datetime": "2015-11-03T11:00:00",
         "room": "B-004",
@@ -132736,7 +132736,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 154,
+    "pk": 155,
     "fields": {
         "datetime": "2015-11-04T11:00:00",
         "room": "B-004",
@@ -132745,7 +132745,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 155,
+    "pk": 156,
     "fields": {
         "datetime": "2015-11-05T11:00:00",
         "room": "B-004",
@@ -132754,7 +132754,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 156,
+    "pk": 157,
     "fields": {
         "datetime": "2015-11-06T11:00:00",
         "room": "B-004",
@@ -132763,7 +132763,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 157,
+    "pk": 158,
     "fields": {
         "datetime": "2015-11-09T11:00:00",
         "room": "B-004",
@@ -132772,7 +132772,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 158,
+    "pk": 159,
     "fields": {
         "datetime": "2015-11-10T11:00:00",
         "room": "B-004",
@@ -132781,7 +132781,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 159,
+    "pk": 160,
     "fields": {
         "datetime": "2015-11-11T11:00:00",
         "room": "B-004",
@@ -132790,7 +132790,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 160,
+    "pk": 161,
     "fields": {
         "datetime": "2015-11-12T11:00:00",
         "room": "B-004",
@@ -132799,7 +132799,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 161,
+    "pk": 162,
     "fields": {
         "datetime": "2015-11-13T11:00:00",
         "room": "B-004",
@@ -132808,7 +132808,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 162,
+    "pk": 163,
     "fields": {
         "datetime": "2015-11-03T12:00:00",
         "room": "B-004",
@@ -132817,7 +132817,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 163,
+    "pk": 164,
     "fields": {
         "datetime": "2015-11-04T12:00:00",
         "room": "B-004",
@@ -132826,7 +132826,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 164,
+    "pk": 165,
     "fields": {
         "datetime": "2015-11-05T12:00:00",
         "room": "B-004",
@@ -132835,7 +132835,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 165,
+    "pk": 166,
     "fields": {
         "datetime": "2015-11-06T12:00:00",
         "room": "B-004",
@@ -132844,7 +132844,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 166,
+    "pk": 167,
     "fields": {
         "datetime": "2015-11-09T12:00:00",
         "room": "B-004",
@@ -132853,7 +132853,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 167,
+    "pk": 168,
     "fields": {
         "datetime": "2015-11-10T12:00:00",
         "room": "B-004",
@@ -132862,7 +132862,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 168,
+    "pk": 169,
     "fields": {
         "datetime": "2015-11-11T12:00:00",
         "room": "B-004",
@@ -132871,7 +132871,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 169,
+    "pk": 170,
     "fields": {
         "datetime": "2015-11-12T12:00:00",
         "room": "B-004",
@@ -132880,7 +132880,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 170,
+    "pk": 171,
     "fields": {
         "datetime": "2015-11-13T12:00:00",
         "room": "B-004",
@@ -132889,7 +132889,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 171,
+    "pk": 172,
     "fields": {
         "datetime": "2015-11-03T13:00:00",
         "room": "B-004",
@@ -132898,7 +132898,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 172,
+    "pk": 173,
     "fields": {
         "datetime": "2015-11-04T13:00:00",
         "room": "B-004",
@@ -132907,7 +132907,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 173,
+    "pk": 174,
     "fields": {
         "datetime": "2015-11-05T13:00:00",
         "room": "B-004",
@@ -132916,7 +132916,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 174,
+    "pk": 175,
     "fields": {
         "datetime": "2015-11-06T13:00:00",
         "room": "B-004",
@@ -132925,7 +132925,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 175,
+    "pk": 176,
     "fields": {
         "datetime": "2015-11-09T13:00:00",
         "room": "B-004",
@@ -132934,7 +132934,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 176,
+    "pk": 177,
     "fields": {
         "datetime": "2015-11-10T13:00:00",
         "room": "B-004",
@@ -132943,7 +132943,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 177,
+    "pk": 178,
     "fields": {
         "datetime": "2015-11-11T13:00:00",
         "room": "B-004",
@@ -132952,7 +132952,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 178,
+    "pk": 179,
     "fields": {
         "datetime": "2015-11-12T13:00:00",
         "room": "B-004",
@@ -132961,7 +132961,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 179,
+    "pk": 180,
     "fields": {
         "datetime": "2015-11-13T13:00:00",
         "room": "B-004",
@@ -132970,7 +132970,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 180,
+    "pk": 181,
     "fields": {
         "datetime": "2015-11-03T14:00:00",
         "room": "B-004",
@@ -132979,7 +132979,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 181,
+    "pk": 182,
     "fields": {
         "datetime": "2015-11-04T14:00:00",
         "room": "B-004",
@@ -132988,7 +132988,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 182,
+    "pk": 183,
     "fields": {
         "datetime": "2015-11-05T14:00:00",
         "room": "B-004",
@@ -132997,7 +132997,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 183,
+    "pk": 184,
     "fields": {
         "datetime": "2015-11-06T14:00:00",
         "room": "B-004",
@@ -133006,7 +133006,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 184,
+    "pk": 185,
     "fields": {
         "datetime": "2015-11-09T14:00:00",
         "room": "B-004",
@@ -133015,7 +133015,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 185,
+    "pk": 186,
     "fields": {
         "datetime": "2015-11-10T14:00:00",
         "room": "B-004",
@@ -133024,7 +133024,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 186,
+    "pk": 187,
     "fields": {
         "datetime": "2015-11-11T14:00:00",
         "room": "B-004",
@@ -133033,7 +133033,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 187,
+    "pk": 188,
     "fields": {
         "datetime": "2015-11-12T14:00:00",
         "room": "B-004",
@@ -133042,7 +133042,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 188,
+    "pk": 189,
     "fields": {
         "datetime": "2015-11-13T14:00:00",
         "room": "B-004",
@@ -133051,7 +133051,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 189,
+    "pk": 190,
     "fields": {
         "datetime": "2015-11-03T15:00:00",
         "room": "B-004",
@@ -133060,7 +133060,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 190,
+    "pk": 191,
     "fields": {
         "datetime": "2015-11-04T15:00:00",
         "room": "B-004",
@@ -133069,7 +133069,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 191,
+    "pk": 192,
     "fields": {
         "datetime": "2015-11-05T15:00:00",
         "room": "B-004",
@@ -133078,7 +133078,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 192,
+    "pk": 193,
     "fields": {
         "datetime": "2015-11-06T15:00:00",
         "room": "B-004",
@@ -133087,7 +133087,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 193,
+    "pk": 194,
     "fields": {
         "datetime": "2015-11-09T15:00:00",
         "room": "B-004",
@@ -133096,7 +133096,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 194,
+    "pk": 195,
     "fields": {
         "datetime": "2015-11-10T15:00:00",
         "room": "B-004",
@@ -133105,7 +133105,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 195,
+    "pk": 196,
     "fields": {
         "datetime": "2015-11-11T15:00:00",
         "room": "B-004",
@@ -133114,7 +133114,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 196,
+    "pk": 197,
     "fields": {
         "datetime": "2015-11-12T15:00:00",
         "room": "B-004",
@@ -133123,7 +133123,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 197,
+    "pk": 198,
     "fields": {
         "datetime": "2015-11-13T15:00:00",
         "room": "B-004",
@@ -133132,7 +133132,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 198,
+    "pk": 199,
     "fields": {
         "datetime": "2015-11-03T16:00:00",
         "room": "B-004",
@@ -133141,7 +133141,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 199,
+    "pk": 200,
     "fields": {
         "datetime": "2015-11-04T16:00:00",
         "room": "B-004",
@@ -133150,7 +133150,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 200,
+    "pk": 201,
     "fields": {
         "datetime": "2015-11-05T16:00:00",
         "room": "B-004",
@@ -133159,7 +133159,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 201,
+    "pk": 202,
     "fields": {
         "datetime": "2015-11-06T16:00:00",
         "room": "B-004",
@@ -133168,7 +133168,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 202,
+    "pk": 203,
     "fields": {
         "datetime": "2015-11-09T16:00:00",
         "room": "B-004",
@@ -133177,7 +133177,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 203,
+    "pk": 204,
     "fields": {
         "datetime": "2015-11-10T16:00:00",
         "room": "B-004",
@@ -133186,7 +133186,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 204,
+    "pk": 205,
     "fields": {
         "datetime": "2015-11-11T16:00:00",
         "room": "B-004",
@@ -133195,7 +133195,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 205,
+    "pk": 206,
     "fields": {
         "datetime": "2015-11-12T16:00:00",
         "room": "B-004",
@@ -133204,7 +133204,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 206,
+    "pk": 207,
     "fields": {
         "datetime": "2015-11-13T16:00:00",
         "room": "B-004",
@@ -133213,7 +133213,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 207,
+    "pk": 208,
     "fields": {
         "datetime": "2015-11-03T09:00:00",
         "room": "B-004",
@@ -133222,26 +133222,26 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 208,
+    "pk": 209,
     "fields": {
         "datetime": "2015-11-04T09:00:00",
         "room": "B-004",
         "predictions": 0.0
-    }
-},
-{
-    "model": "occupants.percentagepredictions",
-    "pk": 209,
-    "fields": {
-        "datetime": "2015-11-05T09:00:00",
-        "room": "B-004",
-        "predictions": 0.5
     }
 },
 {
     "model": "occupants.percentagepredictions",
     "pk": 210,
     "fields": {
+        "datetime": "2015-11-05T09:00:00",
+        "room": "B-004",
+        "predictions": 0.5
+    }
+},
+{
+    "model": "occupants.percentagepredictions",
+    "pk": 211,
+    "fields": {
         "datetime": "2015-11-06T09:00:00",
         "room": "B-004",
         "predictions": 0.0
@@ -133249,7 +133249,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 211,
+    "pk": 212,
     "fields": {
         "datetime": "2015-11-09T09:00:00",
         "room": "B-004",
@@ -133258,7 +133258,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 212,
+    "pk": 213,
     "fields": {
         "datetime": "2015-11-10T09:00:00",
         "room": "B-004",
@@ -133267,7 +133267,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 213,
+    "pk": 214,
     "fields": {
         "datetime": "2015-11-11T09:00:00",
         "room": "B-004",
@@ -133276,7 +133276,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 214,
+    "pk": 215,
     "fields": {
         "datetime": "2015-11-12T09:00:00",
         "room": "B-004",
@@ -133285,7 +133285,7 @@
 },
 {
     "model": "occupants.percentagepredictions",
-    "pk": 215,
+    "pk": 216,
     "fields": {
         "datetime": "2015-11-13T09:00:00",
         "room": "B-004",
@@ -133294,19 +133294,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 0,
-    "fields": {
-        "datetime": "2015-11-03T16:00:00",
-        "room": "B-002",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 1,
     "fields": {
-        "datetime": "2015-11-04T16:00:00",
+        "datetime": "2015-11-03T16:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133316,7 +133306,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 2,
     "fields": {
-        "datetime": "2015-11-05T16:00:00",
+        "datetime": "2015-11-04T16:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133326,7 +133316,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 3,
     "fields": {
-        "datetime": "2015-11-06T16:00:00",
+        "datetime": "2015-11-05T16:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133336,6 +133326,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 4,
     "fields": {
+        "datetime": "2015-11-06T16:00:00",
+        "room": "B-002",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 5,
+    "fields": {
         "datetime": "2015-11-09T16:00:00",
         "room": "B-002",
         "predictions": "25-50",
@@ -133344,19 +133344,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 5,
-    "fields": {
-        "datetime": "2015-11-10T16:00:00",
-        "room": "B-002",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 6,
     "fields": {
-        "datetime": "2015-11-11T16:00:00",
+        "datetime": "2015-11-10T16:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133366,7 +133356,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 7,
     "fields": {
-        "datetime": "2015-11-12T16:00:00",
+        "datetime": "2015-11-11T16:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133376,7 +133366,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 8,
     "fields": {
-        "datetime": "2015-11-13T16:00:00",
+        "datetime": "2015-11-12T16:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133386,7 +133376,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 9,
     "fields": {
-        "datetime": "2015-11-03T09:00:00",
+        "datetime": "2015-11-13T16:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133396,7 +133386,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 10,
     "fields": {
-        "datetime": "2015-11-04T09:00:00",
+        "datetime": "2015-11-03T09:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133406,7 +133396,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 11,
     "fields": {
-        "datetime": "2015-11-05T09:00:00",
+        "datetime": "2015-11-04T09:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133416,7 +133406,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 12,
     "fields": {
-        "datetime": "2015-11-06T09:00:00",
+        "datetime": "2015-11-05T09:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133426,7 +133416,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 13,
     "fields": {
-        "datetime": "2015-11-09T09:00:00",
+        "datetime": "2015-11-06T09:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133436,7 +133426,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 14,
     "fields": {
-        "datetime": "2015-11-10T09:00:00",
+        "datetime": "2015-11-09T09:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133446,7 +133436,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 15,
     "fields": {
-        "datetime": "2015-11-11T09:00:00",
+        "datetime": "2015-11-10T09:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133456,7 +133446,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 16,
     "fields": {
-        "datetime": "2015-11-12T09:00:00",
+        "datetime": "2015-11-11T09:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133466,7 +133456,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 17,
     "fields": {
-        "datetime": "2015-11-13T09:00:00",
+        "datetime": "2015-11-12T09:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133476,7 +133466,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 18,
     "fields": {
-        "datetime": "2015-11-03T10:00:00",
+        "datetime": "2015-11-13T09:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133486,7 +133476,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 19,
     "fields": {
-        "datetime": "2015-11-04T10:00:00",
+        "datetime": "2015-11-03T10:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133496,7 +133486,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 20,
     "fields": {
-        "datetime": "2015-11-05T10:00:00",
+        "datetime": "2015-11-04T10:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133506,7 +133496,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 21,
     "fields": {
-        "datetime": "2015-11-06T10:00:00",
+        "datetime": "2015-11-05T10:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133516,7 +133506,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 22,
     "fields": {
-        "datetime": "2015-11-09T10:00:00",
+        "datetime": "2015-11-06T10:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133526,7 +133516,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 23,
     "fields": {
-        "datetime": "2015-11-10T10:00:00",
+        "datetime": "2015-11-09T10:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133536,7 +133526,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 24,
     "fields": {
-        "datetime": "2015-11-11T10:00:00",
+        "datetime": "2015-11-10T10:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133546,7 +133536,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 25,
     "fields": {
-        "datetime": "2015-11-12T10:00:00",
+        "datetime": "2015-11-11T10:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133556,7 +133546,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 26,
     "fields": {
-        "datetime": "2015-11-13T10:00:00",
+        "datetime": "2015-11-12T10:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133566,7 +133556,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 27,
     "fields": {
-        "datetime": "2015-11-03T11:00:00",
+        "datetime": "2015-11-13T10:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133576,7 +133566,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 28,
     "fields": {
-        "datetime": "2015-11-04T11:00:00",
+        "datetime": "2015-11-03T11:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133586,7 +133576,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 29,
     "fields": {
-        "datetime": "2015-11-05T11:00:00",
+        "datetime": "2015-11-04T11:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133596,7 +133586,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 30,
     "fields": {
-        "datetime": "2015-11-06T11:00:00",
+        "datetime": "2015-11-05T11:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133606,7 +133596,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 31,
     "fields": {
-        "datetime": "2015-11-09T11:00:00",
+        "datetime": "2015-11-06T11:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133616,7 +133606,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 32,
     "fields": {
-        "datetime": "2015-11-10T11:00:00",
+        "datetime": "2015-11-09T11:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133626,7 +133616,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 33,
     "fields": {
-        "datetime": "2015-11-11T11:00:00",
+        "datetime": "2015-11-10T11:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133636,7 +133626,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 34,
     "fields": {
-        "datetime": "2015-11-12T11:00:00",
+        "datetime": "2015-11-11T11:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133646,7 +133636,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 35,
     "fields": {
-        "datetime": "2015-11-13T11:00:00",
+        "datetime": "2015-11-12T11:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133656,7 +133646,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 36,
     "fields": {
-        "datetime": "2015-11-03T12:00:00",
+        "datetime": "2015-11-13T11:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133666,7 +133656,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 37,
     "fields": {
-        "datetime": "2015-11-04T12:00:00",
+        "datetime": "2015-11-03T12:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133676,7 +133666,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 38,
     "fields": {
-        "datetime": "2015-11-05T12:00:00",
+        "datetime": "2015-11-04T12:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133686,7 +133676,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 39,
     "fields": {
-        "datetime": "2015-11-06T12:00:00",
+        "datetime": "2015-11-05T12:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133696,7 +133686,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 40,
     "fields": {
-        "datetime": "2015-11-09T12:00:00",
+        "datetime": "2015-11-06T12:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133706,7 +133696,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 41,
     "fields": {
-        "datetime": "2015-11-10T12:00:00",
+        "datetime": "2015-11-09T12:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133716,7 +133706,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 42,
     "fields": {
-        "datetime": "2015-11-11T12:00:00",
+        "datetime": "2015-11-10T12:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133726,7 +133716,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 43,
     "fields": {
-        "datetime": "2015-11-12T12:00:00",
+        "datetime": "2015-11-11T12:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133736,7 +133726,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 44,
     "fields": {
-        "datetime": "2015-11-13T12:00:00",
+        "datetime": "2015-11-12T12:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133746,7 +133736,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 45,
     "fields": {
-        "datetime": "2015-11-03T13:00:00",
+        "datetime": "2015-11-13T12:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133756,7 +133746,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 46,
     "fields": {
-        "datetime": "2015-11-04T13:00:00",
+        "datetime": "2015-11-03T13:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133766,7 +133756,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 47,
     "fields": {
-        "datetime": "2015-11-05T13:00:00",
+        "datetime": "2015-11-04T13:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133776,7 +133766,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 48,
     "fields": {
-        "datetime": "2015-11-06T13:00:00",
+        "datetime": "2015-11-05T13:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133786,7 +133776,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 49,
     "fields": {
-        "datetime": "2015-11-09T13:00:00",
+        "datetime": "2015-11-06T13:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133796,7 +133786,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 50,
     "fields": {
-        "datetime": "2015-11-10T13:00:00",
+        "datetime": "2015-11-09T13:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133806,7 +133796,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 51,
     "fields": {
-        "datetime": "2015-11-11T13:00:00",
+        "datetime": "2015-11-10T13:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133816,7 +133806,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 52,
     "fields": {
-        "datetime": "2015-11-12T13:00:00",
+        "datetime": "2015-11-11T13:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133826,7 +133816,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 53,
     "fields": {
-        "datetime": "2015-11-13T13:00:00",
+        "datetime": "2015-11-12T13:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133836,6 +133826,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 54,
     "fields": {
+        "datetime": "2015-11-13T13:00:00",
+        "room": "B-002",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 55,
+    "fields": {
         "datetime": "2015-11-03T14:00:00",
         "room": "B-002",
         "predictions": "25-50",
@@ -133844,19 +133844,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 55,
-    "fields": {
-        "datetime": "2015-11-04T14:00:00",
-        "room": "B-002",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 56,
     "fields": {
-        "datetime": "2015-11-05T14:00:00",
+        "datetime": "2015-11-04T14:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133866,7 +133856,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 57,
     "fields": {
-        "datetime": "2015-11-06T14:00:00",
+        "datetime": "2015-11-05T14:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133876,7 +133866,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 58,
     "fields": {
-        "datetime": "2015-11-09T14:00:00",
+        "datetime": "2015-11-06T14:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133886,6 +133876,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 59,
     "fields": {
+        "datetime": "2015-11-09T14:00:00",
+        "room": "B-002",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 60,
+    "fields": {
         "datetime": "2015-11-10T14:00:00",
         "room": "B-002",
         "predictions": "25-50",
@@ -133894,19 +133894,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 60,
-    "fields": {
-        "datetime": "2015-11-11T14:00:00",
-        "room": "B-002",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 61,
     "fields": {
-        "datetime": "2015-11-12T14:00:00",
+        "datetime": "2015-11-11T14:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133916,7 +133906,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 62,
     "fields": {
-        "datetime": "2015-11-13T14:00:00",
+        "datetime": "2015-11-12T14:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133926,7 +133916,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 63,
     "fields": {
-        "datetime": "2015-11-03T15:00:00",
+        "datetime": "2015-11-13T14:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133936,7 +133926,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 64,
     "fields": {
-        "datetime": "2015-11-04T15:00:00",
+        "datetime": "2015-11-03T15:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133946,7 +133936,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 65,
     "fields": {
-        "datetime": "2015-11-05T15:00:00",
+        "datetime": "2015-11-04T15:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133956,7 +133946,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 66,
     "fields": {
-        "datetime": "2015-11-06T15:00:00",
+        "datetime": "2015-11-05T15:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133966,7 +133956,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 67,
     "fields": {
-        "datetime": "2015-11-09T15:00:00",
+        "datetime": "2015-11-06T15:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -133976,6 +133966,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 68,
     "fields": {
+        "datetime": "2015-11-09T15:00:00",
+        "room": "B-002",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 69,
+    "fields": {
         "datetime": "2015-11-10T15:00:00",
         "room": "B-002",
         "predictions": "25-50",
@@ -133984,19 +133984,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 69,
-    "fields": {
-        "datetime": "2015-11-11T15:00:00",
-        "room": "B-002",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 70,
     "fields": {
-        "datetime": "2015-11-12T15:00:00",
+        "datetime": "2015-11-11T15:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -134006,7 +133996,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 71,
     "fields": {
-        "datetime": "2015-11-13T15:00:00",
+        "datetime": "2015-11-12T15:00:00",
         "room": "B-002",
         "predictions": "0-25",
         "level": "1"
@@ -134016,6 +134006,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 72,
     "fields": {
+        "datetime": "2015-11-13T15:00:00",
+        "room": "B-002",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 73,
+    "fields": {
         "datetime": "2015-11-03T13:00:00",
         "room": "B-003",
         "predictions": "0-25",
@@ -134024,7 +134024,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 73,
+    "pk": 74,
     "fields": {
         "datetime": "2015-11-04T13:00:00",
         "room": "B-003",
@@ -134034,19 +134034,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 74,
-    "fields": {
-        "datetime": "2015-11-05T13:00:00",
-        "room": "B-003",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 75,
     "fields": {
-        "datetime": "2015-11-06T13:00:00",
+        "datetime": "2015-11-05T13:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134056,7 +134046,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 76,
     "fields": {
-        "datetime": "2015-11-09T13:00:00",
+        "datetime": "2015-11-06T13:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134066,7 +134056,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 77,
     "fields": {
-        "datetime": "2015-11-10T13:00:00",
+        "datetime": "2015-11-09T13:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134076,6 +134066,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 78,
     "fields": {
+        "datetime": "2015-11-10T13:00:00",
+        "room": "B-003",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 79,
+    "fields": {
         "datetime": "2015-11-11T13:00:00",
         "room": "B-003",
         "predictions": "50-75",
@@ -134084,19 +134084,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 79,
-    "fields": {
-        "datetime": "2015-11-12T13:00:00",
-        "room": "B-003",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 80,
     "fields": {
-        "datetime": "2015-11-13T13:00:00",
+        "datetime": "2015-11-12T13:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134106,7 +134096,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 81,
     "fields": {
-        "datetime": "2015-11-03T14:00:00",
+        "datetime": "2015-11-13T13:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134116,7 +134106,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 82,
     "fields": {
-        "datetime": "2015-11-04T14:00:00",
+        "datetime": "2015-11-03T14:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134126,7 +134116,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 83,
     "fields": {
-        "datetime": "2015-11-05T14:00:00",
+        "datetime": "2015-11-04T14:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134136,6 +134126,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 84,
     "fields": {
+        "datetime": "2015-11-05T14:00:00",
+        "room": "B-003",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 85,
+    "fields": {
         "datetime": "2015-11-06T14:00:00",
         "room": "B-003",
         "predictions": "25-50",
@@ -134144,19 +134144,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 85,
-    "fields": {
-        "datetime": "2015-11-09T14:00:00",
-        "room": "B-003",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 86,
     "fields": {
-        "datetime": "2015-11-10T14:00:00",
+        "datetime": "2015-11-09T14:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134166,7 +134156,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 87,
     "fields": {
-        "datetime": "2015-11-11T14:00:00",
+        "datetime": "2015-11-10T14:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134176,7 +134166,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 88,
     "fields": {
-        "datetime": "2015-11-12T14:00:00",
+        "datetime": "2015-11-11T14:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134186,7 +134176,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 89,
     "fields": {
-        "datetime": "2015-11-13T14:00:00",
+        "datetime": "2015-11-12T14:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134196,7 +134186,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 90,
     "fields": {
-        "datetime": "2015-11-03T15:00:00",
+        "datetime": "2015-11-13T14:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134206,7 +134196,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 91,
     "fields": {
-        "datetime": "2015-11-04T15:00:00",
+        "datetime": "2015-11-03T15:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134216,7 +134206,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 92,
     "fields": {
-        "datetime": "2015-11-05T15:00:00",
+        "datetime": "2015-11-04T15:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134226,7 +134216,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 93,
     "fields": {
-        "datetime": "2015-11-06T15:00:00",
+        "datetime": "2015-11-05T15:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134236,7 +134226,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 94,
     "fields": {
-        "datetime": "2015-11-09T15:00:00",
+        "datetime": "2015-11-06T15:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134246,7 +134236,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 95,
     "fields": {
-        "datetime": "2015-11-10T15:00:00",
+        "datetime": "2015-11-09T15:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134256,7 +134246,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 96,
     "fields": {
-        "datetime": "2015-11-11T15:00:00",
+        "datetime": "2015-11-10T15:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134266,7 +134256,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 97,
     "fields": {
-        "datetime": "2015-11-12T15:00:00",
+        "datetime": "2015-11-11T15:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134276,7 +134266,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 98,
     "fields": {
-        "datetime": "2015-11-13T15:00:00",
+        "datetime": "2015-11-12T15:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134286,7 +134276,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 99,
     "fields": {
-        "datetime": "2015-11-03T16:00:00",
+        "datetime": "2015-11-13T15:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134296,7 +134286,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 100,
     "fields": {
-        "datetime": "2015-11-04T16:00:00",
+        "datetime": "2015-11-03T16:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134306,7 +134296,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 101,
     "fields": {
-        "datetime": "2015-11-05T16:00:00",
+        "datetime": "2015-11-04T16:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134316,7 +134306,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 102,
     "fields": {
-        "datetime": "2015-11-06T16:00:00",
+        "datetime": "2015-11-05T16:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134326,7 +134316,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 103,
     "fields": {
-        "datetime": "2015-11-09T16:00:00",
+        "datetime": "2015-11-06T16:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134336,7 +134326,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 104,
     "fields": {
-        "datetime": "2015-11-10T16:00:00",
+        "datetime": "2015-11-09T16:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134346,7 +134336,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 105,
     "fields": {
-        "datetime": "2015-11-11T16:00:00",
+        "datetime": "2015-11-10T16:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134356,7 +134346,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 106,
     "fields": {
-        "datetime": "2015-11-12T16:00:00",
+        "datetime": "2015-11-11T16:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134366,7 +134356,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 107,
     "fields": {
-        "datetime": "2015-11-13T16:00:00",
+        "datetime": "2015-11-12T16:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134376,7 +134366,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 108,
     "fields": {
-        "datetime": "2015-11-03T09:00:00",
+        "datetime": "2015-11-13T16:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134386,7 +134376,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 109,
     "fields": {
-        "datetime": "2015-11-04T09:00:00",
+        "datetime": "2015-11-03T09:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134396,7 +134386,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 110,
     "fields": {
-        "datetime": "2015-11-05T09:00:00",
+        "datetime": "2015-11-04T09:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134406,7 +134396,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 111,
     "fields": {
-        "datetime": "2015-11-06T09:00:00",
+        "datetime": "2015-11-05T09:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134416,7 +134406,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 112,
     "fields": {
-        "datetime": "2015-11-09T09:00:00",
+        "datetime": "2015-11-06T09:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134426,7 +134416,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 113,
     "fields": {
-        "datetime": "2015-11-10T09:00:00",
+        "datetime": "2015-11-09T09:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134436,7 +134426,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 114,
     "fields": {
-        "datetime": "2015-11-11T09:00:00",
+        "datetime": "2015-11-10T09:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134446,7 +134436,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 115,
     "fields": {
-        "datetime": "2015-11-12T09:00:00",
+        "datetime": "2015-11-11T09:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134456,7 +134446,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 116,
     "fields": {
-        "datetime": "2015-11-13T09:00:00",
+        "datetime": "2015-11-12T09:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134466,7 +134456,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 117,
     "fields": {
-        "datetime": "2015-11-03T10:00:00",
+        "datetime": "2015-11-13T09:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134476,7 +134466,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 118,
     "fields": {
-        "datetime": "2015-11-04T10:00:00",
+        "datetime": "2015-11-03T10:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134486,7 +134476,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 119,
     "fields": {
-        "datetime": "2015-11-05T10:00:00",
+        "datetime": "2015-11-04T10:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134496,6 +134486,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 120,
     "fields": {
+        "datetime": "2015-11-05T10:00:00",
+        "room": "B-003",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 121,
+    "fields": {
         "datetime": "2015-11-06T10:00:00",
         "room": "B-003",
         "predictions": "25-50",
@@ -134504,19 +134504,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 121,
-    "fields": {
-        "datetime": "2015-11-09T10:00:00",
-        "room": "B-003",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 122,
     "fields": {
-        "datetime": "2015-11-10T10:00:00",
+        "datetime": "2015-11-09T10:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134526,7 +134516,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 123,
     "fields": {
-        "datetime": "2015-11-11T10:00:00",
+        "datetime": "2015-11-10T10:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134536,7 +134526,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 124,
     "fields": {
-        "datetime": "2015-11-12T10:00:00",
+        "datetime": "2015-11-11T10:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134546,7 +134536,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 125,
     "fields": {
-        "datetime": "2015-11-13T10:00:00",
+        "datetime": "2015-11-12T10:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134556,6 +134546,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 126,
     "fields": {
+        "datetime": "2015-11-13T10:00:00",
+        "room": "B-003",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 127,
+    "fields": {
         "datetime": "2015-11-03T11:00:00",
         "room": "B-003",
         "predictions": "25-50",
@@ -134564,19 +134564,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 127,
-    "fields": {
-        "datetime": "2015-11-04T11:00:00",
-        "room": "B-003",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 128,
     "fields": {
-        "datetime": "2015-11-05T11:00:00",
+        "datetime": "2015-11-04T11:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134586,7 +134576,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 129,
     "fields": {
-        "datetime": "2015-11-06T11:00:00",
+        "datetime": "2015-11-05T11:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134596,7 +134586,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 130,
     "fields": {
-        "datetime": "2015-11-09T11:00:00",
+        "datetime": "2015-11-06T11:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134606,6 +134596,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 131,
     "fields": {
+        "datetime": "2015-11-09T11:00:00",
+        "room": "B-003",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 132,
+    "fields": {
         "datetime": "2015-11-10T11:00:00",
         "room": "B-003",
         "predictions": "25-50",
@@ -134614,19 +134614,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 132,
-    "fields": {
-        "datetime": "2015-11-11T11:00:00",
-        "room": "B-003",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 133,
     "fields": {
-        "datetime": "2015-11-12T11:00:00",
+        "datetime": "2015-11-11T11:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134636,7 +134626,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 134,
     "fields": {
-        "datetime": "2015-11-13T11:00:00",
+        "datetime": "2015-11-12T11:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134646,7 +134636,7 @@
     "model": "occupants.estimatepredictions",
     "pk": 135,
     "fields": {
-        "datetime": "2015-11-03T12:00:00",
+        "datetime": "2015-11-13T11:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134656,6 +134646,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 136,
     "fields": {
+        "datetime": "2015-11-03T12:00:00",
+        "room": "B-003",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 137,
+    "fields": {
         "datetime": "2015-11-04T12:00:00",
         "room": "B-003",
         "predictions": "50-75",
@@ -134664,19 +134664,9 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 137,
-    "fields": {
-        "datetime": "2015-11-05T12:00:00",
-        "room": "B-003",
-        "predictions": "0-25",
-        "level": "1"
-    }
-},
-{
-    "model": "occupants.estimatepredictions",
     "pk": 138,
     "fields": {
-        "datetime": "2015-11-06T12:00:00",
+        "datetime": "2015-11-05T12:00:00",
         "room": "B-003",
         "predictions": "0-25",
         "level": "1"
@@ -134686,6 +134676,16 @@
     "model": "occupants.estimatepredictions",
     "pk": 139,
     "fields": {
+        "datetime": "2015-11-06T12:00:00",
+        "room": "B-003",
+        "predictions": "0-25",
+        "level": "1"
+    }
+},
+{
+    "model": "occupants.estimatepredictions",
+    "pk": 140,
+    "fields": {
         "datetime": "2015-11-09T12:00:00",
         "room": "B-003",
         "predictions": "25-50",
@@ -134694,7 +134694,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 140,
+    "pk": 141,
     "fields": {
         "datetime": "2015-11-10T12:00:00",
         "room": "B-003",
@@ -134704,7 +134704,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 141,
+    "pk": 142,
     "fields": {
         "datetime": "2015-11-11T12:00:00",
         "room": "B-003",
@@ -134714,7 +134714,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 142,
+    "pk": 143,
     "fields": {
         "datetime": "2015-11-12T12:00:00",
         "room": "B-003",
@@ -134724,7 +134724,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 143,
+    "pk": 144,
     "fields": {
         "datetime": "2015-11-13T12:00:00",
         "room": "B-003",
@@ -134734,7 +134734,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 144,
+    "pk": 145,
     "fields": {
         "datetime": "2015-11-03T10:00:00",
         "room": "B-004",
@@ -134744,7 +134744,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 145,
+    "pk": 146,
     "fields": {
         "datetime": "2015-11-04T10:00:00",
         "room": "B-004",
@@ -134754,7 +134754,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 146,
+    "pk": 147,
     "fields": {
         "datetime": "2015-11-05T10:00:00",
         "room": "B-004",
@@ -134764,7 +134764,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 147,
+    "pk": 148,
     "fields": {
         "datetime": "2015-11-06T10:00:00",
         "room": "B-004",
@@ -134774,7 +134774,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 148,
+    "pk": 149,
     "fields": {
         "datetime": "2015-11-09T10:00:00",
         "room": "B-004",
@@ -134784,7 +134784,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 149,
+    "pk": 150,
     "fields": {
         "datetime": "2015-11-10T10:00:00",
         "room": "B-004",
@@ -134794,7 +134794,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 150,
+    "pk": 151,
     "fields": {
         "datetime": "2015-11-11T10:00:00",
         "room": "B-004",
@@ -134804,7 +134804,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 151,
+    "pk": 152,
     "fields": {
         "datetime": "2015-11-12T10:00:00",
         "room": "B-004",
@@ -134814,7 +134814,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 152,
+    "pk": 153,
     "fields": {
         "datetime": "2015-11-13T10:00:00",
         "room": "B-004",
@@ -134824,7 +134824,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 153,
+    "pk": 154,
     "fields": {
         "datetime": "2015-11-03T11:00:00",
         "room": "B-004",
@@ -134834,7 +134834,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 154,
+    "pk": 155,
     "fields": {
         "datetime": "2015-11-04T11:00:00",
         "room": "B-004",
@@ -134844,7 +134844,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 155,
+    "pk": 156,
     "fields": {
         "datetime": "2015-11-05T11:00:00",
         "room": "B-004",
@@ -134854,7 +134854,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 156,
+    "pk": 157,
     "fields": {
         "datetime": "2015-11-06T11:00:00",
         "room": "B-004",
@@ -134864,7 +134864,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 157,
+    "pk": 158,
     "fields": {
         "datetime": "2015-11-09T11:00:00",
         "room": "B-004",
@@ -134874,7 +134874,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 158,
+    "pk": 159,
     "fields": {
         "datetime": "2015-11-10T11:00:00",
         "room": "B-004",
@@ -134884,7 +134884,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 159,
+    "pk": 160,
     "fields": {
         "datetime": "2015-11-11T11:00:00",
         "room": "B-004",
@@ -134894,7 +134894,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 160,
+    "pk": 161,
     "fields": {
         "datetime": "2015-11-12T11:00:00",
         "room": "B-004",
@@ -134904,7 +134904,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 161,
+    "pk": 162,
     "fields": {
         "datetime": "2015-11-13T11:00:00",
         "room": "B-004",
@@ -134914,7 +134914,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 162,
+    "pk": 163,
     "fields": {
         "datetime": "2015-11-03T12:00:00",
         "room": "B-004",
@@ -134924,7 +134924,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 163,
+    "pk": 164,
     "fields": {
         "datetime": "2015-11-04T12:00:00",
         "room": "B-004",
@@ -134934,7 +134934,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 164,
+    "pk": 165,
     "fields": {
         "datetime": "2015-11-05T12:00:00",
         "room": "B-004",
@@ -134944,7 +134944,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 165,
+    "pk": 166,
     "fields": {
         "datetime": "2015-11-06T12:00:00",
         "room": "B-004",
@@ -134954,7 +134954,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 166,
+    "pk": 167,
     "fields": {
         "datetime": "2015-11-09T12:00:00",
         "room": "B-004",
@@ -134964,7 +134964,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 167,
+    "pk": 168,
     "fields": {
         "datetime": "2015-11-10T12:00:00",
         "room": "B-004",
@@ -134974,7 +134974,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 168,
+    "pk": 169,
     "fields": {
         "datetime": "2015-11-11T12:00:00",
         "room": "B-004",
@@ -134984,7 +134984,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 169,
+    "pk": 170,
     "fields": {
         "datetime": "2015-11-12T12:00:00",
         "room": "B-004",
@@ -134994,7 +134994,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 170,
+    "pk": 171,
     "fields": {
         "datetime": "2015-11-13T12:00:00",
         "room": "B-004",
@@ -135004,7 +135004,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 171,
+    "pk": 172,
     "fields": {
         "datetime": "2015-11-03T13:00:00",
         "room": "B-004",
@@ -135014,7 +135014,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 172,
+    "pk": 173,
     "fields": {
         "datetime": "2015-11-04T13:00:00",
         "room": "B-004",
@@ -135024,7 +135024,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 173,
+    "pk": 174,
     "fields": {
         "datetime": "2015-11-05T13:00:00",
         "room": "B-004",
@@ -135034,7 +135034,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 174,
+    "pk": 175,
     "fields": {
         "datetime": "2015-11-06T13:00:00",
         "room": "B-004",
@@ -135044,7 +135044,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 175,
+    "pk": 176,
     "fields": {
         "datetime": "2015-11-09T13:00:00",
         "room": "B-004",
@@ -135054,7 +135054,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 176,
+    "pk": 177,
     "fields": {
         "datetime": "2015-11-10T13:00:00",
         "room": "B-004",
@@ -135064,7 +135064,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 177,
+    "pk": 178,
     "fields": {
         "datetime": "2015-11-11T13:00:00",
         "room": "B-004",
@@ -135074,7 +135074,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 178,
+    "pk": 179,
     "fields": {
         "datetime": "2015-11-12T13:00:00",
         "room": "B-004",
@@ -135084,7 +135084,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 179,
+    "pk": 180,
     "fields": {
         "datetime": "2015-11-13T13:00:00",
         "room": "B-004",
@@ -135094,7 +135094,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 180,
+    "pk": 181,
     "fields": {
         "datetime": "2015-11-03T14:00:00",
         "room": "B-004",
@@ -135104,7 +135104,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 181,
+    "pk": 182,
     "fields": {
         "datetime": "2015-11-04T14:00:00",
         "room": "B-004",
@@ -135114,7 +135114,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 182,
+    "pk": 183,
     "fields": {
         "datetime": "2015-11-05T14:00:00",
         "room": "B-004",
@@ -135124,7 +135124,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 183,
+    "pk": 184,
     "fields": {
         "datetime": "2015-11-06T14:00:00",
         "room": "B-004",
@@ -135134,7 +135134,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 184,
+    "pk": 185,
     "fields": {
         "datetime": "2015-11-09T14:00:00",
         "room": "B-004",
@@ -135144,7 +135144,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 185,
+    "pk": 186,
     "fields": {
         "datetime": "2015-11-10T14:00:00",
         "room": "B-004",
@@ -135154,7 +135154,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 186,
+    "pk": 187,
     "fields": {
         "datetime": "2015-11-11T14:00:00",
         "room": "B-004",
@@ -135164,7 +135164,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 187,
+    "pk": 188,
     "fields": {
         "datetime": "2015-11-12T14:00:00",
         "room": "B-004",
@@ -135174,7 +135174,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 188,
+    "pk": 189,
     "fields": {
         "datetime": "2015-11-13T14:00:00",
         "room": "B-004",
@@ -135184,7 +135184,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 189,
+    "pk": 190,
     "fields": {
         "datetime": "2015-11-03T15:00:00",
         "room": "B-004",
@@ -135194,7 +135194,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 190,
+    "pk": 191,
     "fields": {
         "datetime": "2015-11-04T15:00:00",
         "room": "B-004",
@@ -135204,7 +135204,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 191,
+    "pk": 192,
     "fields": {
         "datetime": "2015-11-05T15:00:00",
         "room": "B-004",
@@ -135214,7 +135214,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 192,
+    "pk": 193,
     "fields": {
         "datetime": "2015-11-06T15:00:00",
         "room": "B-004",
@@ -135224,7 +135224,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 193,
+    "pk": 194,
     "fields": {
         "datetime": "2015-11-09T15:00:00",
         "room": "B-004",
@@ -135234,7 +135234,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 194,
+    "pk": 195,
     "fields": {
         "datetime": "2015-11-10T15:00:00",
         "room": "B-004",
@@ -135244,7 +135244,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 195,
+    "pk": 196,
     "fields": {
         "datetime": "2015-11-11T15:00:00",
         "room": "B-004",
@@ -135254,7 +135254,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 196,
+    "pk": 197,
     "fields": {
         "datetime": "2015-11-12T15:00:00",
         "room": "B-004",
@@ -135264,7 +135264,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 197,
+    "pk": 198,
     "fields": {
         "datetime": "2015-11-13T15:00:00",
         "room": "B-004",
@@ -135274,7 +135274,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 198,
+    "pk": 199,
     "fields": {
         "datetime": "2015-11-03T16:00:00",
         "room": "B-004",
@@ -135284,7 +135284,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 199,
+    "pk": 200,
     "fields": {
         "datetime": "2015-11-04T16:00:00",
         "room": "B-004",
@@ -135294,7 +135294,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 200,
+    "pk": 201,
     "fields": {
         "datetime": "2015-11-05T16:00:00",
         "room": "B-004",
@@ -135304,7 +135304,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 201,
+    "pk": 202,
     "fields": {
         "datetime": "2015-11-06T16:00:00",
         "room": "B-004",
@@ -135314,7 +135314,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 202,
+    "pk": 203,
     "fields": {
         "datetime": "2015-11-09T16:00:00",
         "room": "B-004",
@@ -135324,7 +135324,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 203,
+    "pk": 204,
     "fields": {
         "datetime": "2015-11-10T16:00:00",
         "room": "B-004",
@@ -135334,7 +135334,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 204,
+    "pk": 205,
     "fields": {
         "datetime": "2015-11-11T16:00:00",
         "room": "B-004",
@@ -135344,7 +135344,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 205,
+    "pk": 206,
     "fields": {
         "datetime": "2015-11-12T16:00:00",
         "room": "B-004",
@@ -135354,7 +135354,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 206,
+    "pk": 207,
     "fields": {
         "datetime": "2015-11-13T16:00:00",
         "room": "B-004",
@@ -135364,7 +135364,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 207,
+    "pk": 208,
     "fields": {
         "datetime": "2015-11-03T09:00:00",
         "room": "B-004",
@@ -135374,7 +135374,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 208,
+    "pk": 209,
     "fields": {
         "datetime": "2015-11-04T09:00:00",
         "room": "B-004",
@@ -135384,7 +135384,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 209,
+    "pk": 210,
     "fields": {
         "datetime": "2015-11-05T09:00:00",
         "room": "B-004",
@@ -135394,7 +135394,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 210,
+    "pk": 211,
     "fields": {
         "datetime": "2015-11-06T09:00:00",
         "room": "B-004",
@@ -135404,7 +135404,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 211,
+    "pk": 212,
     "fields": {
         "datetime": "2015-11-09T09:00:00",
         "room": "B-004",
@@ -135414,7 +135414,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 212,
+    "pk": 213,
     "fields": {
         "datetime": "2015-11-10T09:00:00",
         "room": "B-004",
@@ -135424,7 +135424,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 213,
+    "pk": 214,
     "fields": {
         "datetime": "2015-11-11T09:00:00",
         "room": "B-004",
@@ -135434,7 +135434,7 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 214,
+    "pk": 215,
     "fields": {
         "datetime": "2015-11-12T09:00:00",
         "room": "B-004",
@@ -135444,11 +135444,537 @@
 },
 {
     "model": "occupants.estimatepredictions",
-    "pk": 215,
+    "pk": 216,
     "fields": {
         "datetime": "2015-11-13T09:00:00",
         "room": "B-004",
         "predictions": "0-25",
         "level": "1"
     }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "occupants",
+        "model": "groundtruth"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "occupants",
+        "model": "modules"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "occupants",
+        "model": "rooms"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "occupants",
+        "model": "timemodule"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "occupants",
+        "model": "wifilogdata"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "occupants",
+        "model": "binarypredictions"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "occupants",
+        "model": "percentagepredictions"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "occupants",
+        "model": "estimatepredictions"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "occupants",
+        "model": "document"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add groundtruth",
+        "content_type": 1,
+        "codename": "add_groundtruth"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change groundtruth",
+        "content_type": 1,
+        "codename": "change_groundtruth"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete groundtruth",
+        "content_type": 1,
+        "codename": "delete_groundtruth"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can add modules",
+        "content_type": 2,
+        "codename": "add_modules"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can change modules",
+        "content_type": 2,
+        "codename": "change_modules"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can delete modules",
+        "content_type": 2,
+        "codename": "delete_modules"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can add rooms",
+        "content_type": 3,
+        "codename": "add_rooms"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can change rooms",
+        "content_type": 3,
+        "codename": "change_rooms"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can delete rooms",
+        "content_type": 3,
+        "codename": "delete_rooms"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can add timemodule",
+        "content_type": 4,
+        "codename": "add_timemodule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can change timemodule",
+        "content_type": 4,
+        "codename": "change_timemodule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can delete timemodule",
+        "content_type": 4,
+        "codename": "delete_timemodule"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add wifilogdata",
+        "content_type": 5,
+        "codename": "add_wifilogdata"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change wifilogdata",
+        "content_type": 5,
+        "codename": "change_wifilogdata"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete wifilogdata",
+        "content_type": 5,
+        "codename": "delete_wifilogdata"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can add binary predictions",
+        "content_type": 6,
+        "codename": "add_binarypredictions"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can change binary predictions",
+        "content_type": 6,
+        "codename": "change_binarypredictions"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can delete binary predictions",
+        "content_type": 6,
+        "codename": "delete_binarypredictions"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can add percentage predictions",
+        "content_type": 7,
+        "codename": "add_percentagepredictions"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can change percentage predictions",
+        "content_type": 7,
+        "codename": "change_percentagepredictions"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can delete percentage predictions",
+        "content_type": 7,
+        "codename": "delete_percentagepredictions"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can add estimate predictions",
+        "content_type": 8,
+        "codename": "add_estimatepredictions"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can change estimate predictions",
+        "content_type": 8,
+        "codename": "change_estimatepredictions"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can delete estimate predictions",
+        "content_type": 8,
+        "codename": "delete_estimatepredictions"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add document",
+        "content_type": 9,
+        "codename": "add_document"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change document",
+        "content_type": 9,
+        "codename": "change_document"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete document",
+        "content_type": 9,
+        "codename": "delete_document"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 10,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 10,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 10,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 11,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 11,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 11,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 12,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 12,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 12,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 13,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 13,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 13,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 14,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 14,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 14,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 15,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 15,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 15,
+        "codename": "delete_session"
+    }
 }
+]
