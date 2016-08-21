@@ -165,7 +165,7 @@ def RoomDayGraph(request):
         selectedMonth = int(selectedDate[5:7])
         selectedDay = int(selectedDate[8:])
 ##        print('DATE', selectedDay, selectedMonth, selectedYear)
-        selectedDateTime = date(selectedYear, selectedMonth, selectedDay)
+        selectedDateTime = datetime.date(selectedYear, selectedMonth, selectedDay)
         timeModuleList = Timemodule.objects.filter(room=selectedRoom,
                                                    datetime__range=(selectedDateTime,
                                                                     selectedDateTime + datetime.timedelta(days=1)))

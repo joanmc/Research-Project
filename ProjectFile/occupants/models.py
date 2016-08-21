@@ -63,7 +63,7 @@ class Wifilogdata(models.Model):
         db_table = 'WiFiLogData'
 
 class BinaryPredictions(models.Model):
-    BinaryId = models.AutoField(db_column='BinaryId', primary_key = True)
+    BinaryId = models.AutoField(db_column='id', primary_key = True)
     datetime = models.DateTimeField(db_column='DateTime', blank=True, null=True)  
     room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room', blank=True, null=True)
     predictions = models.IntegerField(db_column='Predictions', blank=True, null=True)
@@ -71,7 +71,7 @@ class BinaryPredictions(models.Model):
         db_table = 'BinaryPredictions'
 
 class PercentagePredictions(models.Model):
-    PercentageId = models.AutoField(db_column='PercentageId', primary_key = True)
+    PercentageId = models.AutoField(db_column='id', primary_key = True)
     datetime = models.DateTimeField(db_column='DateTime', blank=True, null=True)  
     room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room', blank=True, null=True)
     predictions = models.IntegerField(db_column='Predictions', blank=True, null=True)
@@ -79,7 +79,7 @@ class PercentagePredictions(models.Model):
         db_table = 'PercentagePredictions'
 
 class EstimatePredictions(models.Model):
-    EstimateId = models.AutoField(db_column='EstimateId', primary_key = True)
+    EstimateId = models.AutoField(db_column='id', primary_key = True)
     datetime = models.DateTimeField(db_column='DateTime', blank=True, null=True)
     room = models.ForeignKey(Rooms, models.DO_NOTHING, db_column='Room', blank=True, null=True) 
     #predictions = models.IntegerField(db_column='Predictions', blank=True, null=True)
