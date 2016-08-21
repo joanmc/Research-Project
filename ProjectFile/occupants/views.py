@@ -1,14 +1,6 @@
-from django.shortcuts import render, get_object_or_404, render_to_response, redirect
-from django.utils import timezone
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
-from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, BinaryPredictions, PercentagePredictions, EstimatePredictions
-from django.db.models import Q
-from datetime import timedelta, date
-import datetime
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import RequestContext
-from django.http import Http404
-import json
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.serializers.json import DjangoJSONEncoder ## allow datetime format to serialize to json
@@ -16,15 +8,18 @@ from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
 from .forms import userForm, UploadForm #Import user registration form
 from django import forms
-
+from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, BinaryPredictions, PercentagePredictions, EstimatePredictions
+# API
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import SerializerRooms, SerializerModules, SerializerGroundtruth, SerializerTimemodule, SerializerBinaryPredictions, SerializerPercentagePredictions, SerializerEstimatePredictions
-
+# wifi logs upload
 import pandas as pd
 import csv
 from io import TextIOWrapper
+import json
+import datetime
 
 class RoomList(APIView):
     def get(self, request):
@@ -72,9 +67,9 @@ class EstimatePredictionsList(APIView):
 def login(request):
     return render(request, 'occupants/login.html', {})
 
-def homepage(request):
+def results(request):
     roomList = Rooms.objects.all()
-    return render(request, 'occupants/homepage.html', {'roomList': roomList})
+    return render(request, 'occupants/results.html', {'roomList': roomList})
 
 
 def calendarGen(request):
@@ -90,7 +85,7 @@ def calendarGen(request):
         roomObj = Rooms.objects.get(room=selectedRoom)
 
         roomSchedule = Timemodule.objects.filter(room=selectedRoom,
-                                                 datetime__range=(start_time, start_time + timedelta(days=5)))
+                                                 datetime__range=(start_time, start_time + datetime.timedelta(days=5)))
         timeList = Timemodule.objects.filter(room=selectedRoom, datetime__day=start_time.day)
         calendarInfo = {"room": {"roomName": roomObj.room, "capacity": roomObj.capacity, "campus": roomObj.campus,
                                  "building": roomObj.building}, "times": [], "timeSlots": []}
@@ -121,7 +116,7 @@ def GenGraph(request):
         selectedRoom = timeModule.room.room
 
         wifiData = Wifilogdata.objects.filter(room=selectedRoom,
-                                              datetime__range=(startTime, startTime + timedelta(hours=1)))
+                                              datetime__range=(startTime, startTime + datetime.timedelta(hours=1)))
         predictions = EstimatePredictions.objects.get(room=selectedRoom, datetime=startTime)
         ## need error handling here for when no ground truth exists
         groundTruthObj = Groundtruth.objects.get(room=selectedRoom, datetime=startTime)
@@ -173,13 +168,13 @@ def RoomDayGraph(request):
         selectedDateTime = date(selectedYear, selectedMonth, selectedDay)
         timeModuleList = Timemodule.objects.filter(room=selectedRoom,
                                                    datetime__range=(selectedDateTime,
-                                                                    selectedDateTime + timedelta(days=1)))
+                                                                    selectedDateTime + datetime.timedelta(days=1)))
         predictionList = PercentagePredictions.objects.filter(room=selectedRoom,
                                                               datetime__range=(selectedDateTime,
-                                                                               selectedDateTime + timedelta(days=1)))
+                                                                               selectedDateTime + datetime.timedelta(days=1)))
         groundTruthList = Groundtruth.objects.filter(room=selectedRoom,
                                                      datetime__range=(selectedDateTime,
-                                                                      selectedDateTime + timedelta(days=1)))
+                                                                      selectedDateTime + datetime.timedelta(days=1)))
         roomObj = Rooms.objects.get(room=selectedRoom)
 
         jsonFile = {"timeSlice": [], "capacity": roomObj.capacity}
@@ -198,7 +193,7 @@ def RoomDayGraph(request):
     else:
         raise Http404
 
-def Stats(request):
+def homepage(request):
     hours_useb4 = Timemodule.objects.filter(room='B-004').exclude(module='None').count()
     hours_availb4 = Timemodule.objects.filter(room='B-004').count()
     capacityb4 = Rooms.objects.get(room='B-004').capacity
@@ -235,7 +230,7 @@ def Stats(request):
     space_freqb2 = hours_useb2 / hours_availb2
     occ_rateb2 = num_peopleb2 / (capacityb2 * hours_useb2)
 
-    return render(request, 'occupants/Stats.html', {'space_freqb4': space_freqb4, 'occ_rateb4': occ_rateb4,
+    return render(request, 'occupants/homepage.html', {'space_freqb4': space_freqb4, 'occ_rateb4': occ_rateb4,
                                                     'space_freqb3': space_freqb3, 'occ_rateb3': occ_rateb3,
                                                     'space_freqb2': space_freqb2, 'occ_rateb2': occ_rateb2, })
 

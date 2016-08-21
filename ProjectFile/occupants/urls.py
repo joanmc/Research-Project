@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^RoomDayGraph$', views.RoomDayGraph, name='RoomDayGraph'),
     url(r'^register/$', views.userFormView.as_view(), name='register'),
     url(r'^Rooms/$', login_required(views.SelectInfo), name='SelectInfo'),
-    url(r'^Stats/$', views.Stats, name= 'Stats'),
+    url(r'^results/$', views.results, name= 'results'),
     url(r'^wifilogs/$', views.wifilogs, name='wifilogs'),
 
    # Django Tutorial for Beginnners 30 Model Forms, thenewboston
