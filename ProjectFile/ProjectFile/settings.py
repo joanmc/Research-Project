@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'jquery',
     'rest_framework',
+    'chartit',
 ]
 
 MIDDLEWARE_CLASSES = [

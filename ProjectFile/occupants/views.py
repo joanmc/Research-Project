@@ -16,7 +16,6 @@ from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
 from .forms import userForm, UploadForm #Import user registration form
 from django import forms
-#from chartit import DataPool, Chart
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -26,8 +25,6 @@ from .serializers import SerializerRooms, SerializerModules, SerializerGroundtru
 import pandas as pd
 import csv
 from io import TextIOWrapper
-
-
 
 class RoomList(APIView):
     def get(self, request):
@@ -82,7 +79,6 @@ def homepage(request):
 
 def calendarGen(request):
     '''function to query data for graph generation'''
-
     if request.method == 'POST':
 
         selectedRoom = request.POST.get('roomForm', False)
@@ -115,7 +111,6 @@ def calendarGen(request):
 
 def GenGraph(request):
     ''' function to query database for hourly graph data '''
-
     if request.is_ajax():
 
         timeModuleId = request.POST['timeModuleId']
@@ -165,7 +160,6 @@ def GenGraph(request):
 
 def RoomDayGraph(request):
     ''' function to query database for daily room graph data '''
-
     if request.is_ajax():
 
         selectedRoom = request.POST['selectedRoom']
@@ -180,15 +174,12 @@ def RoomDayGraph(request):
         timeModuleList = Timemodule.objects.filter(room=selectedRoom,
                                                    datetime__range=(selectedDateTime,
                                                                     selectedDateTime + timedelta(days=1)))
-        print('timeModuleList', len(timeModuleList))
         predictionList = PercentagePredictions.objects.filter(room=selectedRoom,
                                                               datetime__range=(selectedDateTime,
                                                                                selectedDateTime + timedelta(days=1)))
-        print('predictionList', len(predictionList))
         groundTruthList = Groundtruth.objects.filter(room=selectedRoom,
                                                      datetime__range=(selectedDateTime,
                                                                       selectedDateTime + timedelta(days=1)))
-        print('groundTruthList', len(groundTruthList))
         roomObj = Rooms.objects.get(room=selectedRoom)
 
         jsonFile = {"timeSlice": [], "capacity": roomObj.capacity}
@@ -208,12 +199,45 @@ def RoomDayGraph(request):
         raise Http404
 
 def Stats(request):
-    roomsList = Rooms.objects.all()
-    rooms = []
-    for room in roomsList:
-        rooms.append(room)
-    
-    return render(request, 'occupants/Stats.html', {'rooms': rooms})
+    hours_useb4 = Timemodule.objects.filter(room='B-004').exclude(module='None').count()
+    hours_availb4 = Timemodule.objects.filter(room='B-004').count()
+    capacityb4 = Rooms.objects.get(room='B-004').capacity
+    room_occupiedb4 = BinaryPredictions.objects.filter(room='B-004').filter(predictions=1)
+    range_peopleb4 = []
+    num_peopleb4 = 0
+    for i in range(0,len(room_occupiedb4)):
+        range_peopleb4.append(EstimatePredictions.objects.filter(room='B-004').filter(datetime=room_occupiedb4[i].datetime))
+        num_peopleb4 += int(range_peopleb4[i][0].predictions.split('-')[1])
+    space_freqb4 = hours_useb4 / hours_availb4
+    occ_rateb4 = num_peopleb4 / (capacityb4 * hours_useb4)
+
+    hours_useb3 = Timemodule.objects.filter(room='B-003').exclude(module='None').count()
+    hours_availb3 = Timemodule.objects.filter(room='B-003').count()
+    capacityb3 = Rooms.objects.get(room='B-003').capacity
+    room_occupiedb3 = BinaryPredictions.objects.filter(room='B-003').filter(predictions=1)
+    range_peopleb3 = []
+    num_peopleb3 = 0
+    for i in range(0,len(room_occupiedb3)):
+        range_peopleb3.append(EstimatePredictions.objects.filter(room='B-003').filter(datetime=room_occupiedb3[i].datetime))
+        num_peopleb3 += int(range_peopleb3[i][0].predictions.split('-')[1])
+    space_freqb3 = hours_useb3 / hours_availb3
+    occ_rateb3 = num_peopleb3 / (capacityb3 * hours_useb3)
+
+    hours_useb2 = Timemodule.objects.filter(room='B-002').exclude(module='None').count()
+    hours_availb2 = Timemodule.objects.filter(room='B-002').count()
+    capacityb2 = Rooms.objects.get(room='B-002').capacity
+    room_occupiedb2 = BinaryPredictions.objects.filter(room='B-002').filter(predictions=1)
+    range_peopleb2 = []
+    num_peopleb2 = 0
+    for i in range(0,len(room_occupiedb2)):
+        range_peopleb2.append(EstimatePredictions.objects.filter(room='B-002').filter(datetime=room_occupiedb2[i].datetime))
+        num_peopleb2 += int(range_peopleb2[i][0].predictions.split('-')[1])
+    space_freqb2 = hours_useb2 / hours_availb2
+    occ_rateb2 = num_peopleb2 / (capacityb2 * hours_useb2)
+
+    return render(request, 'occupants/Stats.html', {'space_freqb4': space_freqb4, 'occ_rateb4': occ_rateb4,
+                                                    'space_freqb3': space_freqb3, 'occ_rateb3': occ_rateb3,
+                                                    'space_freqb2': space_freqb2, 'occ_rateb2': occ_rateb2, })
 
 
 def SelectInfo(request):
