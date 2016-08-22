@@ -31,7 +31,10 @@
 
             <h3 id="title"></h3><br>
 
-            <div class="centered" id="tableDiv" style="Display: block"></div>            
+            <div class="table-responsive" id="tableDiv">
+                <table id="calTable" class="table">
+                </table>
+            </div>            
 
             <div class="row">
                 <div class = "col-md-9 text-center">
@@ -236,7 +239,6 @@
                     var cell = row.insertCell(0); // make these <th> instead of standard table cells
                     cell.innerHTML = "";
                     var counter=1;
-                    /*document.getElementById('testDiv1').innerHTML = calData["timeSlots"].length;*/
 
                     for (z=0; z<calData["timeSlots"].length; z+=9) {
 
