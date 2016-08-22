@@ -17,7 +17,7 @@
 	  		<div class="container-fluid">
 				<h1 class="h1">Welcome</h1>
 		        <ul class="nav nav-tabs">
-		            <li class="active" ><a href="#overview" data-toggle = "tab">Overview</a></li>
+		            <li class="active" ><a href="#summary" data-toggle = "tab">Summary</a></li>
 		            <li ><a href="#B004" data-toggle="tab">B-004</a></li>
 			    	<li ><a href="#B003" data-toggle="tab">B-003</a></li>
 		            <li ><a href="#B002" data-toggle ="tab">B-002</a></li>
@@ -25,27 +25,59 @@
 			</div>
 
 			<div class= "tab-content clearfix">          
-				<div class = "tab-pane active" id="overview">
+				<div class = "tab-pane active" id="summary">
 					<div class="container-fluid">
-						<canvas id="overview-pie">Overview</canvas>
-					</div>
+						<div class="row">
+							<div class="col-md-7">
+				                    <canvas id="summary-use""></canvas>
+				            </div>
+			                <div class = "col-md-5">
+		                    	<canvas id="summary-space""></canvas>
+		                    	<canvas id="summary-occ"" ></canvas>
+			           		</div>	
+			            </div>
+		           </div>
 				</div>
 			
 				<div class = "tab-pane" id ="B004">
 					<div class="container-fluid">
-						<canvas id="b004-pie">B-004</canvas>
+						<div class="row">
+							<div class="col-md-7">
+				                    <canvas id="b004-use""></canvas>
+				            </div>
+			                <div class = "col-md-5">
+		                    	<canvas id="b004-space""></canvas>
+		                    	<canvas id="b004-occ"" ></canvas>
+			           		</div>	
+			            </div>
 					</div>
 				</div>
 		    
 				<div class = "tab-pane" id="B003">
 					<div class="container-fluid">
-						<canvas id="b003-pie">B-003</canvas>
+						<div class="row">
+							<div class="col-md-7">
+				                    <canvas id="b003-use""></canvas>
+				            </div>
+			                <div class = "col-md-5">
+		                    	<canvas id="b003-space""></canvas>
+		                    	<canvas id="b003-occ"" ></canvas>
+			           		</div>	
+			            </div>
 					</div>
 				</div>
 
 				<div class = "tab-pane" id="B002">
 					<div class="container-fluid">
-						<canvas id="b002-pie">B-002</canvas>
+						<div class="row">
+							<div class="col-md-7">
+				                    <canvas id="b002-use""></canvas>
+				            </div>
+			                <div class = "col-md-5">
+		                    	<canvas id="b002-space""></canvas>
+		                    	<canvas id="b002-occ"" ></canvas>
+			           		</div>	
+			            </div>
 					</div>
 				</div>
 			</div>
@@ -77,29 +109,42 @@
 </div>
 
 <script type="text/javascript">
+	Chart.defaults.global.legend.display = false;
 	// Pie Charts
 	var space_freqb4 = "{{ space_freqb4|escapejs }}";
 	var occ_rateb4 = "{{ occ_rateb4|escapejs }}";
 	var use_rateb4 = space_freqb4 * occ_rateb4;
-	drawPie(use_rateb4, 'b004-pie')
+	spaceFrequencyRate(space_freqb4, 'b004-space')
+	occupancyRate(occ_rateb4, 'b004-occ')
+	spaceUtilisaion(use_rateb4, 'b004-use')
 
 	var space_freqb3 = "{{ space_freqb3|escapejs }}";
 	var occ_rateb3 = "{{ occ_rateb3|escapejs }}";
 	var use_rateb3 = space_freqb3 * occ_rateb3;
-	drawPie(use_rateb3, 'b003-pie')
+	spaceFrequencyRate(space_freqb3, 'b003-space')
+	occupancyRate(occ_rateb3, 'b003-occ')
+	spaceUtilisaion(use_rateb3, 'b003-use')
 
 	var space_freqb2 = "{{ space_freqb2|escapejs }}";
 	var occ_rateb2 = "{{ occ_rateb2|escapejs }}";
 	var use_rateb2 = space_freqb2 * occ_rateb2;
-	drawPie(use_rateb2, 'b002-pie')
+	spaceFrequencyRate(space_freqb2, 'b002-space')
+	occupancyRate(occ_rateb2, 'b002-occ')
+	spaceUtilisaion(use_rateb2, 'b002-use')
 
-	var overview = (use_rateb4 + use_rateb3 + use_rateb2)/3
-	drawPie(use_rateb2, 'overview-pie')
+	var summary_space = (+(space_freqb4) + +(space_freqb3) + +(space_freqb2))/3;
+	var summary_occ = (+(occ_rateb4) + +(occ_rateb3) + +(occ_rateb2))/3.0;
+	var summary_use = (use_rateb4 + use_rateb3 + use_rateb2)/3.0;
+	spaceFrequencyRate(summary_space, 'summary-space')
+	occupancyRate(summary_occ, 'summary-occ')
+	spaceUtilisaion(summary_use, 'summary-use')
 
-	function drawPie(data, targetid){
+	function spaceFrequencyRate(data, targetid){
 		var data = {
 		    labels: [
-		        "Space Utilisation"
+		        "Space Frequency Rate",
+		        "Idle"
+
 		    ],
 		    datasets: [
 		        {
@@ -119,7 +164,85 @@
 		var ctx = document.getElementById(targetid).getContext("2d");
 		var myDoughnutChart = new Chart(ctx, {
 		    type: 'doughnut',
-		    data: data
+		    data: data,
+		    options: {
+		        title: {
+		            display: true,
+		            text: 'Space Frequency Rate'
+	        	}
+    		}
+		});
+
+	}
+
+	function occupancyRate(data, targetid){
+		var data = {
+		    labels: [
+		        "Occupied",
+		        "Unoccupied"
+
+		    ],
+		    datasets: [
+		        {
+		            data: [data, 1-data],
+		            backgroundColor: [
+		                "#C4BF88",
+		                "#B5C1CF"
+		            ],
+		            hoverBackgroundColor: [
+		                "#C4BF88",
+		                "#B5C1CF"
+		            ]
+		        }]
+		};
+
+		// And for a doughnut chart
+		var ctx = document.getElementById(targetid).getContext("2d");
+		var myDoughnutChart = new Chart(ctx, {
+		    type: 'doughnut',
+		    data: data,
+		    options: {
+		        title: {
+		            display: true,
+		            text: 'Occupancy Rate'
+	        	}
+    		}
+		});
+		
+	}
+
+	function spaceUtilisaion(data, targetid){
+		var data = {
+		    labels: [
+		        "Use Rate",
+		        "Idle Rate"
+
+		    ],
+		    datasets: [
+		        {
+		            data: [data, 1-data],
+		            backgroundColor: [
+		                "#C4BF88",
+		                "#B5C1CF"
+		            ],
+		            hoverBackgroundColor: [
+		                "#C4BF88",
+		                "#B5C1CF"
+		            ]
+		        }]
+		};
+
+		// And for a doughnut chart
+		var ctx = document.getElementById(targetid).getContext("2d");
+		var myDoughnutChart = new Chart(ctx, {
+		    type: 'pie',
+		    data: data,
+		    options: {
+		        title: {
+		            display: true,
+		            text: 'Space Utilisation Rate'
+	        	}
+    		}
 		});
 	}
 	

@@ -10,25 +10,29 @@
 {% block body %}
     <div class="container-fluid">
         <div class="centered" style="max-width: 1200px">
-           <form action="" method="POST">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
-                <select id="roomPicker" name="roomForm"> <!--submit on change-->
-                    <option value="" selected></option>
-                    {% for room in roomList %} <!--automatically generate the form options from roomList-->
-                    <option value="{{ room.room }}">{{ room.room }}</option>
-                    {% endfor %}
-                </select>
-                <input id="datePicker" name="dateForm"/>
-                <button type="button" onclick="GenCalendar()">Submit</button> 
-            </form>
+                   <form class="form-horizontal" action="" method="POST" role="form">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
+                        <div class="form-group">
+                            <div class="col-sm-5">
+                                <select id="roomPicker" class="form-control" name="roomForm" placeholder="Room"><!--submit on change-->
+                                    <option value="" disabled selected>Room</option>
+                                    {% for room in roomList %} <!--automatically generate the form options from roomList-->
+                                        <option value="{{ room.room }}">{{ room.room }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-sm-5">
+                                <input id="datePicker" class="form-control" name="dateForm" placeholder="Date"/>
+                            </div>
+                           <div class="col-sm-2">
+                                <button type="button" class="btn btn-default" onclick="GenCalendar()">Submit</button> 
+                           </div>
+                        </div>
+                    </form><br>
 
             <h3 id="title"></h3><br>
 
-            <div class="centered" id="tableDiv" style="Display: block">
-    <!--            <table id="calTable">
-                </table>-->
-            </div>            
+            <div class="centered" id="tableDiv" style="Display: block"></div>            
 
-        <div class="container-fluid" id="graph-container">
             <div class="row">
                 <div class = "col-md-9 text-center">
                     <canvas id="myChart""></canvas>
@@ -49,11 +53,7 @@
                       <div class="panel-body"><span class="glyphicon glyphicon-user"></span> <span id="Range"></span></div>
                     </div>
                 </div>
-        
             </div>
-        </div>
-        
-            
         </div>
     </div>
 
@@ -63,7 +63,6 @@
 <script>
     function GenGraph(y) {
         // function to generate the graph with chart.js
-
         var timeModuleId = y;
             $.ajax({ // make ajax request to views file
                 method: "POST",
@@ -76,7 +75,6 @@
                     if (testData == 'error') {
                         //document.getElementById('graphDiv').innerHTML = "";
                     } else {
-                        //document.getElementById('graphDiv').innerHTML = "";
                         $(document).ready(function(){
 
                         var roomCap = testData["capacity"]; // set room capacity
@@ -86,10 +84,6 @@
                         var regStu = []
                         var gndTruthUpper = []
                         var gndTruthLower = []
-                        
-                        // document.getElementById('testDiv3').innerHTML = testData.length;
-                        // document.getElementById('testDiv2').innerHTML = testData["prediction"];
-                        
                             
                         for (var i=0; i<testData["timeSlice"].length; i+=1) {
 
@@ -213,7 +207,6 @@
 
     function GenCalendar() {
         // function to generate the claendar
-
         var roomForm = document.getElementById("roomPicker").value;
         var dateForm = document.getElementById("datePicker").value;
         $.ajax({
@@ -300,12 +293,6 @@
        })
     }
                     
-                    
-                    
-       
-</script>
-
-<script>
     function RoomDayGraph(x) {
 
         selectedDate = x;
@@ -322,12 +309,7 @@
                 if (roomDayData == 'error') {
                     //document.getElementById('graphDiv').innerHTML = "";
                     //document.getElementById('graphDiv').innerHTML = 'no data available';
-                } else {
-                    // tests
-/*                  document.getElementById('testDiv3').innerHTML = roomDayData["capacity"];
-                    document.getElementById('testDiv4').innerHTML = roomDayData["capacity"];
-                    document.getElementById('testDiv5').innerHTML = roomDayData["capacity"];
-                    document.getElementById('testDiv6').innerHTML = roomDayData["capacity"];*/        
+                } else {        
                     $(document).ready(function(){
                           
                         var roomCap = roomDayData["capacity"]; // set room capacity
@@ -352,7 +334,7 @@
                         }  
 
                         var data = {
-                            labels: modules,
+                            labels: ["09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 -13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 -16:00", "16:00 - 17:00"],
                             datasets: [{
                                 fill: false,
                                 label: 'Prediction',

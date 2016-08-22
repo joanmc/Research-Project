@@ -62,14 +62,30 @@
 		<div  class = "tab-pane" id = "groundtruth">
 			<div class = "container-fluid">
 				<h1><a href="/GroundTruth/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
-				<ul class = "list-group">
+				
+				<form action="" method="POST" role="form">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
+		            <div class="form-group">
+		                <select id="roomPicker" class="form-control" name="roomForm" placeholder="Room"> <!--submit on change-->
+		                    <option value="" disabled selected>Room</option>
+		                    {% for room in rooms %} <!--automatically generate the form options from roomList-->
+		                        <option value="{{ room }}">{{ room }}</option>
+		                    {% endfor %}
+		                </select>
+		            </div>
+		            <div class="form-group">
+	                	<input id="datePicker" class="form-control" name="dateForm" placeholder="DateTime"/>
+	            	</div>
+		            	<button type="button" class="btn btn-default" onclick="requestInfo()">Submit</button> 
+            	</form>
+
+				<!-- <ul class = "list-group">
 				{% for groundtruth in groundtruth %}
 				   <li class = "list-group-item"> {{ groundtruth.datetime }} {{ groundtruth.room }}
 					<a href="/GroundTruth/{{ groundtruth.groundtruthid}}/"><span class ="glyphicon glyphicon-edit"></span></a>
 					<a href="/GroundTruth/delete/{{ groundtruth.groundtruthid}}}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
 				    </li>
 				    {% endfor %}
-				</ul>   
+				</ul>  -->  
 			</div>
 		</div>
 
@@ -81,4 +97,45 @@
 		</div>
 	</div>
 </div>
+
+<script>
+// var groundtruth = {{ groundtruth|safe }};
+// console.log(groundtruth);
+// console.log(typeof(groundtruth));
+
+// function requestInfo(){
+// 	var roomForm = document.getElementById("roomPicker").value;
+//     var dateForm = document.getElementById("datePicker").value;
+
+//     for (item in groundtruth){
+//     	console.log(item['Groundtruth']);
+//     } 
+// }
+
+function requestInfo(){
+		var roomForm = document.getElementById("roomPicker").value;
+        var dateForm = document.getElementById("datePicker").value;
+
+        // document.getElementById('room').innerHTML = roomForm;
+        // document.getElementById('dateTime').innerHTML = dateForm;
+
+        $.ajax({
+            method: "POST",
+            data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+            url: "formsRequest",
+
+            success: function(result) {
+                var info = result;
+                console.log(info);
+                	
+
+
+
+            }
+        });
+}
+
+</script>
+
+
 {% endblock %}

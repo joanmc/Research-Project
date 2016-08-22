@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.serializers.json import DjangoJSONEncoder ## allow datetime format to serialize to json
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth import login as auth_login, authenticate #authenticates User & creates session ID
+from django.contrib import messages
 from .forms import userForm, UploadForm #Import user registration form
 from django import forms
 from .models import Modules, Groundtruth, Rooms, Timemodule, Wifilogdata, BinaryPredictions, PercentagePredictions, EstimatePredictions
@@ -20,6 +21,7 @@ import csv
 from io import TextIOWrapper
 import json
 import datetime
+
 
 class RoomList(APIView):
     def get(self, request):
@@ -71,7 +73,6 @@ def results(request):
     roomList = Rooms.objects.all()
     return render(request, 'occupants/results.html', {'roomList': roomList})
 
-
 def calendarGen(request):
     '''function to query data for graph generation'''
     if request.method == 'POST':
@@ -100,9 +101,6 @@ def calendarGen(request):
         return HttpResponse(json.dumps(calendarInfo, cls=DjangoJSONEncoder), content_type="application/json")
     else:
         raise Http404
-
-
-
 
 def GenGraph(request):
     ''' function to query database for hourly graph data '''
@@ -234,6 +232,7 @@ def homepage(request):
                                                     'space_freqb3': space_freqb3, 'occ_rateb3': occ_rateb3,
                                                     'space_freqb2': space_freqb2, 'occ_rateb2': occ_rateb2, })
 
+from itertools import chain
 
 def SelectInfo(request):
     rooms = Rooms.objects.all()
@@ -247,7 +246,23 @@ def SelectInfo(request):
         'timemodule':timemodule,
         'groundtruth':groundtruth,
     }
+
+    print (list(rooms))
+    # combined = list(chain(rooms, modules, timemodule, groundtruth))
+    # jsonContent = serialize('json', combined)
+    # print(jsonContent)
+
     return HttpResponse(template.render(context, request))
+
+def formsRequest(request):
+    if request.method == 'POST':
+            selectedRoom = request.POST.get('roomForm', False)
+            selectedDateTime = request.POST.get('dateForm', False)
+            groundtruth = Groundtruth.objects.get(room=selectedRoom, datetime=selectedDateTime)
+            gtInfo = {"room": selectedRoom, "datetime": selectedDateTime, "percentage": groundtruth.percentageestimate,"binary": groundtruth.binaryestimate }
+            return HttpResponse(json.dumps(gtInfo, cls=DjangoJSONEncoder), content_type="application/json")
+    else:
+        raise Http404
 
 class AddModule(CreateView):
     model = Modules
@@ -308,8 +323,6 @@ class DeleteGroundTruth(DeleteView):
     model = Groundtruth
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
     success_url = reverse_lazy('SelectInfo')
-
-from django.contrib import messages
 
 class userFormView(View):
     form_class = userForm #blueprint for form

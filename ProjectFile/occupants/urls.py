@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^Rooms/$', login_required(views.SelectInfo), name='SelectInfo'),
     url(r'^results/$', views.results, name= 'results'),
     url(r'^wifilogs/$', views.wifilogs, name='wifilogs'),
+    url(r'^Rooms/formsRequest/$', views.formsRequest, name='formsRequest'),
 
    # Django Tutorial for Beginnners 30 Model Forms, thenewboston
     # Add records
