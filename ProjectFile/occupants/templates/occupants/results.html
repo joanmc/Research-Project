@@ -21,7 +21,14 @@
                                 </select>
                             </div>
                             <div class="col-sm-5">
-                                <input id="datePicker" class="form-control" name="dateForm" placeholder="Date"/>
+                                 <select id="datePicker" class="form-control" name="dateForm" placeholder="Date"><!--submit on change-->
+                                    <option value="" disabled selected>Date</option>
+                                        {% for date in dateList %}
+                                            <option value="{{ date }}">{{ date }}</option>
+                                        {% endfor %}
+
+                                </select>
+                                <!-- <input id="datePicker" class="form-control" name="dateForm" placeholder="Date"/> -->
                             </div>
                            <div class="col-sm-2">
                                 <button type="button" class="btn btn-default" onclick="GenCalendar()">Submit</button> 
@@ -133,7 +140,6 @@
                                 label: '',
                                 backgroundColor: 'rgba(255, 255, 255, 1)',
                                 borderColor: 'rgba(102, 167, 192, 0.2)',
-/*                              borderColor: 'rgba(102, 167, 192, 0.3)',*/
                                 data: predictionLower
                             },{
                                 fill: true,
@@ -142,12 +148,11 @@
                                 backgroundColor: 'rgba(102, 167, 192, 0.2)',
                                 label: 'Prediction Range',
                                 borderColor: 'rgba(102, 167, 192, 0.2)',
-/*                                borderColor: 'rgba(102, 167, 192, 0.3)',*/
                                 data: predictionUpper
                             },{
                                 label: 'Devices',
                                 fill: false,
-                                borderColor: 'yellow',
+                                borderColor: '#DBBA34',
                                 data: deviceNumb  
                             },{
                                 label: 'Registered',
@@ -212,6 +217,7 @@
         // function to generate the claendar
         var roomForm = document.getElementById("roomPicker").value;
         var dateForm = document.getElementById("datePicker").value;
+
         $.ajax({
             method: "POST",
             data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
@@ -340,12 +346,12 @@
                             datasets: [{
                                 fill: false,
                                 label: 'Prediction',
-                                borderColor: 'blue',
+                                borderColor: '#637B85',
                                 data: prediction
                             },{
                                 label: 'Ground Truth',
                                 fill: false,
-                                borderColor: 'yellow',
+                                borderColor: '#DBBA34',
                                 data: gndTruth  
                             }]
                         };

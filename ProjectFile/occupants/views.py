@@ -71,7 +71,11 @@ def login(request):
 
 def results(request):
     roomList = Rooms.objects.all()
-    return render(request, 'occupants/results.html', {'roomList': roomList})
+    dateTimeList = Timemodule.objects.filter(room="B-004")
+    dateList = sorted(list(set([d.datetime.date() for d in dateTimeList])))
+    dateList = [date.strftime('%m/%d/%Y') for date in dateList]
+
+    return render(request, 'occupants/results.html', {'roomList': roomList, 'dateList' : dateList })
 
 def calendarGen(request):
     '''function to query data for graph generation'''
