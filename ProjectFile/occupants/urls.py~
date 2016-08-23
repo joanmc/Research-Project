@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^GroundTruth/add/$', login_required(views.AddGroundTruth.as_view()), name='AddGroundTruth'),
     # url(r'^Wifi/add/$', login_required(views.wifilogs), name='wifilogs'),
     # Update records
-    url(r'^Room/(?P<pk>[a-zA-Z0-9()& _-]+)/$', login_required(views.UpdateRoom.as_view()), name='UpdateRoom'),
+    url(r'^Room/(?P<pk>[a-zA-Z0-9()& ]+_-)/$', login_required(views.UpdateRoom.as_view()), name='UpdateRoom'),
     url(r'^Module/(?P<pk>[a-zA-Z0-9()& ]+)/$', login_required(views.UpdateModule.as_view()), name='UpdateModule'),
     url(r'^TimeModule/(?P<pk>[0-9]+)/$', login_required(views.UpdateTimeModule.as_view()), name='UpdateTimeModule'),
     url(r'^GroundTruth/(?P<pk>[0-9]+)/$', login_required(views.UpdateGroundTruth.as_view()), name='UpdateGroundTruth'),
