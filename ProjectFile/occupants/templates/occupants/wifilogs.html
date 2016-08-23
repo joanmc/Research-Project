@@ -6,17 +6,6 @@
 
 <div class = "container-fluid">
     <div class="centered" style="max-width: 1200px">
-      <!-- List of uploaded documents -->
-        <!-- {% if documents %}
-            <ul>
-            {% for document in documents %}
-                <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>No documents.</p>
-        {% endif %} -->
-
         {% if messages %}
         <ul class="well">
             {% for message in messages %}
@@ -29,15 +18,15 @@
         <form action="{% url 'wifilogs' %}" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 {% csrf_token %}
-                <h1>Upload Wifi Log Data csv file: {{ form.docfile.help_text }}</h1><br>
-                <p>{{ form.non_field_errors }}</p>
-                <p>
+                <h1 class="form-control">Upload Wifi Log Data csv file: {{ form.docfile.help_text }}</h1><br>
+                <p class="form-control">{{ form.non_field_errors }}</p>
+                <p class="form-control">
                     {{ form.docfile.errors }}
                     {{ form.docfile }}
                 </p>
+            
+            <button type="button" class="btn btn-default" value="Upload">Submit</button>
             </div>
-            <button type="submit" class="btn btn-default" value="Upload">Submit</button>
-    
             <!-- <p><input type="submit" value="Upload" /></p> -->
         </form>
     </div>

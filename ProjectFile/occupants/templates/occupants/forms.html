@@ -48,14 +48,42 @@
 		<div class="tab-pane" id="timemodule">
 			<div class = "container-fluid">
 				<h1><a href="/TimeModule/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
-				<ul class = "list-group">
-				    {% for timemodule in timemodule %}
-				    <li class = "list-group-item"> {{ timemodule.datetime }} {{ timemodule.room }}
-					<a href="/TimeModule/{{ timemodule.timemoduleid}}/"><span class ="glyphicon glyphicon-edit"></span></a>
-					<a href="/TimeModule/delete/{{ timemodule.timemoduleid}}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
-				    </li>
-				    {% endfor %}
-				</ul> 
+
+				<form class="form-horizontal" action="" method="POST" role="form">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
+                        <div class="form-group">
+                            <div class="col-sm-5">
+                                <select id="TMroomPicker" class="form-control" name="roomForm" placeholder="Room"><!--submit on change-->
+                                    <option value="" disabled selected>Room</option>
+                                    {% for room in rooms %} <!--automatically generate the form options from roomList-->
+                                        <option value="{{ room }}">{{ room }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-sm-5">
+                                 <select id="TMdatePicker" class="form-control" name="dateForm" placeholder="Date"><!--submit on change-->
+                                    <option value="" disabled selected>Date</option>
+                                        {% for date in ModuleDates %}
+                                            <option value="{{ date.datetime |date:'Y-m-d H:i:s' }}">{{ date.datetime |date:'Y-m-d H:i:s' }}</option>
+                                        {% endfor %}
+                                </select>
+                            </div>
+                           <div class="col-sm-2">
+                                <button type="button" class="btn btn-default" onclick="TMRequest()">Submit</button> 
+                           </div>
+                        </div>
+                    </form><br>
+
+                    <div id="TMresult" style="display:none;">
+						<ul class = "list-group">
+						    <li class = "list-group-item">
+							    Room: <span id=room></span><br><br>
+							    DateTime: <span id="datetime"></span><br><br>
+							    Module: <span id="module"></span><br><br>
+							<a id="edit"><span class ="glyphicon glyphicon-edit">  </span></a>
+							<a id="delete"><span class ="glyphicon glyphicon-trash">  </span></a>
+						    </li>
+						</ul> 
+					</div>
 			</div>  
 		</div>
 
@@ -63,29 +91,43 @@
 			<div class = "container-fluid">
 				<h1><a href="/GroundTruth/add/" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
 				
-				<form action="" method="POST" role="form">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
-		            <div class="form-group">
-		                <select id="roomPicker" class="form-control" name="roomForm" placeholder="Room"> <!--submit on change-->
-		                    <option value="" disabled selected>Room</option>
-		                    {% for room in rooms %} <!--automatically generate the form options from roomList-->
-		                        <option value="{{ room }}">{{ room }}</option>
-		                    {% endfor %}
-		                </select>
-		            </div>
-		            <div class="form-group">
-	                	<input id="datePicker" class="form-control" name="dateForm" placeholder="DateTime"/>
-	            	</div>
-		            	<button type="button" class="btn btn-default" onclick="requestInfo()">Submit</button> 
-            	</form>
+				  <form class="form-horizontal" action="" method="POST" role="form">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
+                        <div class="form-group">
+                            <div class="col-sm-5">
+                                <select id="roomPicker" class="form-control" name="roomForm" placeholder="Room"><!--submit on change-->
+                                    <option value="" disabled selected>Room</option>
+                                    {% for room in rooms %} <!--automatically generate the form options from roomList-->
+                                        <option value="{{ room }}">{{ room }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-sm-5">
+                                 <select id="datePicker" class="form-control" name="dateForm" placeholder="Date"><!--submit on change-->
+                                    <option value="" disabled selected>Date</option>
+                                        {% for date in GTDates %}
+                                            <option value="{{ date.datetime |date:'Y-m-d H:i:s' }}">{{ date.datetime |date:'Y-m-d H:i:s' }}</option>
+                                        {% endfor %}
+                                </select>
+                                <!-- <input id="datePicker" class="form-control" name="dateForm" placeholder="Date"/> -->
+                            </div>
+                           <div class="col-sm-2">
+                                <button type="button" class="btn btn-default" onclick="GTRequest()">Submit</button> 
+                           </div>
+                        </div>
+                    </form><br>
 
-				<!-- <ul class = "list-group">
-				{% for groundtruth in groundtruth %}
-				   <li class = "list-group-item"> {{ groundtruth.datetime }} {{ groundtruth.room }}
-					<a href="/GroundTruth/{{ groundtruth.groundtruthid}}/"><span class ="glyphicon glyphicon-edit"></span></a>
-					<a href="/GroundTruth/delete/{{ groundtruth.groundtruthid}}}/"> <span class ="glyphicon glyphicon-trash"></span> </a>
-				    </li>
-				    {% endfor %}
-				</ul>  -->  
+                    <div id="result" style="display:none;">
+						<ul class = "list-group">
+						    <li class = "list-group-item">
+							    Room: <span id=room></span><br><br>
+							    DateTime: <span id="datetime"></span><br><br>
+							    Binary Estimate: <span id="binary"></span><br><br>
+							    Percentage Estimate: <span id="percentage"></span><br><br>
+							<a id="edit"><span class ="glyphicon glyphicon-edit">  </span></a>
+							<a id="delete"><span class ="glyphicon glyphicon-trash">  </span></a>
+						    </li>
+						</ul> 
+					</div>
 			</div>
 		</div>
 
@@ -99,41 +141,80 @@
 </div>
 
 <script>
-// var groundtruth = {{ groundtruth|safe }};
-// console.log(groundtruth);
-// console.log(typeof(groundtruth));
 
-// function requestInfo(){
-// 	var roomForm = document.getElementById("roomPicker").value;
-//     var dateForm = document.getElementById("datePicker").value;
-
-//     for (item in groundtruth){
-//     	console.log(item['Groundtruth']);
-//     } 
-// }
-
-function requestInfo(){
-		var roomForm = document.getElementById("roomPicker").value;
-        var dateForm = document.getElementById("datePicker").value;
-
-        // document.getElementById('room').innerHTML = roomForm;
-        // document.getElementById('dateTime').innerHTML = dateForm;
+function TMRequest(){
+		var roomForm = document.getElementById("TMroomPicker").value;
+        var dateForm = document.getElementById("TMdatePicker").value;
 
         $.ajax({
             method: "POST",
             data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
-            url: "formsRequest",
+            url: "TMRequest",
 
             success: function(result) {
                 var info = result;
-                console.log(info);
-                	
+                document.getElementById('TMresult').style.display = "inline";
+                document.getElementById("room").innerHTML = info.room;
+                document.getElementById("datetime").innerHTML = info.datetime;
+                document.getElementById("module").innerHTML = info.module;
 
-
-
-            }
+                var editLink = "/TimeModule/" + info.id + "/";
+				document.getElementById("edit").setAttribute("href",editLink);
+				var deleteLink = "/TimeModule/delete/" + info.id + "/";
+				document.getElementById("delete").setAttribute("href",deleteLink);
+	    	}
         });
 }
+
+function GTRequest(){
+		var roomForm = document.getElementById("roomPicker").value;
+        var dateForm = document.getElementById("datePicker").value;
+
+        $.ajax({
+            method: "POST",
+            data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+            url: "GTRequest",
+
+            success: function(result) {
+                var info = result;
+                document.getElementById('result').style.display = "inline";
+                document.getElementById("room").innerHTML = info.room;
+                document.getElementById("datetime").innerHTML = info.datetime;
+                document.getElementById("binary").innerHTML = info.binary;
+                document.getElementById("percentage").innerHTML = info.percentage;
+
+                var editLink = "/GroundTruth/" + info.id + "/";
+				document.getElementById("edit").setAttribute("href",editLink);
+				var deleteLink = "/GroundTruth/delete/" + info.id + "/";
+				document.getElementById("delete").setAttribute("href",deleteLink);
+	    	}
+        });
+}
+
+// function WiFiRequest(){
+// 		var roomForm = document.getElementById("WFroomPicker").value;
+//         var dateForm = document.getElementById("WFdatePicker").value;
+
+//         $.ajax({
+//             method: "POST",
+//             data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+//             url: "GTRequest",
+
+//             success: function(result) {
+//                 var info = result;
+//                 document.getElementById('result').style.display = "inline";
+//                 document.getElementById("room").innerHTML = info.room;
+//                 document.getElementById("datetime").innerHTML = info.datetime;
+//                 document.getElementById("binary").innerHTML = info.conut;
+
+//                 var editLink = "/GroundTruth/" + info.id + "/";
+// 				document.getElementById("edit").setAttribute("href",editLink);
+// 				var deleteLink = "/GroundTruth/delete/" + info.id + "/";
+// 				document.getElementById("delete").setAttribute("href",deleteLink);
+// 	    	}
+//         });
+// }
+
 
 </script>
 

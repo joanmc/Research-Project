@@ -243,27 +243,39 @@ def SelectInfo(request):
     modules = Modules.objects.all()
     timemodule = Timemodule.objects.all()
     groundtruth = Groundtruth.objects.all()
+    dateTimeList = Timemodule.objects.filter(room="B-004")
+    GTdateTimeList = Groundtruth.objects.filter(room="B-004")
+    WiFidateList = Groundtruth.objects.filter(room="B-004")
+
     template = loader.get_template('occupants/forms.html')
     context = {
         'rooms': rooms,
         'modules': modules,
         'timemodule':timemodule,
         'groundtruth':groundtruth,
+        'ModuleDates': dateTimeList,
+        'GTDates': GTdateTimeList,
+        'WiFIDates': WiFidateList,
     }
-
-    print (list(rooms))
-    # combined = list(chain(rooms, modules, timemodule, groundtruth))
-    # jsonContent = serialize('json', combined)
-    # print(jsonContent)
 
     return HttpResponse(template.render(context, request))
 
-def formsRequest(request):
+def TMRequest(request):
+    if request.method == 'POST':
+            selectedRoom = request.POST.get('roomForm', False)
+            selectedDateTime = request.POST.get('dateForm', False)
+            module = Timemodule.objects.filter(room=selectedRoom, datetime=selectedDateTime).values()
+            gtInfo = {"room": selectedRoom, "datetime": selectedDateTime, "module": module[0]['module_id'], "id": module[0]['timemoduleid']}
+            return HttpResponse(json.dumps(gtInfo, cls=DjangoJSONEncoder), content_type="application/json")
+    else:
+        raise Http404
+
+def GTRequest(request):
     if request.method == 'POST':
             selectedRoom = request.POST.get('roomForm', False)
             selectedDateTime = request.POST.get('dateForm', False)
             groundtruth = Groundtruth.objects.get(room=selectedRoom, datetime=selectedDateTime)
-            gtInfo = {"room": selectedRoom, "datetime": selectedDateTime, "percentage": groundtruth.percentageestimate,"binary": groundtruth.binaryestimate }
+            gtInfo = {"room": selectedRoom, "datetime": selectedDateTime, "percentage": groundtruth.percentageestimate,"binary": groundtruth.binaryestimate, "id": groundtruth.groundtruthid}
             return HttpResponse(json.dumps(gtInfo, cls=DjangoJSONEncoder), content_type="application/json")
     else:
         raise Http404
