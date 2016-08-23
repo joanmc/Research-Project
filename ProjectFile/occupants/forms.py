@@ -4,18 +4,18 @@ from django.contrib.auth.models import User
 
 
 
-class addRoom(forms.ModelForm):
+# class addRoom(forms.ModelForm):
 	
-	class Meta:
-		model = Rooms
-		fields = ('room', 'building', 'campus', 'capacity',)
+# 	class Meta:
+# 		model = Rooms
+# 		fields = ('room', 'building', 'campus', 'capacity',)
 
 
-class addModule(forms.ModelForm):
+# class addModule(forms.ModelForm):
 	
-	class Meta:
-		model = Modules
-		fields = ('modulename', 'numreg',)
+# 	class Meta:
+# 		model = Modules
+# 		fields = ('modulename', 'numreg',)
 
 
 class userForm(forms.ModelForm):

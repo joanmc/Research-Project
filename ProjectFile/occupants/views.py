@@ -65,7 +65,6 @@ class EstimatePredictionsList(APIView):
          serializer = SerializerEstimatePredictions(estimatepredictions, many = True)
          return Response(serializer.data)
 
-
 def login(request):
     return render(request, 'occupants/login.html', {})
 
@@ -120,9 +119,7 @@ def GenGraph(request):
         wifiData = Wifilogdata.objects.filter(room=selectedRoom,
                                               datetime__range=(startTime, startTime + datetime.timedelta(hours=1)))
         predictions = EstimatePredictions.objects.get(room=selectedRoom, datetime=startTime)
-        ## need error handling here for when no ground truth exists
         groundTruthObj = Groundtruth.objects.get(room=selectedRoom, datetime=startTime)
-        ## need error handling here for when no ground truth exists
 
         groundTruth = groundTruthObj.percentageestimate
         registered = timeModule.module.numreg
@@ -130,15 +127,11 @@ def GenGraph(request):
         predictionRange = predictions.predictions
         predictionUpper = int(predictionRange[predictionRange.index('-')+1:])
         predictionLower = int(predictionRange[:predictionRange.index('-')])
-        ##print('PREDICTION', predictionLower, ':', predictionUpper)
 
-        # JOAN
         binaryPred = BinaryPredictions.objects.get(room=selectedRoom, datetime=startTime).predictions
         percentagePred = PercentagePredictions.objects.get(room=selectedRoom, datetime=startTime).predictions
         estimatePred = EstimatePredictions.objects.get(room=selectedRoom, datetime=startTime).predictions
 
-        # jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity,
-        #             "predictionLower": predictionLower, "predictionUpper": predictionUpper}
         jsonFile = {"timeSlice": [], "groundTruth": groundTruth, "registered": registered, "capacity": capacity,
                     "predictionLower": predictionLower, "predictionUpper": predictionUpper, "binaryPred": binaryPred,
                     "percentagePred":percentagePred, "estimatePred":estimatePred}
@@ -152,21 +145,15 @@ def GenGraph(request):
     else:
         raise Http404
 
-
-
-
 def RoomDayGraph(request):
     ''' function to query database for daily room graph data '''
     if request.is_ajax():
 
         selectedRoom = request.POST['selectedRoom']
-##        print('POST', selectedRoom)
         selectedDate = request.POST['selectedDate']
-##        print('POST', selectedDate)
         selectedYear = int(selectedDate[:4])
         selectedMonth = int(selectedDate[5:7])
         selectedDay = int(selectedDate[8:])
-##        print('DATE', selectedDay, selectedMonth, selectedYear)
         selectedDateTime = datetime.date(selectedYear, selectedMonth, selectedDay)
         timeModuleList = Timemodule.objects.filter(room=selectedRoom,
                                                    datetime__range=(selectedDateTime,
@@ -243,19 +230,21 @@ def SelectInfo(request):
     modules = Modules.objects.all()
     timemodule = Timemodule.objects.all()
     groundtruth = Groundtruth.objects.all()
+    wifi = Wifilogdata.objects.filter()
     dateTimeList = Timemodule.objects.filter(room="B-004")
     GTdateTimeList = Groundtruth.objects.filter(room="B-004")
-    WiFidateList = Groundtruth.objects.filter(room="B-004")
+    WiFidateList = Wifilogdata.objects.filter(room="B-004")
 
     template = loader.get_template('occupants/forms.html')
     context = {
         'rooms': rooms,
         'modules': modules,
-        'timemodule':timemodule,
-        'groundtruth':groundtruth,
+        'timemodule': timemodule,
+        'groundtruth': groundtruth,
+        'wifi': wifi,
         'ModuleDates': dateTimeList,
         'GTDates': GTdateTimeList,
-        'WiFIDates': WiFidateList,
+        'WiFiDates': WiFidateList,
     }
 
     return HttpResponse(template.render(context, request))
@@ -265,8 +254,8 @@ def TMRequest(request):
             selectedRoom = request.POST.get('roomForm', False)
             selectedDateTime = request.POST.get('dateForm', False)
             module = Timemodule.objects.filter(room=selectedRoom, datetime=selectedDateTime).values()
-            gtInfo = {"room": selectedRoom, "datetime": selectedDateTime, "module": module[0]['module_id'], "id": module[0]['timemoduleid']}
-            return HttpResponse(json.dumps(gtInfo, cls=DjangoJSONEncoder), content_type="application/json")
+            TMInfo = {"room": selectedRoom, "datetime": selectedDateTime, "module": module[0]['module_id'], "id": module[0]['timemoduleid']}
+            return HttpResponse(json.dumps(TMInfo, cls=DjangoJSONEncoder), content_type="application/json")
     else:
         raise Http404
 
@@ -277,6 +266,16 @@ def GTRequest(request):
             groundtruth = Groundtruth.objects.get(room=selectedRoom, datetime=selectedDateTime)
             gtInfo = {"room": selectedRoom, "datetime": selectedDateTime, "percentage": groundtruth.percentageestimate,"binary": groundtruth.binaryestimate, "id": groundtruth.groundtruthid}
             return HttpResponse(json.dumps(gtInfo, cls=DjangoJSONEncoder), content_type="application/json")
+    else:
+        raise Http404
+
+def WFRequest(request):
+    if request.method == 'POST':
+            selectedRoom = request.POST.get('roomForm', False)
+            selectedDateTime = request.POST.get('dateForm', False)
+            log = Wifilogdata.objects.get(room=selectedRoom, datetime=selectedDateTime)
+            WFInfo = {"room": selectedRoom, "datetime": selectedDateTime, "count": log.associated, "id": log.wifilogdataid}
+            return HttpResponse(json.dumps(WFInfo, cls=DjangoJSONEncoder), content_type="application/json")
     else:
         raise Http404
 
@@ -320,6 +319,11 @@ class UpdateGroundTruth(UpdateView):
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
     success_url = reverse_lazy('SelectInfo')
 
+class UpdateWifi(UpdateView):
+    model = Wifilogdata
+    fields = ['datetime','room', 'associated', 'wifilogdataid']
+    success_url = reverse_lazy('SelectInfo')
+
 class DeleteModule(DeleteView):
     model = Modules
     fields = ['modulename', 'numreg']
@@ -339,6 +343,12 @@ class DeleteGroundTruth(DeleteView):
     model = Groundtruth
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
     success_url = reverse_lazy('SelectInfo')
+
+class DeleteWifi(DeleteView):
+    model = Wifilogdata
+    fields = ['datetime','room', 'associated', 'wifilogdataid']
+    success_url = reverse_lazy('SelectInfo')
+
 
 class userFormView(View):
     form_class = userForm #blueprint for form

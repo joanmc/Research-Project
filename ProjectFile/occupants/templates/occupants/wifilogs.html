@@ -18,9 +18,9 @@
         <form action="{% url 'wifilogs' %}" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 {% csrf_token %}
-                <h1 class="form-control">Upload Wifi Log Data csv file: {{ form.docfile.help_text }}</h1><br>
-                <p class="form-control">{{ form.non_field_errors }}</p>
-                <p class="form-control">
+                <h1>Upload Wifi Log Data CSV file: {{ form.docfile.help_text }}</h1><br>
+                <p>{{ form.non_field_errors }}</p>
+                <p>
                     {{ form.docfile.errors }}
                     {{ form.docfile }}
                 </p>

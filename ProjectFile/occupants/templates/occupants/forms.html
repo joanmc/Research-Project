@@ -11,7 +11,7 @@
             <li class="active" ><a href="#rooms" data-toggle = "tab">Rooms</a></li>
             <li ><a href="#modules" data-toggle = "tab">Modules</a></li>
 	    	<li ><a href="#timemodule" data-toggle = "tab">Module Timetable</a></li>
-            <li ><a href="#groundtruth" data-toggle = "tab">Ground truth</a></li>
+            <li ><a href="#groundtruth" data-toggle = "tab">Ground Truth</a></li>
             <li><a href="#wifilogs" data-toggle="tab">WiFi Logs</a></li>
         </ul> 
 	</div>
@@ -76,11 +76,11 @@
                     <div id="TMresult" style="display:none;">
 						<ul class = "list-group">
 						    <li class = "list-group-item">
-							    Room: <span id=room></span><br><br>
-							    DateTime: <span id="datetime"></span><br><br>
+							    Room: <span id=TMroom></span><br><br>
+							    DateTime: <span id="TMdatetime"></span><br><br>
 							    Module: <span id="module"></span><br><br>
-							<a id="edit"><span class ="glyphicon glyphicon-edit">  </span></a>
-							<a id="delete"><span class ="glyphicon glyphicon-trash">  </span></a>
+							<a id="TMedit"><span class ="glyphicon glyphicon-edit">  </span></a>
+							<a id="TMdelete"><span class ="glyphicon glyphicon-trash">  </span></a>
 						    </li>
 						</ul> 
 					</div>
@@ -108,7 +108,6 @@
                                             <option value="{{ date.datetime |date:'Y-m-d H:i:s' }}">{{ date.datetime |date:'Y-m-d H:i:s' }}</option>
                                         {% endfor %}
                                 </select>
-                                <!-- <input id="datePicker" class="form-control" name="dateForm" placeholder="Date"/> -->
                             </div>
                            <div class="col-sm-2">
                                 <button type="button" class="btn btn-default" onclick="GTRequest()">Submit</button> 
@@ -119,8 +118,8 @@
                     <div id="result" style="display:none;">
 						<ul class = "list-group">
 						    <li class = "list-group-item">
-							    Room: <span id=room></span><br><br>
-							    DateTime: <span id="datetime"></span><br><br>
+							    Room: <span id="GTroom"></span><br><br>
+							    DateTime: <span id="GTdatetime"></span><br><br>
 							    Binary Estimate: <span id="binary"></span><br><br>
 							    Percentage Estimate: <span id="percentage"></span><br><br>
 							<a id="edit"><span class ="glyphicon glyphicon-edit">  </span></a>
@@ -135,6 +134,43 @@
 			<div class = "container-fluid">
 				<!-- Upload Wifi Logs -->
 		        <h1><a href="/wifilogs" ><span class ="glyphicon glyphicon-plus"></span></a> </h1>
+
+		        <form class="form-horizontal" action="" method="POST" role="form">{% csrf_token %} <!--form to select room using post method and sending a csrf token-->
+                        <div class="form-group">
+                            <div class="col-sm-5">
+                                <select id="WFroomPicker" class="form-control" name="roomForm" placeholder="Room"><!--submit on change-->
+                                    <option value="" disabled selected>Room</option>
+                                    {% for room in rooms %} <!--automatically generate the form options from roomList-->
+                                        <option value="{{ room }}">{{ room }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-sm-5">
+                                 <select id="WFdatePicker" class="form-control" name="dateForm" placeholder="Date"><!--submit on change-->
+                                    <option value="" disabled selected>Date</option>
+                                        {% for date in WiFiDates %}
+                                            <option value="{{ date.datetime |date:'Y-m-d H:i:s' }}">{{ date.datetime |date:'Y-m-d H:i:s' }}</option>
+                                        {% endfor %}
+                                </select>
+                                <!-- <input id="datePicker" class="form-control" name="dateForm" placeholder="Date"/> -->
+                            </div>
+                           <div class="col-sm-2">
+                                <button type="button" class="btn btn-default" onclick="WFRequest()">Submit</button> 
+                           </div>
+                        </div>
+                    </form><br>
+
+                    <div id="WFresult" style="display:none;">
+						<ul class = "list-group">
+						    <li class = "list-group-item">
+							    Room: <span id=WFroom></span><br><br>
+							    DateTime: <span id="WFdatetime"></span><br><br>
+							    WiFi Associated Count: <span id="count"></span><br><br>
+							<a id="WFedit"><span class ="glyphicon glyphicon-edit">  </span></a>
+							<a id="WFdelete"><span class ="glyphicon glyphicon-trash">  </span></a>
+						    </li>
+						</ul> 
+					</div>
 			</div>
 		</div>
 	</div>
@@ -154,14 +190,14 @@ function TMRequest(){
             success: function(result) {
                 var info = result;
                 document.getElementById('TMresult').style.display = "inline";
-                document.getElementById("room").innerHTML = info.room;
-                document.getElementById("datetime").innerHTML = info.datetime;
+                document.getElementById("TMroom").innerHTML = info.room;
+                document.getElementById("TMdatetime").innerHTML = info.datetime;
                 document.getElementById("module").innerHTML = info.module;
 
                 var editLink = "/TimeModule/" + info.id + "/";
-				document.getElementById("edit").setAttribute("href",editLink);
+				document.getElementById("TMedit").setAttribute("href",editLink);
 				var deleteLink = "/TimeModule/delete/" + info.id + "/";
-				document.getElementById("delete").setAttribute("href",deleteLink);
+				document.getElementById("TMdelete").setAttribute("href",deleteLink);
 	    	}
         });
 }
@@ -177,9 +213,9 @@ function GTRequest(){
 
             success: function(result) {
                 var info = result;
-                document.getElementById('result').style.display = "inline";
-                document.getElementById("room").innerHTML = info.room;
-                document.getElementById("datetime").innerHTML = info.datetime;
+                document.getElementById("result").style.display = "inline";
+                document.getElementById("GTroom").innerHTML = info.room;
+                document.getElementById("GTdatetime").innerHTML = info.datetime;
                 document.getElementById("binary").innerHTML = info.binary;
                 document.getElementById("percentage").innerHTML = info.percentage;
 
@@ -191,29 +227,29 @@ function GTRequest(){
         });
 }
 
-// function WiFiRequest(){
-// 		var roomForm = document.getElementById("WFroomPicker").value;
-//         var dateForm = document.getElementById("WFdatePicker").value;
+function WFRequest(){
+		var roomForm = document.getElementById("WFroomPicker").value;
+        var dateForm = document.getElementById("WFdatePicker").value;
 
-//         $.ajax({
-//             method: "POST",
-//             data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
-//             url: "GTRequest",
+        $.ajax({
+            method: "POST",
+            data: {'roomForm': roomForm, 'dateForm': dateForm, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,},
+            url: "WFRequest",
 
-//             success: function(result) {
-//                 var info = result;
-//                 document.getElementById('result').style.display = "inline";
-//                 document.getElementById("room").innerHTML = info.room;
-//                 document.getElementById("datetime").innerHTML = info.datetime;
-//                 document.getElementById("binary").innerHTML = info.conut;
+            success: function(result) {
+                var info = result;
+                document.getElementById('WFresult').style.display = "inline";
+                document.getElementById("WFroom").innerHTML = info.room;
+                document.getElementById("WFdatetime").innerHTML = info.datetime;
+                document.getElementById("count").innerHTML = info.count;
 
-//                 var editLink = "/GroundTruth/" + info.id + "/";
-// 				document.getElementById("edit").setAttribute("href",editLink);
-// 				var deleteLink = "/GroundTruth/delete/" + info.id + "/";
-// 				document.getElementById("delete").setAttribute("href",deleteLink);
-// 	    	}
-//         });
-// }
+                var editLink = "/Wifi/" + info.id + "/";
+				document.getElementById("WFedit").setAttribute("href",editLink);
+				var deleteLink = "/Wifi/delete/" + info.id + "/";
+				document.getElementById("WFdelete").setAttribute("href",deleteLink);
+	    	}
+        });
+}
 
 
 </script>
