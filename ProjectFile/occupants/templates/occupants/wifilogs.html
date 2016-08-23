@@ -6,26 +6,24 @@
 
 <div class = "container-fluid">
     <div class="centered" style="max-width: 1200px">
-        {% if messages %}
-        <ul class="well">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-
         <!-- Upload form. Note enctype attribute! -->
-        <form action="{% url 'wifilogs' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'wifilogs' %}" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 {% csrf_token %}
                 <h1>Upload Wifi Log Data CSV file: {{ form.docfile.help_text }}</h1><br>
                 <p>{{ form.non_field_errors }}</p>
+                {% if messages %}
+                    <ul class="well">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
                 <p>
                     {{ form.docfile.errors }}
                     {{ form.docfile }}
                 </p>
-            
-            <button type="button" class="btn btn-default" value="Upload">Submit</button>
+                <input type="submit" class="btn btn-default" value="Submit">
             </div>
             <!-- <p><input type="submit" value="Upload" /></p> -->
         </form>

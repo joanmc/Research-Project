@@ -389,8 +389,10 @@ def wifilogs(request):
     # Handle file upload
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
+        print('here')
         if form.is_valid():
             f = TextIOWrapper(request.FILES['docfile'].file, encoding=request.encoding)
+            print(f)
             file = csv.reader(f)
 
             check = False
@@ -403,7 +405,7 @@ def wifilogs(request):
                     check = True
 
             if check == False:
-                messages.error(request, "Invalid file content. Please upload a  csv containing WiFi Log Data.");
+                messages.error(request, "Invalid file content. Please upload a CSV containing WiFi Log Data.");
                 return render(request, 'occupants/wifilogs.html', {'form' : form })
 
             for i in range(0, len(df)):
