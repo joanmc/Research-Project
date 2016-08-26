@@ -19,7 +19,7 @@ urlpatterns = [
 
    # Django Tutorial for Beginnners 30 Model Forms, thenewboston
     # Add records
-    url(r'^Room/add/$', login_required(views.AddRoom.as_view()), name='AddRoom'),
+    url(r'^Rooms/add/$', login_required(views.AddRoom.as_view()), name='AddRoom'),
     url(r'^Module/add/$', login_required(views.AddModule.as_view()), name='AddModule'),
     url(r'^TimeModule/add/$', login_required(views.AddTimeModule.as_view()), name='AddTimeModule'),
     url(r'^GroundTruth/add/$', login_required(views.AddGroundTruth.as_view()), name='AddGroundTruth'),

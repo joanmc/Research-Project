@@ -5,9 +5,10 @@
 {% block head %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
-
 {% endblock %}
+<style>
 
+</style>
 {% block body %}
     <div class="container-fluid">
         <div class="centered" style="max-width: 1200px">
@@ -38,8 +39,8 @@
 
             <h3 id="title"></h3><br>
 
-            <div class="table-responsive" id="tableDiv">
-                <table id="calTable" class="table table-striped">
+            <div class="" id="tableDiv">
+                <table id="calTable" class="table table-responsive">
                 </table>
             </div>            
 
