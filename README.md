@@ -3,9 +3,10 @@
 # BARRY KIDNEY, JOAN MCCARTHY, DAVID O'KEEFFE & ELLEN RUSHE
 
 SERVER: http://csi420-01-vm4.ucd.ie/
+
 LOGIN CREDENTIALS: 
-- Username: occupants
-- Password: Research2016!
+    - Username: occupants
+    - Password: Research2016!
 
 # Repository Contents
     Database: All python files to construct the database
