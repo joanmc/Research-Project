@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'^GroundTruth/(?P<pk>[0-9]+)/$', login_required(views.UpdateGroundTruth.as_view()), name='UpdateGroundTruth'),
     url(r'^Wifi/(?P<pk>[0-9]+)/$', login_required(views.UpdateWifi.as_view()), name='UpdateWifi'),
     # Delete records
-    url(r'^Room/delete/(?P<pk>[a-zA-Z0-9()& ]+)/$', login_required(views.DeleteRoom.as_view()), name='DeleteRoom'),
+    url(r'^Room/delete/(?P<pk>[a-zA-Z0-9()& _-]+)/$', login_required(views.DeleteRoom.as_view()), name='DeleteRoom'),
     url(r'^Module/delete/(?P<pk>[a-zA-Z0-9()& ]+)/$', login_required(views.DeleteModule.as_view()), name='DeleteModule'),
     url(r'^TimeModule/delete/(?P<pk>[0-9]+)/$', login_required(views.DeleteTimeModule.as_view()), name='DeleteTimeModule'),
     url(r'^GroundTruth/delete/(?P<pk>[0-9]+)/$', login_required(views.DeleteGroundTruth.as_view()), name='DeleteGroundTruth'),
