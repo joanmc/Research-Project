@@ -298,7 +298,8 @@ class AddGroundTruth(CreateView):
     model = Groundtruth
     fields = ['datetime','room', 'binaryestimate', 'percentageestimate', 'groundtruthid']
     success_url = reverse_lazy('SelectInfo')
- 
+
+# Reference: 'Django Tutorial for Beginners - 32 - UpdateView and DeleteView', thenewboston, https://www.youtube.com/watch?v=5Ez2NXOX9zY&index=32&list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK YouTube [Video] [Accessed: 28/08/16] 
 class UpdateModule(UpdateView):
     model = Modules
     fields = ['modulename', 'numreg']
