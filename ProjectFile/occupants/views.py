@@ -16,7 +16,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import SerializerRooms, SerializerModules, SerializerGroundtruth, SerializerTimemodule, SerializerBinaryPredictions, SerializerPercentagePredictions, SerializerEstimatePredictions
 # wifi logs upload
-# import pandas as pd
+import pandas as pd
 import csv
 from io import TextIOWrapper
 import json
