@@ -86,7 +86,6 @@ FIXTURE_DIRS = (
 DATABASE_ROUTERS = ['occupants.router.OccupantsRouter']
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-# Reference: Franklin, Simeon,'Tutorial: Using Django's Multiple Database Support',(2012) [Web] https://newcircle.com/s/post/1242/django_multiple_database_support
 
 DATABASES = {
     'default': {
