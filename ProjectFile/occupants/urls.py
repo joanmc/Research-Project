@@ -16,14 +16,17 @@ urlpatterns = [
     url(r'^Rooms/TMRequest$', views.TMRequest, name='TMRequest'),
     url(r'^Rooms/WFRequest$', views.WFRequest, name='WFRequest'),
     url(r'^wifilogs/$', views.wifilogs, name='wifilogs'),
+    # Reference: 'Django Tutorial for Beginnners 30 Model Forms', thenewboston, YouTube [Video] https://www.youtube.com/watch?v=eouZwgKuA5k&list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK&index=30 [Accessed: 28/08/16]
+   
 
-   # Django Tutorial for Beginnners 30 Model Forms, thenewboston
     # Add records
     url(r'^Room/add/$', login_required(views.AddRoom.as_view()), name='AddRoom'),
     url(r'^Module/add/$', login_required(views.AddModule.as_view()), name='AddModule'),
     url(r'^TimeModule/add/$', login_required(views.AddTimeModule.as_view()), name='AddTimeModule'),
     url(r'^GroundTruth/add/$', login_required(views.AddGroundTruth.as_view()), name='AddGroundTruth'),
     # url(r'^Wifi/add/$', login_required(views.wifilogs), name='wifilogs'),
+
+    # Reference: 'Django Tutorial for Beginners - 32 - UpdateView and DeleteView', thenewboston, YouTube [Video], https://www.youtube.com/watch?v=5Ez2NXOX9zY&index=32&list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK [Accessed: 28/08/16]
     # Update records
     url(r'^Room/(?P<pk>[a-zA-Z0-9()& _-]+)/$', login_required(views.UpdateRoom.as_view()), name='UpdateRoom'),
     url(r'^Module/(?P<pk>[a-zA-Z0-9()& ]+)/$', login_required(views.UpdateModule.as_view()), name='UpdateModule'),
@@ -36,7 +39,7 @@ urlpatterns = [
     url(r'^TimeModule/delete/(?P<pk>[0-9]+)/$', login_required(views.DeleteTimeModule.as_view()), name='DeleteTimeModule'),
     url(r'^GroundTruth/delete/(?P<pk>[0-9]+)/$', login_required(views.DeleteGroundTruth.as_view()), name='DeleteGroundTruth'),
     url(r'^Wifi/delete/(?P<pk>[0-9]+)/$', login_required(views.DeleteWifi.as_view()), name='DeleteWifi'),
-
+# Reference: 'Django Tutorial for Beginners - 40 - REST API View Request and Response', thenewboston, YouTube [Video], https://www.youtube.com/watch?v=QW_5xCCPWFk&list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK&index=40 [Accessed: 28/08/16]
     # API 
     url(r'^RoomList/$', views.RoomList.as_view()),
     url(r'^ModuleList/$', views.ModuleList.as_view()),

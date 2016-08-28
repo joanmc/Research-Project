@@ -1,5 +1,5 @@
-# Reference: Franklin, Simeon,'Tutorial: Using Django's Multiple Database Support',(2012) [Web] https://newcircle.com/s/post/1242/django_multiple_database_support
-class OccupantsRouter(object):  
+# https://newcircle.com/s/post/1242/django_multiple_database_support
+class OccupantsRouter(object): 
     def db_for_read(self, model, **hints):
 
         if model._meta.app_label == 'occupants':

@@ -1,4 +1,4 @@
-<!-- Reference: 'Django Tutorial for Beginners - 31 - ModelForm and CreateView', thenewboston, YouTube [Video] https://www.youtube.com/watch?v=dOG-aRADaD8&index=31&list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK [Accessed: 28/08/16] --> 
+<!-- Reference: 'Django Tutorial for Beginnners 30 Model Forms', thenewboston, YouTube [Video] https://www.youtube.com/watch?v=eouZwgKuA5k&list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK&index=30 [Accessed: 28/08/16] --> 
 {% for field in form %}
 	<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
